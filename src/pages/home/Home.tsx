@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '@restheart-cloud/kit-react';
+import { useAuth } from '@ulabase/kit-react';
 import { environment } from '../../environments/environment';
 import './Home.css';
 
@@ -82,7 +82,7 @@ export default function Home() {
   return (
     <>
       <section className="card hero">
-        <p className="eyebrow">RESTHeart Cloud Starter</p>
+        <p className="eyebrow">Ulabase Starter</p>
         <h1>{firstName ? `Welcome, ${firstName}.` : 'Welcome.'}</h1>
         <p className="hero-pitch">
           Sign-up, login, email verification, password reset, invitations and team
@@ -113,7 +113,7 @@ export default function Home() {
 
         <p className="muted feature-note">
           Toggle these in <code>src/environments/environment.ts</code> to match the
-          Features settings of your RESTHeart Cloud service.
+          Features settings of your Ulabase service.
         </p>
       </section>
 
@@ -126,7 +126,7 @@ export default function Home() {
           <li className="step step-done">
             <span className="step-mark" aria-hidden="true">&#10003;</span>
             <div className="step-body">
-              <span className="step-title">Point the app at your RESTHeart Cloud service</span>
+              <span className="step-title">Point the app at your Ulabase service</span>
               <p className="muted">
                 Done — you're signed in. Configured in{' '}
                 <code>src/environments/environment.ts</code>.
@@ -193,13 +193,13 @@ export default function Home() {
 
         <h3>1. Create the <code>demo</code> collection</h3>
         <p className="muted">
-          In your RESTHeart Cloud dashboard, create a collection called <code>demo</code>
+          In your Ulabase dashboard, create a collection called <code>demo</code>
           and add a permission so the signed-in user can read it:
         </p>
         <pre className="code-block">path(/demo) and method(GET)</pre>
 
         <h3>2. Fetch from your component</h3>
-        <pre className="code-block">{`import { useAuth } from '@restheart-cloud/kit-react';
+        <pre className="code-block">{`import { useAuth } from '@ulabase/kit-react';
 
 function DemoComponent() {
   const auth = useAuth();

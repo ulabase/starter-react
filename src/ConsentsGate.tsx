@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useAuth } from '@restheart-cloud/kit-react';
+import { useAuth } from '@ulabase/kit-react';
 import { isBlocked, setBlocked, subscribe } from './consents-signal';
 import './ConsentsGate.css';
 

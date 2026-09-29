@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Outlet, Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '@restheart-cloud/kit-react';
+import { useAuth } from '@ulabase/kit-react';
 import { isJustSignedUp, setJustSignedUp } from '../../just-signed-up';
 import './Shell.css';
 
@@ -125,7 +125,7 @@ export default function Shell() {
         )}
 
         <header className="header">
-          <Link to="/" className="logo">RESTHeart Cloud</Link>
+          <Link to="/" className="logo">Ulabase</Link>
 
           <nav className="nav" aria-label="Main">
             <NavLink to="/home" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>Home</NavLink>
