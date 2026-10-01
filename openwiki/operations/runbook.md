@@ -3,9 +3,6 @@ type: Runbook
 title: Operations & Runbook
 description: Environment configuration, design system and styling, build and deploy workflow, theming, feature flag management, and consents gate operations for the Ulabase React starter.
 tags: [operations, runbook, config, styling, build, deploy, theming, consents, gate]
-verified:
-  - by: openwiki/0.6.1
-    at: 2026-10-01T10:27:11.499Z
 sources:
   - id: openwiki-source-85dc2a049a0943b56218c045
     resource: repo://public/privacy.html
@@ -21,7 +18,10 @@ sources:
     resource: repo://src/styles.css
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
-generated: { by: "openwiki/0.6.1", at: "2026-10-01T10:27:11.499Z" }
+generated: { by: "openwiki/0.6.1", at: "2026-10-01T12:12:11.534Z" }
+verified:
+  - by: openwiki/0.6.1
+    at: 2026-10-01T12:12:11.534Z
 ---
 
 # Operations & Runbook
@@ -34,11 +34,11 @@ This is the single configuration file for the starter. It contains:
 
 ```typescript
 export const environment = {
-  apiUrl: '<your-ulabase-service-url>',
+  apiUrl: '',
   features: {
     emailRegistration: true,
     passwordReset: true,
-    oauthLogin: true,
+    oauthLogin: false, // Google sign-in: off until you create its OAuth client
     oauthProviders: ['google'] as const,
     teamInvitations: true,
   },
@@ -47,7 +47,7 @@ export const environment = {
 
 ### apiUrl
 
-Must be a valid `*.restheart.com` URL. The app validates this on startup with `isValidApiBaseUrl()` from the kit. If invalid, a ConfigPage is shown instead of the app.
+Must be a valid Ulabase service URL (`https://<id>.ulabase.app`). The app validates this on startup with `isValidApiBaseUrl()` from `@ulabase/kit-react`. If invalid or empty, a ConfigPage is shown instead of the app.
 
 **After cloning**, tell git to ignore local changes:
 
@@ -80,7 +80,7 @@ The stylesheet is structured in five sections, all clearly marked with comments:
 All colors, spacing, and typography flow from CSS custom properties in `:root`. Key tokens:
 
 ```css
---color-primary: #f8a839;       /* RESTHeart amber — primary actions */
+--color-primary: #f8a839;       /* Ulabase amber — primary actions */
 --color-link: #1f6f54;          /* Teal — links and success */
 --color-bg: #f4f6f8;            /* Page background */
 --color-surface: #ffffff;       /* Card/surface background */
@@ -113,6 +113,7 @@ const STORAGE_KEY = 'rh-theme';
 
 function useTheme() {
   const [dark, setDark] = useState(() => {
+    if (typeof window === 'undefined') return false;
     return localStorage.getItem(STORAGE_KEY) === 'dark';
   });
 

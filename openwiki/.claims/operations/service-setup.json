@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:08d3eaa5b95deef7cba2768c945868cc9e29d31908eac0f8c6d75d8d5283831c",
+  "pageVersion": "sha256:ed20751a842e381ae55903bbc4c623c7e3c510818d99e5a2d904be43beb1fd78",
   "claims": [
     {
       "id": "claim_2d0ef3bdd0444d6a9bb49f8460c9ce39",
@@ -105,7 +105,7 @@
       "statement": "Google OAuth credentials are only configured when oauthLogin is true and oauthProviders includes 'google'; credentials are read from environment variables only when not already stored.",
       "evidence": [
         {
-          "resource": "repo://ulabase.setup.ts#L119-L157",
+          "resource": "repo://ulabase.setup.ts#L123-L161",
           "version": "repo-lines-v1:sha256:7a42d20be64ddb20adda339b6c911f6137027bd3510c465b3b302fc9610743cc:eyJzZWxlY3RlZExpbmVDb3VudCI6MzksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1ODU4ODM2MjU4YmYzMzkyOWQwNjMwYWU0YWVkM2YwMTYyNGU1NzkxZWRhYzE2ZmVhZmE2ZWViMzUxN2I2MTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFhMTFlMDg5MDA4OGYzMThmZTMzMGFiOGE2MThlYjRlOTI5NmNhN2RkYzA4NDY0NzFmM2I2ZTVkZjc2MWI4N2MiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJjYTlmMDA4ZDMxNjA1NzVjZTg2ZjE3MTYxMDMzOTNjMDg5MjE0N2IxMDc0YTZkNTg0MGFiMTNkZDQ0YjA3MTgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJiNGI2MTAwNDcwMTgxOTY3MDM0NTAzMTNkZTdjZmNkMDNhNjIxZTA4NTQ4YjVhMGI0M2JhZmE2M2ZkN2Y4ZTQifQ"
         }
       ]
@@ -115,7 +115,7 @@
       "statement": "The origin allowlist is additive: existing origins are preserved, new origins are appended.",
       "evidence": [
         {
-          "resource": "repo://ulabase.setup.ts#L159-L184",
+          "resource": "repo://ulabase.setup.ts#L163-L188",
           "version": "repo-lines-v1:sha256:02e148a3cd9ba8a81fd772379ba71fbe50c0d7ced5e2fc6f1b57f45931cd8d19:eyJzZWxlY3RlZExpbmVDb3VudCI6MjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZjMTJmNGFlYzkwYTBkNTcyMmUwZmIwNmEwODA2NGM2Mzk1NTNhZWExNzhjZTA3NTA0MWNhNmE3MWIyNjQ0NjIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQyZTZmY2RkNGQ3Mjc0ODdlOGI4ZDdhNDM3N2YwNjJjZDFiY2U1OTQ0NGQ2ZDczYWE4OGNhNTg0OGY5NGI0ZTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjlhOTQxNmNhOGRhZjhkY2IzZmE3MDQ5YTMyN2QyNjMzYjFkMWM1ZTQxNjU2OWM0MzJkNDA1MmZiM2YwNmY4NGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU1ZTI2Y2Q5MjM2NmY2MGQ4ZWQ5MmQwMjM5ZjA3ZmVmNzRjYWMxNGFhNjlhZGRmOWMyY2MwZDExZWIwMGE0NjMifQ"
         }
       ]
@@ -137,6 +137,6 @@
   ],
   "verification": {
     "by": "openwiki/0.6.1",
-    "at": "2026-10-01T10:27:11.499Z"
+    "at": "2026-10-01T12:12:11.534Z"
   }
 }

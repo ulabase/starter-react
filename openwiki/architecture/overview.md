@@ -5,7 +5,7 @@ description: Runtime architecture of the Ulabase React starter — component tre
 tags: [architecture, react, auth, routing, ulabase, consents]
 verified:
   - by: openwiki/0.6.1
-    at: 2026-10-01T10:27:11.499Z
+    at: 2026-10-01T12:12:11.534Z
 sources:
   - id: openwiki-source-54631e6ebf1d3b815c4a5eed
     resource: repo://src/App.tsx
@@ -15,7 +15,7 @@ sources:
     resource: repo://src/ConsentsGate.tsx
   - id: openwiki-source-95bfccfd0c712f6e72040e0d
     resource: repo://src/main.tsx
-generated: { by: "openwiki/0.6.1", at: "2026-10-01T10:27:11.499Z" }
+generated: { by: "openwiki/0.6.1", at: "2026-10-01T12:12:11.534Z" }
 ---
 
 # Architecture Overview
@@ -202,10 +202,10 @@ After an OAuth redirect, the auth provider returns the access token in the URL *
 1. Reads `window.location.hash`
 2. Extracts `access_token` from the fragment parameters
 3. Calls `setToken(accessToken)` and `scheduleRefresh({ apiBaseUrl })`
-4. Also checks for `?flow=signup` query param and sets the `justSignedUp` flag
+4. Also checks for `?flow=signup` query param and sets the `justSignedUp` flag (via `src/just-signed-up.ts`)
 5. Cleans the URL with `history.replaceState` to remove the hash and query params
 
-This runs once on app load, before any route renders.
+This runs once on app load, inside a `useEffect` with an empty dependency array.
 
 ## Config Gating
 

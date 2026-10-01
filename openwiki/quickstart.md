@@ -5,7 +5,7 @@ description: Quickstart guide for the Ulabase React starter. Covers what the rep
 tags: [quickstart, react, ulabase, starter]
 verified:
   - by: openwiki/0.6.1
-    at: 2026-10-01T10:27:11.499Z
+    at: 2026-10-01T12:12:11.534Z
 sources:
   - id: openwiki-source-5b54a58d1b51cd490b0e7162
     resource: repo://package.json
@@ -19,14 +19,14 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.6.1", at: "2026-10-01T10:27:11.499Z" }
+generated: { by: "openwiki/0.6.1", at: "2026-10-01T12:12:11.534Z" }
 ---
 
 # Ulabase Starter — React
 
 A React app with sign-up, login, Google sign-in, email verification, password reset,
 teams and invitations — working, not sketched. Clone it, point it at a free
-[Ulabase](https://cloud.restheart.com) service, and you have the boring half of an
+[Ulabase](https://ulabase.com) service, and you have the boring half of an
 application already done.
 
 Works for multi-tenant SaaS (invitations, team switcher) and simpler apps (auth only).
@@ -60,7 +60,7 @@ The two setup paths through the Ulabase CLI. Both are idempotent check-then-appl
 
 ### Prerequisites
 
-1. A **free Ulabase service** — [create one at cloud.restheart.com](https://cloud.restheart.com).
+1. A **free Ulabase service** — [create one at ulabase.com](https://ulabase.com).
 2. [Node.js](https://nodejs.org) 18 or later.
 
 ### 1. Clone and install
@@ -73,14 +73,14 @@ npm install
 
 ### 2. Point to your service
 
-Create a free service at [cloud.restheart.com](https://cloud.restheart.com) and copy its URL
+Create a free service at [ulabase.com](https://ulabase.com) and copy its URL
 from the service's *Connect* page. Put it in `src/environments/environment.ts`:
 
 ```ts
-apiUrl: 'https://xxxxxx.eu-central-1-free-1.restheart.com',
+apiUrl: 'https://xxxxxx.ulabase.app',
 ```
 
-> Use the URL of **your service**, not `cloud-api.restheart.com`. That second one is Ulabase's own
+> Use the URL of **your service**, not `api.ulabase.com`. That second one is Ulabase's own
 > control panel, and pointing the app at it makes every request fail.
 
 To keep that edit out of `git status`:
@@ -97,7 +97,7 @@ in this repo, so there is no console checklist to follow.
 
 ```bash
 npm install -g ulabase
-ulabase login                              # paste a token from cloud.restheart.com
+ulabase login                              # paste a token from ulabase.com
 ulabase setup --srv <srvId>                # uses ulabase.setup.ts by default
 ```
 
@@ -171,7 +171,7 @@ src/
   main.tsx                ← Entrypoint: RhAuthProvider + BrowserRouter
   App.tsx                 ← Fragment token capture + config gate
   routes.tsx              ← Route map with lazy loading and feature-flag gating
-  ConfigPage.tsx          ← Shown when apiUrl is not a valid *.restheart.com URL
+  ConfigPage.tsx          ← Shown when apiUrl is not a valid *.ulabase.app URL
   styles.css              ← Design tokens + the DISPOSABLE default skin
   just-signed-up.ts       ← Module-level flag for post-signup welcome
   oauth-url.ts            ← OAuth authorize URL builder
