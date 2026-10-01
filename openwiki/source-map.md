@@ -3,9 +3,6 @@ type: Source Map
 title: Source Map
 description: File-by-file inventory of the Ulabase React starter, mapping every source file to its purpose and cross-referencing documentation.
 tags: [source-map, reference, files]
-verified:
-  - by: openwiki/0.6.1
-    at: 2026-10-01T10:27:11.499Z
 sources:
   - id: openwiki-source-5b54a58d1b51cd490b0e7162
     resource: repo://package.json
@@ -23,7 +20,10 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.6.1", at: "2026-10-01T10:27:11.499Z" }
+generated: { by: "openwiki/0.6.1", at: "2026-10-01T12:12:11.534Z" }
+verified:
+  - by: openwiki/0.6.1
+    at: 2026-10-01T12:12:11.534Z
 ---
 
 # Source Map
@@ -47,14 +47,14 @@ Complete inventory of repository source files. Each entry links to the page wher
 |------|---------|----------|
 | `src/main.tsx` | React root creation. Renders `<StrictMode>` → `<BrowserRouter>` → `<RhAuthProvider>` → `<App />`. Imports `styles.css`. | [Architecture](architecture/overview.md) |
 | `src/App.tsx` | Fragment token capture on mount, API URL validation gate, renders `ConfigPage` or route tree via `useRoutes()` | [Architecture](architecture/overview.md) |
-| `src/ConfigPage.tsx` | Setup wizard shown when `apiUrl` is invalid. Guides user to create a service at `cloud.ulabase.com` and edit `environment.ts`. | [Operations](operations/runbook.md) |
+| `src/ConfigPage.tsx` | Setup wizard shown when `apiUrl` is invalid. Guides user to create a service at `ulabase.com` and edit `environment.ts`. | [Operations](operations/runbook.md) |
 | `src/routes.tsx` | Route definitions as `RouteObject[]`. Lazy-loaded components, feature-flag conditional inclusion, `AuthGuard`/`PublicGuard` wrappers. | [Architecture](architecture/overview.md) |
 
 ## Environment & Utilities
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `src/environments/environment.ts` | **Central config**: `apiUrl` (Ulabase service URL) + `features` object (feature flags) | [Auth & Teams](domain/auth-and-teams.md#feature-flags), [Operations](operations/runbook.md) |
+| `src/environments/environment.ts` | **Central config**: `apiUrl` (Ulabase service URL) + `features` object (feature flags). Note: comment still references restheart.com but the file is correct. | [Auth & Teams](domain/auth-and-teams.md#feature-flags), [Operations](operations/runbook.md) |
 | `src/just-signed-up.ts` | Module-level boolean flag. Set to `true` when `?flow=signup` query param is detected in fragment token capture. Shell reads and clears it to show a welcome message. | [Auth & Teams](domain/auth-and-teams.md) |
 | `src/oauth-url.ts` | Builds OAuth authorize URL: `${apiUrl}/auth/oauth/authorize/${provider}?noauthchallenge` | [Auth & Teams](domain/auth-and-teams.md#oauth-login) |
 
@@ -142,3 +142,5 @@ Complete inventory of repository source files. Each entry links to the page wher
 | `src/consents-signal.ts` | Client-side consents signal: manages `blocked` state flag, provides `subscribe()` for listeners, and `consentsOnError()` that sets blocked on HTTP 451 from the API. | [Auth & Teams](domain/auth-and-teams.md) |
 | `src/ConsentsGate.tsx` | Blocking overlay component that replaces the app when user hasn't accepted current Terms/Privacy Policy. Sits above the router, renders acceptance form with checkboxes, calls `auth.acceptConsents()` and refreshes session. | [Auth & Teams](domain/auth-and-teams.md) |
 | `src/ConsentsGate.css` | Styles for consents overlay: fixed positioning, z-index above header/dropdown/nav, modal card with checkboxes and action buttons. | — |
+| `public/privacy.html` | Static Privacy Policy page linked from the consents acceptance form. Self-contained HTML with inline styles, mirrors the app's theme toggle. | [Auth & Teams](domain/auth-and-teams.md) |
+| `public/terms.html` | Static Terms of Service page linked from the consents acceptance form. Self-contained HTML with inline styles, mirrors the app's theme toggle. | [Auth & Teams](domain/auth-and-teams.md) |

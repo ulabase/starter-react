@@ -3,9 +3,6 @@ type: Operations
 title: Service Setup with Ulabase CLI
 description: Declarative service configuration using ulabase CLI, setup files, feature flag flow from environment.ts to the service, and consents gate server-side configuration.
 tags: [operations, ulabase, setup, cli, consents, feature-flags, configuration]
-verified:
-  - by: openwiki/0.6.1
-    at: 2026-10-01T10:27:11.499Z
 sources:
   - id: openwiki-source-23775c3de52f3ab95a13cb8b
     resource: repo://README.md
@@ -13,7 +10,10 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.6.1", at: "2026-10-01T10:27:11.499Z" }
+generated: { by: "openwiki/0.6.1", at: "2026-10-01T12:12:11.534Z" }
+verified:
+  - by: openwiki/0.6.1
+    at: 2026-10-01T12:12:11.534Z
 ---
 
 # Service Setup with Ulabase CLI
@@ -24,10 +24,10 @@ This page documents how the Ulabase React starter configures its backend service
 
 ```bash
 npm install -g ulabase
-ulabase login                              # paste a token from cloud.restheart.com
+ulabase login                              # paste a token from ulabase.com
 ```
 
-The CLI authenticates against RESTHeart Cloud and stores a token locally. All subsequent commands use this token.
+The CLI authenticates against Ulabase and stores a token locally. All subsequent commands use this token.
 
 ## Setup Workflow
 
@@ -39,7 +39,7 @@ ulabase setup --srv <srvId> --dry-run      # check only, report what's missing
 ulabase setup --srv <srvId> --file ulabase.setup.consents.ts   # with consents gate
 ```
 
-The `<srvId>` is the six-character identifier from your service URL (e.g., `abc123` in `https://abc123.eu-central-1-free-1.restheart.com`). Every step is check-then-apply: running it twice writes nothing.
+The `<srvId>` is the six-character identifier from your service URL (e.g., `abc123` in `https://abc123.ulabase.app`). Every step is check-then-apply: running it twice writes nothing.
 
 ### Setup Decision Tree
 

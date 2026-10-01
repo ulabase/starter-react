@@ -3,9 +3,6 @@ type: Domain
 title: Auth & Teams
 description: Detailed documentation of authentication flows (login, signup, OAuth, email verification, password reset), team management, invitation handling, consents gate enforcement, and feature flags in the Ulabase React starter.
 tags: [auth, teams, invitations, oauth, feature-flags, consents, domain]
-verified:
-  - by: openwiki/0.6.1
-    at: 2026-10-01T10:27:11.499Z
 sources:
   - id: openwiki-source-4e7cd7f381c92e8c5d89f5c1
     resource: repo://NOTES.md
@@ -23,7 +20,10 @@ sources:
     resource: repo://src/main.tsx
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
-generated: { by: "openwiki/0.6.1", at: "2026-10-01T10:27:11.499Z" }
+generated: { by: "openwiki/0.6.1", at: "2026-10-01T12:12:11.534Z" }
+verified:
+  - by: openwiki/0.6.1
+    at: 2026-10-01T12:12:11.534Z
 ---
 
 # Auth & Teams
@@ -57,7 +57,7 @@ Loading state disables the submit button. Password visibility toggle is provided
 
 Registration form collecting first name, last name, email, and password (minimum 8 characters). OAuth buttons are shown above the form when `oauthLogin` is enabled. On submit:
 
-1. Auto-generates a team name: `{firstName}'s Team`
+1. Auto-generates a team name: `{firstName}'s Team` (falls back to `{emailPrefix}'s Team` if first name is empty)
 2. Calls `auth.register({ teamName, firstName, lastName, email, password })`
 3. On success → shows a "Check your email" confirmation screen (no redirect)
 4. On 409 → "An account with this email already exists."
@@ -131,13 +131,13 @@ Error handling:
 
 - Calls `auth.loadTeams()` on mount
 - Renders each team with name, description, role
-- Active team gets a "current" badge; inactive teams get a "Switch" button
+- Active team gets a "current" badge; inactive teams are clickable and auto-switch on click
 - "New team" link at top
 - Empty state: "You're not part of any team yet."
 
 ### Team Switching
 
-`auth.switchTeam(teamId)` — called from the team list. The team switcher in the Shell header is only shown when the user belongs to more than one team.
+`auth.switchTeam(teamId)` — called from the team list when clicking a non-active team. The Shell dropdown displays the active team name but does not offer a switcher; switching happens exclusively on the `/teams` page.
 
 ### Team Detail (`/teams/:id`)
 
@@ -194,9 +194,7 @@ The schema (`userConsentsSchema`) defines `latestConsents` (with `tos`, `pp`, an
 
 Two JWT claims — `latestConsents/tos` and `latestConsents/pp` — carry the versions in the token so the rule can read them without a database round-trip. If either claim is missing, every authenticated user is blocked permanently.
 
-<!-- openwiki: broken internal link [../ulabase.setup.consents.ts] file "../ulabase.setup.consents.ts" does not exist. Fix the href or restore the target, then delete this comment. -->
-<!-- openwiki: broken internal link [../README.md#3-set-the-service-up] file "../README.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-The setup file [`ulabase.setup.consents.ts`](../ulabase.setup.consents.ts) creates all four documents (schema, permission, claims, rule) with versions derived from a single pair of constants. The [README](../README.md#3-set-the-service-up) documents how to apply it.
+The setup file [`ulabase.setup.consents.ts`](../../ulabase.setup.consents.ts) creates all four documents (schema, permission, claims, rule) with versions derived from a single pair of constants. The [README](../../README.md#3-set-the-service-up) documents how to apply it.
 
 ### Client-Side Pub/Sub
 
@@ -292,7 +290,7 @@ End-to-end consents flow: from app load through session restoration, 451 interce
 features: {
   emailRegistration: true,    // Enables signup + email verification routes
   passwordReset: true,        // Enables forgot-password + reset-password routes
-  oauthLogin: true,           // Enables OAuth buttons on login/signup
+  oauthLogin: false,          // Enables OAuth buttons on login/signup (off until OAuth client is created)
   oauthProviders: ['google'], // Which OAuth providers to show
   teamInvitations: true,      // Enables /invitations/accept route
 }

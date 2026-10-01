@@ -5,7 +5,7 @@ description: Vitest setup, recommended test strategy, and how to run tests for t
 tags: [testing, vitest, guidance, consents]
 verified:
   - by: openwiki/0.6.1
-    at: 2026-10-01T10:27:11.499Z
+    at: 2026-10-01T12:12:11.534Z
 sources:
   - id: openwiki-source-5b54a58d1b51cd490b0e7162
     resource: repo://package.json
@@ -37,7 +37,7 @@ sources:
     resource: repo://ulabase.setup.ts
   - id: openwiki-source-5e1b077422a94ae165e88e4e
     resource: repo://vite.config.ts
-generated: { by: "openwiki/0.6.1", at: "2026-10-01T10:27:11.499Z" }
+generated: { by: "openwiki/0.6.1", at: "2026-10-01T12:12:11.534Z" }
 ---
 
 # Testing Guidance
@@ -45,6 +45,8 @@ generated: { by: "openwiki/0.6.1", at: "2026-10-01T10:27:11.499Z" }
 ## Current Status
 
 **No test files exist yet.** Vitest is configured as a dependency (`^2.0.0` in `devDependencies`) and the `npm test` script runs `vitest`, but there are no `.test.ts` or `.spec.ts` files in the repository.
+
+> **Note**: The `src/environments/environment.ts` file still contains a RESTHeart Cloud comment reference. The product is Ulabase, and services live at `https://<id>.ulabase.app`. This is a source code issue that should be addressed separately.
 
 ## Vitest Setup
 
@@ -109,15 +111,15 @@ Detailed test scenarios for `ConsentsGate`:
 
 Test that routes are correctly gated:
 
-- Unauthenticated user visiting `/home` → redirected to `/auth/login`
-- Authenticated user visiting `/auth/login` → redirected to `/`
-- Feature flag `passwordReset: false` → `/auth/forgot-password` returns 404/catch-all
+- Unauthenticated user visiting `/home` → redirected to `/auth/login` (via `AuthGuard`)
+- Authenticated user visiting `/auth/login` → redirected to `/` (via `PublicGuard`)
+- Feature flag `passwordReset: false` → `/auth/forgot-password` route not registered
 
 ### What to Avoid
 
 - Don't test `@ulabase/kit-react` internals — the kit has its own tests
 - Don't snapshot-test disposable skin CSS — the starter is designed to be reskinned
-- Don't test Ulabase service-side Guards rule logic — covered by service and setup idempotency
+- Don't test Ulabase service-side Guards rule logic — covered by `ulabase.setup.consents.ts` and its check/apply idempotency
 
 ## Consents Flow Testing
 
