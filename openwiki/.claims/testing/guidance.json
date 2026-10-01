@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:30e21fa6d95824c2e3f4d93e84ae4643f42afc7d2078ede37abec60b911a80e2",
+  "claims": [
+    {
+      "id": "claim_6343a6464e04483fa6a2f2d432f73654",
+      "statement": "Vitest is configured as a dependency (`^2.0.0` in `devDependencies`) and the `npm test` script runs `vitest`; no additional Vitest config file is needed beyond `vite.config.ts`.",
+      "evidence": [
+        {
+          "resource": "repo://package.json#L6-L9",
+          "version": "repo-lines-v1:sha256:4c2d193c361db88212296ff1cc4c05a49701e0837ab6365e2182591f72f80ef9:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2JhNDM0ODUzMDIyZTBkZWRlMDhjYzRkYTVmNjZlNzNlZTJlNjg2NjM3ZmY0MzJlZGYyZjAyOGNmOWNkNDkyMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTg0NDQ1YTdjYzYxYjU2NDljODQ0ODEyYTVlMzkyMzk5MTdmMjQwM2NjNDNkY2ZmNjA4MGQxZTdhOTY2MjIwZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmVhOTk2MzNiMDc2NGZjMmMzN2RlNmUzNTE4M2E2NTA4NDJkZGQ0MDlmZTA5NzFlMDI3YTE4NTYyYmZjZTEyMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTUzZTgyM2Y0NTI5YmY0NTRhOTkyMDQyODRmZTk0NWRmZGE5OWM5NzIyYzBlZDI4NzM0MzAxZDA3OWMwNjMwMyJ9"
+        },
+        {
+          "resource": "repo://vite.config.ts",
+          "version": "repo-file-v1:sha256:0709465427668ae85ef999f63762d7a06fd92962363fe8cc142ad656d3548115"
+        }
+      ]
+    },
+    {
+      "id": "claim_8825e27b8b97410a85dbfc5017805ab9",
+      "statement": "Recommended unit test targets include `src/just-signed-up.ts` (set/get boolean), `src/oauth-url.ts` (URL construction), and `src/consents-signal.ts` (blocked state, subscribe/unsubscribe lifecycle, consentsOnError behavior).",
+      "evidence": [
+        {
+          "resource": "repo://src/consents-signal.ts",
+          "version": "repo-file-v1:sha256:821101b78579bb645993fda9cc35b9f1a95483a19ea60166f4c345302e856f88"
+        },
+        {
+          "resource": "repo://src/just-signed-up.ts",
+          "version": "repo-file-v1:sha256:715d87aba0c654c526dadb8cb74cfd52eee85d29ff53bc3a192482edcc9d0448"
+        },
+        {
+          "resource": "repo://src/oauth-url.ts",
+          "version": "repo-file-v1:sha256:812f81c7665baaee10200873b65b415847736966aed02b2ede485e247b3fc3ba"
+        }
+      ]
+    },
+    {
+      "id": "claim_2db55e7d382f4ff088b79b83bf635853",
+      "statement": "Auth pages (Login, Signup, Accept, ForgotPassword, ResetPassword) require component tests covering form validation, error handling, loading states, and OAuth button visibility based on feature flags.",
+      "evidence": [
+        {
+          "resource": "repo://src/pages/auth/forgot-password/ForgotPassword.tsx",
+          "version": "repo-file-v1:sha256:aa1ad36644ecf7ac09866f9883e584a155f432a354e9899fbdba778b1b911eb1"
+        },
+        {
+          "resource": "repo://src/pages/auth/login/Login.tsx",
+          "version": "repo-file-v1:sha256:dc8131f7d0c8d5588919a638639c3b1a5483b61951495fd0e14802cb85f113de"
+        },
+        {
+          "resource": "repo://src/pages/auth/reset-password/ResetPassword.tsx",
+          "version": "repo-file-v1:sha256:6928a55c70c9f1784c57679fc256bed130c040c18a8238cfd15fefa0d35d899d"
+        },
+        {
+          "resource": "repo://src/pages/auth/signup/Signup.tsx",
+          "version": "repo-file-v1:sha256:38c8ffc2209e5f97113477308c2aff0c0b9e23c2aed2252def0c331f2e893bd0"
+        },
+        {
+          "resource": "repo://src/pages/invitations/accept/Accept.tsx",
+          "version": "repo-file-v1:sha256:6d296c5bfb37c737e296164cfc49e28c1234cbab598eb6f386f3420c370c720f"
+        }
+      ]
+    },
+    {
+      "id": "claim_c313c1396546414186e8da665cab79f3",
+      "statement": "ConsentsGate component requires tests for overlay rendering when blocked, checkbox gating of accept button, acceptConsents() call flow, error handling, and sign-out clearing blocked state.",
+      "evidence": [
+        {
+          "resource": "repo://src/ConsentsGate.tsx",
+          "version": "repo-file-v1:sha256:cbd8a1379282e54d8414e484864acbe523f56b8655da560f542d81d204a3d705"
+        },
+        {
+          "resource": "repo://src/consents-signal.ts",
+          "version": "repo-file-v1:sha256:821101b78579bb645993fda9cc35b9f1a95483a19ea60166f4c345302e856f88"
+        }
+      ]
+    },
+    {
+      "id": "claim_e1d6098d836b44b48e424e571e742dce",
+      "statement": "Integration tests should verify route guards: unauthenticated users redirected from `/home` to `/auth/login`, authenticated users redirected from `/auth/login` to `/`, and disabled feature flags removing routes.",
+      "evidence": [
+        {
+          "resource": "repo://src/environments/environment.ts",
+          "version": "repo-file-v1:sha256:c8b8bb3d574f916b328a791cfe2774c88a5c72b2f4a8540a0cd26ce3fc48b51d"
+        },
+        {
+          "resource": "repo://src/routes.tsx",
+          "version": "repo-file-v1:sha256:765f40c875f0b7ab120479805b70baa7207e196b2dae708a04e4c37fc20b979a"
+        }
+      ]
+    },
+    {
+      "id": "claim_6e25ab5a5a59494682a4f8f04c5ca8b6",
+      "statement": "Testing should avoid `@ulabase/kit-react` internals (covered by kit tests), snapshot-testing disposable CSS, and testing Ulabase service-side Guards rule logic (covered by service and setup idempotency).",
+      "evidence": [
+        {
+          "resource": "repo://ulabase.setup.consents.ts",
+          "version": "repo-file-v1:sha256:ca54c8c3c3897353b82aea2e9e87fef55b5b363f1b509ae31bd641c74ad23344"
+        },
+        {
+          "resource": "repo://ulabase.setup.ts",
+          "version": "repo-file-v1:sha256:67a1adee91a93064a3159b243598d17ca812e6d572030423779de08e2c0f8fe9"
+        }
+      ]
+    },
+    {
+      "id": "claim_e4b7f42222074f73ae4ca0438dc18357",
+      "statement": "consents-signal.ts tests should verify setBlocked(true) makes isBlocked() return true, subscribe/unsubscribe lifecycle, and consentsOnError sets blocked only for 451 status.",
+      "evidence": [
+        {
+          "resource": "repo://src/consents-signal.ts",
+          "version": "repo-file-v1:sha256:821101b78579bb645993fda9cc35b9f1a95483a19ea60166f4c345302e856f88"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.6.1",
+    "at": "2026-10-01T10:27:11.499Z"
+  }
+}

@@ -1,8 +1,29 @@
 ---
 type: Source Map
 title: Source Map
-description: File-by-file inventory of the RESTHeart Cloud React starter, mapping every source file to its purpose and cross-referencing documentation.
+description: File-by-file inventory of the Ulabase React starter, mapping every source file to its purpose and cross-referencing documentation.
 tags: [source-map, reference, files]
+verified:
+  - by: openwiki/0.6.1
+    at: 2026-10-01T10:27:11.499Z
+sources:
+  - id: openwiki-source-5b54a58d1b51cd490b0e7162
+    resource: repo://package.json
+  - id: openwiki-source-def8b68a3bfae964ad61c3db
+    resource: repo://src/ConfigPage.tsx
+  - id: openwiki-source-a3fd7ec517783a7d5d8842d0
+    resource: repo://src/consents-signal.ts
+  - id: openwiki-source-41263ba637a35415c845f5fb
+    resource: repo://src/ConsentsGate.css
+  - id: openwiki-source-9674080b0675d512256b80bc
+    resource: repo://src/ConsentsGate.tsx
+  - id: openwiki-source-eaae96b81373abab97667f4f
+    resource: repo://src/environments/environment.ts
+  - id: openwiki-source-c1d5327fe44e08cda82fcf83
+    resource: repo://ulabase.setup.consents.ts
+  - id: openwiki-source-34f568b222540eb11aa44859
+    resource: repo://ulabase.setup.ts
+generated: { by: "openwiki/0.6.1", at: "2026-10-01T10:27:11.499Z" }
 ---
 
 # Source Map
@@ -13,7 +34,7 @@ Complete inventory of repository source files. Each entry links to the page wher
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `package.json` | Project metadata, dependencies (`@restheart-cloud/kit-react`, `react`, `react-router-dom`), scripts (`dev`, `build`, `preview`, `test`) | [Operations](operations/runbook.md) |
+| `package.json` | Project metadata, dependencies (`@ulabase/kit-react`, `react`, `react-router-dom`), scripts (`dev`, `build`, `preview`, `test`) | [Operations](operations/runbook.md) |
 | `package-lock.json` | Lockfile — do not edit manually | — |
 | `tsconfig.json` | TypeScript config: ES2020 target, ESNext modules, strict mode, JSX React, `noEmit` (Vite compiles) | — |
 | `vite.config.ts` | Vite config: minimal — just the `@vitejs/plugin-react` plugin | [Testing](testing/guidance.md) |
@@ -26,14 +47,14 @@ Complete inventory of repository source files. Each entry links to the page wher
 |------|---------|----------|
 | `src/main.tsx` | React root creation. Renders `<StrictMode>` → `<BrowserRouter>` → `<RhAuthProvider>` → `<App />`. Imports `styles.css`. | [Architecture](architecture/overview.md) |
 | `src/App.tsx` | Fragment token capture on mount, API URL validation gate, renders `ConfigPage` or route tree via `useRoutes()` | [Architecture](architecture/overview.md) |
-| `src/ConfigPage.tsx` | Setup wizard shown when `apiUrl` is invalid. Guides user to create a service at `cloud.restheart.com` and edit `environment.ts`. | [Operations](operations/runbook.md) |
+| `src/ConfigPage.tsx` | Setup wizard shown when `apiUrl` is invalid. Guides user to create a service at `cloud.ulabase.com` and edit `environment.ts`. | [Operations](operations/runbook.md) |
 | `src/routes.tsx` | Route definitions as `RouteObject[]`. Lazy-loaded components, feature-flag conditional inclusion, `AuthGuard`/`PublicGuard` wrappers. | [Architecture](architecture/overview.md) |
 
 ## Environment & Utilities
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `src/environments/environment.ts` | **Central config**: `apiUrl` (RESTHeart Cloud service URL) + `features` object (feature flags) | [Auth & Teams](domain/auth-and-teams.md#feature-flags), [Operations](operations/runbook.md) |
+| `src/environments/environment.ts` | **Central config**: `apiUrl` (Ulabase service URL) + `features` object (feature flags) | [Auth & Teams](domain/auth-and-teams.md#feature-flags), [Operations](operations/runbook.md) |
 | `src/just-signed-up.ts` | Module-level boolean flag. Set to `true` when `?flow=signup` query param is detected in fragment token capture. Shell reads and clears it to show a welcome message. | [Auth & Teams](domain/auth-and-teams.md) |
 | `src/oauth-url.ts` | Builds OAuth authorize URL: `${apiUrl}/auth/oauth/authorize/${provider}?noauthchallenge` | [Auth & Teams](domain/auth-and-teams.md#oauth-login) |
 
@@ -106,3 +127,18 @@ Complete inventory of repository source files. Each entry links to the page wher
 |------|---------|
 | `.github/workflows/openwiki-update.yml` | GitHub Actions workflow: runs OpenWiki documentation update daily at 04:00 UTC, creates PR with changes |
 | `AGENTS.md` / `CLAUDE.md` | Agent instruction files for OpenWiki documentation runs |
+
+## Service Setup
+
+| File | Purpose | See Also |
+|------|---------|----------|
+| `ulabase.setup.ts` | Declarative service configuration using `@ulabase/cli`. Imports `environment.ts` to derive feature flags and configures accounts, OAuth, and origin allowlist. | [Service Setup](operations/service-setup.md#base-setup-file-ulabasesetupts) |
+| `ulabase.setup.consents.ts` | Extends `ulabase.setup.ts` with consents gate: adds user schema, permission for consents patching, JWT claims, and guards rule. Defines `TOS_VERSION` and `PP_VERSION` constants. | [Service Setup](operations/service-setup.md#consents-gate-setup-ulabasesetupconsentsts), [Auth & Teams](domain/auth-and-teams.md) |
+
+## Consents Gate
+
+| File | Purpose | See Also |
+|------|---------|----------|
+| `src/consents-signal.ts` | Client-side consents signal: manages `blocked` state flag, provides `subscribe()` for listeners, and `consentsOnError()` that sets blocked on HTTP 451 from the API. | [Auth & Teams](domain/auth-and-teams.md) |
+| `src/ConsentsGate.tsx` | Blocking overlay component that replaces the app when user hasn't accepted current Terms/Privacy Policy. Sits above the router, renders acceptance form with checkboxes, calls `auth.acceptConsents()` and refreshes session. | [Auth & Teams](domain/auth-and-teams.md) |
+| `src/ConsentsGate.css` | Styles for consents overlay: fixed positioning, z-index above header/dropdown/nav, modal card with checkboxes and action buttons. | — |

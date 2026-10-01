@@ -1,8 +1,27 @@
 ---
 type: Runbook
 title: Operations & Runbook
-description: Environment configuration, design system and styling, build and deploy workflow, theming, and feature flag management for the RESTHeart Cloud React starter.
-tags: [operations, runbook, config, styling, build, deploy, theming]
+description: Environment configuration, design system and styling, build and deploy workflow, theming, feature flag management, and consents gate operations for the Ulabase React starter.
+tags: [operations, runbook, config, styling, build, deploy, theming, consents, gate]
+verified:
+  - by: openwiki/0.6.1
+    at: 2026-10-01T10:27:11.499Z
+sources:
+  - id: openwiki-source-85dc2a049a0943b56218c045
+    resource: repo://public/privacy.html
+  - id: openwiki-source-ad504d4d06a9b4cc6851d32b
+    resource: repo://public/terms.html
+  - id: openwiki-source-a3fd7ec517783a7d5d8842d0
+    resource: repo://src/consents-signal.ts
+  - id: openwiki-source-eaae96b81373abab97667f4f
+    resource: repo://src/environments/environment.ts
+  - id: openwiki-source-d246777daf29ea6fdf9f8b53
+    resource: repo://src/pages/shell/Shell.tsx
+  - id: openwiki-source-146419bb9b2415894a6bd677
+    resource: repo://src/styles.css
+  - id: openwiki-source-c1d5327fe44e08cda82fcf83
+    resource: repo://ulabase.setup.consents.ts
+generated: { by: "openwiki/0.6.1", at: "2026-10-01T10:27:11.499Z" }
 ---
 
 # Operations & Runbook
@@ -15,7 +34,7 @@ This is the single configuration file for the starter. It contains:
 
 ```typescript
 export const environment = {
-  apiUrl: '<your-restheart-cloud-servie-url>',
+  apiUrl: '<your-ulabase-service-url>',
   features: {
     emailRegistration: true,
     passwordReset: true,
@@ -28,8 +47,7 @@ export const environment = {
 
 ### apiUrl
 
-<!-- openwiki: broken internal link [source-map.md#entrypoint--app-shell] file "source-map.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-Must be a valid `*.restheart.com` URL. The app validates this on startup with `isValidApiBaseUrl()` from the kit. If invalid, a [ConfigPage](source-map.md#entrypoint--app-shell) is shown instead of the app.
+Must be a valid `*.restheart.com` URL. The app validates this on startup with `isValidApiBaseUrl()` from the kit. If invalid, a ConfigPage is shown instead of the app.
 
 **After cloning**, tell git to ignore local changes:
 
@@ -41,8 +59,7 @@ Then edit the file to point to your own service.
 
 ### Feature Flags
 
-<!-- openwiki: broken internal link [domain/auth-and-teams.md#feature-flags] file "domain/auth-and-teams.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-See [Auth & Teams — Feature Flags](domain/auth-and-teams.md#feature-flags) for the complete reference. These must match your RESTHeart Cloud service's toggles.
+See [Auth & Teams — Feature Flags](../domain/auth-and-teams.md#feature-flags) for the complete reference. These must match your Ulabase service's toggles.
 
 ## Design System
 
@@ -150,11 +167,53 @@ A GitHub Actions workflow runs OpenWiki documentation updates on a schedule. Thi
 
 Each page directory under `src/pages/` contains its own CSS file (e.g., `Shell.css`, `Teams.css`, `Account.css`). These hold **page-specific layout only** — all design tokens and shared styles live in `src/styles.css`.
 
+## Consents Gate Operations
+
+The consents gate blocks authenticated users who have not accepted the current Terms of Service and Privacy Policy. When a user's `latestConsents.tos` or `latestConsents.pp` does not match the server's current versions, the service responds with `451 Unavailable For Legal Reasons` to any authenticated request (including `/users/me`).
+
+### Verifying the Gate
+
+The gate is working correctly when:
+1. A user who has not accepted the current versions receives `451` on `/users/me` (or any authenticated endpoint except auth/token paths)
+2. After accepting, the user's requests succeed normally
+3. The `consents-signal.ts` client module raises the `blocked` flag on `451` responses, triggering the acceptance overlay
+
+### Bumping Versions
+
+When you publish new Terms of Service or Privacy Policy documents:
+
+1. **Edit the version strings** in `ulabase.setup.consents.ts`:
+   ```typescript
+   const TOS_VERSION = '2026-07-01';  // Update to new date
+   const PP_VERSION = '2026-07-01';   // Update to new date
+   ```
+
+2. **Update the HTML files** to match:
+   - `public/terms.html` — line 59: `<p class="version">Version 2026-07-01</p>`
+   - `public/privacy.html` — line 59: `<p class="version">Version 2026-07-01</p>`
+
+3. **Re-run the setup** to push the new versions to the service:
+   ```bash
+   ulabase setup --srv <srvId> --file ulabase.setup.consents.ts
+   ```
+
+4. **Verify the gate** — after setup, all users will be blocked until they accept the new versions. The acceptance overlay will appear on their next request.
+
+### Version Drift
+
+If the versions in `ulabase.setup.consents.ts` do not match the HTML files, or if the server's Guards rule has different versions than the ACL permission's `mergeRequest`, users will be permanently blocked. The acceptance dialog will appear to succeed (no error), but the server will stamp one version while comparing against another, and the user remains blocked indefinitely.
+
+**Prevention:** Always update all three locations together:
+- `TOS_VERSION` and `PP_VERSION` in `ulabase.setup.consents.ts`
+- Version lines in `public/terms.html` and `public/privacy.html`
+
+**Diagnosis:** If users report being stuck after accepting, check:
+1. The Guards rule condition in the Ulabase console
+2. The ACL permission's `mergeRequest` in the Ulabase console  
+3. Ensure both use identical version strings
+
 ## See Also
 
-<!-- openwiki: broken internal link [architecture/overview.md] file "architecture/overview.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [Architecture Overview](architecture/overview.md) — component tree and config gating
-<!-- openwiki: broken internal link [domain/auth-and-teams.md] file "domain/auth-and-teams.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [Auth & Teams](domain/auth-and-teams.md) — feature flag definitions
-<!-- openwiki: broken internal link [testing/guidance.md] file "testing/guidance.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [Testing Guidance](testing/guidance.md) — running tests
+- [Architecture Overview](../architecture/overview.md) — component tree and config gating
+- [Auth & Teams](../domain/auth-and-teams.md) — feature flag definitions
+- [Testing Guidance](../testing/guidance.md) — running tests
