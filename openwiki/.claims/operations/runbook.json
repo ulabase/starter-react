@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:5b16e596221c30d46647d93b571cb0d1648904daba05f8a5b7f425917a7c5c91",
+  "claims": [
+    {
+      "id": "claim_c0158fe178064765990945c6330a9725",
+      "statement": "The environment.ts file contains apiUrl and feature flags configuration for the Ulabase React starter, with apiUrl validated on startup and feature flags matching server toggles.",
+      "evidence": [
+        {
+          "resource": "repo://src/environments/environment.ts",
+          "version": "repo-file-v1:sha256:c8b8bb3d574f916b328a791cfe2774c88a5c72b2f4a8540a0cd26ce3fc48b51d"
+        }
+      ]
+    },
+    {
+      "id": "claim_04489df7aba6495aa2c8974a5727fc5f",
+      "statement": "The styles.css file is structured in five sections: design tokens, reset & base, skin classes, utility classes, and page scaffolds, with all design flowing from CSS custom properties in :root.",
+      "evidence": [
+        {
+          "resource": "repo://src/styles.css",
+          "version": "repo-file-v1:sha256:4cf24f7c8a8f0993f41e20238b134b656d2d23dabfc5e277abf00d21c20a7946"
+        }
+      ]
+    },
+    {
+      "id": "claim_9babf7e8e82f402c8d6af81ec3cf2505",
+      "statement": "Light/dark mode is implemented via useTheme() hook in Shell.tsx, persisting preference to localStorage under key 'rh-theme' and toggling the 'dark' class on document.documentElement.",
+      "evidence": [
+        {
+          "resource": "repo://src/pages/shell/Shell.tsx",
+          "version": "repo-file-v1:sha256:77589fbe86bb761d2b2ac6b727ebe96523c2e625293b9cbb225dadfc7f11abee"
+        }
+      ]
+    },
+    {
+      "id": "claim_c9f1fb905a7d48ca9d1cd0cf7a9cc22b",
+      "statement": "The consents gate blocks authenticated users who have not accepted current TOS/PP versions by returning 451 on /users/me, with version strings in ulabase.setup.consents.ts, public/terms.html, and public/privacy.html that must stay synchronized.",
+      "evidence": [
+        {
+          "resource": "repo://public/privacy.html",
+          "version": "repo-file-v1:sha256:dc417ce345449f5e2134b64dd895750828729d66dfe3fd0e465c9f7289e388ff"
+        },
+        {
+          "resource": "repo://public/terms.html",
+          "version": "repo-file-v1:sha256:57f2e6376f38b21bebaee5f60177fcf9194490677492ff9ccec88b949c09a006"
+        },
+        {
+          "resource": "repo://src/consents-signal.ts",
+          "version": "repo-file-v1:sha256:821101b78579bb645993fda9cc35b9f1a95483a19ea60166f4c345302e856f88"
+        },
+        {
+          "resource": "repo://ulabase.setup.consents.ts",
+          "version": "repo-file-v1:sha256:ca54c8c3c3897353b82aea2e9e87fef55b5b363f1b509ae31bd641c74ad23344"
+        }
+      ]
+    },
+    {
+      "id": "claim_f0ce2c19d3cf4fc4ab202fe898480b7f",
+      "statement": "To publish new TOS/PP versions, edit TOS_VERSION and PP_VERSION in ulabase.setup.consents.ts, update version lines in public/terms.html and public/privacy.html, and re-run ulabase setup.",
+      "evidence": [
+        {
+          "resource": "repo://public/privacy.html",
+          "version": "repo-file-v1:sha256:dc417ce345449f5e2134b64dd895750828729d66dfe3fd0e465c9f7289e388ff"
+        },
+        {
+          "resource": "repo://public/terms.html",
+          "version": "repo-file-v1:sha256:57f2e6376f38b21bebaee5f60177fcf9194490677492ff9ccec88b949c09a006"
+        },
+        {
+          "resource": "repo://ulabase.setup.consents.ts",
+          "version": "repo-file-v1:sha256:ca54c8c3c3897353b82aea2e9e87fef55b5b363f1b509ae31bd641c74ad23344"
+        }
+      ]
+    },
+    {
+      "id": "claim_b79b3b0210d8439795b176e5874e91c3",
+      "statement": "Version drift between setup file, HTML files, or server-side rule and permission causes users to be permanently blocked after accepting, as the acceptance stamps one version while the guard compares another.",
+      "evidence": [
+        {
+          "resource": "repo://src/consents-signal.ts",
+          "version": "repo-file-v1:sha256:821101b78579bb645993fda9cc35b9f1a95483a19ea60166f4c345302e856f88"
+        },
+        {
+          "resource": "repo://ulabase.setup.consents.ts",
+          "version": "repo-file-v1:sha256:ca54c8c3c3897353b82aea2e9e87fef55b5b363f1b509ae31bd641c74ad23344"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.6.1",
+    "at": "2026-10-01T10:27:11.499Z"
+  }
+}

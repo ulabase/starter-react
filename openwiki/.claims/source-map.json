@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:7567790d34e9f1006b43299fa69c30698db94ba01e19d8178e66d61b5016afe4",
+  "claims": [
+    {
+      "id": "claim_849550fdee20463596e55e9d5c58103c",
+      "statement": "The consents gate client-side implementation consists of three files: consents-signal.ts (manages blocked state flag and provides consentsOnError handler for HTTP 451), ConsentsGate.tsx (blocking overlay component that renders acceptance form and calls auth.acceptConsents()), and ConsentsGate.css (styles for the overlay). These files are documented in the Auth & Teams page.",
+      "evidence": [
+        {
+          "resource": "repo://src/ConsentsGate.css",
+          "version": "repo-file-v1:sha256:320f307a19fbb1061e6eeb10577af17dea140cb6fba926885724f6431a07922b"
+        },
+        {
+          "resource": "repo://src/ConsentsGate.tsx",
+          "version": "repo-file-v1:sha256:cbd8a1379282e54d8414e484864acbe523f56b8655da560f542d81d204a3d705"
+        },
+        {
+          "resource": "repo://src/consents-signal.ts",
+          "version": "repo-file-v1:sha256:821101b78579bb645993fda9cc35b9f1a95483a19ea60166f4c345302e856f88"
+        }
+      ]
+    },
+    {
+      "id": "claim_f57056aa606545a78db7d0274987474f",
+      "statement": "Service configuration is declaratively defined in two setup files: ulabase.setup.ts (base configuration importing environment.ts for feature flags, configuring accounts, OAuth, and origin allowlist) and ulabase.setup.consents.ts (extends base setup with consents gate: user schema, permission for consents patching, JWT claims, and guards rule with TOS_VERSION and PP_VERSION constants). These files are documented in the Service Setup page.",
+      "evidence": [
+        {
+          "resource": "repo://ulabase.setup.consents.ts",
+          "version": "repo-file-v1:sha256:ca54c8c3c3897353b82aea2e9e87fef55b5b363f1b509ae31bd641c74ad23344"
+        },
+        {
+          "resource": "repo://ulabase.setup.ts",
+          "version": "repo-file-v1:sha256:67a1adee91a93064a3159b243598d17ca812e6d572030423779de08e2c0f8fe9"
+        }
+      ]
+    },
+    {
+      "id": "claim_78b1e76501584a8d8a519c6623b1af9f",
+      "statement": "The project depends on @ulabase/kit-react for authentication and multi-tenancy functionality, as declared in package.json.",
+      "evidence": [
+        {
+          "resource": "repo://package.json",
+          "version": "repo-file-v1:sha256:1b328c521decc2bbf9f2248482174966728a8ea0bf669c196ad39133a37fdc0b"
+        }
+      ]
+    },
+    {
+      "id": "claim_0479a286d5e54a6e821f1845c9a082bd",
+      "statement": "The environment.ts configuration file defines apiUrl for the Ulabase service URL and features object for feature flags that control which authentication flows are enabled.",
+      "evidence": [
+        {
+          "resource": "repo://src/environments/environment.ts",
+          "version": "repo-file-v1:sha256:c8b8bb3d574f916b328a791cfe2774c88a5c72b2f4a8540a0cd26ce3fc48b51d"
+        }
+      ]
+    },
+    {
+      "id": "claim_30f71b10e5c1476b966645a6c29b6104",
+      "statement": "The ConfigPage.tsx setup wizard guides users to create a service at cloud.ulabase.com when apiUrl is invalid.",
+      "evidence": [
+        {
+          "resource": "repo://src/ConfigPage.tsx",
+          "version": "repo-file-v1:sha256:8f568e6dc7de267710f66c8ff253fc02473f8ce97626643fc9cda3ab0e00ebc1"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.6.1",
+    "at": "2026-10-01T10:27:11.499Z"
+  }
+}
