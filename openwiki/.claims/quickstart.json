@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:bcae9690b2643a39ede762bc10bde3d1215adfde96cc85e2636c721b197a0404",
+  "pageVersion": "sha256:69b0e23cd32547327aca9f422638a4d4d578f1c05a533e948379592197582442",
   "claims": [
     {
       "id": "claim_60d379bfef654ae3bb1cc011f1f6a29f",
@@ -139,10 +139,52 @@
           "version": "repo-lines-v1:sha256:fa32fc1f5778c932d2fe39b9b8b2fdb11c72ca95270d9eb6873846cbfb61f404:eyJzZWxlY3RlZExpbmVDb3VudCI6MzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIyNmE0MTQ1MmIwMTVkNzk5Y2ExMDkwNTI5YWQwYTI2MTk1MjcwZDFlOTdiMjMwZDY5N2E3NGNjMzEzYzZhNDUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFmMGNkYjk3MmE3YmZiN2VkMjQ2ZjlmZjY3MjM4NWU1NWY0OTY4ZmMxMTA0M2RjNWI2ODRkNTFkZmEzMWRiY2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVmZjA4YjUzZGJiNWUzN2MzNTIxMDllODQzOGQxMmYyNzVmNWYwYTJkZjZiZWVhMWExYjYyNDYyNDI1N2ZiYzIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoyLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjFjMzA4NzRlZTA1MGMyOWU0YWY1OThhZTA4MTVkZDE3ZWI1NzQ0MWEyODNjYTI0ZGIxZjkwNjIxNTQzNGJlYTYifQ"
         }
       ]
+    },
+    {
+      "id": "claim_011698a4c5d846c691e9ef47c084e706",
+      "statement": "Feature flags in environment.ts control route availability: emailRegistration enables signup and verification, passwordReset enables forgot/reset password, oauthLogin enables OAuth buttons, oauthProviders lists active providers (default ['google']), and teamInvitations enables the invitation acceptance route. These flags must match the service's Sign-up Mgmt → Features toggles.",
+      "evidence": [
+        {
+          "resource": "repo://src/environments/environment.ts#L1-L17",
+          "version": "repo-lines-v1:sha256:0cea2f727b907ce72365ad342421d31ef07e6b7f09e14a602c39ac574bfa8868:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEzMjM4ZDEyYjRkZGZlOTg2NmI3N2M0ZTc4ZWU3NWI4Y2QzZjhlZmM2MjZiMTI2ZmY0NzM2OTU1NGZlY2NlOTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFhMWQxYTYzMzkwMjI5Yzc5ODM0N2U4M2EwNDA1NDQxYzk0MDAwMzUyODRhZDE2OGMxYmY2Y2RmMWQ3MGEzNzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://src/routes.tsx#L19-L100",
+          "version": "repo-lines-v1:sha256:f1e51c974ece52cb3f7622453ddb0d22ba7812a432fb6149c5d28d3018476513:eyJzZWxlY3RlZExpbmVDb3VudCI6ODIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk0NjUzZmFjZmE0MjJhYTEwOGFjMzFhYTVhMDJhOTIwNzc5YTM2MDNiOTI4ZWJiNzAwMjRjOWVjYzU0YWE2NWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIxMTFmMjM5YWM2NWM5ZmVjZDRmNzk3NWQ0ZWUwYzY3N2I1OGE4ZWE2Nzg1MmVhMjVkMjc5MjM5MjUxOGQyZjgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI1Mjk3NDUwNGYyZGI1ZTg3OGEyNzk4NjMyZmFiOTViNWYwMzA4MGFmZWJlMmZjMjkxODY1MzAxZWU4MDkyZWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ0NTMzMjYxZGRhYjIxY2I3YWIwOGNlNzY4NTc3MGRjZGFiMjk2M2U4ZWZkZTUwZmUzYjkwNDY5NTZkMDBjNTcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_7866745a11104e45b2f7ef1298499161",
+      "statement": "OAuth providers can be extended beyond Google by adding entries to the oauthProviders array (e.g., 'github') and running setup with the provider's credentials. The OAuthButtons component supports 'google' | 'github' | (string & {}) types.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L3-L3",
+          "version": "repo-lines-v1:sha256:01f4ca849911e3a18dd7dd629e0889acdf4ee1c06b1a4527fa32c6d6e5258d7e:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFmNGNhODQ5OTExZTNhMThkZDdkZDYyOWUwODg5YWNkZjRlZTFjMDZiMWE0NTI3ZmEzMmM2ZDZlNTI1OGQ3ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFmNGNhODQ5OTExZTNhMThkZDdkZDYyOWUwODg5YWNkZjRlZTFjMDZiMWE0NTI3ZmEzMmM2ZDZlNTI1OGQ3ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjIsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGJiYTFlNDFkMTI5MTliOTMwODhiZDFkMmUyZDE0MTNlNzc3OWNkYTlkOGM0YjNjNDA4M2Y3NTM1ZmQ1NmE1OSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWY0NDEwODcxMGI0ZDZmMWYwZjcyZWUyMGRmN2Q5NjU1MDlkMjJkYzczOWJlZDRlNDRiMWUzZjFiZjBjYWE4MSJ9"
+        },
+        {
+          "resource": "repo://src/environments/environment.ts#L14-L14",
+          "version": "repo-lines-v1:sha256:bf2cc6976aa0e591a40c806845ca02f184434c2af82a0e3f1c4ec7d2df6d004d:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmYyY2M2OTc2YWEwZTU5MWE0MGM4MDY4NDVjYTAyZjE4NDQzNGMyYWY4MmEwZTNmMWM0ZWM3ZDJkZjZkMDA0ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYmYyY2M2OTc2YWEwZTU5MWE0MGM4MDY4NDVjYTAyZjE4NDQzNGMyYWY4MmEwZTNmMWM0ZWM3ZDJkZjZkMDA0ZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjY4NGRhMTI4Y2FmNzhmYmUzYTNjZjc2ODI4OGY0N2U0Yjk1ZmE2MGYyODZlNDE4MDBiNWQ5Y2QxNzU5NzQzOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOWZkOGM3MDk0ZmZmMDAzZTAxODRmZjM4NjY0NWM5OWI3N2IyODQ4MzEzYTI3MDZmY2M2YmY0YmI0NTNlMzZhMiJ9"
+        },
+        {
+          "resource": "repo://src/pages/auth/oauth-buttons/OAuthButtons.tsx#L4-L4",
+          "version": "repo-lines-v1:sha256:be63b7a7b2fb0e982f8a9dde0434ec4db0626f1b2b37920d77f48c8d36f827be:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmU2M2I3YTdiMmZiMGU5ODJmOGE5ZGRlMDQzNGVjNGRiMDYyNmYxYjJiMzc5MjBkNzdmNDhjOGQzNmY4MjdiZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYmU2M2I3YTdiMmZiMGU5ODJmOGE5ZGRlMDQzNGVjNGRiMDYyNmYxYjJiMzc5MjBkNzdmNDhjOGQzNmY4MjdiZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYmY4ZjQ4MGVjMTlkODI5YzczY2VmY2ZmMmQ3ZGU0MmUyMzFlY2NjZTgwMTBhNGY4MTBhYzJiZjIxNzQxNTcxNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNmFhMGY2YzNmMDUyZGQ3NWJkZjRlNzRiZTZhYjY3Yzg5ZmM1ODkxYzJmYjEwNzI0OTgyMjc2MmYzYjYwMDVmOSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_d5d58068bb2d45ba89b52f4f7779cd43",
+      "statement": "Key direct dependencies are @ulabase/kit-react (^0.12.0), react (^18.3.0), react-dom (^18.3.0), react-router-dom (^6.28.0), vite (^6.0.0), vitest (^2.0.0), and @ulabase/cli (^0.12.0 as devDependency). The framework-agnostic @ulabase/kit is a transitive dependency of @ulabase/kit-react.",
+      "evidence": [
+        {
+          "resource": "repo://package.json#L1-L32",
+          "version": "repo-lines-v1:sha256:1b328c521decc2bbf9f2248482174966728a8ea0bf669c196ad39133a37fdc0b:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2ZmIwOGZkYTFhY2I5NTdiNjExNmJkMzc4MTFhMWZlNDFhMDE2MTFjMDYzMWVkYmY3ODZkNjg4OWEyN2E1NWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.6.1",
-    "at": "2026-10-01T12:12:11.534Z"
+    "at": "2026-10-02T09:31:20.838Z"
   }
 }

@@ -3,9 +3,6 @@ type: Guide
 title: Testing Guidance
 description: Vitest setup, recommended test strategy, and how to run tests for the Ulabase React starter, including consents gate testing.
 tags: [testing, vitest, guidance, consents]
-verified:
-  - by: openwiki/0.6.1
-    at: 2026-10-01T12:12:11.534Z
 sources:
   - id: openwiki-source-5b54a58d1b51cd490b0e7162
     resource: repo://package.json
@@ -38,6 +35,9 @@ sources:
   - id: openwiki-source-5e1b077422a94ae165e88e4e
     resource: repo://vite.config.ts
 generated: { by: "openwiki/0.6.1", at: "2026-10-01T12:12:11.534Z" }
+verified:
+  - by: openwiki/0.6.1
+    at: 2026-10-02T09:31:20.838Z
 ---
 
 # Testing Guidance

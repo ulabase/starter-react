@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:d96fb96a8c31ca17dd06010eea19555681c0daa553a7e7fc321b194aba626083",
+  "pageVersion": "sha256:5ecd8959124094e68d8d4a7f6fe23b8c4e45493a76d40e6e0e7bcd55c8b936bc",
   "claims": [
     {
       "id": "claim_c0158fe178064765990945c6330a9725",
@@ -14,11 +14,35 @@
     },
     {
       "id": "claim_04489df7aba6495aa2c8974a5727fc5f",
-      "statement": "The styles.css file is structured in five sections: design tokens, reset & base, skin classes, utility classes, and page scaffolds, with all design flowing from CSS custom properties in :root.",
+      "statement": "The styles.css file is structured in seven clearly marked sections: (1) design tokens, (2) reset & base, (3) default skin / skin classes, (4) auth pages, (5) config page, (6) responsive, and (7) reduced motion, with all design flowing from CSS custom properties in :root.",
       "evidence": [
         {
-          "resource": "repo://src/styles.css",
-          "version": "repo-file-v1:sha256:4cf24f7c8a8f0993f41e20238b134b656d2d23dabfc5e277abf00d21c20a7946"
+          "resource": "repo://src/styles.css#L160-L163",
+          "version": "repo-lines-v1:sha256:0e3e3228f81c7db227cb91710af736fd1ebf04cf968d81c98cbcf8cfca7081b6:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWIzMDNmNzBlMjUxYTQyNmY3NmMzNWVjN2EzYzQ4YzRiNGU3NWNhM2VlMTIyMjUwYzFhMTIxYWRmNDU3NTEzYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2ZmOThmNGRmYTI2NzE3MmZiNzAwZTBjN2UzYjBiYzUwZDI2NTc0NDk0M2M1MGY3YTgxNDhlMDdkNGQyNmM0NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMGZjMzJhMTA0ZjQ1Y2E2MzdlZWJmY2FiMzdiM2ViZTAwMjUwNTgwYTJiMDQ2ZWFhMzkyYjE4ZWIwOWNiMDFkNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjdiNWQxYjM2NDhhNDM0NmIyMDM4OGQ4M2IyZTYzYTdkODU5MDU0N2RjMTc3NTkwYjUwOTAyZDJjMjg2OTQ4ZCJ9"
+        },
+        {
+          "resource": "repo://src/styles.css#L274-L279",
+          "version": "repo-lines-v1:sha256:769faa98067d5ae7641b8aeaeda3426e484bc0f9466e51243cdee291a315229f:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWIzMDNmNzBlMjUxYTQyNmY3NmMzNWVjN2EzYzQ4YzRiNGU3NWNhM2VlMTIyMjUwYzFhMTIxYWRmNDU3NTEzYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2ZmOThmNGRmYTI2NzE3MmZiNzAwZTBjN2UzYjBiYzUwZDI2NTc0NDk0M2M1MGY3YTgxNDhlMDdkNGQyNmM0NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDdhNjA2ZTVhNDM0Zjk5NDQwNDA0YjVmMzY0M2RmZmNkYTYwYmY3OGM4Y2MxMDFiZWM2ZDM1NDFmNTZiN2ZmMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYmRhM2YwYzk1NDYxN2FjMDRhZjBkY2ZkMDBkMWY2MzNkYjc3YmMwYzVkZDEyOThlYzZlOWRhNTgxODdkNzkxYSJ9"
+        },
+        {
+          "resource": "repo://src/styles.css#L36-L40",
+          "version": "repo-lines-v1:sha256:b68c3cff8bea960f6c66b5402134e1e6b5cb576e6aa05a75013c4623a70a600c:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWIzMDNmNzBlMjUxYTQyNmY3NmMzNWVjN2EzYzQ4YzRiNGU3NWNhM2VlMTIyMjUwYzFhMTIxYWRmNDU3NTEzYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2ZmOThmNGRmYTI2NzE3MmZiNzAwZTBjN2UzYjBiYzUwZDI2NTc0NDk0M2M1MGY3YTgxNDhlMDdkNGQyNmM0NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODFlYTNmNDFkMjZmYjM0NTIyMGI1YWE4NWZhZTExYjRhYTNhMTMzZDQ5ZWRkNTkyZmE3MzY5M2I1NmFkNTI1ZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzdhMTBlNjQ5NzNhNmUyYzZjMmUxMzJmZjEwNTk4OGMyODNhZTAzNWY0ZTViYzhkMjJiNzYzNDFjOWE4NDEzOCJ9"
+        },
+        {
+          "resource": "repo://src/styles.css#L623-L625",
+          "version": "repo-lines-v1:sha256:4d06a5adb33c4ba730559e1e581a3879b01d03706802e04591a062bf61d455b7:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWIzMDNmNzBlMjUxYTQyNmY3NmMzNWVjN2EzYzQ4YzRiNGU3NWNhM2VlMTIyMjUwYzFhMTIxYWRmNDU3NTEzYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2ZmOThmNGRmYTI2NzE3MmZiNzAwZTBjN2UzYjBiYzUwZDI2NTc0NDk0M2M1MGY3YTgxNDhlMDdkNGQyNmM0NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmI1ODBlOTY0ZjgzYTQ3M2Y0M2Q0NDM4NDYyOTQ5ZDY4YjU2MDBmZGE3ODdmMTYzNzQ1ZDAwZGU4OWNiZjM2YSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjQ0NjQwYmYwMDY1NGM2Yzk2N2Y3YTk1MjQyNTU2Mzk3MmY0ZmJkZmI4ZmE3NTQyMzljMjI5YmVlODk1Y2ExYSJ9"
+        },
+        {
+          "resource": "repo://src/styles.css#L734-L736",
+          "version": "repo-lines-v1:sha256:5a84b0bbb9344e9a7d1421bdde6bf7da92e46a505255653a5915e728a7fda21e:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWIzMDNmNzBlMjUxYTQyNmY3NmMzNWVjN2EzYzQ4YzRiNGU3NWNhM2VlMTIyMjUwYzFhMTIxYWRmNDU3NTEzYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2ZmOThmNGRmYTI2NzE3MmZiNzAwZTBjN2UzYjBiYzUwZDI2NTc0NDk0M2M1MGY3YTgxNDhlMDdkNGQyNmM0NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNmM4OGQ3ZGFmMGY1MGFhNWZiYThmZThiNDc0ZjYyNjY2ZDkzNTk0MzU1ODczYjUyZDAzMWNhYTE1MmFlOGZmZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTU5Y2ExM2Y5YTczZWNmYmQ5NmIxODYwN2I3NTAxMjMzMzc0OWY2Yzc3NjFhMjRkNmY4Y2UxYmFhYjliNTJhYiJ9"
+        },
+        {
+          "resource": "repo://src/styles.css#L828-L830",
+          "version": "repo-lines-v1:sha256:059e40e0b994ca392ced8b569bc1839d7fc568113a79d856070869f9c2da8148:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWIzMDNmNzBlMjUxYTQyNmY3NmMzNWVjN2EzYzQ4YzRiNGU3NWNhM2VlMTIyMjUwYzFhMTIxYWRmNDU3NTEzYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2ZmOThmNGRmYTI2NzE3MmZiNzAwZTBjN2UzYjBiYzUwZDI2NTc0NDk0M2M1MGY3YTgxNDhlMDdkNGQyNmM0NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTZhZmYyOGI3YTQ4M2IwYzBkYjRkNjFkMDg1MGZmNzMyYTMxODhkNWQ0OTFhMjQ4YWJiZDFjNGUwYmM2ZmE4YSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTkxMTM4ZWU3YTgyMzg3YWFhYWY5OTI3ZjJjMjc5ODRjNDI0YzMxZjE0N2M4NWMwYTNjMWUxNTAyZTY0Njg2OSJ9"
+        },
+        {
+          "resource": "repo://src/styles.css#L872-L874",
+          "version": "repo-lines-v1:sha256:c54e6e0e6f67fe2aa6bc036c436d48aa7592b380ce399ed3588ab0b13437a4ed:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWIzMDNmNzBlMjUxYTQyNmY3NmMzNWVjN2EzYzQ4YzRiNGU3NWNhM2VlMTIyMjUwYzFhMTIxYWRmNDU3NTEzYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2ZmOThmNGRmYTI2NzE3MmZiNzAwZTBjN2UzYjBiYzUwZDI2NTc0NDk0M2M1MGY3YTgxNDhlMDdkNGQyNmM0NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmI1ODBlOTY0ZjgzYTQ3M2Y0M2Q0NDM4NDYyOTQ5ZDY4YjU2MDBmZGE3ODdmMTYzNzQ1ZDAwZGU4OWNiZjM2YSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTgwNjU0NzA4Y2YxNjlmNWZhMzE2MmExZTA0MDViMmIwMWRjMzc5NmMwYjc1MjYzZTZjZjcxYWU2NjgwYmFmNyJ9"
         }
       ]
     },
@@ -89,6 +113,6 @@
   ],
   "verification": {
     "by": "openwiki/0.6.1",
-    "at": "2026-10-01T12:12:11.534Z"
+    "at": "2026-10-02T09:31:20.838Z"
   }
 }

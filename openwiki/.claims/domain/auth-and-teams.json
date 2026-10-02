@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:d1b0d136cdebfdec07e77d0cbc34fea9c2447f4e47cb1c4ba6c53c68e990799f",
+  "pageVersion": "sha256:9b3300bb6b3184cf9414da9fcc01b72ffedbd307b0ad2de57e4d6e1ff7e1dbbf",
   "claims": [
     {
       "id": "claim_a5b443d1a24d4104a2cbaf3507b03062",
@@ -149,10 +149,44 @@
           "version": "repo-lines-v1:sha256:650971c638b92568c310f3e2c753635a22649114e907300480b3d0b835b0bcbb:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjljNGJhM2RlODVmZTQyYzRkOGE4ZGJjZjZlMzUzM2E5MjA5ZmYwYjYzNTk4OGJkZGZjYmI2NThlNzY2ZjM0YTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUxOWM1Njk0NDA0ODZkNTUzZWU2MzUxMTAxMjFmMDdkMGRjY2YyYTc5OWFlNDUwOTdlNjcyMmI2N2NlNDY0NjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI2YjhhNjg1MGIwNWM1NTU1NzE1MzM2NWM3YjQxNzVlYzBmZWQ5NzZkMmE4MWYwMWMwNDI1ODI4MTljZGIxOTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjFjODZiM2QyOWE4MGMxNWExMTlkYzVkYzkyY2RmNDRjYWE5OWRhNjQ1ZGU0YmY2NmJhODcwY2I3ZmZmNDBmYmUifQ"
         }
       ]
+    },
+    {
+      "id": "claim_9b261f9990f04cdda24694fff8910690",
+      "statement": "The Account page (/account, guarded by AuthGuard) provides profile editing and password change. Profile editing loads the current user via auth.checkSession(), pre-fills firstName/lastName from profile.name/surname, and saves via auth.updateProfile({firstName, lastName}). Password change requires current password and new password (minimum 8 characters) and calls auth.changePassword(currentPassword, newPassword). Both sections use dirty tracking and show success/error feedback.",
+      "evidence": [
+        {
+          "resource": "repo://src/pages/account/Account.tsx#L1-L74",
+          "version": "repo-lines-v1:sha256:28d5e9e2295ba2fe6e5e17ecbc6a786131787c9344f46a520767e4e5ae353cf7:eyJzZWxlY3RlZExpbmVDb3VudCI6NzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI1NThiNjc3MzRmNDBmMzMyNzI3ZDc4ODgwYmM3NzY1NzQzODk5M2VhMjc5MzE4ODlkMGU3MTQ4YzA5NjAwNjgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyYTJjYjI1YTEyMmI0NDIyMWE2MjM0ZWM2NjBhN2I1ZmI3ZjliZGU3YjNiOWUyYjNjNTU5YTBkOTZmYWM3MzkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBhZThjOTQwZDIyZGUzZjZkMmFhZmRlZWE4YWY0NjlhZDM4NTBjZWNhYThiMTdkZmI5ZTExNzZkZTlmNDMzMzkifQ"
+        },
+        {
+          "resource": "repo://src/routes.tsx#L114-L116",
+          "version": "repo-lines-v1:sha256:cc3fc7f497912c36bb47a6f2f65d5b4717c2c89b9d932c903a0f2d113b4545b7:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODVhNDgyZWMxYWU1MmE5OTIyN2FkZTkyMDkyZmY3N2FlYjRhNTBhNzU1MGE0YzhiYTkwMjJiY2EzNmQxNmQ1YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzYzZDUzNWNlMzgwNjNkNmI0YzUxZDhjMzg2YTdmOWIzZTU4MGExNGExMGMwN2IxOThkZmFmMTljOTNhM2JmZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYTNiZTcyNDdjYTA4OWE0YTk1MDBkNWFkMzMyNjI5OTMzYWYxYWE5MjkyNDc5NDY3NTJjYTg2ZTZjNTVlNzM4OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWIyMGNjNzBhNjUzZTZmZjI4ODRiMTcxMmU1MWVmNTIzN2UzODQ2NDMwOTY2OGExMzc5OTczZWJmYTNmYWU3MSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_68070fff9adc490eb7fe73615391c21f",
+      "statement": "The invitation acceptance page (/invitations/accept, no auth guard) handles three flows. Flow 1 (missing email/token params): shows 'Invalid invitation link'. Flow 2 (new user, invitation.isNewUser === true): shows 'Join {teamName}' heading with password form, submit calls auth.activate({email, token, password}) which creates account and accepts invitation. Flow 3 (existing user): if already logged in shows 'Join {teamName}' with one-click 'Join team' button calling auth.acceptInvite(token); if not logged in shows 'Log in to join {teamName}' with password form, submit calls auth.login then auth.acceptInvite. Error codes: 404 → 'This invitation is invalid or has expired.', 401 → 'Invalid password.'",
+      "evidence": [
+        {
+          "resource": "repo://src/pages/invitations/accept/Accept.tsx#L1-L190",
+          "version": "repo-lines-v1:sha256:6d296c5bfb37c737e296164cfc49e28c1234cbab598eb6f386f3420c370c720f:eyJzZWxlY3RlZExpbmVDb3VudCI6MTkwLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIyNTU4YjY3NzM0ZjQwZjMzMjcyN2Q3ODg4MGJjNzc2NTc0Mzg5OTNlYTI3OTMxODg5ZDBlNzE0OGMwOTYwMDY4IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI0MTJjYTM0NWNjZjc1YmY5YzA4MDZiY2U2OTViZThkZTgwOGI3OTk4NDI1MWE3YTU0ZDIwMmNmNjEwMWRkNDUxIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+        }
+      ]
+    },
+    {
+      "id": "claim_811caa374f77436c9dfa0919fa3bfa7c",
+      "statement": "The team detail page (/teams/:id, guarded by AuthGuard) provides full team management gated by team.role === 'owner'. Owners can: change member roles (member ↔ owner) via auth.updateMemberRole, remove members with confirmation via auth.removeMember, invite new members with email/role selection via auth.invite (409 → 'This person is already a member of your team.'), resend pending invitations with a 5-minute cooldown, edit team name/description via auth.updateTeam, and delete the team (only possible while no other members remain) via auth.deleteTeam. All data loads on mount via auth.loadTeams(), auth.listTeamMembers(), and auth.listInvitations().",
+      "evidence": [
+        {
+          "resource": "repo://src/pages/teams/detail/TeamDetail.tsx#L1-L391",
+          "version": "repo-lines-v1:sha256:92b490c66571effb96e4127246be53953e7c819bc8c5b5227b73f248ec0a5e50:eyJzZWxlY3RlZExpbmVDb3VudCI6MzkxLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIyYzQ4M2NlN2MyNWJjNDYwMjI5MzI4ZmRlMTQ5Y2YzODNmYmFlZmMwMWY2YjUzNTgwMTg2MGZhNTA0MTNkMWQ4IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI0MTJjYTM0NWNjZjc1YmY5YzA4MDZiY2U2OTViZThkZTgwOGI3OTk4NDI1MWE3YTU0ZDIwMmNmNjEwMWRkNDUxIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.6.1",
-    "at": "2026-10-01T12:12:11.534Z"
+    "at": "2026-10-02T09:31:20.838Z"
   }
 }
