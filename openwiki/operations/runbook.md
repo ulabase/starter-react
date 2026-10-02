@@ -3,6 +3,9 @@ type: Runbook
 title: Operations & Runbook
 description: Environment configuration, design system and styling, build and deploy workflow, theming, feature flag management, and consents gate operations for the Ulabase React starter.
 tags: [operations, runbook, config, styling, build, deploy, theming, consents, gate]
+verified:
+  - by: openwiki/0.6.1
+    at: 2026-10-02T09:31:20.838Z
 sources:
   - id: openwiki-source-85dc2a049a0943b56218c045
     resource: repo://public/privacy.html
@@ -18,10 +21,7 @@ sources:
     resource: repo://src/styles.css
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
-generated: { by: "openwiki/0.6.1", at: "2026-10-01T12:12:11.534Z" }
-verified:
-  - by: openwiki/0.6.1
-    at: 2026-10-01T12:12:11.534Z
+generated: { by: "openwiki/0.6.1", at: "2026-10-02T09:31:20.838Z" }
 ---
 
 # Operations & Runbook
@@ -65,15 +65,17 @@ See [Auth & Teams — Feature Flags](../domain/auth-and-teams.md#feature-flags) 
 
 **File:** `src/styles.css`
 
-The stylesheet is structured in five sections, all clearly marked with comments:
+The stylesheet is structured in seven sections, all clearly marked with comments:
 
 | Section | Content |
 |---------|---------|
 | 1. Design tokens | CSS custom properties — the single source of color, type, space, and shape |
 | 2. Reset & base | Minimal reset and base element styles |
 | 3. Skin classes | Component classes (`.card`, `.btn-primary`, `.form-field`, `.auth-page`, etc.) |
-| 4. Utility classes | Helpers (`.muted`, `.eyebrow`, `.field-error`, etc.) |
-| 5. Page scaffolds | Layout scaffolds for specific page types |
+| 4. Auth pages | Specialized styles for authentication pages (login, signup, verify, etc.) |
+| 5. Config page | Styles for the "Connect your service" configuration screen |
+| 6. Responsive | Media queries for different screen sizes |
+| 7. Reduced motion | Prefers-reduced-motion media query |
 
 ### Design Tokens
 

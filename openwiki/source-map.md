@@ -3,6 +3,9 @@ type: Source Map
 title: Source Map
 description: File-by-file inventory of the Ulabase React starter, mapping every source file to its purpose and cross-referencing documentation.
 tags: [source-map, reference, files]
+verified:
+  - by: openwiki/0.6.1
+    at: 2026-10-02T09:31:20.838Z
 sources:
   - id: openwiki-source-5b54a58d1b51cd490b0e7162
     resource: repo://package.json
@@ -20,10 +23,7 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.6.1", at: "2026-10-01T12:12:11.534Z" }
-verified:
-  - by: openwiki/0.6.1
-    at: 2026-10-01T12:12:11.534Z
+generated: { by: "openwiki/0.6.1", at: "2026-10-02T09:31:20.838Z" }
 ---
 
 # Source Map
@@ -40,6 +40,7 @@ Complete inventory of repository source files. Each entry links to the page wher
 | `vite.config.ts` | Vite config: minimal — just the `@vitejs/plugin-react` plugin | [Testing](testing/guidance.md) |
 | `index.html` | SPA shell: mounts `#root` div, links `/src/main.tsx` as entry module | — |
 | `.gitignore` | Ignores `node_modules`, `dist`, `.env*`, IDE files | — |
+| `LICENSE` | MIT license | — |
 
 ## Entrypoint & App Shell
 
@@ -125,7 +126,7 @@ Complete inventory of repository source files. Each entry links to the page wher
 
 | File | Purpose |
 |------|---------|
-| `.github/workflows/openwiki-update.yml` | GitHub Actions workflow: runs OpenWiki documentation update daily at 04:00 UTC, creates PR with changes |
+| `.github/workflows/openwiki-update.yml` | GitHub Actions workflow: runs OpenWiki documentation update daily at 03:00 UTC, creates PR with changes |
 | `AGENTS.md` / `CLAUDE.md` | Agent instruction files for OpenWiki documentation runs |
 
 ## Service Setup

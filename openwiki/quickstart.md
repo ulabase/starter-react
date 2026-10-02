@@ -5,7 +5,7 @@ description: Quickstart guide for the Ulabase React starter. Covers what the rep
 tags: [quickstart, react, ulabase, starter]
 verified:
   - by: openwiki/0.6.1
-    at: 2026-10-01T12:12:11.534Z
+    at: 2026-10-02T09:31:20.838Z
 sources:
   - id: openwiki-source-5b54a58d1b51cd490b0e7162
     resource: repo://package.json
@@ -15,16 +15,20 @@ sources:
     resource: repo://src/consents-signal.ts
   - id: openwiki-source-eaae96b81373abab97667f4f
     resource: repo://src/environments/environment.ts
+  - id: openwiki-source-218c8734c88d36610ad967a5
+    resource: repo://src/pages/auth/oauth-buttons/OAuthButtons.tsx
+  - id: openwiki-source-07aa4341cebe71bfc8fd2890
+    resource: repo://src/routes.tsx
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.6.1", at: "2026-10-01T12:12:11.534Z" }
+generated: { by: "openwiki/0.6.1", at: "2026-10-02T09:31:20.838Z" }
 ---
 
 # Ulabase Starter — React
 
-A React app with sign-up, login, Google sign-in, email verification, password reset,
+A React app with sign-up, login, Google and GitHub sign-in, email verification, password reset,
 teams and invitations — working, not sketched. Clone it, point it at a free
 [Ulabase](https://ulabase.com) service, and you have the boring half of an
 application already done.
@@ -164,6 +168,26 @@ Sign up, check your inbox, and you are in.
 | `npm run preview` | Serve the production build locally |
 | `npm test` | Run tests with Vitest |
 
+## Feature Flags
+
+The `environment.ts` file contains feature flags that control which routes and UI elements are
+available. These flags must match your service's *Sign-up Mgmt → Features* toggles.
+
+| Flag | Default | Effect |
+|------|---------|--------|
+| `emailRegistration` | `true` | Enables signup and email verification routes |
+| `passwordReset` | `true` | Enables forgot/reset password routes |
+| `oauthLogin` | `false` | Enables OAuth login buttons (Google, GitHub) |
+| `oauthProviders` | `['google']` | Array of OAuth providers to display |
+| `teamInvitations` | `true` | Enables team invitation acceptance route |
+
+**To add GitHub OAuth:** Update `oauthProviders` to include `'github'` and run setup with
+GitHub credentials:
+
+```bash
+GITHUB_CLIENT_ID=… GITHUB_CLIENT_SECRET=… ulabase setup --srv <srvId>
+```
+
 ## Project Structure
 
 ```
@@ -207,11 +231,15 @@ public/
 | Package | Role |
 |---------|------|
 | `@ulabase/kit-react` | Auth provider (`RhAuthProvider`), guards (`AuthGuard`, `PublicGuard`), `useAuth()` hook, token management |
-| `@ulabase/kit` | Framework-agnostic Ulabase API client |
 | `@ulabase/cli` | `ulabase` CLI for declarative service setup (`ulabase setup --srv <srvId>`) |
-| `react-router-dom` ^6.28 | Routing with `useRoutes`, lazy loading, nested routes |
-| `vite` ^6.0 | Build tool and dev server |
-| `vitest` ^2.0 | Test runner (no test files yet — see [Testing Guidance](testing/guidance.md)) |
+| `react` | UI framework |
+| `react-dom` | React renderer for the web |
+| `react-router-dom` | Routing with `useRoutes`, lazy loading, nested routes |
+| `vite` | Build tool and dev server |
+| `vitest` | Test runner |
+
+**Note:** `@ulabase/kit` (framework-agnostic API client) is a dependency of `@ulabase/kit-react`
+and not listed directly in `package.json`.
 
 ## Something not working?
 
@@ -233,4 +261,4 @@ your `PATH`. `type -a ulabase` shows both.
 
 - **No test files exist** — Vitest is configured but no `.test.ts` or `.spec.ts` files have been written. Source anchor: `package.json` → `"test": "vitest"`. Deferred because the project is in its initial commit phase.
 - **Account page** (`pages/account/Account.tsx`) provides profile and password management — extend as needed.
-- **Additional OAuth providers** — currently only `google` is configured; the environment supports `oauthProviders` array for GitHub, etc.
+- **Additional OAuth providers** — currently only `google` is configured by default; the environment supports `oauthProviders` array for GitHub, etc. See feature flags section above.

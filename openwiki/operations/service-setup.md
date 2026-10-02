@@ -4,16 +4,18 @@ title: Service Setup with Ulabase CLI
 description: Declarative service configuration using ulabase CLI, setup files, feature flag flow from environment.ts to the service, and consents gate server-side configuration.
 tags: [operations, ulabase, setup, cli, consents, feature-flags, configuration]
 sources:
+  - id: openwiki-source-5b54a58d1b51cd490b0e7162
+    resource: repo://package.json
   - id: openwiki-source-23775c3de52f3ab95a13cb8b
     resource: repo://README.md
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.6.1", at: "2026-10-01T12:12:11.534Z" }
+generated: { by: "openwiki/0.6.1", at: "2026-10-02T09:31:20.838Z" }
 verified:
   - by: openwiki/0.6.1
-    at: 2026-10-01T12:12:11.534Z
+    at: 2026-10-02T09:31:20.838Z
 ---
 
 # Service Setup with Ulabase CLI
@@ -22,9 +24,15 @@ This page documents how the Ulabase React starter configures its backend service
 
 ## CLI Installation and Authentication
 
+The `ulabase` CLI can be installed globally or as a dev dependency:
+
 ```bash
+# Global install (recommended for setup commands)
 npm install -g ulabase
 ulabase login                              # paste a token from ulabase.com
+
+# Or as a dev dependency (for CI/CD pipelines)
+npm i -D @ulabase/cli
 ```
 
 The CLI authenticates against Ulabase and stores a token locally. All subsequent commands use this token.
@@ -64,16 +72,22 @@ flowchart TD
     M --> O["Add app origin to allowlist"]
     N --> O
     O --> P{"Consents file?"}
-    P -->|Yes| Q["Add user schema, permission, claims, guard"]
+    P -->|Yes| Q["Execute consents gate steps"]
     P -->|No| R["Setup complete"]
-    Q --> R
+    Q --> S["Store user schema"]
+    S --> T["Link schema to users collection"]
+    T --> U["Create consent acceptance permission"]
+    U --> V["Add consent JWT claims"]
+    V --> W["Install guards feature"]
+    W --> X["Create consents gate rule"]
+    X --> R
 ```
 
 Decision tree for ulabase setup showing how file selection determines which configuration steps execute.
 
 ## Base Setup File: `ulabase.setup.ts`
 
-The base setup file (`ulabase.setup.ts`) imports `environment.ts` to derive server configuration from the app's feature flags. This eliminates configuration drift between frontend and backend.
+The base setup file (`ulabase.setup.ts`) imports `environment.ts` to derive server configuration from the app's feature flags. This eliminates configuration drift between frontend and backend. The setup uses `defineSetup` and `step` from `@ulabase/cli` to create idempotent check-then-apply steps.
 
 ### Feature Flag Flow
 
@@ -86,7 +100,7 @@ export const environment = {
   features: {
     emailRegistration: true,
     passwordReset: true,
-    oauthLogin: true,
+    oauthLogin: false, // Google sign-in: off until you create its OAuth client
     oauthProviders: ['google'] as const,
     teamInvitations: true,
   },
@@ -100,7 +114,7 @@ const f = environment.features;
 
 const features = {
   registration: f.emailRegistration,
-  verification: f.emailRegistration,
+  verification: f.emailRegistration, // Covers two server flags: signup and verification
   'password-reset': f.passwordReset,
   invitations: f.teamInvitations,
   oauth: f.oauthLogin,
@@ -111,15 +125,15 @@ const features = {
 
 1. **Accounts Feature Installation** — Installs the `accounts` feature if not present. Uses `409` response to detect "already installed" as success.
 
-2. **Accounts Configuration** — Sets `app-name`, `frontend-url`, and all feature flags. The `frontend-url` determines where verification, reset, and invitation emails link to.
+2. **Accounts Configuration** — Sets `app-name`, `frontend-url`, and all feature flags. The `frontend-url` determines where verification, reset, and invitation emails link to. Also sets `frontend-app-url` for where verified or signed-in users land.
 
-3. **Google OAuth Credentials** — Conditional step: only executes when `oauthLogin` is `true` and `oauthProviders` includes `'google'`. Uses `fromEnv()` to read `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` from environment variables, but only when credentials aren't already stored.
+3. **Google OAuth Credentials** — Conditional step: only executes when `oauthLogin` is `true` and `oauthProviders` includes `'google'`. Uses `fromEnv()` to read `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` from environment variables, but only when credentials aren't already stored. Uses `isRedacted()` to detect already-stored secrets.
 
-4. **Origin Allowlist** — Adds the `APP_URL` (default `http://localhost:5173`) to the service's allowed origins. Additive: never replaces existing origins, only adds missing ones.
+4. **Origin Allowlist** — Adds the `APP_URL` (default `http://localhost:5173`) to the service's allowed origins. Additive: never replaces existing origins, only adds missing ones. Installs the `origin-allowlist` feature if not present.
 
 ## Consents Gate Setup: `ulabase.setup.consents.ts`
 
-The consents gate file imports the base setup and appends four additional steps for requiring Terms of Service and Privacy Policy acceptance.
+The consents gate file imports the base setup and appends additional steps for requiring Terms of Service and Privacy Policy acceptance. The gate has two halves: a server-side rule that blocks requests, and a client-side overlay that presents the acceptance form.
 
 ### Version Constants
 
@@ -134,11 +148,15 @@ These versions appear in both the permission's `mergeRequest` and the guard rule
 
 1. **User Schema** (`userConsentsSchema`) — Defines the user document shape with `latestConsents` and `consents` fields. Uses `_$date` BSON escaping for date fields. Note: `latestConsents` and `consents` are NOT required (they'd reject registrations).
 
-2. **Permission** (`userCanPatchOwnConsents`) — Allows users to PATCH their own `consents` field. The server stamps versions and timestamps via `mergeRequest`, preventing clients from accepting terms they weren't shown.
+2. **Users Collection Validation** — Links the schema to the `/users` collection by setting `jsonSchema.schemaId` on the collection's metadata (`/users/_meta`). This ensures all user documents are validated against the consents schema.
 
-3. **JWT Claims** — Adds `latestConsents/tos` and `latestConsents/pp` to the token payload. The guard reads the token, not the database.
+3. **Permission** (`userCanPatchOwnConsents`) — Allows users to PATCH their own `consents` field. The server stamps versions and timestamps via `mergeRequest`, preventing clients from accepting terms they weren't shown.
 
-4. **Guards Rule** (`consentsGate`) — Blocks authenticated users with HTTP 451 (Unavailable For Legal Reasons) when either acceptance is missing or outdated. Excludes:
+4. **JWT Claims** — Adds `latestConsents/tos` and `latestConsents/pp` to the token payload. The guard reads the token, not the database. These claims are additive: existing claims are preserved.
+
+5. **Guards Feature Installation** — Installs the `guards` feature if not already present. Uses the same idempotent check-then-apply pattern as the accounts feature.
+
+6. **Guards Rule** (`consentsGate`) — Blocks authenticated users with HTTP 451 (Unavailable For Legal Reasons) when either acceptance is missing or outdated. Excludes:
    - Anonymous requests (`@authenticated = 'false'`)
    - Auth paths (`/auth/*`)
    - Token paths (`/token/*`)
@@ -185,3 +203,5 @@ This updates `frontend-url` (email links) and adds the new origin to the allowli
 **`401` on a request you wrote yourself.** Use `auth.api()`, which attaches the session — a plain `fetch` doesn't.
 
 **Users blocked permanently after accepting.** Check that `TOS_VERSION`/`PP_VERSION` match between the permission's `mergeRequest` and the guard rule's condition. Re-run setup to synchronize.
+
+**`ulabase` runs something about OpenShift.** A different, retired tool of the same name is first in your `PATH`. `type -a ulabase` shows both.

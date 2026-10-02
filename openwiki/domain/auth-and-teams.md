@@ -18,12 +18,20 @@ sources:
     resource: repo://src/ConsentsGate.tsx
   - id: openwiki-source-95bfccfd0c712f6e72040e0d
     resource: repo://src/main.tsx
+  - id: openwiki-source-5f5ab9debc6f9b32eab997bb
+    resource: repo://src/pages/account/Account.tsx
+  - id: openwiki-source-25246136842acdbaf0ab42fd
+    resource: repo://src/pages/invitations/accept/Accept.tsx
+  - id: openwiki-source-e31f18ccf81f23fb0b5d1a06
+    resource: repo://src/pages/teams/detail/TeamDetail.tsx
+  - id: openwiki-source-07aa4341cebe71bfc8fd2890
+    resource: repo://src/routes.tsx
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
-generated: { by: "openwiki/0.6.1", at: "2026-10-01T12:12:11.534Z" }
+generated: { by: "openwiki/0.6.1", at: "2026-10-02T09:31:20.838Z" }
 verified:
   - by: openwiki/0.6.1
-    at: 2026-10-01T12:12:11.534Z
+    at: 2026-10-02T09:31:20.838Z
 ---
 
 # Auth & Teams
@@ -113,10 +121,10 @@ On load, `auth.getInvitation(email, token)` is called. If `invitation.isNewUser 
 ### Flow 3: Existing User
 
 If `invitation.isNewUser === false`:
-- Shows "Accept invitation to {teamName}"
-- If already logged in → one-click "Accept" button calls `auth.acceptInvite(token)`
-- If not logged in → password form, submit logs in then calls `auth.acceptInvite(token)`
-- On success → shows "You're in" and redirects to `/` after 1.2 seconds
+
+- **Already logged in** → heading "Join {teamName}", subtext "You're signed in as {email}." with a one-click "Join team" button that calls `auth.acceptInvite(token)`
+- **Not logged in** → heading "Log in to join {teamName}", password form with a "Log in and join" button. Submit calls `auth.login(email, password)` then `auth.acceptInvite(token)`
+- On success → shows "You're in" / "Redirecting…" and navigates to `/` after 1.2 seconds
 
 Error handling:
 - 404 → "This invitation is invalid or has expired."
@@ -137,7 +145,7 @@ Error handling:
 
 ### Team Switching
 
-`auth.switchTeam(teamId)` — called from the team list when clicking a non-active team. The Shell dropdown displays the active team name but does not offer a switcher; switching happens exclusively on the `/teams` page.
+Clicking any team in the list navigates to its detail page (`/teams/:id`). For inactive teams, `auth.switchTeam(teamId)` is called first. The Shell dropdown displays the active team name but does not offer a switcher; switching happens exclusively on the `/teams` page.
 
 ### Team Detail (`/teams/:id`)
 
@@ -146,10 +154,10 @@ Error handling:
 Full team management page, owner-only sections are gated by `team.role === 'owner'`:
 
 - **Members** — lists all team members with name, email, and role. Owners can change member roles (member ↔ owner) and remove members (with confirmation).
-- **Invite a team member** (owner only) — form with email and role selection. Calls `auth.invite(email, role)`. Shows 409 error for duplicate members.
+- **Invite a team member** (owner only) — form with email and role selection (member or owner). Calls `auth.invite(email, role)`. 409 → "This person is already a member of your team."
 - **Pending invitations** (owner only) — lists pending invites with role, date, and expired status. "Resend" button with a 5-minute cooldown per invite.
 - **Team settings** (owner only) — form to edit team name and description. Calls `auth.updateTeam()`.
-- **Delete team** (owner only) — confirmation dialog, calls `auth.deleteTeam()`, then loads remaining teams and switches to the first one.
+- **Delete team** (owner only) — guarded by the condition "Only possible while no other members remain." Confirmation dialog, calls `auth.deleteTeam()`, then loads remaining teams and switches to the first one if none are active.
 
 All data loads via `auth.listTeamMembers()` and `auth.listInvitations()` on mount alongside `auth.loadTeams()`.
 
@@ -158,6 +166,27 @@ All data loads via `auth.listTeamMembers()` and `auth.listInvitations()` on moun
 **File:** `src/pages/teams/new/NewTeam.tsx`
 
 Form to create a new team. Calls `auth.createTeam(teamName)` and navigates to `/teams` on success.
+
+## Account Page
+
+**Route:** `/account` · **Guard:** `AuthGuard` · **File:** `src/pages/account/Account.tsx`
+
+The account page is accessible from the avatar dropdown in the Shell header. It has two sections:
+
+### Profile
+
+- Loads the current user via `auth.checkSession()` on mount, pre-filling first name (`profile.name`) and last name (`profile.surname`)
+- Email is displayed read-only (from `auth.user._id`)
+- Save calls `auth.updateProfile({ firstName, lastName })`
+- Dirty tracking: the save button is disabled until a field changes
+
+### Change Password
+
+- Form with current password and new password (minimum 8 characters)
+- Both fields have visibility toggles
+- Submit calls `auth.changePassword(currentPassword, newPassword)`
+- On success → clears the form and shows "Password changed!"
+- On error → displays the error message
 
 ## Just-Signed-Up Flag
 
