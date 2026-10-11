@@ -28,10 +28,10 @@ sources:
     resource: repo://src/routes.tsx
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
-generated: { by: "openwiki/0.6.1", at: "2026-10-02T09:31:20.838Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-11T09:48:33.884Z" }
 verified:
-  - by: openwiki/0.6.1
-    at: 2026-10-02T09:31:20.838Z
+  - by: openwiki/0.7.2
+    at: 2026-10-11T09:48:33.884Z
 ---
 
 # Auth & Teams

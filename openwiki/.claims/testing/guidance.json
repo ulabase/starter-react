@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:e7179f2a0ba5c21b66e3accf149847c495f874e277c1dc84f8337ed6195b736f",
+  "pageVersion": "sha256:c9fb45a9a337fd5b2dbb8238bd2733f32a9746c28bbb23945369a1ab0241de65",
   "claims": [
     {
       "id": "claim_6343a6464e04483fa6a2f2d432f73654",
@@ -94,11 +94,11 @@
       "evidence": [
         {
           "resource": "repo://ulabase.setup.consents.ts",
-          "version": "repo-file-v1:sha256:4e70943be657c9b58bdfb37bc382c0b33659ba5c0c1e2e0816dae9205b7b12b0"
+          "version": "repo-file-v1:sha256:5045db53ddd5ba2f5cb383e88a3c32ae23c9143459fc4a73bf9228d45f460d9e"
         },
         {
           "resource": "repo://ulabase.setup.ts",
-          "version": "repo-file-v1:sha256:09fa0c92087c67fa0c7222c86893d902f068dfcb2a82eeffdd1a83eb37fc1ce1"
+          "version": "repo-file-v1:sha256:2e8a0ad06949be356d916ffeebe81191320cd900e99e327630f95fb0e0cad442"
         }
       ]
     },
@@ -114,7 +114,7 @@
     }
   ],
   "verification": {
-    "by": "openwiki/0.6.1",
-    "at": "2026-10-02T09:31:20.838Z"
+    "by": "openwiki/0.7.2",
+    "at": "2026-10-11T09:48:33.884Z"
   }
 }

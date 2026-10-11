@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:3535ef1558349e0272d1d45e7dfad5678fa377ae1f368d23f006b9f20eb35d07",
+  "pageVersion": "sha256:d9e34424c5c3d7585aa667734921d786d2da8dc8fe0a8737f38a92bcac429054",
   "claims": [
     {
       "id": "claim_849550fdee20463596e55e9d5c58103c",
@@ -26,11 +26,11 @@
       "evidence": [
         {
           "resource": "repo://ulabase.setup.consents.ts",
-          "version": "repo-file-v1:sha256:4e70943be657c9b58bdfb37bc382c0b33659ba5c0c1e2e0816dae9205b7b12b0"
+          "version": "repo-file-v1:sha256:5045db53ddd5ba2f5cb383e88a3c32ae23c9143459fc4a73bf9228d45f460d9e"
         },
         {
           "resource": "repo://ulabase.setup.ts",
-          "version": "repo-file-v1:sha256:09fa0c92087c67fa0c7222c86893d902f068dfcb2a82eeffdd1a83eb37fc1ce1"
+          "version": "repo-file-v1:sha256:2e8a0ad06949be356d916ffeebe81191320cd900e99e327630f95fb0e0cad442"
         }
       ]
     },
@@ -40,7 +40,7 @@
       "evidence": [
         {
           "resource": "repo://package.json",
-          "version": "repo-file-v1:sha256:1b328c521decc2bbf9f2248482174966728a8ea0bf669c196ad39133a37fdc0b"
+          "version": "repo-file-v1:sha256:73219b6286c52c0505a21585a65fc6a1d94bd03126ee1e74aaf7024e36abd528"
         }
       ]
     },
@@ -56,17 +56,17 @@
     },
     {
       "id": "claim_30f71b10e5c1476b966645a6c29b6104",
-      "statement": "The ConfigPage.tsx setup wizard guides users to create a service at ulabase.com when apiUrl is invalid or empty.",
+      "statement": "The ConfigPage.tsx setup wizard guides users through a 3-step flow when apiUrl is invalid or empty: (1) create a free service at ulabase.com, (2) run `npx ulabase login` and `npx ulabase setup --srv <id>` from the project folder to configure the service and write its URL into environment.ts, (3) reload the app.",
       "evidence": [
         {
-          "resource": "repo://src/ConfigPage.tsx#L34-L36",
-          "version": "repo-lines-v1:sha256:3dda1d0607accf0af7651354e9679ad36a4266f9ba329a252c1f5d5bf95ed206:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZWY4OTI0M2MwNGY1YTM0NzVjMmU2YWJhNGJkYTNjMTllNTA0Mjk3ZGE2ZDQzMzI2NWE1MzZjZTM5MzIzNDc5MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjFlZThhOWMwNGVhNGM4MjA0NTY4ZWI1MWRiOGUwZWVlMzU5M2Q2NzEyMWZlYTljOWY1YzgyZjRlNmQ2M2RiYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDU0YTliMDMxNWQxZmQyYzc0MDkzYWIxNTcwMTFlNGM5MjBmZjI2MWMwYjQwNGYwNzE0ZjU0YjNkMWZkODc4MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTk3ZTNkOGYwNTRmNjg1ZjdhZTFjMjUzNTQ0MTFhYWU1OGFiMThkMjA3Mjk2MzEyZWI3ZGY5NDNiY2Q5YjNhZSJ9"
+          "resource": "repo://src/ConfigPage.tsx#L29-L57",
+          "version": "repo-lines-v1:sha256:99ba632cbab7caae0a99a7b8e7a4e62cc487cf966d455c026e07185112e3f664:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgzMzY5NTFjOWVlMDlmNTdmNDY3NzFkNWYyZjhiZjliMzA2NzgwYmFhZjg0MmU4NzFlZjkwYThmNjQ2YzNlYjciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZkNTMyZDQ5ZmMxYmI3N2ZlYTg5MDRhNDc4ODZmMTMxY2U3MmFkNDVmZjAwMzQyMzMzNGY2MTdiMjhlMmZkZjgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc0OWU5M2I1MzcxNTc4NzkwMTZjYTdiZmUwYTM2ZjBlYWFhZjBkODI3MzQyODYwOGYxNDYwYTI0OTY3Y2UwMmYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI4MmJiMTgxYmYwZmFhODlhZDU2ZGQyN2Q1M2I1YTZmY2JlZTZmOWNiYmRkNzcxM2RkYjFjNTM1ZThkZmJmMzAifQ"
         }
       ]
     }
   ],
   "verification": {
-    "by": "openwiki/0.6.1",
-    "at": "2026-10-02T09:31:20.838Z"
+    "by": "openwiki/0.7.2",
+    "at": "2026-10-11T09:48:33.884Z"
   }
 }

@@ -3,9 +3,6 @@ type: Guide
 title: Ulabase Starter — React
 description: Quickstart guide for the Ulabase React starter. Covers what the repo provides, how to set it up (basic or with consents gate), and where to find documentation on architecture, domain logic, operations, and testing.
 tags: [quickstart, react, ulabase, starter]
-verified:
-  - by: openwiki/0.6.1
-    at: 2026-10-02T09:31:20.838Z
 sources:
   - id: openwiki-source-5b54a58d1b51cd490b0e7162
     resource: repo://package.json
@@ -23,7 +20,10 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.6.1", at: "2026-10-02T09:31:20.838Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-11T09:48:33.884Z" }
+verified:
+  - by: openwiki/0.7.2
+    at: 2026-10-11T09:48:33.884Z
 ---
 
 # Ulabase Starter — React
@@ -65,7 +65,7 @@ The two setup paths through the Ulabase CLI. Both are idempotent check-then-appl
 ### Prerequisites
 
 1. A **free Ulabase service** — [create one at ulabase.com](https://ulabase.com).
-2. [Node.js](https://nodejs.org) 18 or later.
+2. [Node.js](https://nodejs.org) 22.18 or later (it runs the TypeScript setup file).
 
 ### 1. Clone and install
 

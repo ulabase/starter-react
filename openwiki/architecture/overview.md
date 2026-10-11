@@ -4,8 +4,8 @@ title: Architecture Overview
 description: Runtime architecture of the Ulabase React starter — component tree, authentication provider setup, routing strategy, consents-gate overlay, fragment token capture, and config gating.
 tags: [architecture, react, auth, routing, ulabase, consents]
 verified:
-  - by: openwiki/0.6.1
-    at: 2026-10-02T09:31:20.838Z
+  - by: openwiki/0.7.2
+    at: 2026-10-11T09:48:33.884Z
 sources:
   - id: openwiki-source-54631e6ebf1d3b815c4a5eed
     resource: repo://src/App.tsx
