@@ -12,10 +12,10 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.6.1", at: "2026-10-02T09:31:20.838Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-11T09:48:33.884Z" }
 verified:
-  - by: openwiki/0.6.1
-    at: 2026-10-02T09:31:20.838Z
+  - by: openwiki/0.7.2
+    at: 2026-10-11T09:48:33.884Z
 ---
 
 # Service Setup with Ulabase CLI
@@ -35,7 +35,7 @@ ulabase login                              # paste a token from ulabase.com
 npm i -D @ulabase/cli
 ```
 
-The CLI authenticates against Ulabase and stores a token locally. All subsequent commands use this token.
+The starter includes `@ulabase/cli` as a dev dependency in `package.json` (line 21). The CLI authenticates against Ulabase and stores a token locally. All subsequent commands use this token.
 
 ## Setup Workflow
 

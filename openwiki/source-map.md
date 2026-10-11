@@ -3,9 +3,6 @@ type: Source Map
 title: Source Map
 description: File-by-file inventory of the Ulabase React starter, mapping every source file to its purpose and cross-referencing documentation.
 tags: [source-map, reference, files]
-verified:
-  - by: openwiki/0.6.1
-    at: 2026-10-02T09:31:20.838Z
 sources:
   - id: openwiki-source-5b54a58d1b51cd490b0e7162
     resource: repo://package.json
@@ -23,7 +20,10 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.6.1", at: "2026-10-02T09:31:20.838Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-11T09:48:33.884Z" }
+verified:
+  - by: openwiki/0.7.2
+    at: 2026-10-11T09:48:33.884Z
 ---
 
 # Source Map
@@ -34,7 +34,7 @@ Complete inventory of repository source files. Each entry links to the page wher
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `package.json` | Project metadata, dependencies (`@ulabase/kit-react`, `react`, `react-router-dom`), scripts (`dev`, `build`, `preview`, `test`) | [Operations](operations/runbook.md) |
+| `package.json` | Project metadata, dependencies (`@ulabase/kit-react`, `react`, `react-router-dom`), dev dependencies (`@ulabase/cli`, `typescript`, `vite`, `vitest`), scripts (`dev`, `build`, `preview`, `test`) | [Operations](operations/runbook.md) |
 | `package-lock.json` | Lockfile — do not edit manually | — |
 | `tsconfig.json` | TypeScript config: ES2020 target, ESNext modules, strict mode, JSX React, `noEmit` (Vite compiles) | — |
 | `vite.config.ts` | Vite config: minimal — just the `@vitejs/plugin-react` plugin | [Testing](testing/guidance.md) |
@@ -48,7 +48,7 @@ Complete inventory of repository source files. Each entry links to the page wher
 |------|---------|----------|
 | `src/main.tsx` | React root creation. Renders `<StrictMode>` → `<BrowserRouter>` → `<RhAuthProvider>` → `<App />`. Imports `styles.css`. | [Architecture](architecture/overview.md) |
 | `src/App.tsx` | Fragment token capture on mount, API URL validation gate, renders `ConfigPage` or route tree via `useRoutes()` | [Architecture](architecture/overview.md) |
-| `src/ConfigPage.tsx` | Setup wizard shown when `apiUrl` is invalid. Guides user to create a service at `ulabase.com` and edit `environment.ts`. | [Operations](operations/runbook.md) |
+| `src/ConfigPage.tsx` | Setup wizard shown when `apiUrl` is invalid. 3-step guided flow: (1) create a free service at `ulabase.com`, (2) run `npx ulabase login` and `npx ulabase setup --srv <id>` from this folder, (3) reload the app. | [Operations](operations/runbook.md) |
 | `src/routes.tsx` | Route definitions as `RouteObject[]`. Lazy-loaded components, feature-flag conditional inclusion, `AuthGuard`/`PublicGuard` wrappers. | [Architecture](architecture/overview.md) |
 
 ## Environment & Utilities
@@ -126,6 +126,7 @@ Complete inventory of repository source files. Each entry links to the page wher
 
 | File | Purpose |
 |------|---------|
+| `.github/workflows/no-service-url.yml` | CI gate that rejects pushes/PRs to `main` if any `apiUrl` in `src/environments/*.ts` is non-empty — prevents leaking a real service URL into the public starter repo. |
 | `.github/workflows/openwiki-update.yml` | GitHub Actions workflow: runs OpenWiki documentation update daily at 03:00 UTC, creates PR with changes |
 | `AGENTS.md` / `CLAUDE.md` | Agent instruction files for OpenWiki documentation runs |
 
