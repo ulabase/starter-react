@@ -20,8 +20,7 @@
  *
  * Two lists that must agree, kept in step by hand, in different repositories.
  * Nothing checked that they did, and the symptom of drift is a `403` on a
- * button the app went to the trouble of rendering. (The Angular starter at
- * least wrote the rule down in a comment; here it was not written anywhere.)
+ * button the app went to the trouble of rendering.
  *
  * So this file **imports the same environment the app imports** and derives the
  * server's configuration from it. The flags are stated once. Turning
