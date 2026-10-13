@@ -18,10 +18,10 @@ sources:
     resource: repo://src/styles.css
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-11T09:48:33.884Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-13T10:18:51.278Z" }
 verified:
   - by: openwiki/0.7.2
-    at: 2026-10-11T09:48:33.884Z
+    at: 2026-10-13T10:18:51.278Z
 ---
 
 # Operations & Runbook
@@ -102,8 +102,7 @@ The default skin is deliberately a **mockup**, not a finished product:
 ### Two Ways to Customize
 
 1. **Tweak it** — change tokens in section 1, skin classes in section 3
-<!-- openwiki: broken internal link [../NOTES.md#swap-map] file "../NOTES.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-2. **Replace it** — adopt Material / Tailwind / your own: delete sections 3–5 and reskin using the stable vocabulary of semantic class hooks (`.card`, `.btn-primary`, `.form-field`, etc.). The swap map in [NOTES.md](../NOTES.md#swap-map) lists the complete vocabulary.
+2. **Replace it** — adopt Material / Tailwind / your own: delete sections 3–5 and reskin using the stable vocabulary of semantic class hooks (`.card`, `.btn-primary`, `.form-field`, etc.). The swap map in [NOTES.md](../../NOTES.md#swap-map) lists the complete vocabulary.
 
 ## Theming
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:7e880af1d067ebfd3e04541dee00016168aaeddda0a246f169f6eacdfd94506b",
+  "pageVersion": "sha256:be16480279a0ae1a4e5acfa02e73f317e93a223825eaacb19e38da3484cbedaf",
   "claims": [
     {
       "id": "claim_f1326c781a8f4cf59af88e514102679d",
@@ -40,14 +40,14 @@
     },
     {
       "id": "claim_b6f4ce00814643c4bc98b8ac86684246",
-      "statement": "ConsentsGate renders a full-screen overlay with Terms of Service and Privacy Policy checkboxes when blocked is true; accepting calls auth.acceptConsents then auth.checkSession to reload the session, then clears the blocked flag.",
+      "statement": "ConsentsGate renders a full-screen overlay with Terms of Service and Privacy Policy checkboxes when blocked is true; accepting calls auth.acceptConsents then, if the user is on an auth page, redirects to / via window.location.assign, otherwise calls auth.checkSession to reload the session and clears the blocked flag.",
       "evidence": [
         {
-          "resource": "repo://src/ConsentsGate.tsx#L31-L51",
-          "version": "repo-lines-v1:sha256:4a20bfb413404c51a7ce41542b7b8a8dff3d2ccf407a8c9882d4eaf9e7d4e39e:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMxYjYwYTM4OTMyZjQ1ZmQxMTUwMjhhODg5ZjBlM2I2ZjcwNTlkNjZjYzcwYmM5MzIzNWFkNjM4YzlhMmY4MzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyYTJjYjI1YTEyMmI0NDIyMWE2MjM0ZWM2NjBhN2I1ZmI3ZjliZGU3YjNiOWUyYjNjNTU5YTBkOTZmYWM3MzkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImMyMGQzNDIwODdhNTRmNzM3Y2RjZjIwMmU5ZmUwYzQyZTA5ZDBjYWJjYmZiNTRlOTAwMmZkZDA2OWI0MTVhN2UiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNhNmM4OGYyNWQyYjYxNDFiZDg4YTk2NmFkYjZiM2RmNzQxOTRmZGM3M2M5YjQ5MTM5MzliMmE1MmEzZTk5NjgifQ"
+          "resource": "repo://src/ConsentsGate.tsx#L31-L57",
+          "version": "repo-lines-v1:sha256:9ee6b5642514c27ba5246594f951502f69a0a9635996756404d5881b41f7a078:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMxYjYwYTM4OTMyZjQ1ZmQxMTUwMjhhODg5ZjBlM2I2ZjcwNTlkNjZjYzcwYmM5MzIzNWFkNjM4YzlhMmY4MzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyYTJjYjI1YTEyMmI0NDIyMWE2MjM0ZWM2NjBhN2I1ZmI3ZjliZGU3YjNiOWUyYjNjNTU5YTBkOTZmYWM3MzkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImMyMGQzNDIwODdhNTRmNzM3Y2RjZjIwMmU5ZmUwYzQyZTA5ZDBjYWJjYmZiNTRlOTAwMmZkZDA2OWI0MTVhN2UiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNhNmM4OGYyNWQyYjYxNDFiZDg4YTk2NmFkYjZiM2RmNzQxOTRmZGM3M2M5YjQ5MTM5MzliMmE1MmEzZTk5NjgifQ"
         },
         {
-          "resource": "repo://src/ConsentsGate.tsx#L60-L102",
+          "resource": "repo://src/ConsentsGate.tsx#L66-L108",
           "version": "repo-lines-v1:sha256:133d9289f98e56a26c0fcee059f07ded9e5f89df1a75b94c5cf62067acaff84c:eyJzZWxlY3RlZExpbmVDb3VudCI6NDMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU3MjE2ZThlOWMwYTFhNjhkMDZjMmZiYWE1ZmQyMTM5NDgyYjhlZmQwYTE5MzE1YjkxNWU2Y2NlODQ5ZDg5ZGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1ZWYwMWJjMDhkYmMzYjYzZTRlNzVlYTNkMjZhNWI5NDE4OTE4NzdlMjdhZDg5MTMyOWM4NDExZDdkOGRjNGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjljNTcwOWU3NjQ1NWVkMDU4M2Y5ZTM1MmZiYzQ3NzZhMzQ0NTE2M2Q0MWM0NDdmMDBkMjE5NDI1ZTNkMDljMjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEifQ"
         }
       ]
@@ -83,6 +83,6 @@
   ],
   "verification": {
     "by": "openwiki/0.7.2",
-    "at": "2026-10-11T09:48:33.884Z"
+    "at": "2026-10-13T10:18:51.278Z"
   }
 }

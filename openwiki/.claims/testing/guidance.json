@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:c9fb45a9a337fd5b2dbb8238bd2733f32a9746c28bbb23945369a1ab0241de65",
+  "pageVersion": "sha256:7f413eaf0459d016685e054aca763d94a6c477103e7ed1e4ea28300a59eb74fb",
   "claims": [
     {
       "id": "claim_6343a6464e04483fa6a2f2d432f73654",
@@ -44,7 +44,7 @@
         },
         {
           "resource": "repo://src/pages/auth/login/Login.tsx",
-          "version": "repo-file-v1:sha256:dc8131f7d0c8d5588919a638639c3b1a5483b61951495fd0e14802cb85f113de"
+          "version": "repo-file-v1:sha256:82a8188eee0e129ecaf7e131267c4689038836503e663f27938e72a37a008d76"
         },
         {
           "resource": "repo://src/pages/auth/reset-password/ResetPassword.tsx",
@@ -56,17 +56,17 @@
         },
         {
           "resource": "repo://src/pages/invitations/accept/Accept.tsx",
-          "version": "repo-file-v1:sha256:6d296c5bfb37c737e296164cfc49e28c1234cbab598eb6f386f3420c370c720f"
+          "version": "repo-file-v1:sha256:713fa8275e9a9ac92808c7ca3afdc013701cc2a791858552a7c721b2438e706a"
         }
       ]
     },
     {
       "id": "claim_c313c1396546414186e8da665cab79f3",
-      "statement": "ConsentsGate component requires tests for overlay rendering when blocked, checkbox gating of accept button, acceptConsents() call flow, error handling, and sign-out clearing blocked state.",
+      "statement": "ConsentsGate component requires tests for overlay rendering when blocked, checkbox gating of accept button, acceptConsents() call flow, post-consent navigation for `/auth` paths (navigates to `/` instead of calling `checkSession()`), error handling, and sign-out clearing blocked state.",
       "evidence": [
         {
           "resource": "repo://src/ConsentsGate.tsx",
-          "version": "repo-file-v1:sha256:cbd8a1379282e54d8414e484864acbe523f56b8655da560f542d81d204a3d705"
+          "version": "repo-file-v1:sha256:8216a69df1b1aae7e08d4f2c459bf7b643e2d365d7d81ec4a732302b3b9b101a"
         },
         {
           "resource": "repo://src/consents-signal.ts",
@@ -80,7 +80,7 @@
       "evidence": [
         {
           "resource": "repo://src/environments/environment.ts",
-          "version": "repo-file-v1:sha256:0cea2f727b907ce72365ad342421d31ef07e6b7f09e14a602c39ac574bfa8868"
+          "version": "repo-file-v1:sha256:0b2fba9c71fd1b63438cbadf37ac7d0e703467000d83ce4857c4f401ba517d4e"
         },
         {
           "resource": "repo://src/routes.tsx",
@@ -94,11 +94,11 @@
       "evidence": [
         {
           "resource": "repo://ulabase.setup.consents.ts",
-          "version": "repo-file-v1:sha256:5045db53ddd5ba2f5cb383e88a3c32ae23c9143459fc4a73bf9228d45f460d9e"
+          "version": "repo-file-v1:sha256:a3927098bf6606155684d12052f58e4eff4006bbdd6099aed9574b6547484b2f"
         },
         {
           "resource": "repo://ulabase.setup.ts",
-          "version": "repo-file-v1:sha256:2e8a0ad06949be356d916ffeebe81191320cd900e99e327630f95fb0e0cad442"
+          "version": "repo-file-v1:sha256:419eafb71fed2ac47ce718189ddcc56ce158d43c2b720f30f78d4f3f82f26557"
         }
       ]
     },
@@ -115,6 +115,6 @@
   ],
   "verification": {
     "by": "openwiki/0.7.2",
-    "at": "2026-10-11T09:48:33.884Z"
+    "at": "2026-10-13T10:18:51.278Z"
   }
 }

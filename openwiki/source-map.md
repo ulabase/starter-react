@@ -20,10 +20,10 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-11T09:48:33.884Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-13T10:18:51.278Z" }
 verified:
   - by: openwiki/0.7.2
-    at: 2026-10-11T09:48:33.884Z
+    at: 2026-10-13T10:18:51.278Z
 ---
 
 # Source Map
@@ -55,7 +55,7 @@ Complete inventory of repository source files. Each entry links to the page wher
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `src/environments/environment.ts` | **Central config**: `apiUrl` (Ulabase service URL) + `features` object (feature flags). Note: comment still references restheart.com but the file is correct. | [Auth & Teams](domain/auth-and-teams.md#feature-flags), [Operations](operations/runbook.md) |
+| `src/environments/environment.ts` | **Central config**: `apiUrl` (Ulabase service URL, empty by default to show the setup wizard) + `features` object (feature flags controlling authentication flows). | [Auth & Teams](domain/auth-and-teams.md#feature-flags), [Operations](operations/runbook.md) |
 | `src/just-signed-up.ts` | Module-level boolean flag. Set to `true` when `?flow=signup` query param is detected in fragment token capture. Shell reads and clears it to show a welcome message. | [Auth & Teams](domain/auth-and-teams.md) |
 | `src/oauth-url.ts` | Builds OAuth authorize URL: `${apiUrl}/auth/oauth/authorize/${provider}?noauthchallenge` | [Auth & Teams](domain/auth-and-teams.md#oauth-login) |
 

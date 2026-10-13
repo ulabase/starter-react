@@ -3,9 +3,6 @@ type: Guide
 title: Testing Guidance
 description: Vitest setup, recommended test strategy, and how to run tests for the Ulabase React starter, including consents gate testing.
 tags: [testing, vitest, guidance, consents]
-verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-11T09:48:33.884Z
 sources:
   - id: openwiki-source-5b54a58d1b51cd490b0e7162
     resource: repo://package.json
@@ -37,7 +34,10 @@ sources:
     resource: repo://ulabase.setup.ts
   - id: openwiki-source-5e1b077422a94ae165e88e4e
     resource: repo://vite.config.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-11T09:48:33.884Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-13T10:18:51.278Z" }
+verified:
+  - by: openwiki/0.7.2
+    at: 2026-10-13T10:18:51.278Z
 ---
 
 # Testing Guidance
@@ -45,8 +45,6 @@ generated: { by: "openwiki/0.7.2", at: "2026-10-11T09:48:33.884Z" }
 ## Current Status
 
 **No test files exist yet.** Vitest is configured as a dependency (`^2.0.0` in `devDependencies`) and the `npm test` script runs `vitest`, but there are no `.test.ts` or `.spec.ts` files in the repository.
-
-> **Note**: The `src/environments/environment.ts` file still contains a RESTHeart Cloud comment reference. The product is Ulabase, and services live at `https://<id>.ulabase.app`. This is a source code issue that should be addressed separately.
 
 ## Vitest Setup
 
@@ -96,16 +94,17 @@ Test the consents gate overlay and its integration with the signal system:
 
 | Component | Key Test Cases |
 |-----------|---------------|
-| `ConsentsGate` | Overlay renders when blocked; checkboxes gate accept button; `acceptConsents()` call flow; sign-out clears blocked state |
+| `ConsentsGate` | Overlay renders when blocked; checkboxes gate accept button; `acceptConsents()` call flow; post-consent navigation for `/auth` paths; sign-out clears blocked state |
 
 Detailed test scenarios for `ConsentsGate`:
 
 1. **Overlay rendering**: When `isBlocked()` returns `true`, the overlay replaces children with a blocking dialog
 2. **Checkbox gating**: "I accept" button is disabled until both Terms of Service and Privacy Policy checkboxes are checked
 3. **Acceptance flow**: Clicking "I accept" calls `auth.acceptConsents()`, then `auth.checkSession()`, then `setBlocked(false)`
-4. **Error handling**: If `auth.acceptConsents()` throws, shows "We could not record your acceptance" error message
-5. **Sign-out flow**: Clicking "Sign out" clears blocked flag and calls `auth.logout()`
-6. **Busy state**: During acceptance, button shows "Saving…" and is disabled
+4. **Post-consent navigation for `/auth` paths**: When the current path starts with `/auth`, acceptance navigates to `/` instead of calling `checkSession()`
+5. **Error handling**: If `auth.acceptConsents()` throws, shows "We could not record your acceptance" error message
+6. **Sign-out flow**: Clicking "Sign out" clears blocked flag and calls `auth.logout()`
+7. **Busy state**: During acceptance, button shows "Saving…" and is disabled
 
 ### Integration Tests: Routing
 
@@ -173,8 +172,9 @@ Test the overlay UI and its interaction with the auth system:
 3. **Unblocked state**: When not blocked, renders children unchanged
 4. **Button gating**: Accept button disabled until both checkboxes checked
 5. **Acceptance flow**: Mock `auth.acceptConsents()` and `auth.checkSession()`, verify sequence
-6. **Error states**: Mock failures, verify error messages
-7. **Sign-out**: Verify `setBlocked(false)` and `auth.logout()` are called
+6. **Post-consent navigation for `/auth` paths**: When `window.location.pathname` starts with `/auth`, acceptance calls `window.location.assign('/')` instead of `checkSession()`
+7. **Error states**: Mock failures, verify error messages
+8. **Sign-out**: Verify `setBlocked(false)` and `auth.logout()` are called
 
 ## Adding Tests
 
@@ -185,12 +185,20 @@ src/
   just-signed-up.test.ts
   oauth-url.test.ts
   consents-signal.test.ts
+  ConsentsGate.test.tsx
   pages/
     auth/
       login/
         Login.test.tsx
-    shell/
-      Shell.test.tsx
+      signup/
+        Signup.test.tsx
+      forgot-password/
+        ForgotPassword.test.tsx
+      reset-password/
+        ResetPassword.test.tsx
+    invitations/
+      accept/
+        Accept.test.tsx
 ```
 
 Run tests:

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:6e054d779494afb771a127669ee0beb8319b7b8bf2bf487e88b83486a543ec87",
+  "pageVersion": "sha256:d0a2d72f42cc9a601918217c18a29f29716f18abbead0ce4df3b6bdaf4df38d1",
   "claims": [
     {
       "id": "claim_a5b443d1a24d4104a2cbaf3507b03062",
@@ -11,11 +11,11 @@
           "version": "repo-lines-v1:sha256:adfe822129e37c440bd6c3f186da8f7f2b45d7f340b40adb62c2b596efd945db:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc0MmMxM2ZkMjBkYjcwODVlMjE0Mjc1OTM0MTUxZmExZmQyYmUyOThmMGZiZDI0ZTIzMmI4MTBiNGI3MDQ5Y2EiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk3MmE0MjkzODJiMmUxNDcxOGUwZTM3YjA1NzBhOGExNzAyOTkxZmNkODQ5OGNkODQwNjBhOGJmNGYwNTAxN2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ3NzgxYzVjYjg3YjgwMmE5MjY4YTQ4YmQ1MWFmOTE2YjEyNWI0MGNiNzZkZDBhZTdmODE1ZmVjMjYwNzcwMmIifQ"
         },
         {
-          "resource": "repo://ulabase.setup.consents.ts#L134-L160",
+          "resource": "repo://ulabase.setup.consents.ts#L135-L161",
           "version": "repo-lines-v1:sha256:152607e653da37f5f18e11d56b3e53c87e63a611c2dfc3bc59005995c4e38be8:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY5NTQ3N2VkYWI3MTU2NTFlZjNmZDBhOGE1ZjgzYzYwMTM1YTIwYjNhMmI3N2MxYTc5N2EwZjZjODM1MmFkYjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ2ZjVhODU2NTdiOGU4NTQwZjZmNWYyZWM3YjY2YjY2YWNiNzc3ZmJlNjQyY2E5M2I5N2QyNWU4NjBlZDM4YjgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhmNjI4MGZjMDFmYzc1OWFhZGY4ODgwY2RmM2E4M2Q1YmIxYzZkNmNiYTJkNjdiZWEzOTRlZDUyMDI1ZWEzZWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA1MTM5YmE0ZDJjMmQ3MDhiZGE0MTA5ZmU3OGM2MWI0NjI3ZmExYTgxNTY1NGQxNmQzMTg0YmQxN2U0ZTRmODkifQ"
         },
         {
-          "resource": "repo://ulabase.setup.consents.ts#L259-L294",
+          "resource": "repo://ulabase.setup.consents.ts#L260-L295",
           "version": "repo-lines-v1:sha256:61bb3204eef5b835755b0b6f6ddeb8cd77fc51636fd8e642903f24bd6671900f:eyJzZWxlY3RlZExpbmVDb3VudCI6MzYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIyNmE0MTQ1MmIwMTVkNzk5Y2ExMDkwNTI5YWQwYTI2MTk1MjcwZDFlOTdiMjMwZDY5N2E3NGNjMzEzYzZhNDUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQyZTZmY2RkNGQ3Mjc0ODdlOGI4ZDdhNDM3N2YwNjJjZDFiY2U1OTQ0NGQ2ZDczYWE4OGNhNTg0OGY5NGI0ZTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVmZjA4YjUzZGJiNWUzN2MzNTIxMDllODQzOGQxMmYyNzVmNWYwYTJkZjZiZWVhMWExYjYyNDYyNDI1N2ZiYzIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU1ZTI2Y2Q5MjM2NmY2MGQ4ZWQ5MmQwMjM5ZjA3ZmVmNzRjYWMxNGFhNjlhZGRmOWMyY2MwZDExZWIwMGE0NjMifQ"
         }
       ]
@@ -50,15 +50,15 @@
     },
     {
       "id": "claim_4ae67f02200d41c580d788eaee469e01",
-      "statement": "When the user clicks 'I accept' in the ConsentsGate overlay, the app calls auth.acceptConsents() which PATCHes /users with {\"consents\": []}. The permission's mergeRequest stamps the current TOS_VERSION and PP_VERSION onto latestConsents and pushes to the consents history array server-side — the client states nothing about which versions are being accepted. After the PATCH, auth.checkSession() fetches a fresh JWT via /token?renew=true then re-reads /users/me, because a JWT is a snapshot and without a fresh one the rule keeps blocking the user for the life of the old token.",
+      "statement": "When the user clicks 'I accept' in the ConsentsGate overlay, the app calls auth.acceptConsents() which PATCHes /users with {\"consents\": []}. The permission's mergeRequest stamps the current TOS_VERSION and PP_VERSION onto latestConsents and pushes to the consents history array server-side — the client states nothing about which versions are being accepted. After the PATCH, if the user is on an /auth path (e.g., login page), the component calls window.location.assign('/') to redirect to the home page. Otherwise, auth.checkSession() fetches a fresh JWT via /token?renew=true then re-reads /users/me, because a JWT is a snapshot and without a fresh one the rule keeps blocking the user for the life of the old token.",
       "evidence": [
         {
-          "resource": "repo://src/ConsentsGate.tsx#L33-L51",
-          "version": "repo-lines-v1:sha256:36821e11be376177dcd4b12efe71f864ef22254c37efae989582b05cea96fbf5:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgzNzNiNDlkMmMwMmMwMDlmY2UyODdlODFhNDE4ZGIxZTU2YzgzMDllMmJjODY5MWRiYmI5NDFkMWE0MzlkZDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyYTJjYjI1YTEyMmI0NDIyMWE2MjM0ZWM2NjBhN2I1ZmI3ZjliZGU3YjNiOWUyYjNjNTU5YTBkOTZmYWM3MzkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc2NTQwYTBhZDQwYWMzZDBjZjVmNjU3NTQ5MGY5NTI0Y2FhN2M0MTg0ZmIwZTcxYjk3ZGJlYThhMDc4YmU4MTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNhNmM4OGYyNWQyYjYxNDFiZDg4YTk2NmFkYjZiM2RmNzQxOTRmZGM3M2M5YjQ5MTM5MzliMmE1MmEzZTk5NjgifQ"
+          "resource": "repo://src/ConsentsGate.tsx#L33-L57",
+          "version": "repo-lines-v1:sha256:a7e62637e5844c7562dbfa03907a6629e301c8459e138d6620c286460dea1cb2:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgzNzNiNDlkMmMwMmMwMDlmY2UyODdlODFhNDE4ZGIxZTU2YzgzMDllMmJjODY5MWRiYmI5NDFkMWE0MzlkZDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyYTJjYjI1YTEyMmI0NDIyMWE2MjM0ZWM2NjBhN2I1ZmI3ZjliZGU3YjNiOWUyYjNjNTU5YTBkOTZmYWM3MzkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc2NTQwYTBhZDQwYWMzZDBjZjVmNjU3NTQ5MGY5NTI0Y2FhN2M0MTg0ZmIwZTcxYjk3ZGJlYThhMDc4YmU4MTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNhNmM4OGYyNWQyYjYxNDFiZDg4YTk2NmFkYjZiM2RmNzQxOTRmZGM3M2M5YjQ5MTM5MzliMmE1MmEzZTk5NjgifQ"
         },
         {
           "resource": "repo://ulabase.setup.consents.ts#L207-L222",
-          "version": "repo-lines-v1:sha256:e62c9016a0a7d66ac5836306aad21a68726ec03607573ebfc23076130c4f163e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFlZTNmNjFiYjA3MWY1OGFmZGFiMDY3ZDliMmFkNzNjNmYxOTA0OGNjMTBkZmQ1M2MwOGQ4MWZlYTQxZWU2MjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2NzdkMmYwMzFlOThiNWU5MTFjNWFkNGZiOWIyMTg2YTkzMjUyMmU4ZjQ2ZWU0MGJhYmZhZTNkYTAwZmMxMjEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk4ZDUzM2YwOTg1ZDQ1NzgwODdhOTBkMjcxNzBhMzNjYmYyNzdkNGVhZTc1NGVlYzU5ZGIyOTFlMmU3M2VjNDciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImMyMTIzNzI5N2Y0ZjQ0MGE2NWVjN2EyN2Y1YTBiYWUyYzMyMTRhN2U4MWIwNzFhMTRlNjZiMTBhYjMxMzljNjkifQ"
+          "version": "repo-lines-v1:sha256:861286d0a7802d9990f2d00992605a870a9ff1c509d0370a405c086b7f92c246:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3OTUyM2IyMmYzZmRjZWMyMTE1N2QzOTExYmVjN2U3ODYzNjI0MGY1NzNjZDg4YmMxYTYzZTQyZDczZjJkMTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFlNjczYWJkNDU3YTk3ZWVhMTdhNjAwNjJlYjBmYWVhNmJkZjA5NDg2OGNjNmI4ZjhjMGViZGEyZjYxZWQ0MmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE4OGQ2YmFiYWUzMmRmMDU0YTMyN2IxYjIyMWY2N2IzZDdlZmU5YzYwMzVmOGZmN2JmMTZlNzQyZTg3OGQzMGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijc0NDliNTZkYWQ2OTczMWRlYWFhMzc3NDFiYWUzNWM1NWVlMjY5YWI0ZWI4ZTRhZDM1ODQ4YTYwNWFkYTViNjEifQ"
         }
       ]
     },
@@ -100,19 +100,15 @@
     },
     {
       "id": "claim_3c380b0d49f44281a76e87deb179b80b",
-      "statement": "The userConsentsSchema defines latestConsents (with tos, pp, and acceptedAt as a BSON date) and consents (the history array) on the user document. Neither field is in required because registration does not write them. Two JWT claims — latestConsents/tos and latestConsents/pp — carry the versions in the token so the Guards rule can read them without a database round-trip; if either claim is missing, every authenticated user is blocked permanently.",
+      "statement": "The userConsentsSchema defines latestConsents (with tos, pp, and acceptedAt as a BSON date) and consents (the history array) on the user document. The latestConsents object has tos and pp as required fields, but the top-level latestConsents and consents fields themselves are not required because registration does not write them. Two JWT claims — latestConsents/tos and latestConsents/pp — carry the versions in the token so the Guards rule can read them without a database round-trip; if either claim is missing, every authenticated user is blocked permanently.",
       "evidence": [
         {
-          "resource": "repo://ulabase.setup.consents.ts#L162-L162",
-          "version": "repo-lines-v1:sha256:4bb93358150cc115e30752b7ebea212679a6225d930d21c0222f812c6f849702:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGJiOTMzNTgxNTBjYzExNWUzMDc1MmI3ZWJlYTIxMjY3OWE2MjI1ZDkzMGQyMWMwMjIyZjgxMmM2Zjg0OTcwMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNGJiOTMzNTgxNTBjYzExNWUzMDc1MmI3ZWJlYTIxMjY3OWE2MjI1ZDkzMGQyMWMwMjIyZjgxMmM2Zjg0OTcwMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjc4ZmI2Y2U3NGEyMmU5MTJkZmE1ZjQ0ZGY3ZGJiOTRiN2IyOWZhNmJhZGYyZGI4NmM2NmNmM2U5NGQwOWI1NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjhjMzEwZDc3OGQ4MWNiOTY5NmQxZjA0MDY1OTQ1NTliYjMwMWVlNTY2MDc1MGFjOTg4ZDk1MWU3MmQ2YWU4NiJ9"
-        },
-        {
           "resource": "repo://ulabase.setup.consents.ts#L225-L252",
-          "version": "repo-lines-v1:sha256:9d37d3e6a363b91d369e72b52f1ab716d1c3963465c87f873099c950c0eb02b0:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcyMzBhYjg1ZDg0ZDViNzI1N2RhMDQzYmFhMzIxZDQ2ZDYxZTM2MmVlMDA5MWM2NDVlMjExZmNkMDUwMjJiZWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQyZTZmY2RkNGQ3Mjc0ODdlOGI4ZDdhNDM3N2YwNjJjZDFiY2U1OTQ0NGQ2ZDczYWE4OGNhNTg0OGY5NGI0ZTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc0NDliNTZkYWQ2OTczMWRlYWFhMzc3NDFiYWUzNWM1NWVlMjY5YWI0ZWI4ZTRhZDM1ODQ4YTYwNWFkYTViNjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIyMDQ3ZmQzNjk2Zjc1ZTVkNjA4Zjc0Y2M2OGFhNmQ5OGZmZGJlMjUzMWZhMDYxMzNiOGEyMzE5NGJmMjZjOWEifQ"
+          "version": "repo-lines-v1:sha256:fc9a7e5b9cc3e06156356a28acc364a7431ddd388972afb184893906c52aa5c3:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFmMGNkYjk3MmE3YmZiN2VkMjQ2ZjlmZjY3MjM4NWU1NWY0OTY4ZmMxMTA0M2RjNWI2ODRkNTFkZmEzMWRiY2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdlY2IzZDQ5YTkyMmJhZWFhMWMyOGZhOGIxMjI3MTQ4MGNjZGFlNGZmZjQ5NmM0ZDQ2YzJmM2E2ZjM0MmRlNzAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY2OWEwN2QzNTU0Mzk1NzExZTkzNmIxYzEwMzc5NDllZjQ3NTZlODRiY2MyMDc2ZjZlMDkwNTU5NzI0ZmQxYTEifQ"
         },
         {
           "resource": "repo://ulabase.setup.consents.ts#L83-L116",
-          "version": "repo-lines-v1:sha256:699a29c1d586c6146f19c931fc3b6c857702bb9239bf464639bbfd377700f4a0:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJiM2IzMWZjM2FjZDY5Yzc0OGE5NmU5MTc3ZjBkZDU3N2NkMjJjMGU0MTNmYjllNTJlYjUyZDdlY2RjMmRhYTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFhMWQxYTYzMzkwMjI5Yzc5ODM0N2U4M2EwNDA1NDQxYzk0MDAwMzUyODRhZDE2OGMxYmY2Y2RmMWQ3MGEzNzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIwOWNlNWRiN2Q5ZjhhN2FlNjVjYjhhYmI5YTU2ZDQyOTdhZDFjNjE0MWJlZDViMjEyNWQzMzk0ZDUwYWFiOGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNiMDc1OTlkMDQxOTk2M2E1ZDcyZDc4OTFiYzk1YzlmOTEwYWE3MzE0MTRiYmYwOTYwNGZjNTIwOTZjMDBmODcifQ"
+          "version": "repo-lines-v1:sha256:0c1eb0885e21261089443fe9994a47a6dc0e64bef2f2c07e2bf72c5c7f86e5ef:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjljZmQwNDFhYWQzMTYyZDUxMjRkMDU4NDRmYTQ2YjVkYThlY2U4OWU2NzIxMjdkNjMzOTNkNWFjZTllNDA5OGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRkNWNkMmZiNGYzZGY4ODQ1MTUyNTViMzk1MjNmMmY4YjU0NzJiZWVhOWY1NjZmZmNhMjA0ZGI4MDI1NjEwNDEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRhN2Q1N2I1MzgyMWE0N2M0YmJmMTY2ODFmMjA1YTI2Njk4ZTE0ZDE4ZGRkY2ZhMDBhMjIxZGIyZDhhNzhlOGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVlZWNhOWFmY2U1ZjIwMzVkOTdjYjgwNGEwNjI4MmE0YTEyMjM5ZWM1YTI0YWJiNmFlZmVlNzAzZTQ4YjhjODIifQ"
         }
       ]
     },
@@ -125,7 +121,7 @@
           "version": "repo-lines-v1:sha256:3e4f4b70a4e8929755b808a37228a83a4c1436da50970b7bf96b77daeee16a7c:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVhZjIyY2YwNzMyNTkyYzI0NzE0MWNiZTYxZWZhMTEwMTI2MTJmNWEzMTIyYjlhZjliYmFmNTJmNTcyNGQxOTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUwZmZhOTY1YTE2NjZiMDdhM2NlNmI4ODMyY2U2NDQyZTYwOTYzZDRhNWEwMzQ0M2Q4NDVlZDhlMTExMDcxNWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImYxNzE2MzE1MzE1MGYwYzA0YjhiM2ZkMjExYzE1YzEwNGU0NzdiOTg0MTBlYzY5OTI1NGE5OGFmZTI0Y2Y2MTAifQ"
         },
         {
-          "resource": "repo://ulabase.setup.consents.ts#L167-L172",
+          "resource": "repo://ulabase.setup.consents.ts#L168-L173",
           "version": "repo-lines-v1:sha256:610c188dad9ddc915774cae1d8b516b347a4703b4b59249c81908246b5984dda:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmJkYWE1MTg3MDA1YjI0NGEzODcyZjRjOWI5NjZlYjE2ZjVjYWQxMmY2NzdlYTRlNWE3Mzk1MDliYzRjODZhNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGMyYzc2MWMwYTIyMjFhYTc5YzcwNTk2NjVkNWRjMjc4NTFjZDkzYmFmNTg4N2QwZjNjNjcwMmI2YmZmYWIxYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDdhNmMzNWUxNWMzNDk3ZTc0MmJiZGYyZGM5OGI2MTRlYjY0NWI2ZjNjOWJmMjIxNzM2ODk5MjY0YzQxYWEwMCJ9"
         }
       ]
@@ -169,8 +165,8 @@
       "statement": "The invitation acceptance page (/invitations/accept, no auth guard) handles three flows. Flow 1 (missing email/token params): shows 'Invalid invitation link'. Flow 2 (new user, invitation.isNewUser === true): shows 'Join {teamName}' heading with password form, submit calls auth.activate({email, token, password}) which creates account and accepts invitation. Flow 3 (existing user): if already logged in shows 'Join {teamName}' with one-click 'Join team' button calling auth.acceptInvite(token); if not logged in shows 'Log in to join {teamName}' with password form, submit calls auth.login then auth.acceptInvite. Error codes: 404 → 'This invitation is invalid or has expired.', 401 → 'Invalid password.'",
       "evidence": [
         {
-          "resource": "repo://src/pages/invitations/accept/Accept.tsx#L1-L190",
-          "version": "repo-lines-v1:sha256:6d296c5bfb37c737e296164cfc49e28c1234cbab598eb6f386f3420c370c720f:eyJzZWxlY3RlZExpbmVDb3VudCI6MTkwLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIyNTU4YjY3NzM0ZjQwZjMzMjcyN2Q3ODg4MGJjNzc2NTc0Mzg5OTNlYTI3OTMxODg5ZDBlNzE0OGMwOTYwMDY4IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI0MTJjYTM0NWNjZjc1YmY5YzA4MDZiY2U2OTViZThkZTgwOGI3OTk4NDI1MWE3YTU0ZDIwMmNmNjEwMWRkNDUxIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+          "resource": "repo://src/pages/invitations/accept/Accept.tsx#L1-L202",
+          "version": "repo-lines-v1:sha256:713fa8275e9a9ac92808c7ca3afdc013701cc2a791858552a7c721b2438e706a:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAyLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIyNTU4YjY3NzM0ZjQwZjMzMjcyN2Q3ODg4MGJjNzc2NTc0Mzg5OTNlYTI3OTMxODg5ZDBlNzE0OGMwOTYwMDY4IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI0MTJjYTM0NWNjZjc1YmY5YzA4MDZiY2U2OTViZThkZTgwOGI3OTk4NDI1MWE3YTU0ZDIwMmNmNjEwMWRkNDUxIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
         }
       ]
     },
@@ -179,14 +175,14 @@
       "statement": "The team detail page (/teams/:id, guarded by AuthGuard) provides full team management gated by team.role === 'owner'. Owners can: change member roles (member ↔ owner) via auth.updateMemberRole, remove members with confirmation via auth.removeMember, invite new members with email/role selection via auth.invite (409 → 'This person is already a member of your team.'), resend pending invitations with a 5-minute cooldown, edit team name/description via auth.updateTeam, and delete the team (only possible while no other members remain) via auth.deleteTeam. All data loads on mount via auth.loadTeams(), auth.listTeamMembers(), and auth.listInvitations().",
       "evidence": [
         {
-          "resource": "repo://src/pages/teams/detail/TeamDetail.tsx#L1-L391",
-          "version": "repo-lines-v1:sha256:92b490c66571effb96e4127246be53953e7c819bc8c5b5227b73f248ec0a5e50:eyJzZWxlY3RlZExpbmVDb3VudCI6MzkxLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIyYzQ4M2NlN2MyNWJjNDYwMjI5MzI4ZmRlMTQ5Y2YzODNmYmFlZmMwMWY2YjUzNTgwMTg2MGZhNTA0MTNkMWQ4IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI0MTJjYTM0NWNjZjc1YmY5YzA4MDZiY2U2OTViZThkZTgwOGI3OTk4NDI1MWE3YTU0ZDIwMmNmNjEwMWRkNDUxIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+          "resource": "repo://src/pages/teams/detail/TeamDetail.tsx#L1-L393",
+          "version": "repo-lines-v1:sha256:e76288e0639dfee9798541f738d13f984136f00301beb1c28379dba11cb11f68:eyJzZWxlY3RlZExpbmVDb3VudCI6MzkzLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIyYzQ4M2NlN2MyNWJjNDYwMjI5MzI4ZmRlMTQ5Y2YzODNmYmFlZmMwMWY2YjUzNTgwMTg2MGZhNTA0MTNkMWQ4IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI0MTJjYTM0NWNjZjc1YmY5YzA4MDZiY2U2OTViZThkZTgwOGI3OTk4NDI1MWE3YTU0ZDIwMmNmNjEwMWRkNDUxIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
         }
       ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.2",
-    "at": "2026-10-11T09:48:33.884Z"
+    "at": "2026-10-13T10:18:51.278Z"
   }
 }

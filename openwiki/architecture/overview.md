@@ -5,7 +5,7 @@ description: Runtime architecture of the Ulabase React starter — component tre
 tags: [architecture, react, auth, routing, ulabase, consents]
 verified:
   - by: openwiki/0.7.2
-    at: 2026-10-11T09:48:33.884Z
+    at: 2026-10-13T10:18:51.278Z
 sources:
   - id: openwiki-source-54631e6ebf1d3b815c4a5eed
     resource: repo://src/App.tsx
@@ -15,7 +15,7 @@ sources:
     resource: repo://src/ConsentsGate.tsx
   - id: openwiki-source-95bfccfd0c712f6e72040e0d
     resource: repo://src/main.tsx
-generated: { by: "openwiki/0.6.1", at: "2026-10-01T12:12:11.534Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-13T10:18:51.278Z" }
 ---
 
 # Architecture Overview
@@ -146,8 +146,10 @@ Because session restoration errors are absorbed by the provider, `consentsOnErro
 On mount, it subscribes to `consents-signal`. When `blocked` is `true`, it replaces the entire app with an overlay presenting:
 
 1. Checkboxes for Terms of Service and Privacy Policy
-2. An "I accept" button that calls `auth.acceptConsents()` then `auth.checkSession()` to reload the session with a fresh token
-3. A "Sign out" button that clears the blocked flag and logs out
+2. An "I accept" button that calls `auth.acceptConsents()`, then branches based on the current URL:
+   - If the user is on an auth page (e.g. `/auth/login`), the gate redirects to `/` via `window.location.assign('/')` — the login itself was refused with 451, so the app must restart from its home
+   - Otherwise, it calls `auth.checkSession()` to reload the session with a fresh token and clears the blocked flag
+3. A "Sign out" button that clears the blocked flag and calls `auth.logout()`
 
 The overlay is user experience, not enforcement: removing it with devtools does not bypass the server rule. Bumping document versions in the Guards rule requires no client change — the server decides what is being accepted.
 
