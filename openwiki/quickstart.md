@@ -20,10 +20,10 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-11T09:48:33.884Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-13T10:18:51.278Z" }
 verified:
   - by: openwiki/0.7.2
-    at: 2026-10-11T09:48:33.884Z
+    at: 2026-10-13T10:18:51.278Z
 ---
 
 # Ulabase Starter — React
@@ -228,15 +228,15 @@ public/
 
 ## Key Dependencies
 
-| Package | Role |
-|---------|------|
-| `@ulabase/kit-react` | Auth provider (`RhAuthProvider`), guards (`AuthGuard`, `PublicGuard`), `useAuth()` hook, token management |
-| `@ulabase/cli` | `ulabase` CLI for declarative service setup (`ulabase setup --srv <srvId>`) |
-| `react` | UI framework |
-| `react-dom` | React renderer for the web |
-| `react-router-dom` | Routing with `useRoutes`, lazy loading, nested routes |
-| `vite` | Build tool and dev server |
-| `vitest` | Test runner |
+| Package | Version | Role |
+|---------|---------|------|
+| `@ulabase/kit-react` | `^0.13.5` | Auth provider (`RhAuthProvider`), guards (`AuthGuard`, `PublicGuard`), `useAuth()` hook, token management |
+| `@ulabase/cli` | `^0.13.5` | `ulabase` CLI for declarative service setup (`ulabase setup --srv <srvId>`) |
+| `react` | `^18.3.0` | UI framework |
+| `react-dom` | `^18.3.0` | React renderer for the web |
+| `react-router-dom` | `^6.28.0` | Routing with `useRoutes`, lazy loading, nested routes |
+| `vite` | `^6.0.0` | Build tool and dev server |
+| `vitest` | `^2.0.0` | Test runner |
 
 **Note:** `@ulabase/kit` (framework-agnostic API client) is a dependency of `@ulabase/kit-react`
 and not listed directly in `package.json`.

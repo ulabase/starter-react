@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:9f1db3bd58a2ede77bb157b88429117c69de6ba63cd92d947315f9d6f726ed00",
+  "pageVersion": "sha256:247ff5b6360b6e722d85c1536560d1378ea50a90bafe967bed2b7936d90c839e",
   "claims": [
     {
       "id": "claim_c0158fe178064765990945c6330a9725",
@@ -8,7 +8,7 @@
       "evidence": [
         {
           "resource": "repo://src/environments/environment.ts",
-          "version": "repo-file-v1:sha256:0cea2f727b907ce72365ad342421d31ef07e6b7f09e14a602c39ac574bfa8868"
+          "version": "repo-file-v1:sha256:0b2fba9c71fd1b63438cbadf37ac7d0e703467000d83ce4857c4f401ba517d4e"
         }
       ]
     },
@@ -74,7 +74,7 @@
         },
         {
           "resource": "repo://ulabase.setup.consents.ts",
-          "version": "repo-file-v1:sha256:5045db53ddd5ba2f5cb383e88a3c32ae23c9143459fc4a73bf9228d45f460d9e"
+          "version": "repo-file-v1:sha256:a3927098bf6606155684d12052f58e4eff4006bbdd6099aed9574b6547484b2f"
         }
       ]
     },
@@ -92,7 +92,7 @@
         },
         {
           "resource": "repo://ulabase.setup.consents.ts",
-          "version": "repo-file-v1:sha256:5045db53ddd5ba2f5cb383e88a3c32ae23c9143459fc4a73bf9228d45f460d9e"
+          "version": "repo-file-v1:sha256:a3927098bf6606155684d12052f58e4eff4006bbdd6099aed9574b6547484b2f"
         }
       ]
     },
@@ -106,13 +106,13 @@
         },
         {
           "resource": "repo://ulabase.setup.consents.ts",
-          "version": "repo-file-v1:sha256:5045db53ddd5ba2f5cb383e88a3c32ae23c9143459fc4a73bf9228d45f460d9e"
+          "version": "repo-file-v1:sha256:a3927098bf6606155684d12052f58e4eff4006bbdd6099aed9574b6547484b2f"
         }
       ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.2",
-    "at": "2026-10-11T09:48:33.884Z"
+    "at": "2026-10-13T10:18:51.278Z"
   }
 }

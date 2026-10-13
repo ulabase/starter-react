@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:d9e34424c5c3d7585aa667734921d786d2da8dc8fe0a8737f38a92bcac429054",
+  "pageVersion": "sha256:2e6db755205a2651197bc37fa6e8487e3a3bebd76838946b6d19a854b492e36f",
   "claims": [
     {
       "id": "claim_849550fdee20463596e55e9d5c58103c",
@@ -12,7 +12,7 @@
         },
         {
           "resource": "repo://src/ConsentsGate.tsx",
-          "version": "repo-file-v1:sha256:cbd8a1379282e54d8414e484864acbe523f56b8655da560f542d81d204a3d705"
+          "version": "repo-file-v1:sha256:8216a69df1b1aae7e08d4f2c459bf7b643e2d365d7d81ec4a732302b3b9b101a"
         },
         {
           "resource": "repo://src/consents-signal.ts",
@@ -26,11 +26,11 @@
       "evidence": [
         {
           "resource": "repo://ulabase.setup.consents.ts",
-          "version": "repo-file-v1:sha256:5045db53ddd5ba2f5cb383e88a3c32ae23c9143459fc4a73bf9228d45f460d9e"
+          "version": "repo-file-v1:sha256:a3927098bf6606155684d12052f58e4eff4006bbdd6099aed9574b6547484b2f"
         },
         {
           "resource": "repo://ulabase.setup.ts",
-          "version": "repo-file-v1:sha256:2e8a0ad06949be356d916ffeebe81191320cd900e99e327630f95fb0e0cad442"
+          "version": "repo-file-v1:sha256:419eafb71fed2ac47ce718189ddcc56ce158d43c2b720f30f78d4f3f82f26557"
         }
       ]
     },
@@ -40,17 +40,17 @@
       "evidence": [
         {
           "resource": "repo://package.json",
-          "version": "repo-file-v1:sha256:73219b6286c52c0505a21585a65fc6a1d94bd03126ee1e74aaf7024e36abd528"
+          "version": "repo-file-v1:sha256:084c5f72b004c3dea14bf63372e0df7d2a768c47d7771324033cf58b62d7afe7"
         }
       ]
     },
     {
       "id": "claim_0479a286d5e54a6e821f1845c9a082bd",
-      "statement": "The environment.ts configuration file defines apiUrl for the Ulabase service URL and features object for feature flags that control which authentication flows are enabled. A source comment on apiUrl still references the old restheart.com domain, but the value itself is left empty for the user to fill in.",
+      "statement": "The environment.ts configuration file defines apiUrl for the Ulabase service URL and features object for feature flags that control which authentication flows are enabled. The apiUrl value is left empty by default so the app shows the setup wizard; the comment now correctly references the ulabase.app domain.",
       "evidence": [
         {
           "resource": "repo://src/environments/environment.ts",
-          "version": "repo-file-v1:sha256:0cea2f727b907ce72365ad342421d31ef07e6b7f09e14a602c39ac574bfa8868"
+          "version": "repo-file-v1:sha256:0b2fba9c71fd1b63438cbadf37ac7d0e703467000d83ce4857c4f401ba517d4e"
         }
       ]
     },
@@ -59,14 +59,14 @@
       "statement": "The ConfigPage.tsx setup wizard guides users through a 3-step flow when apiUrl is invalid or empty: (1) create a free service at ulabase.com, (2) run `npx ulabase login` and `npx ulabase setup --srv <id>` from the project folder to configure the service and write its URL into environment.ts, (3) reload the app.",
       "evidence": [
         {
-          "resource": "repo://src/ConfigPage.tsx#L29-L57",
-          "version": "repo-lines-v1:sha256:99ba632cbab7caae0a99a7b8e7a4e62cc487cf966d455c026e07185112e3f664:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgzMzY5NTFjOWVlMDlmNTdmNDY3NzFkNWYyZjhiZjliMzA2NzgwYmFhZjg0MmU4NzFlZjkwYThmNjQ2YzNlYjciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZkNTMyZDQ5ZmMxYmI3N2ZlYTg5MDRhNDc4ODZmMTMxY2U3MmFkNDVmZjAwMzQyMzMzNGY2MTdiMjhlMmZkZjgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc0OWU5M2I1MzcxNTc4NzkwMTZjYTdiZmUwYTM2ZjBlYWFhZjBkODI3MzQyODYwOGYxNDYwYTI0OTY3Y2UwMmYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI4MmJiMTgxYmYwZmFhODlhZDU2ZGQyN2Q1M2I1YTZmY2JlZTZmOWNiYmRkNzcxM2RkYjFjNTM1ZThkZmJmMzAifQ"
+          "resource": "repo://src/ConfigPage.tsx",
+          "version": "repo-file-v1:sha256:dcb3278f56208d7de1a04b95d7be546c2a1bf560c11beccf8e5c0da3348ffb46"
         }
       ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.2",
-    "at": "2026-10-11T09:48:33.884Z"
+    "at": "2026-10-13T10:18:51.278Z"
   }
 }

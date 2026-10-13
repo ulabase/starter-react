@@ -28,10 +28,10 @@ sources:
     resource: repo://src/routes.tsx
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-11T09:48:33.884Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-13T10:18:51.278Z" }
 verified:
   - by: openwiki/0.7.2
-    at: 2026-10-11T09:48:33.884Z
+    at: 2026-10-13T10:18:51.278Z
 ---
 
 # Auth & Teams
@@ -219,7 +219,7 @@ Crucially, `/users/me` is **not** excluded. Blocking it is what makes the gate w
 
 The permission on `PATCH /users/{userId}` uses a `mergeRequest` to stamp the versions and timestamp server-side — the client sends `{"consents": []}` and states nothing about which versions are being accepted.
 
-The schema (`userConsentsSchema`) defines `latestConsents` (with `tos`, `pp`, and `acceptedAt`) and `consents` (the history array). Neither field is in `required` because registration does not write them.
+The schema (`userConsentsSchema`) defines `latestConsents` (with `tos`, `pp`, and `acceptedAt`) and `consents` (the history array). The `latestConsents` object has `tos` and `pp` as required fields, but the top-level `latestConsents` and `consents` fields themselves are not required because registration does not write them.
 
 Two JWT claims — `latestConsents/tos` and `latestConsents/pp` — carry the versions in the token so the rule can read them without a database round-trip. If either claim is missing, every authenticated user is blocked permanently.
 
@@ -255,6 +255,8 @@ When the user clicks "I accept", the component calls:
 1. **`auth.acceptConsents()`** — PATCHes `/users` with `{"consents": []}`. The permission's `mergeRequest` stamps the current `TOS_VERSION` and `PP_VERSION` onto `latestConsents` and pushes to the `consents` history array. Nothing in the request body states which versions are being accepted — the server decides.
 2. **`auth.checkSession()`** — fetches a fresh JWT (via `/token?renew=true`) then re-reads `/users/me` and calls `setUser()`. The renewal is not optional: a JWT is a snapshot, and without a fresh one the rule keeps blocking the user for the life of the old token.
 3. **`setBlocked(false)`** — tears down the overlay so the app renders with the new session.
+
+**Special case:** If the user is on an `/auth` path (e.g., login page), the component calls `window.location.assign('/')` instead of `auth.checkSession()`. This redirects the user to the app's home page after accepting consents, because the login page was blocked by the 451 error and the user never successfully authenticated.
 
 If the PATCH or renewal fails, a "We could not record your acceptance" error is shown; the user can retry.
 
@@ -299,17 +301,21 @@ sequenceDiagram
     Gate->>RAP: auth.acceptConsents()
     RAP->>API: PATCH /users with consents
     API-->>RAP: 200 OK (versions stamped by mergeRequest)
-    Gate->>RAP: auth.checkSession()
-    RAP->>API: GET /token?renew=true
-    API-->>RAP: fresh JWT with consent claims
-    RAP->>API: GET /users/me
-    API-->>RAP: 200 OK (user profile)
+    alt On /auth path (e.g., login page)
+        Gate->>Gate: window.location.assign("/")
+    else Not on /auth path
+        Gate->>RAP: auth.checkSession()
+        RAP->>API: GET /token?renew=true
+        API-->>RAP: fresh JWT with consent claims
+        RAP->>API: GET /users/me
+        API-->>RAP: 200 OK (user profile)
+    end
     Gate->>Signal: setBlocked(false)
     Signal->>Gate: listener notified
     Gate->>Gate: overlay removed, children rendered
 ```
 
-End-to-end consents flow: from app load through session restoration, 451 interception, acceptance, token renewal, and overlay teardown.
+End-to-end consents flow: from app load through session restoration, 451 interception, acceptance, token renewal, and overlay teardown. The diagram shows the special case for users on `/auth` paths who are redirected to the home page after accepting consents.
 
 ## Feature Flags
 
