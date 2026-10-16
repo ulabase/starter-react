@@ -1,5 +1,7 @@
 # Ulabase Starter — React
 
+[![CLA assistant](https://cla-assistant.io/readme/badge/ulabase/starter-react)](https://cla-assistant.io/ulabase/starter-react)
+
 A React app with sign-up, login, Google and GitHub sign-in, email verification, password reset,
 teams and invitations — working, not sketched. Clone it, point it at a free service, and you have
 the boring half of an application already done.
