@@ -20,10 +20,10 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-13T10:18:51.278Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-17T07:37:51.172Z" }
 verified:
   - by: openwiki/0.7.2
-    at: 2026-10-13T10:18:51.278Z
+    at: 2026-10-17T07:37:51.172Z
 ---
 
 # Source Map
@@ -34,7 +34,7 @@ Complete inventory of repository source files. Each entry links to the page wher
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `package.json` | Project metadata, dependencies (`@ulabase/kit-react`, `react`, `react-router-dom`), dev dependencies (`@ulabase/cli`, `typescript`, `vite`, `vitest`), scripts (`dev`, `build`, `preview`, `test`) | [Operations](operations/runbook.md) |
+| `package.json` | Project metadata, dependencies (`@ulabase/kit-react` ^0.13.6, `react` ^18.3.0, `react-dom` ^18.3.0, `react-router-dom` ^6.28.0), dev dependencies (`@ulabase/cli` ^0.13.6, `typescript` ~5.6.0, `vite` ^6.0.0, `vitest` ^2.0.0), scripts (`dev`, `build`, `preview`, `test`) | [Operations](operations/runbook.md) |
 | `package-lock.json` | Lockfile — do not edit manually | — |
 | `tsconfig.json` | TypeScript config: ES2020 target, ESNext modules, strict mode, JSX React, `noEmit` (Vite compiles) | — |
 | `vite.config.ts` | Vite config: minimal — just the `@vitejs/plugin-react` plugin | [Testing](testing/guidance.md) |
@@ -47,7 +47,7 @@ Complete inventory of repository source files. Each entry links to the page wher
 | File | Purpose | See Also |
 |------|---------|----------|
 | `src/main.tsx` | React root creation. Renders `<StrictMode>` → `<BrowserRouter>` → `<RhAuthProvider>` → `<App />`. Imports `styles.css`. | [Architecture](architecture/overview.md) |
-| `src/App.tsx` | Fragment token capture on mount, API URL validation gate, renders `ConfigPage` or route tree via `useRoutes()` | [Architecture](architecture/overview.md) |
+| `src/App.tsx` | Fragment token capture on mount, API URL validation gate, renders `ConfigPage` or route tree via `useRoutes()` wrapped in `<ConsentsGate>` | [Architecture](architecture/overview.md) |
 | `src/ConfigPage.tsx` | Setup wizard shown when `apiUrl` is invalid. 3-step guided flow: (1) create a free service at `ulabase.com`, (2) run `npx ulabase login` and `npx ulabase setup --srv <id>` from this folder, (3) reload the app. | [Operations](operations/runbook.md) |
 | `src/routes.tsx` | Route definitions as `RouteObject[]`. Lazy-loaded components, feature-flag conditional inclusion, `AuthGuard`/`PublicGuard` wrappers. | [Architecture](architecture/overview.md) |
 
