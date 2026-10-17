@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:e25edc2a95be0c4e63664fbf0e507b2d5a5db56ff3176827427c9af5dd62863b",
+  "pageVersion": "sha256:1c87800d73d2b938ad5640faded95ccf07ce76225af6ecbe01d3e1d3047c4d95",
   "claims": [
     {
       "id": "claim_60d379bfef654ae3bb1cc011f1f6a29f",
       "statement": "Two setup files exist: ulabase.setup.ts configures accounts, feature flags, Google OAuth, and origin allowlist; ulabase.setup.consents.ts extends it by importing it and appending user schema, consent permission, JWT claims, and a Guards rule (451). Both are idempotent check-then-apply via the ulabase CLI.",
       "evidence": [
         {
-          "resource": "repo://README.md#L43-L68",
+          "resource": "repo://README.md#L45-L70",
           "version": "repo-lines-v1:sha256:5696bfc4f37b3b99d5a96013ea25f75ce85d823908fb5f0a2704e30572563fc1:eyJzZWxlY3RlZExpbmVDb3VudCI6MjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNhYTljY2IxMzIzN2MyNzllODE2NWFlMzk4YTQ1ZWE5YzhkZmI0M2JjN2E3Zjc2NTJhYjdjYmVlMjRlNTExMWUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIwNzJjMjczYTFmODQ4MWIxMWQxYzUwYjIyZDM2YjY2MGViNDJjN2M0NjZjMjRlNzVlZTc3NzNiNjliNTU5MzkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE2YTk3ZjgxZDA2M2JkNmM1ZGMyZGExYzdiYjdkMDVmYmQyNmY2ZDk5NWU4NTVjMmYzMGVjMGI2ZTJlYjQzNjAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNiYTQ2ZWFlMzYwMThhOGI0YjMwYzU0YTdiMTRlZTE0MDNjMTdmY2MyMjU3YThjNzY4YjY2MDU5NWIxODE2MmYifQ"
         },
         {
@@ -96,7 +96,7 @@
       "evidence": [
         {
           "resource": "repo://package.json#L21-L21",
-          "version": "repo-lines-v1:sha256:c8e7ff7a04b9d6d9caa444e5779d4abd95a73f55ad10594c52bdf468ef06c7fb:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzhlN2ZmN2EwNGI5ZDZkOWNhYTQ0NGU1Nzc5ZDRhYmQ5NWE3M2Y1NWFkMTA1OTRjNTJiZGY0NjhlZjA2YzdmYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzhlN2ZmN2EwNGI5ZDZkOWNhYTQ0NGU1Nzc5ZDRhYmQ5NWE3M2Y1NWFkMTA1OTRjNTJiZGY0NjhlZjA2YzdmYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTQzNWM3ZGE5NmJmOGNjMWNlMmYyNmViMDJlYWUxNGIwN2JiOTE0MmViNjUzZWNkNTMxMjVkNDAwZjUwNGYyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjg2NzA0MTE5YjA2ODQ1N2Y1MWM4YTBkYmQ0MGJhYWRiZjUxYWY4MzNjZmU1MzMxZjlkMTA1OThjOTg2ZDAwNiJ9"
+          "version": "repo-lines-v1:sha256:ba5a99638413145f9e546ce9cda06b1fe229d20c63985b23dd6d8d1e626ece53:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmE1YTk5NjM4NDEzMTQ1ZjllNTQ2Y2U5Y2RhMDZiMWZlMjI5ZDIwYzYzOTg1YjIzZGQ2ZDhkMWU2MjZlY2U1MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYmE1YTk5NjM4NDEzMTQ1ZjllNTQ2Y2U5Y2RhMDZiMWZlMjI5ZDIwYzYzOTg1YjIzZGQ2ZDhkMWU2MjZlY2U1MyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTQzNWM3ZGE5NmJmOGNjMWNlMmYyNmViMDJlYWUxNGIwN2JiOTE0MmViNjUzZWNkNTMxMjVkNDAwZjUwNGYyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjg2NzA0MTE5YjA2ODQ1N2Y1MWM4YTBkYmQ0MGJhYWRiZjUxYWY4MzNjZmU1MzMxZjlkMTA1OThjOTg2ZDAwNiJ9"
         },
         {
           "resource": "repo://ulabase.setup.ts#L1-L8",
@@ -159,7 +159,7 @@
       "statement": "OAuth providers can be extended beyond Google by adding entries to the oauthProviders array (e.g., 'github') and running setup with the provider's credentials. The OAuthButtons component supports 'google' | 'github' | (string & {}) types.",
       "evidence": [
         {
-          "resource": "repo://README.md#L3-L3",
+          "resource": "repo://README.md#L5-L5",
           "version": "repo-lines-v1:sha256:01f4ca849911e3a18dd7dd629e0889acdf4ee1c06b1a4527fa32c6d6e5258d7e:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFmNGNhODQ5OTExZTNhMThkZDdkZDYyOWUwODg5YWNkZjRlZTFjMDZiMWE0NTI3ZmEzMmM2ZDZlNTI1OGQ3ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFmNGNhODQ5OTExZTNhMThkZDdkZDYyOWUwODg5YWNkZjRlZTFjMDZiMWE0NTI3ZmEzMmM2ZDZlNTI1OGQ3ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjIsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGJiYTFlNDFkMTI5MTliOTMwODhiZDFkMmUyZDE0MTNlNzc3OWNkYTlkOGM0YjNjNDA4M2Y3NTM1ZmQ1NmE1OSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWY0NDEwODcxMGI0ZDZmMWYwZjcyZWUyMGRmN2Q5NjU1MDlkMjJkYzczOWJlZDRlNDRiMWUzZjFiZjBjYWE4MSJ9"
         },
         {
@@ -174,17 +174,17 @@
     },
     {
       "id": "claim_d5d58068bb2d45ba89b52f4f7779cd43",
-      "statement": "Key direct dependencies are @ulabase/kit-react (^0.13.5), react (^18.3.0), react-dom (^18.3.0), react-router-dom (^6.28.0). Key devDependencies are vite (^6.0.0), vitest (^2.0.0), and @ulabase/cli (^0.13.5). The framework-agnostic @ulabase/kit is a transitive dependency of @ulabase/kit-react.",
+      "statement": "Key direct dependencies are @ulabase/kit-react (^0.13.6), react (^18.3.0), react-dom (^18.3.0), react-router-dom (^6.28.0). Key devDependencies are vite (^6.0.0), vitest (^2.0.0), and @ulabase/cli (^0.13.6). The framework-agnostic @ulabase/kit is a transitive dependency of @ulabase/kit-react.",
       "evidence": [
         {
           "resource": "repo://package.json#L1-L32",
-          "version": "repo-lines-v1:sha256:084c5f72b004c3dea14bf63372e0df7d2a768c47d7771324033cf58b62d7afe7:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2ZmIwOGZkYTFhY2I5NTdiNjExNmJkMzc4MTFhMWZlNDFhMDE2MTFjMDYzMWVkYmY3ODZkNjg4OWEyN2E1NWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+          "version": "repo-lines-v1:sha256:c4d818b764b83440d6cf418df3ac497f38c0ed430e05b3572d05e0b9959645dc:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2ZmIwOGZkYTFhY2I5NTdiNjExNmJkMzc4MTFhMWZlNDFhMDE2MTFjMDYzMWVkYmY3ODZkNjg4OWEyN2E1NWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
         }
       ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.2",
-    "at": "2026-10-13T10:18:51.278Z"
+    "at": "2026-10-17T07:37:51.172Z"
   }
 }

@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:fb297453d8a6a9eb35c68f95beb5194586e6bf3e991d87dde2c4cd03f55a6b6d",
+  "pageVersion": "sha256:8cb429b202ab5bb4a0d20a93b585c8fcb91a77d5c16ba556afc9f4e221c03cce",
   "claims": [
     {
       "id": "claim_2d0ef3bdd0444d6a9bb49f8460c9ce39",
       "statement": "The ulabase CLI setup workflow is idempotent: each step checks current state before applying changes, so running it twice writes nothing.",
       "evidence": [
         {
-          "resource": "repo://README.md#L45-L47",
+          "resource": "repo://README.md#L47-L49",
           "version": "repo-lines-v1:sha256:d7c628afc98666eccf89b7a110c572db2bc293c146d8e22af8ff0eb70498e694:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTI2YWM1ZjU2NWU1ZDYyYzg5N2M5MmVhZTFmNjkwMDRhZDgxNmQ2ZWE5NjdkM2IxOWZmODdkYjBmMjQxMmRjYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjE3MjM1NjFjZjVmNGIxMTYwZWE0NDA1Njc1YjM4YTZiNTVhMWRiNjdjOWRhNTU4MGE3Yzg0NDIyY2RiNjBhMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOWRlMGQ4NmI2NmQ4Y2ViNDc0OTFkOWIwYTUyNjZmYTc5NDU4YWU2OTI3N2JmNmYwOTMyMjE0OWVhNjRmN2MxZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTZhM2I0NjQ5NmI2OGMyNWYzNTMyZGE5NDRjOWYzMTcyNTM5NjZiNzhmNjEzNGZhNzA2ZmMxYWM4ZWU1Y2JjZiJ9"
         },
         {
@@ -145,20 +145,6 @@
       ]
     },
     {
-      "id": "claim_abb142c681094e7d8055a0a2c0822b14",
-      "statement": "The ulabase CLI can be installed globally with npm install -g ulabase or as a dev dependency with npm i -D @ulabase/cli.",
-      "evidence": [
-        {
-          "resource": "repo://README.md#L37-L37",
-          "version": "repo-lines-v1:sha256:8821e6f01406d62f9c82eaa4996b1285c03872212da58efb27eea2442e17e47a:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODgyMWU2ZjAxNDA2ZDYyZjljODJlYWE0OTk2YjEyODVjMDM4NzIyMTJkYTU4ZWZiMjdlZWEyNDQyZTE3ZTQ3YSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODgyMWU2ZjAxNDA2ZDYyZjljODJlYWE0OTk2YjEyODVjMDM4NzIyMTJkYTU4ZWZiMjdlZWEyNDQyZTE3ZTQ3YSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiN2NiNmI2ODM4ZDk2NGY3MGQ5M2FjYjY4NzJiYmJiNGZmZjQyMTRhMWQ0NDE4OWNhYzhjMTY3YTUyNGE4M2VlYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMThiMGYxMDg3YTU2NTVlODVhNTI4NjQyYWZhYTNjZjNiOWIyZWFmYzRmZmFiMDVmMmQ0MDUyM2JkYjQ2MzQ5OSJ9"
-        },
-        {
-          "resource": "repo://package.json#L21-L21",
-          "version": "repo-lines-v1:sha256:c8e7ff7a04b9d6d9caa444e5779d4abd95a73f55ad10594c52bdf468ef06c7fb:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzhlN2ZmN2EwNGI5ZDZkOWNhYTQ0NGU1Nzc5ZDRhYmQ5NWE3M2Y1NWFkMTA1OTRjNTJiZGY0NjhlZjA2YzdmYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzhlN2ZmN2EwNGI5ZDZkOWNhYTQ0NGU1Nzc5ZDRhYmQ5NWE3M2Y1NWFkMTA1OTRjNTJiZGY0NjhlZjA2YzdmYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTQzNWM3ZGE5NmJmOGNjMWNlMmYyNmViMDJlYWUxNGIwN2JiOTE0MmViNjUzZWNkNTMxMjVkNDAwZjUwNGYyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjg2NzA0MTE5YjA2ODQ1N2Y1MWM4YTBkYmQ0MGJhYWRiZjUxYWY4MzNjZmU1MzMxZjlkMTA1OThjOTg2ZDAwNiJ9"
-        }
-      ]
-    },
-    {
       "id": "claim_fcbd36f514c14c4dadc6a676ac5e56b3",
       "statement": "Google OAuth credential setup uses isRedacted() to detect already-stored secrets and only reads from environment variables when credentials are not already present.",
       "evidence": [
@@ -197,14 +183,28 @@
       "statement": "A different, retired tool of the same name 'ulabase' may be first in PATH, causing unexpected behavior; type -a ulabase shows both.",
       "evidence": [
         {
-          "resource": "repo://README.md#L105-L105",
+          "resource": "repo://README.md#L107-L107",
           "version": "repo-lines-v1:sha256:154b7911c8402faa7e8653a16d6b85513f62dbc3a057cc0d583cf3025c465677:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTU0Yjc5MTFjODQwMmZhYTdlODY1M2ExNmQ2Yjg1NTEzZjYyZGJjM2EwNTdjYzBkNTgzY2YzMDI1YzQ2NTY3NyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTU0Yjc5MTFjODQwMmZhYTdlODY1M2ExNmQ2Yjg1NTEzZjYyZGJjM2EwNTdjYzBkNTgzY2YzMDI1YzQ2NTY3NyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2RlOTExYTIxNzcwNjU4YjMzMTIwNzc4Mzc5YTgwYTY5ZmQwNzQ2YTliOGJiNjhiM2Q3NGYyYTMxOGNjZTEyOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTNjZWVlOWNlZjE2MGVjMTFhN2Y3MjYyZjAyNjIyZjYzMjUyODJjMWRhMGM5MGY1YzY5MTkyZDVkYTRmNjc5MSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_add959d4e88a4b77a61de717cb9281a0",
+      "statement": "The ulabase CLI can be installed globally with npm install -g ulabase or as a dev dependency with npm i -D @ulabase/cli.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L39-L39",
+          "version": "repo-lines-v1:sha256:8821e6f01406d62f9c82eaa4996b1285c03872212da58efb27eea2442e17e47a:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODgyMWU2ZjAxNDA2ZDYyZjljODJlYWE0OTk2YjEyODVjMDM4NzIyMTJkYTU4ZWZiMjdlZWEyNDQyZTE3ZTQ3YSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODgyMWU2ZjAxNDA2ZDYyZjljODJlYWE0OTk2YjEyODVjMDM4NzIyMTJkYTU4ZWZiMjdlZWEyNDQyZTE3ZTQ3YSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiN2NiNmI2ODM4ZDk2NGY3MGQ5M2FjYjY4NzJiYmJiNGZmZjQyMTRhMWQ0NDE4OWNhYzhjMTY3YTUyNGE4M2VlYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMThiMGYxMDg3YTU2NTVlODVhNTI4NjQyYWZhYTNjZjNiOWIyZWFmYzRmZmFiMDVmMmQ0MDUyM2JkYjQ2MzQ5OSJ9"
+        },
+        {
+          "resource": "repo://package.json#L21-L21",
+          "version": "repo-lines-v1:sha256:ba5a99638413145f9e546ce9cda06b1fe229d20c63985b23dd6d8d1e626ece53:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmE1YTk5NjM4NDEzMTQ1ZjllNTQ2Y2U5Y2RhMDZiMWZlMjI5ZDIwYzYzOTg1YjIzZGQ2ZDhkMWU2MjZlY2U1MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYmE1YTk5NjM4NDEzMTQ1ZjllNTQ2Y2U5Y2RhMDZiMWZlMjI5ZDIwYzYzOTg1YjIzZGQ2ZDhkMWU2MjZlY2U1MyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTQzNWM3ZGE5NmJmOGNjMWNlMmYyNmViMDJlYWUxNGIwN2JiOTE0MmViNjUzZWNkNTMxMjVkNDAwZjUwNGYyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjg2NzA0MTE5YjA2ODQ1N2Y1MWM4YTBkYmQ0MGJhYWRiZjUxYWY4MzNjZmU1MzMxZjlkMTA1OThjOTg2ZDAwNiJ9"
         }
       ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.2",
-    "at": "2026-10-13T10:18:51.278Z"
+    "at": "2026-10-17T07:37:51.172Z"
   }
 }

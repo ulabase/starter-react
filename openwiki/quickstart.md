@@ -20,10 +20,10 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-13T10:18:51.278Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-17T07:37:51.172Z" }
 verified:
   - by: openwiki/0.7.2
-    at: 2026-10-13T10:18:51.278Z
+    at: 2026-10-17T07:37:51.172Z
 ---
 
 # Ulabase Starter — React
@@ -230,8 +230,8 @@ public/
 
 | Package | Version | Role |
 |---------|---------|------|
-| `@ulabase/kit-react` | `^0.13.5` | Auth provider (`RhAuthProvider`), guards (`AuthGuard`, `PublicGuard`), `useAuth()` hook, token management |
-| `@ulabase/cli` | `^0.13.5` | `ulabase` CLI for declarative service setup (`ulabase setup --srv <srvId>`) |
+| `@ulabase/kit-react` | `^0.13.6` | Auth provider (`RhAuthProvider`), guards (`AuthGuard`, `PublicGuard`), `useAuth()` hook, token management |
+| `@ulabase/cli` | `^0.13.6` | `ulabase` CLI for declarative service setup (`ulabase setup --srv <srvId>`) |
 | `react` | `^18.3.0` | UI framework |
 | `react-dom` | `^18.3.0` | React renderer for the web |
 | `react-router-dom` | `^6.28.0` | Routing with `useRoutes`, lazy loading, nested routes |
