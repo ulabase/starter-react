@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:247ff5b6360b6e722d85c1536560d1378ea50a90bafe967bed2b7936d90c839e",
+  "pageVersion": "sha256:f58a66928d083daa3352498a8c214379b1972af1676012003c17067e9af43735",
   "claims": [
     {
       "id": "claim_c0158fe178064765990945c6330a9725",
@@ -74,7 +74,7 @@
         },
         {
           "resource": "repo://ulabase.setup.consents.ts",
-          "version": "repo-file-v1:sha256:a3927098bf6606155684d12052f58e4eff4006bbdd6099aed9574b6547484b2f"
+          "version": "repo-file-v1:sha256:d1c8ddf4cc38c98cc5e899942fe43c88846bf59e3df93d446fb506e01238b8b6"
         }
       ]
     },
@@ -92,7 +92,7 @@
         },
         {
           "resource": "repo://ulabase.setup.consents.ts",
-          "version": "repo-file-v1:sha256:a3927098bf6606155684d12052f58e4eff4006bbdd6099aed9574b6547484b2f"
+          "version": "repo-file-v1:sha256:d1c8ddf4cc38c98cc5e899942fe43c88846bf59e3df93d446fb506e01238b8b6"
         }
       ]
     },
@@ -106,13 +106,23 @@
         },
         {
           "resource": "repo://ulabase.setup.consents.ts",
-          "version": "repo-file-v1:sha256:a3927098bf6606155684d12052f58e4eff4006bbdd6099aed9574b6547484b2f"
+          "version": "repo-file-v1:sha256:d1c8ddf4cc38c98cc5e899942fe43c88846bf59e3df93d446fb506e01238b8b6"
+        }
+      ]
+    },
+    {
+      "id": "claim_d5a6d2b0460748f2bbd724341ea04545",
+      "statement": "The .github/workflows/no-service-url.yml workflow ensures that no real service URL is committed to the main branch of the starter repository. It runs only in the ulabase/starter-react repository and verifies that apiUrl remains empty in all environment files.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/no-service-url.yml",
+          "version": "repo-file-v1:sha256:d49a6bab6f0d4788d34bb72727446d604cfeeb279ec4115f88582a1c9b365641"
         }
       ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.2",
-    "at": "2026-10-13T10:18:51.278Z"
+    "at": "2026-10-19T08:38:08.737Z"
   }
 }

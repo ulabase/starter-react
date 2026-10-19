@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:d0a2d72f42cc9a601918217c18a29f29716f18abbead0ce4df3b6bdaf4df38d1",
+  "pageVersion": "sha256:41dfd354d3a134668d2815f393174dbdd41e8ce8a215642861ac9cb8a4f1ea8b",
   "claims": [
     {
       "id": "claim_a5b443d1a24d4104a2cbaf3507b03062",
@@ -15,7 +15,7 @@
           "version": "repo-lines-v1:sha256:152607e653da37f5f18e11d56b3e53c87e63a611c2dfc3bc59005995c4e38be8:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY5NTQ3N2VkYWI3MTU2NTFlZjNmZDBhOGE1ZjgzYzYwMTM1YTIwYjNhMmI3N2MxYTc5N2EwZjZjODM1MmFkYjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ2ZjVhODU2NTdiOGU4NTQwZjZmNWYyZWM3YjY2YjY2YWNiNzc3ZmJlNjQyY2E5M2I5N2QyNWU4NjBlZDM4YjgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhmNjI4MGZjMDFmYzc1OWFhZGY4ODgwY2RmM2E4M2Q1YmIxYzZkNmNiYTJkNjdiZWEzOTRlZDUyMDI1ZWEzZWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA1MTM5YmE0ZDJjMmQ3MDhiZGE0MTA5ZmU3OGM2MWI0NjI3ZmExYTgxNTY1NGQxNmQzMTg0YmQxN2U0ZTRmODkifQ"
         },
         {
-          "resource": "repo://ulabase.setup.consents.ts#L260-L295",
+          "resource": "repo://ulabase.setup.consents.ts#L285-L320",
           "version": "repo-lines-v1:sha256:61bb3204eef5b835755b0b6f6ddeb8cd77fc51636fd8e642903f24bd6671900f:eyJzZWxlY3RlZExpbmVDb3VudCI6MzYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIyNmE0MTQ1MmIwMTVkNzk5Y2ExMDkwNTI5YWQwYTI2MTk1MjcwZDFlOTdiMjMwZDY5N2E3NGNjMzEzYzZhNDUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQyZTZmY2RkNGQ3Mjc0ODdlOGI4ZDdhNDM3N2YwNjJjZDFiY2U1OTQ0NGQ2ZDczYWE4OGNhNTg0OGY5NGI0ZTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVmZjA4YjUzZGJiNWUzN2MzNTIxMDllODQzOGQxMmYyNzVmNWYwYTJkZjZiZWVhMWExYjYyNDYyNDI1N2ZiYzIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU1ZTI2Y2Q5MjM2NmY2MGQ4ZWQ5MmQwMjM5ZjA3ZmVmNzRjYWMxNGFhNjlhZGRmOWMyY2MwZDExZWIwMGE0NjMifQ"
         }
       ]
@@ -57,7 +57,7 @@
           "version": "repo-lines-v1:sha256:a7e62637e5844c7562dbfa03907a6629e301c8459e138d6620c286460dea1cb2:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgzNzNiNDlkMmMwMmMwMDlmY2UyODdlODFhNDE4ZGIxZTU2YzgzMDllMmJjODY5MWRiYmI5NDFkMWE0MzlkZDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyYTJjYjI1YTEyMmI0NDIyMWE2MjM0ZWM2NjBhN2I1ZmI3ZjliZGU3YjNiOWUyYjNjNTU5YTBkOTZmYWM3MzkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc2NTQwYTBhZDQwYWMzZDBjZjVmNjU3NTQ5MGY5NTI0Y2FhN2M0MTg0ZmIwZTcxYjk3ZGJlYThhMDc4YmU4MTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNhNmM4OGYyNWQyYjYxNDFiZDg4YTk2NmFkYjZiM2RmNzQxOTRmZGM3M2M5YjQ5MTM5MzliMmE1MmEzZTk5NjgifQ"
         },
         {
-          "resource": "repo://ulabase.setup.consents.ts#L207-L222",
+          "resource": "repo://ulabase.setup.consents.ts#L232-L247",
           "version": "repo-lines-v1:sha256:861286d0a7802d9990f2d00992605a870a9ff1c509d0370a405c086b7f92c246:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3OTUyM2IyMmYzZmRjZWMyMTE1N2QzOTExYmVjN2U3ODYzNjI0MGY1NzNjZDg4YmMxYTYzZTQyZDczZjJkMTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFlNjczYWJkNDU3YTk3ZWVhMTdhNjAwNjJlYjBmYWVhNmJkZjA5NDg2OGNjNmI4ZjhjMGViZGEyZjYxZWQ0MmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE4OGQ2YmFiYWUzMmRmMDU0YTMyN2IxYjIyMWY2N2IzZDdlZmU5YzYwMzVmOGZmN2JmMTZlNzQyZTg3OGQzMGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijc0NDliNTZkYWQ2OTczMWRlYWFhMzc3NDFiYWUzNWM1NWVlMjY5YWI0ZWI4ZTRhZDM1ODQ4YTYwNWFkYTViNjEifQ"
         }
       ]
@@ -103,7 +103,7 @@
       "statement": "The userConsentsSchema defines latestConsents (with tos, pp, and acceptedAt as a BSON date) and consents (the history array) on the user document. The latestConsents object has tos and pp as required fields, but the top-level latestConsents and consents fields themselves are not required because registration does not write them. Two JWT claims — latestConsents/tos and latestConsents/pp — carry the versions in the token so the Guards rule can read them without a database round-trip; if either claim is missing, every authenticated user is blocked permanently.",
       "evidence": [
         {
-          "resource": "repo://ulabase.setup.consents.ts#L225-L252",
+          "resource": "repo://ulabase.setup.consents.ts#L250-L277",
           "version": "repo-lines-v1:sha256:fc9a7e5b9cc3e06156356a28acc364a7431ddd388972afb184893906c52aa5c3:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFmMGNkYjk3MmE3YmZiN2VkMjQ2ZjlmZjY3MjM4NWU1NWY0OTY4ZmMxMTA0M2RjNWI2ODRkNTFkZmEzMWRiY2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdlY2IzZDQ5YTkyMmJhZWFhMWMyOGZhOGIxMjI3MTQ4MGNjZGFlNGZmZjQ5NmM0ZDQ2YzJmM2E2ZjM0MmRlNzAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY2OWEwN2QzNTU0Mzk1NzExZTkzNmIxYzEwMzc5NDllZjQ3NTZlODRiY2MyMDc2ZjZlMDkwNTU5NzI0ZmQxYTEifQ"
         },
         {
@@ -121,7 +121,7 @@
           "version": "repo-lines-v1:sha256:3e4f4b70a4e8929755b808a37228a83a4c1436da50970b7bf96b77daeee16a7c:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVhZjIyY2YwNzMyNTkyYzI0NzE0MWNiZTYxZWZhMTEwMTI2MTJmNWEzMTIyYjlhZjliYmFmNTJmNTcyNGQxOTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUwZmZhOTY1YTE2NjZiMDdhM2NlNmI4ODMyY2U2NDQyZTYwOTYzZDRhNWEwMzQ0M2Q4NDVlZDhlMTExMDcxNWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImYxNzE2MzE1MzE1MGYwYzA0YjhiM2ZkMjExYzE1YzEwNGU0NzdiOTg0MTBlYzY5OTI1NGE5OGFmZTI0Y2Y2MTAifQ"
         },
         {
-          "resource": "repo://ulabase.setup.consents.ts#L168-L173",
+          "resource": "repo://ulabase.setup.consents.ts#L183-L188",
           "version": "repo-lines-v1:sha256:610c188dad9ddc915774cae1d8b516b347a4703b4b59249c81908246b5984dda:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmJkYWE1MTg3MDA1YjI0NGEzODcyZjRjOWI5NjZlYjE2ZjVjYWQxMmY2NzdlYTRlNWE3Mzk1MDliYzRjODZhNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGMyYzc2MWMwYTIyMjFhYTc5YzcwNTk2NjVkNWRjMjc4NTFjZDkzYmFmNTg4N2QwZjNjNjcwMmI2YmZmYWIxYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDdhNmMzNWUxNWMzNDk3ZTc0MmJiZGYyZGM5OGI2MTRlYjY0NWI2ZjNjOWJmMjIxNzM2ODk5MjY0YzQxYWEwMCJ9"
         }
       ]
@@ -179,10 +179,30 @@
           "version": "repo-lines-v1:sha256:e76288e0639dfee9798541f738d13f984136f00301beb1c28379dba11cb11f68:eyJzZWxlY3RlZExpbmVDb3VudCI6MzkzLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIyYzQ4M2NlN2MyNWJjNDYwMjI5MzI4ZmRlMTQ5Y2YzODNmYmFlZmMwMWY2YjUzNTgwMTg2MGZhNTA0MTNkMWQ4IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI0MTJjYTM0NWNjZjc1YmY5YzA4MDZiY2U2OTViZThkZTgwOGI3OTk4NDI1MWE3YTU0ZDIwMmNmNjEwMWRkNDUxIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
         }
       ]
+    },
+    {
+      "id": "claim_d2d0aa5c16c34f329158a16ba9420b50",
+      "statement": "The consents Guards rule is installed with action 'block', status_code 451 (the status src/consents-signal.ts keys on), and on_error 'allow', so a rule that cannot be evaluated does not lock everyone out. The setup step compares the rule's full condition text against CONDITION rather than merely the rule's presence, so bumping a version shows up as outstanding work, not as satisfied.",
+      "evidence": [
+        {
+          "resource": "repo://ulabase.setup.consents.ts#L296-L320",
+          "version": "repo-lines-v1:sha256:8e7dff726525e4432725fbe0493ca00e201668a7ae6c3b3802b5f7d25e4195a8:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU4NWM1N2IxZjE3MmJlMzZlNWVhY2I0YzNiMDhjYTFmMDMxYTFkMGIyZDc1NWRkMzkwNzg3ZmNkZmY5ZWFhOGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQyZTZmY2RkNGQ3Mjc0ODdlOGI4ZDdhNDM3N2YwNjJjZDFiY2U1OTQ0NGQ2ZDczYWE4OGNhNTg0OGY5NGI0ZTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjlhMDAzZDlkMGYwMDk2M2ViMTJhY2MyOTkyYWI4YzYxZjdjMjAzMmQzMGU2MDkzMGRkZDg2ZDJmZjc1ZDNiOWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVmNGEzZmFmOWFiNTRmOThiZDAxYmUwNjEzMDkyZWMzZmYyNTA5ZTkxMmFiOGQwNzVhNzdlY2MxZTY5NTA4ZjMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_25c5ccdf973b42968285fdac35b19bfb",
+      "statement": "If auth.getInvitation resolves without recognising the link (invitation stays null), the invitation acceptance page renders the 'Invalid invitation link' state instead of offering a login form that would join nothing.",
+      "evidence": [
+        {
+          "resource": "repo://src/pages/invitations/accept/Accept.tsx#L115-L125",
+          "version": "repo-lines-v1:sha256:3655849c559baaae7865c9f50405546d01e7d5ea555e9735aa64487fb4a19656:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU5NDczOWZlMDE0ZjcxNDNjZDYwY2MyMDY0ODE0MzdjNTdmMTVhYTA3OTRmZDdiNTlhYWYwZTU5OGY2NDJhMzIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3ZTU3ODhkNWQ5ZDczZDI0YTgxZGJjMGE1YTc0YmZhODJjOWMzYjNhZjk5ZTUyYWY3OTZlOTBiNDY4YThhM2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFkYjNlN2NkMGMzYTYyMzA0NzY2ODE2MWQxMDRlOTlkODYyMDljYTNlNzc1NGEyNWIxMTlhNDkwNzg3ODA0MjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAxOGViYjkyMGNmZWMwODA5OTNjZWQ4OWJlZWQ4ZTg1NGYzOGZkYTMxY2RiMTMyMjU4YmQ4MjE0ZmQyMjQyZWQifQ"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.2",
-    "at": "2026-10-13T10:18:51.278Z"
+    "at": "2026-10-19T08:38:08.737Z"
   }
 }

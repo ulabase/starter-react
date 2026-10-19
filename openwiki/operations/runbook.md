@@ -3,7 +3,12 @@ type: Runbook
 title: Operations & Runbook
 description: Environment configuration, design system and styling, build and deploy workflow, theming, feature flag management, and consents gate operations for the Ulabase React starter.
 tags: [operations, runbook, config, styling, build, deploy, theming, consents, gate]
+verified:
+  - by: openwiki/0.7.2
+    at: 2026-10-19T08:38:08.737Z
 sources:
+  - id: openwiki-source-47f38fcb8c1752310057a5c1
+    resource: repo://.github/workflows/no-service-url.yml
   - id: openwiki-source-85dc2a049a0943b56218c045
     resource: repo://public/privacy.html
   - id: openwiki-source-ad504d4d06a9b4cc6851d32b
@@ -18,10 +23,7 @@ sources:
     resource: repo://src/styles.css
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-13T10:18:51.278Z" }
-verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-13T10:18:51.278Z
+generated: { by: "openwiki/0.7.2", at: "2026-10-19T08:38:08.737Z" }
 ---
 
 # Operations & Runbook
@@ -162,9 +164,9 @@ The build produces static files in `dist/`. Deploy this directory to any static 
 
 ### CI/CD
 
-**File:** `.github/workflows/openwiki-update.yml`
+**File:** `.github/workflows/no-service-url.yml`
 
-A GitHub Actions workflow runs OpenWiki documentation updates on a schedule. This does not affect the application build.
+A GitHub Actions workflow ensures no real service URL is committed to main in the starter repository. The check runs only in `ulabase/starter-react` and verifies that `apiUrl` remains empty in all environment files.
 
 ## Page-Specific Stylesheets
 
@@ -173,6 +175,34 @@ Each page directory under `src/pages/` contains its own CSS file (e.g., `Shell.c
 ## Consents Gate Operations
 
 The consents gate blocks authenticated users who have not accepted the current Terms of Service and Privacy Policy. When a user's `latestConsents.tos` or `latestConsents.pp` does not match the server's current versions, the service responds with `451 Unavailable For Legal Reasons` to any authenticated request (including `/users/me`).
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Guards
+    participant Permission
+    participant Token
+
+    Client->>Guards: Request to protected endpoint
+    Guards->>Token: Read latestConsents from JWT
+    Token-->>Guards: Return tos and pp versions
+    Guards->>Guards: Compare with TOS_VERSION and PP_VERSION
+
+    alt Versions match
+        Guards->>Permission: Allow request
+        Permission-->>Client: 200 OK
+    else Versions mismatch
+        Guards-->>Client: 451 Unavailable For Legal Reasons
+        Client->>Client: consents-signal.ts sets blocked=true
+        Client->>Client: ConsentsGate shows acceptance overlay
+        Client->>Permission: PATCH /users/{userId} with consents: []
+        Permission->>Permission: Merge latestConsents with current versions
+        Permission-->>Client: 200 OK
+        Client->>Client: checkSession() to refresh token
+    end
+```
+
+*Consents gate flow: the Guards rule checks JWT claims, and the Permission stamps new versions on acceptance.*
 
 ### Verifying the Gate
 

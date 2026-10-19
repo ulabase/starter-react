@@ -1,9 +1,17 @@
 ---
 type: Source Map
 title: Source Map
-description: File-by-file inventory of the Ulabase React starter, mapping every source file to its purpose and cross-referencing documentation.
+description: File-by-file inventory of the Ulabase React starter, mapping every repository file to its purpose and cross-referencing the wiki pages that explain it.
 tags: [source-map, reference, files]
 sources:
+  - id: openwiki-source-47f38fcb8c1752310057a5c1
+    resource: repo://.github/workflows/no-service-url.yml
+  - id: openwiki-source-6d4b4e707b8d60b6ccfa3425
+    resource: repo://.github/workflows/openwiki-update.yml
+  - id: openwiki-source-8037e2358a2c4f9b2c722a11
+    resource: repo://AGENTS.md
+  - id: openwiki-source-a2371d6362e5db4bc834ad03
+    resource: repo://CLAUDE.md
   - id: openwiki-source-5b54a58d1b51cd490b0e7162
     resource: repo://package.json
   - id: openwiki-source-def8b68a3bfae964ad61c3db
@@ -16,61 +24,71 @@ sources:
     resource: repo://src/ConsentsGate.tsx
   - id: openwiki-source-eaae96b81373abab97667f4f
     resource: repo://src/environments/environment.ts
+  - id: openwiki-source-95bfccfd0c712f6e72040e0d
+    resource: repo://src/main.tsx
+  - id: openwiki-source-07aa4341cebe71bfc8fd2890
+    resource: repo://src/routes.tsx
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-17T07:37:51.172Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-19T08:38:08.737Z" }
 verified:
   - by: openwiki/0.7.2
-    at: 2026-10-17T07:37:51.172Z
+    at: 2026-10-19T08:38:08.737Z
 ---
 
 # Source Map
 
-Complete inventory of repository source files. Each entry links to the page where that area is explained in depth.
+Complete inventory of repository files. Each entry states what the file is for and links to the page where that area is explained in depth. A dash in the See Also column means the file carries no behaviour of its own beyond styles or type references.
 
 ## Root Config & Build
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `package.json` | Project metadata, dependencies (`@ulabase/kit-react` ^0.13.6, `react` ^18.3.0, `react-dom` ^18.3.0, `react-router-dom` ^6.28.0), dev dependencies (`@ulabase/cli` ^0.13.6, `typescript` ~5.6.0, `vite` ^6.0.0, `vitest` ^2.0.0), scripts (`dev`, `build`, `preview`, `test`) | [Operations](operations/runbook.md) |
-| `package-lock.json` | Lockfile — do not edit manually | — |
-| `tsconfig.json` | TypeScript config: ES2020 target, ESNext modules, strict mode, JSX React, `noEmit` (Vite compiles) | — |
-| `vite.config.ts` | Vite config: minimal — just the `@vitejs/plugin-react` plugin | [Testing](testing/guidance.md) |
-| `index.html` | SPA shell: mounts `#root` div, links `/src/main.tsx` as entry module | — |
-| `.gitignore` | Ignores `node_modules`, `dist`, `.env*`, IDE files | — |
-| `LICENSE` | MIT license | — |
+| `package.json` | Project metadata, dependencies (`@ulabase/kit-react`, `react`, `react-dom`, `react-router-dom`), dev dependencies (`@ulabase/cli`, `@vitejs/plugin-react`, `typescript`, `vite`, `vitest`), and scripts `dev`, `build` (`tsc -b && vite build`), `preview`, `test`. | [Operations](operations/runbook.md) |
+| `package-lock.json` | npm lockfile — do not edit manually. | — |
+| `tsconfig.json` | TypeScript config: ES2020 target, ESNext modules, `moduleResolution: bundler`, `allowImportingTsExtensions`, `jsx: react-jsx`, `noEmit` (Vite compiles), `strict`, `noUnusedLocals`/`noUnusedParameters`. Includes only `src`. | — |
+| `vite.config.ts` | Vite config: minimal — just the `@vitejs/plugin-react` plugin. | [Testing](testing/guidance.md) |
+| `index.html` | SPA shell: `<div id="root">` and a single module script pointing at `/src/main.tsx`. | [Architecture](architecture/overview.md) |
+| `.gitignore` | Ignores `node_modules`, `dist`, `tsconfig.tsbuildinfo`, `*.local`, `.DS_Store`. | [Operations](operations/runbook.md) |
+| `LICENSE` | MIT license. | — |
+| `README.md` | Human-facing introduction: what the starter contains, how to run it, and the Google sign-in walkthrough referenced by `environment.ts`. | [Quickstart](quickstart.md) |
+| `NOTES.md` | Long-form design notes for the starter (rationale and sequencing of the setup work). Not consumed by the build. | [Quickstart](quickstart.md) |
+| `starter-home-page.png` | Screenshot of the starter home page, referenced by the README. | — |
+| `conversation_history/` | Empty directory; nothing is authored here. | — |
 
 ## Entrypoint & App Shell
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `src/main.tsx` | React root creation. Renders `<StrictMode>` → `<BrowserRouter>` → `<RhAuthProvider>` → `<App />`. Imports `styles.css`. | [Architecture](architecture/overview.md) |
-| `src/App.tsx` | Fragment token capture on mount, API URL validation gate, renders `ConfigPage` or route tree via `useRoutes()` wrapped in `<ConsentsGate>` | [Architecture](architecture/overview.md) |
-| `src/ConfigPage.tsx` | Setup wizard shown when `apiUrl` is invalid. 3-step guided flow: (1) create a free service at `ulabase.com`, (2) run `npx ulabase login` and `npx ulabase setup --srv <id>` from this folder, (3) reload the app. | [Operations](operations/runbook.md) |
-| `src/routes.tsx` | Route definitions as `RouteObject[]`. Lazy-loaded components, feature-flag conditional inclusion, `AuthGuard`/`PublicGuard` wrappers. | [Architecture](architecture/overview.md) |
+| `src/main.tsx` | React root creation. Renders `<StrictMode>` → `<BrowserRouter>` → `<RhAuthProvider config={{ apiBaseUrl: environment.apiUrl, onError: consentsOnError }}>` → `<App />`, and imports `styles.css`. Passing `onError` is what lets a `451` raise the consents flag. | [Architecture](architecture/overview.md) |
+| `src/App.tsx` | Validates `environment.apiUrl` with `isValidApiBaseUrl()`, consumes the fragment token and `?flow=signup` marker on mount, then renders `ConfigPage` when the URL is invalid or the `useRoutes()` tree wrapped in `<ConsentsGate>`. | [Architecture](architecture/overview.md) |
+| `src/ConfigPage.tsx` | Setup wizard shown when `apiUrl` is not a valid `https://` service URL. Three guided steps: create a free service at `ulabase.com`, run `npx ulabase login` and `npx ulabase setup --srv <id>` from this folder, then reload. | [Operations](operations/runbook.md) |
+| `src/routes.tsx` | Route definitions as `RouteObject[]`: lazy-loaded page components inside `SuspenseWrapper`, `PublicGuard`/`AuthGuard` wrappers, and feature-flag conditional inclusion of signup, verify, forgot/reset-password and invitation routes. | [Auth & Teams](domain/auth-and-teams.md) |
 
 ## Environment & Utilities
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `src/environments/environment.ts` | **Central config**: `apiUrl` (Ulabase service URL, empty by default to show the setup wizard) + `features` object (feature flags controlling authentication flows). | [Auth & Teams](domain/auth-and-teams.md#feature-flags), [Operations](operations/runbook.md) |
-| `src/just-signed-up.ts` | Module-level boolean flag. Set to `true` when `?flow=signup` query param is detected in fragment token capture. Shell reads and clears it to show a welcome message. | [Auth & Teams](domain/auth-and-teams.md) |
-| `src/oauth-url.ts` | Builds OAuth authorize URL: `${apiUrl}/auth/oauth/authorize/${provider}?noauthchallenge` | [Auth & Teams](domain/auth-and-teams.md#oauth-login) |
+| `src/environments/environment.ts` | **Central config**: `apiUrl` (the Ulabase service URL, empty by default so the setup wizard shows) plus `features` (`emailRegistration`, `passwordReset`, `oauthLogin`, `oauthProviders`, `teamInvitations`). Read by the app, by `routes.tsx`, and by `ulabase.setup.ts`. | [Auth & Teams](domain/auth-and-teams.md), [Operations](operations/runbook.md) |
+| `src/just-signed-up.ts` | Module-level boolean with `isJustSignedUp()`/`setJustSignedUp()`. Set when `?flow=signup` is seen during fragment-token capture; `Shell` reads it once and clears it. | [Auth & Teams](domain/auth-and-teams.md) |
+| `src/oauth-url.ts` | `oauthUrl(provider)` builds `${environment.apiUrl}/auth/oauth/authorize/${provider}?noauthchallenge`. | [Auth & Teams](domain/auth-and-teams.md#oauth-login) |
+| `src/vite-env.d.ts` | Vite client type reference (`/// <reference types="vite/client" />`). | — |
 
 ## Styling
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `src/styles.css` | **Design tokens** (section 1), reset/base styles (section 2), skin classes (section 3), utility classes (section 4), page scaffolds (section 5). Explicitly a disposable mockup — meant to be replaced. | [Operations](operations/runbook.md#design-system) |
-| `src/vite-env.d.ts` | Vite client type reference | — |
+| `src/styles.css` | Global stylesheet: design tokens, reset/base styles, skin classes, utilities, page scaffolds. Explicitly a disposable default skin — replace or re-theme it. | [Operations](operations/runbook.md#design-system) |
+
+Page-level stylesheets live next to their components: `src/pages/shell/Shell.css`, `src/pages/home/Home.css`, `src/pages/account/Account.css`, `src/pages/teams/Teams.css`, `src/pages/teams/new/NewTeam.css`, `src/pages/teams/detail/TeamDetail.css`, `src/pages/auth/oauth-buttons/OAuthButtons.css`, and `src/ConsentsGate.css`. Each is imported by its sibling component.
 
 ## UI Components
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `src/ui/alert/Alert.tsx` | Shared feedback component. Props: `type` ("error"/"success"), `children`, `onClose`, `dismissible?` (default `true`), `autoDismiss?` (default `4000`ms). Auto-dismisses after the timeout. Uses `.form-error` / `.success-msg` class hooks and correct ARIA roles (`alert` / `status`). | [Auth & Teams](domain/auth-and-teams.md) |
+| `src/ui/alert/Alert.tsx` | Shared feedback banner. Props: `type` ("error"/"success"), `children`, `onClose`, `dismissible?` (default `true`), `autoDismiss?` (default `4000` ms; `0` disables). Uses `.form-error`/`.success-msg` hooks with `alert`/`status` ARIA roles. | [Auth & Teams](domain/auth-and-teams.md) |
 
 ## Page Components
 
@@ -78,71 +96,80 @@ Complete inventory of repository source files. Each entry links to the page wher
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `src/pages/shell/Shell.tsx` | Authenticated layout: header with team name, nav links, user avatar dropdown menu (profile, account, theme toggle, logout), `<Outlet>` for child routes. Contains `useTheme()` hook for light/dark mode persisted to `localStorage`. | [Operations](operations/runbook.md#theming) |
-| `src/pages/shell/Shell.css` | Shell-specific layout styles | — |
+| `src/pages/shell/Shell.tsx` | Authenticated layout: header with the active team name, nav links, avatar dropdown (profile, account, theme toggle, logout), `<Outlet>` for child routes. Owns the `useTheme()` hook persisting light/dark to `localStorage` under `rh-theme`. | [Operations](operations/runbook.md#theming) |
+| `src/pages/shell/Shell.css` | Shell layout and header/menu styles. | — |
 
 ### Home
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `src/pages/home/Home.tsx` | **Getting-started page**. Welcome hero, feature-flag status grid (on/off badges linked to team/account pages), 5-step customization guide, and an interactive `auth.api('/demo')` fetch demo. Replace with your own landing content. | [Auth & Teams](domain/auth-and-teams.md#reading-your-own-data) |
-| `src/pages/home/Home.css` | Home page styles | — |
+| `src/pages/home/Home.tsx` | Getting-started page: welcome hero, feature-flag status grid derived from `environment.features` with links to team/account pages, customization guide, and an interactive `auth.api('/demo')` fetch demo. Also the catch-all route element. | [Auth & Teams](domain/auth-and-teams.md) |
+| `src/pages/home/Home.css` | Home page styles. | — |
 
 ### Auth Pages
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `src/pages/auth/login/Login.tsx` | Email/password login form. Shows OAuth buttons if `oauthLogin` is enabled. Form validation (email format, required fields), error display, loading state. Reads `error` search param for `invalid_token` message. Links to signup and forgot-password. | [Auth & Teams](domain/auth-and-teams.md#login) |
-| `src/pages/auth/signup/Signup.tsx` | Registration form with first name, last name, email, password. Auto-generates team name. On success shows "Check your email" confirmation. OAuth buttons shown when enabled. Handles 409 duplicate email. | [Auth & Teams](domain/auth-and-teams.md#signup) |
-| `src/pages/auth/verify/Verify.tsx` | Email verification page. Reads `email`, `token`, and `error` from URL search params. Handles missing params and error states. Calls `auth.verify(email, token)` which returns a redirect URL. | [Auth & Teams](domain/auth-and-teams.md#email-verification) |
-| `src/pages/auth/forgot-password/ForgotPassword.tsx` | Request password reset email. | [Auth & Teams](domain/auth-and-teams.md#password-reset) |
-| `src/pages/auth/reset-password/ResetPassword.tsx` | Set new password using reset token from email link. | [Auth & Teams](domain/auth-and-teams.md#password-reset) |
-| `src/pages/auth/oauth-buttons/OAuthButtons.tsx` | Renders OAuth provider buttons (Google, etc.). Builds URLs via `oauthUrl()`. | [Auth & Teams](domain/auth-and-teams.md#oauth-login) |
-| `src/pages/auth/oauth-buttons/OAuthButtons.css` | OAuth button styles | — |
+| `src/pages/auth/login/Login.tsx` | Email/password login with touched-based validation. Shows `OAuthButtons` when `oauthLogin` is enabled and maps the `error` search param (`invalid_token`) to a message. Navigates to `/` on success; distinguishes 401. | [Auth & Teams](domain/auth-and-teams.md#login) |
+| `src/pages/auth/signup/Signup.tsx` | Registration form (first name, last name, email, password ≥ 8). Derives a team name from the first name and calls `auth.register()`. Shows a "check your email" confirmation and maps 409 to a duplicate-email message. | [Auth & Teams](domain/auth-and-teams.md#signup) |
+| `src/pages/auth/verify/Verify.tsx` | Email verification. Reads `email`, `token`, `error` from the query string, calls `auth.verify()` and redirects to the returned URL; handles missing params and expired links. | [Auth & Teams](domain/auth-and-teams.md#email-verification) |
+| `src/pages/auth/forgot-password/ForgotPassword.tsx` | Requests a reset email via `auth.forgotPassword()`. Always shows the same confirmation, because the API answers 202 regardless of whether the address exists. | [Auth & Teams](domain/auth-and-teams.md#password-reset) |
+| `src/pages/auth/reset-password/ResetPassword.tsx` | Sets a new password from the `email`/`token` query params via `auth.resetPassword()`; reports missing params and 401 expiry. | [Auth & Teams](domain/auth-and-teams.md#password-reset) |
+| `src/pages/auth/oauth-buttons/OAuthButtons.tsx` | Renders one link per configured provider using `oauthUrl()`, with inline Google/GitHub icons and a `Continue with …` label. | [Auth & Teams](domain/auth-and-teams.md#oauth-login) |
+| `src/pages/auth/oauth-buttons/OAuthButtons.css` | OAuth button styles. | — |
 
 ### Invitations
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `src/pages/invitations/accept/Accept.tsx` | **One page, three flows**: (1) missing params → error, (2) new user → set password form (`auth.activate()`), (3) existing user → login + accept (`auth.acceptInvite()`). No route guard — works signed-in or out. | [Auth & Teams](domain/auth-and-teams.md#invitations) |
+| `src/pages/invitations/accept/Accept.tsx` | One page, three flows: missing params → error; new user → set password via `auth.activate()`; existing user → log in and accept. Loads the invitation with `auth.getInvitation()`. Not wrapped in a guard, so it works signed in or out. | [Auth & Teams](domain/auth-and-teams.md#invitations) |
 
 ### Teams
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `src/pages/teams/Teams.tsx` | Team list. Shows all user's teams with role, active badge, switch button. Links to team detail and new team. | [Auth & Teams](domain/auth-and-teams.md#team-management) |
-| `src/pages/teams/detail/TeamDetail.tsx` | Full team management: member list with role change/remove (owner), invite form, pending invitations with resend cooldown (5 min), team name/description settings, and delete team with confirmation dialog. | [Auth & Teams](domain/auth-and-teams.md#team-detail-teamsid) |
-| `src/pages/teams/new/NewTeam.tsx` | Create new team form. | [Auth & Teams](domain/auth-and-teams.md#team-management) |
-| `src/pages/teams/*.css` | Team-specific layout styles | — |
+| `src/pages/teams/Teams.tsx` | Team list. Loads teams with `auth.loadTeams()`, switches the active team via `auth.switchTeam()` when opening an inactive one, and links to team detail and new team. | [Auth & Teams](domain/auth-and-teams.md#team-management) |
+| `src/pages/teams/Teams.css` | Team list styles. | — |
+| `src/pages/teams/new/NewTeam.tsx` | Create-team form calling `auth.createTeam()`, then navigating to `/teams`. | [Auth & Teams](domain/auth-and-teams.md#team-management) |
+| `src/pages/teams/new/NewTeam.css` | New-team form styles. | — |
+| `src/pages/teams/detail/TeamDetail.tsx` | Full team management: member list with role change/remove (owner only), invite form, pending invitations with a 5-minute resend cooldown (`RESEND_COOLDOWN_MS`), team name/description settings, and delete with confirmation. | [Auth & Teams](domain/auth-and-teams.md) |
+| `src/pages/teams/detail/TeamDetail.css` | Team detail styles. | — |
 
 ### Account
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `src/pages/account/Account.tsx` | User profile management (first name, last name via `auth.updateProfile()`) + change password form (`auth.changePassword()`). Loads profile via `auth.checkSession()` on mount. | [Auth & Teams](domain/auth-and-teams.md#reading-your-own-data) |
-| `src/pages/account/Account.css` | Account page styles | — |
-
-## CI/CD
-
-| File | Purpose |
-|------|---------|
-| `.github/workflows/no-service-url.yml` | CI gate that rejects pushes/PRs to `main` if any `apiUrl` in `src/environments/*.ts` is non-empty — prevents leaking a real service URL into the public starter repo. |
-| `.github/workflows/openwiki-update.yml` | GitHub Actions workflow: runs OpenWiki documentation update daily at 03:00 UTC, creates PR with changes |
-| `AGENTS.md` / `CLAUDE.md` | Agent instruction files for OpenWiki documentation runs |
-
-## Service Setup
-
-| File | Purpose | See Also |
-|------|---------|----------|
-| `ulabase.setup.ts` | Declarative service configuration using `@ulabase/cli`. Imports `environment.ts` to derive feature flags and configures accounts, OAuth, and origin allowlist. | [Service Setup](operations/service-setup.md#base-setup-file-ulabasesetupts) |
-| `ulabase.setup.consents.ts` | Extends `ulabase.setup.ts` with consents gate: adds user schema, permission for consents patching, JWT claims, and guards rule. Defines `TOS_VERSION` and `PP_VERSION` constants. | [Service Setup](operations/service-setup.md#consents-gate-setup-ulabasesetupconsentsts), [Auth & Teams](domain/auth-and-teams.md) |
+| `src/pages/account/Account.tsx` | Profile editing (`auth.updateProfile()`, seeded from `auth.checkSession()` on mount) and password change (`auth.changePassword()`, new password ≥ 8). | [Auth & Teams](domain/auth-and-teams.md#reading-your-own-data) |
+| `src/pages/account/Account.css` | Account page styles. | — |
 
 ## Consents Gate
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `src/consents-signal.ts` | Client-side consents signal: manages `blocked` state flag, provides `subscribe()` for listeners, and `consentsOnError()` that sets blocked on HTTP 451 from the API. | [Auth & Teams](domain/auth-and-teams.md) |
-| `src/ConsentsGate.tsx` | Blocking overlay component that replaces the app when user hasn't accepted current Terms/Privacy Policy. Sits above the router, renders acceptance form with checkboxes, calls `auth.acceptConsents()` and refreshes session. | [Auth & Teams](domain/auth-and-teams.md) |
-| `src/ConsentsGate.css` | Styles for consents overlay: fixed positioning, z-index above header/dropdown/nav, modal card with checkboxes and action buttons. | — |
-| `public/privacy.html` | Static Privacy Policy page linked from the consents acceptance form. Self-contained HTML with inline styles, mirrors the app's theme toggle. | [Auth & Teams](domain/auth-and-teams.md) |
-| `public/terms.html` | Static Terms of Service page linked from the consents acceptance form. Self-contained HTML with inline styles, mirrors the app's theme toggle. | [Auth & Teams](domain/auth-and-teams.md) |
+| `src/consents-signal.ts` | Client-side consents signal: module-level `blocked` flag with `isBlocked()`/`setBlocked()`/`subscribe()`, and `consentsOnError()` which raises the flag on any HTTP 451. Has no knowledge of which versions are current — the server decides. | [Auth & Teams](domain/auth-and-teams.md) |
+| `src/ConsentsGate.tsx` | Blocking overlay rendered above the router. Shows the two acceptance checkboxes, calls `auth.acceptConsents()`, then reloads the app (`/` when the block happened on an `/auth` page) or refreshes the session. Also offers sign-out. User experience only — the rule lives on the server. | [Auth & Teams](domain/auth-and-teams.md) |
+| `src/ConsentsGate.css` | Overlay styles: fixed positioning above header/dropdown/nav, modal card with checkboxes and actions. | — |
+| `public/privacy.html` | Static Privacy Policy page linked from the acceptance form. Self-contained HTML with inline styles and the same theme toggle. | [Auth & Teams](domain/auth-and-teams.md) |
+| `public/terms.html` | Static Terms of Service page linked from the acceptance form. Self-contained HTML with inline styles and the same theme toggle. | [Auth & Teams](domain/auth-and-teams.md) |
+
+## Service Setup
+
+| File | Purpose | See Also |
+|------|---------|----------|
+| `ulabase.setup.ts` | Base declarative service configuration for `@ulabase/cli`. Every step has a `check` and an `apply` so re-runs are idempotent. It imports `environment.ts` and derives the server's `registration`/`verification`/`password-reset`/`invitations`/`oauth` flags from the app's feature flags, sets `app-name`/`frontend-url`/`frontend-app-url` from `APP_NAME`/`APP_URL`, adds Google OAuth credentials only when the app offers Google, and adds the app origin to `origin-allowlist`. Exports `appPointsAtService`, a final step that rewrites only the `apiUrl` line of `environment.ts`. | [Service Setup](operations/service-setup.md) |
+| `ulabase.setup.consents.ts` | The same setup plus the consents gate. It imports `accounts` from `ulabase.setup.ts` and reuses `accounts.steps` (minus `appPointsAtService`), then adds five steps: store the user schema `userConsentsSchema` (compared canonically so an outdated schema shows as outstanding), attach it to the `/users` collection via `jsonSchema.schemaId`, create the `userCanPatchOwnConsents` permission whose `mergeRequest` stamps `TOS_VERSION`/`PP_VERSION` and `@now` server-side, add the two `latestConsents/*` account claims to the auth config, and install the `guards` feature with the `consentsGate` rule (status `451`, `on_error: allow`). Versions are constants, so publishing new terms means editing two strings and re-running. `appPointsAtService` runs last. | [Service Setup](operations/service-setup.md), [Auth & Teams](domain/auth-and-teams.md) |
+
+## CI/CD
+
+| File | Purpose |
+|------|---------|
+| `.github/workflows/no-service-url.yml` | Runs on pushes and PRs to `main` in `ulabase/starter-react` only. Greps `src/environments/*.ts` for a non-empty `apiUrl` and fails if one is committed, so no real service URL reaches the public starter. |
+| `.github/workflows/openwiki-update.yml` | Refreshes the wiki nightly (03:00 UTC), on release tags, and on manual dispatch. Skips scheduled runs when nothing outside `openwiki/` changed, runs `openwiki code --init`/`--update`, opens a PR touching `openwiki`, `AGENTS.md` and `CLAUDE.md`, then auto-merges it. |
+| `AGENTS.md` | Agent instructions for OpenWiki runs: retrieve the wiki just-in-time rather than preloading it, treat source and tests as authoritative, and avoid hand-editing generated pages. |
+| `CLAUDE.md` | One-line pointer that includes `AGENTS.md`, so both agent conventions stay in one place. |
+
+## Relationship Between Files
+
+- `src/environments/environment.ts` is the single source of truth for both sides: the app reads `apiUrl` and `features` at runtime, and `ulabase.setup.ts` imports the same module to derive server configuration. `ulabase.setup.ts` also rewrites the `apiUrl` line in place, so the file is both input and output of setup.
+- `src/main.tsx` wires `consents-signal.ts` into the auth provider, and `src/App.tsx` positions `ConsentsGate` above the router — the two halves of the client gate.
+- `src/routes.tsx` is the only place that maps URLs to the page components under `src/pages/`, and its conditional entries are driven by the same `features` object.

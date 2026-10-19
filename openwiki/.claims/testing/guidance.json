@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:7f413eaf0459d016685e054aca763d94a6c477103e7ed1e4ea28300a59eb74fb",
+  "pageVersion": "sha256:bcfa8282113f7425902fd35c5fe627b32db2c70454ced25c43f0f09ce6106868",
   "claims": [
     {
       "id": "claim_6343a6464e04483fa6a2f2d432f73654",
@@ -94,7 +94,7 @@
       "evidence": [
         {
           "resource": "repo://ulabase.setup.consents.ts",
-          "version": "repo-file-v1:sha256:a3927098bf6606155684d12052f58e4eff4006bbdd6099aed9574b6547484b2f"
+          "version": "repo-file-v1:sha256:d1c8ddf4cc38c98cc5e899942fe43c88846bf59e3df93d446fb506e01238b8b6"
         },
         {
           "resource": "repo://ulabase.setup.ts",
@@ -111,10 +111,24 @@
           "version": "repo-file-v1:sha256:821101b78579bb645993fda9cc35b9f1a95483a19ea60166f4c345302e856f88"
         }
       ]
+    },
+    {
+      "id": "claim_a7b2e28225364336a4ed53aa1a10d8a1",
+      "statement": "The consents flow sequence diagram illustrates the end-to-end testable flow: 451 responses trigger consentsOnError which sets blocked state via the signal module, ConsentsGate subscribes and shows the overlay, and acceptance either navigates to / for /auth paths or calls checkSession before clearing the blocked flag.",
+      "evidence": [
+        {
+          "resource": "repo://src/ConsentsGate.tsx",
+          "version": "repo-file-v1:sha256:8216a69df1b1aae7e08d4f2c459bf7b643e2d365d7d81ec4a732302b3b9b101a"
+        },
+        {
+          "resource": "repo://src/consents-signal.ts",
+          "version": "repo-file-v1:sha256:821101b78579bb645993fda9cc35b9f1a95483a19ea60166f4c345302e856f88"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.2",
-    "at": "2026-10-13T10:18:51.278Z"
+    "at": "2026-10-19T08:38:08.737Z"
   }
 }
