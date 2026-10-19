@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:baeeae2b5e50ad61a672df7bfd1c3fed90f1355c5eb67f2ebd3046e7bb65c759",
+  "pageVersion": "sha256:5e4df405ef0cd7ce555ce27499b97697320aea7a3afe3f8195abc5d7cd727313",
   "claims": [
     {
       "id": "claim_849550fdee20463596e55e9d5c58103c",
@@ -22,15 +22,23 @@
     },
     {
       "id": "claim_f57056aa606545a78db7d0274987474f",
-      "statement": "Service configuration is declaratively defined in two setup files: ulabase.setup.ts (base configuration importing environment.ts for feature flags, configuring accounts, OAuth, and origin allowlist) and ulabase.setup.consents.ts (extends base setup with consents gate: user schema, permission for consents patching, JWT claims, and guards rule with TOS_VERSION and PP_VERSION constants). These files are documented in the Service Setup page.",
+      "statement": "Service configuration is declaratively defined in two setup files: ulabase.setup.ts (base configuration that imports environment.ts, derives the accounts feature flags from the app's flags, sets app name/frontend URLs, conditionally configures Google OAuth, allowlists the app origin, and exports a final appPointsAtService step that rewrites the apiUrl line) and ulabase.setup.consents.ts (imports those steps and adds the consents gate: a userConsentsSchema, a userCanPatchOwnConsents permission that stamps TOS_VERSION/PP_VERSION server-side, two latestConsents claims, and a consentsGate guards rule answering 451). Both are documented in the Service Setup page.",
       "evidence": [
         {
           "resource": "repo://ulabase.setup.consents.ts",
-          "version": "repo-file-v1:sha256:a3927098bf6606155684d12052f58e4eff4006bbdd6099aed9574b6547484b2f"
+          "version": "repo-file-v1:sha256:d1c8ddf4cc38c98cc5e899942fe43c88846bf59e3df93d446fb506e01238b8b6"
+        },
+        {
+          "resource": "repo://ulabase.setup.consents.ts#L183-L324",
+          "version": "repo-lines-v1:sha256:cbd4661e54825ab1d691634244e47e13247bfac439bad720dc71c5a5443ea8da:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQyLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJiYmRhYTUxODcwMDViMjQ0YTM4NzJmNGM5Yjk2NmViMTZmNWNhZDEyZjY3N2VhNGU1YTczOTUwOWJjNGM4NmE3IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI1NWUyNmNkOTIzNjZmNjBkOGVkOTJkMDIzOWYwN2ZlZjc0Y2FjMTRhYTY5YWRkZjljMmNjMGQxMWViMDBhNDYzIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiI0YzJjNzYxYzBhMjIyMWFhNzljNzA1OTY2NWQ1ZGMyNzg1MWNkOTNiYWY1ODg3ZDBmM2M2NzAyYjZiZmZhYjFhIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
         },
         {
           "resource": "repo://ulabase.setup.ts",
           "version": "repo-file-v1:sha256:419eafb71fed2ac47ce718189ddcc56ce158d43c2b720f30f78d4f3f82f26557"
+        },
+        {
+          "resource": "repo://ulabase.setup.ts#L96-L109",
+          "version": "repo-lines-v1:sha256:104cb5dbb4c88c18592d71b4dba2dd82646bc32b44e9bde01d3ae1c7aba6eae4:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYxOWMwN2VhMmQ1MDJmZDU1M2RlODM1YTgzNTdiNjExODlhMGQ2MTk4YTUzYTFkOWFjYTU4ZjYyODUwYzNjYTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY2ZjViNDBiMTU4NDU3ZDE3ODY0ZjIxNzkwNzg2ZGQ1YTJlY2RiNjRiNjZhNjUxZjc4OGQ0ZTI1Y2QzMzAzZDIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg3MThkNzQyM2JjYmMzMTAxZTcyNjdhNjc0OGRkMDc0NGVkNWFhYmU5ZGY4ZThjNzliMmU4YmYwMzdhYzcwNWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQxOTc5Y2VkOGFiNTVjZTA1Yjg4ZjY3NGQxYmU1YjE5YWQ1YmNhNTE1YTIzMWY0MjgxODJiNmQwZmI0ZDZiMWIifQ"
         }
       ]
     },
@@ -63,10 +71,72 @@
           "version": "repo-file-v1:sha256:dcb3278f56208d7de1a04b95d7be546c2a1bf560c11beccf8e5c0da3348ffb46"
         }
       ]
+    },
+    {
+      "id": "claim_c4610fd21ff0402d8f7b06730a19a086",
+      "statement": "The repository root carries two agent-instruction files: AGENTS.md describes how OpenWiki should be used by agents (retrieve just-in-time, treat source and tests as authoritative, do not hand-edit generated pages), and CLAUDE.md is a one-line include of AGENTS.md so both conventions stay in one place.",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md",
+          "version": "repo-file-v1:sha256:8926524de63a1266e7592d9f1256ec367b67e9fa0583f343808e3e51f19d4990"
+        },
+        {
+          "resource": "repo://CLAUDE.md",
+          "version": "repo-file-v1:sha256:cd617c809957b5aeb601ce9856109475f6da8ed78835148d17c3097dd4daa848"
+        }
+      ]
+    },
+    {
+      "id": "claim_10d08eaf25d94e16b23937f6a8f4809f",
+      "statement": "The no-service-url workflow runs only on pushes and pull requests to main when the repository is ulabase/starter-react, and fails the build if any src/environments/*.ts file contains a non-empty apiUrl, keeping a real service URL off the public starter branch.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/no-service-url.yml#L1-L31",
+          "version": "repo-lines-v1:sha256:d49a6bab6f0d4788d34bb72727446d604cfeeb279ec4115f88582a1c9b365641:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1ZjUwMWFkMTY3NzJmYjY4OWVhMWQwZTBhZWFlMGNmZTQ2OGExOTg1MWQwN2FjY2YzYjExODk3YTk0NzJhYmMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFiYmEzMGE4M2NiMzk1MjgxOTgxMGI1OTMyNjg5ODMxYzdlYjAxM2ZiYmUwNTUyZmY2OWQxZmI4YmUyNzdkMWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_0b78b84073a44ca295c8f046a7a3e465",
+      "statement": "The openwiki-update workflow refreshes the wiki on a nightly 03:00 UTC schedule, on release tags, and on manual dispatch; scheduled runs exit early when nothing outside openwiki/ has changed, then it runs openwiki --init or --update, opens a pull request limited to openwiki, AGENTS.md and CLAUDE.md, and auto-merges it.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/openwiki-update.yml#L1-L105",
+          "version": "repo-lines-v1:sha256:50e64f7f44d5b5d5c6db179b0d1dee682c7b2d1b81d09aff1e33d02ab82b1533:eyJzZWxlY3RlZExpbmVDb3VudCI6MTA1LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIwNjAyNzg3YWY2ZGNjMDgzNGRlMTIxY2JiMWNiOTVmOTQ1OWI3MjFlYWIwMzQ5ZjEwNTAxYjk5NmMxYzc3ZmZmIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiJlZjNkMWIxYjMwMjhmMGE0OTUzNGMwZjE3MmI5MWNlZmEwMWZkNzIzMmZmNjQzNGU1NzVlY2Q1MzllMzBjNjA3IiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+        }
+      ]
+    },
+    {
+      "id": "claim_bd0d748b83764056a9e7c4403a358e55",
+      "statement": "src/main.tsx wires the client consents gate into the auth provider by passing consentsOnError as RhAuthProvider's onError handler, which is how a 451 response raises the blocked flag in consents-signal.ts.",
+      "evidence": [
+        {
+          "resource": "repo://src/consents-signal.ts#L39-L49",
+          "version": "repo-lines-v1:sha256:f8f41520e42e7d4386ac041d9a3b62e333f4a29846fc784b07c4a28ec6db0568:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVhZjIyY2YwNzMyNTkyYzI0NzE0MWNiZTYxZWZhMTEwMTI2MTJmNWEzMTIyYjlhZjliYmFmNTJmNTcyNGQxOTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFhMWQxYTYzMzkwMjI5Yzc5ODM0N2U4M2EwNDA1NDQxYzk0MDAwMzUyODRhZDE2OGMxYmY2Y2RmMWQ3MGEzNzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkyMDQwZTA5NWE5NGUyYWRhNzRlNDIxZjM3MTg3NTFhOTFhODEwYmZkNjZmNDhmNGU5MzljN2I3NDgwZWI2NzAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://src/main.tsx#L10-L18",
+          "version": "repo-lines-v1:sha256:4b80449077fae1badf840614500d4c22c58decbb688b06330e313a774c897f86:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGNhZmYyNTQ0MmU2OWQzY2QwNjBlYTA0ZjYwNTdkNmRlZmYyZWQ0ZmQyMWVlMTA0YWVlOGQwMDhkYzUwYzliYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDk5NjdlYzFlZDM4MzZmOGViMTdhZmYxNzJiNWJmZWY3ZGU2MDQ4NWE0MzljNmNhMTFjNTkxZTE3NTU3MzlhZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjU5NmE2NTJjNTliNjMyNTQ1MTQ5OWYxN2M4YjRhYTRjZWJhYjI3YTE0MTE4NWE0MGM4NmViZjJkYTlkOGE3NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_8f65dcf6a7ed443a92e96064b56405ee",
+      "statement": "src/routes.tsx is the single mapping from URL paths to the page components under src/pages/; entries for signup, verify, forgot/reset-password and invitation acceptance are included or omitted based on environment.features, and routes are wrapped in PublicGuard or AuthGuard accordingly.",
+      "evidence": [
+        {
+          "resource": "repo://src/environments/environment.ts",
+          "version": "repo-file-v1:sha256:0b2fba9c71fd1b63438cbadf37ac7d0e703467000d83ce4857c4f401ba517d4e"
+        },
+        {
+          "resource": "repo://src/routes.tsx#L19-L119",
+          "version": "repo-lines-v1:sha256:fdeab36cfe33f56cebb488158e3e8871f22c8400ff3bdeaa7ee19115b8e418f7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAxLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI5NDY1M2ZhY2ZhNDIyYWExMDhhYzMxYWE1YTAyYTkyMDc3OWEzNjAzYjkyOGViYjcwMDI0YzllY2M1NGFhNjVhIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiJiMDJkMmMwZDZkYzVlNzRkOTJmYTE0YjkxZGJlYTI2NDA5MGJlYjM1ZmRiOTE4OGQ5YjM0MTE4MWRjZTlmNGNlIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJiNTI5NzQ1MDRmMmRiNWU4NzhhMjc5ODYzMmZhYjk1YjVmMDMwODBhZmViZTJmYzI5MTg2NTMwMWVlODA5MmVlIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.2",
-    "at": "2026-10-17T07:37:51.172Z"
+    "at": "2026-10-19T08:38:08.737Z"
   }
 }

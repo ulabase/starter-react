@@ -28,10 +28,10 @@ sources:
     resource: repo://src/routes.tsx
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-13T10:18:51.278Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-19T08:38:08.737Z" }
 verified:
   - by: openwiki/0.7.2
-    at: 2026-10-13T10:18:51.278Z
+    at: 2026-10-19T08:38:08.737Z
 ---
 
 # Auth & Teams
@@ -125,6 +125,7 @@ If `invitation.isNewUser === false`:
 - **Already logged in** → heading "Join {teamName}", subtext "You're signed in as {email}." with a one-click "Join team" button that calls `auth.acceptInvite(token)`
 - **Not logged in** → heading "Log in to join {teamName}", password form with a "Log in and join" button. Submit calls `auth.login(email, password)` then `auth.acceptInvite(token)`
 - On success → shows "You're in" / "Redirecting…" and navigates to `/` after 1.2 seconds
+- If `auth.getInvitation` resolves but the service did not recognise the link (`invitation` stays null), the page shows the invalid-link state rather than offering a login that would join nothing
 
 Error handling:
 - 404 → "This invitation is invalid or has expired."
@@ -222,6 +223,8 @@ The permission on `PATCH /users/{userId}` uses a `mergeRequest` to stamp the ver
 The schema (`userConsentsSchema`) defines `latestConsents` (with `tos`, `pp`, and `acceptedAt`) and `consents` (the history array). The `latestConsents` object has `tos` and `pp` as required fields, but the top-level `latestConsents` and `consents` fields themselves are not required because registration does not write them.
 
 Two JWT claims — `latestConsents/tos` and `latestConsents/pp` — carry the versions in the token so the rule can read them without a database round-trip. If either claim is missing, every authenticated user is blocked permanently.
+
+The rule is configured with `action: 'block'`, `status_code: 451` (the status `src/consents-signal.ts` keys on), and `on_error: 'allow'` — a rule that cannot be evaluated must not lock everyone out. The setup step that installs it compares the rule's full condition text against `CONDITION`, not merely the rule's presence, so bumping a version shows up as outstanding work rather than as satisfied.
 
 The setup file [`ulabase.setup.consents.ts`](../../ulabase.setup.consents.ts) creates all four documents (schema, permission, claims, rule) with versions derived from a single pair of constants. The [README](../../README.md#3-set-the-service-up) documents how to apply it.
 

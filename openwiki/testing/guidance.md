@@ -1,8 +1,11 @@
 ---
 type: Guide
 title: Testing Guidance
-description: Vitest setup, recommended test strategy, and how to run tests for the Ulabase React starter, including consents gate testing.
-tags: [testing, vitest, guidance, consents]
+description: Vitest setup, recommended test strategy, test targets by priority, and how to run tests. Includes specific test case guidance for the consents gate and auth flows.
+tags: [testing, vitest, guidance, consents, auth]
+verified:
+  - by: openwiki/0.7.2
+    at: 2026-10-19T08:38:08.737Z
 sources:
   - id: openwiki-source-5b54a58d1b51cd490b0e7162
     resource: repo://package.json
@@ -34,10 +37,7 @@ sources:
     resource: repo://ulabase.setup.ts
   - id: openwiki-source-5e1b077422a94ae165e88e4e
     resource: repo://vite.config.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-13T10:18:51.278Z" }
-verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-13T10:18:51.278Z
+generated: { by: "openwiki/0.7.2", at: "2026-10-19T08:38:08.737Z" }
 ---
 
 # Testing Guidance
@@ -123,6 +123,39 @@ Test that routes are correctly gated:
 ## Consents Flow Testing
 
 The consents gate is a critical user flow that requires coordinated testing between the signal module and the UI component.
+
+```mermaid
+sequenceDiagram
+    participant App as App
+    participant API as Ulabase Service
+    participant Gate as ConsentsGate
+    participant Signal as consents-signal
+    participant Auth as useAuth
+
+    App->>API: /users/me (session restore)
+    API-->>App: 451 Unauthorized for Legal Reasons
+    App->>Signal: consentsOnError({status: 451})
+    Signal->>Signal: setBlocked(true)
+    Signal-->>Gate: listener(true)
+    Gate->>Gate: Show overlay with checkboxes
+    
+    Note over Gate: User checks both boxes and clicks accept
+    
+    Gate->>Auth: acceptConsents()
+    Auth-->>Gate: success
+    
+    alt Current path starts with /auth
+        Gate->>App: window.location.assign("/")
+    else Other paths
+        Gate->>Auth: checkSession()
+        Auth-->>Gate: session restored
+        Gate->>Signal: setBlocked(false)
+        Signal-->>Gate: listener(false)
+        Gate->>Gate: Hide overlay, show children
+    end
+```
+
+The consents flow: 451 errors trigger the blocked signal, which shows the overlay; acceptance either navigates to home (for auth pages) or restores the session and hides the overlay.
 
 ### Signal Module Tests (`src/consents-signal.ts`)
 

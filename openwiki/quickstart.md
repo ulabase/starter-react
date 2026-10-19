@@ -20,10 +20,10 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-17T07:37:51.172Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-19T08:38:08.737Z" }
 verified:
   - by: openwiki/0.7.2
-    at: 2026-10-17T07:37:51.172Z
+    at: 2026-10-19T08:38:08.737Z
 ---
 
 # Ulabase Starter — React
@@ -130,8 +130,11 @@ consents setup file instead:
 ulabase setup --srv <srvId> --file ulabase.setup.consents.ts
 ```
 
-This imports all steps from `ulabase.setup.ts` (so the accounts configuration cannot drift) and
-appends four more documents:
+This imports all steps from `ulabase.setup.ts` — except `appPointsAtService`, which it re-runs
+last so the app is pointed at the service only after the gate is in place — and appends the
+gate's documents. The two versions the gate demands live in one place: `TOS_VERSION` and
+`PP_VERSION` constants at the top of the file (both `'2026-07-01'` in the starter). Bumping
+them and re-running the setup re-publishes the rule.
 
 | Step | Effect |
 |------|--------|
@@ -139,6 +142,7 @@ appends four more documents:
 | Users collection validated | Binds the schema to `/users` via `jsonSchema.schemaId` |
 | Consent permission | Grants `user` role a scoped `PATCH /users/{userId}` for consents only, with a `mergeRequest` that stamps versions server-side |
 | JWT claims | Adds `latestConsents/tos` and `latestConsents/pp` so the Guards rule can read them from the token |
+| Guards feature installed | Installs the `guards` feature if missing |
 | Guards rule | Blocks authenticated users with `451` when either version does not match — excludes `/auth`, `/token`, and the acceptance PATCH |
 
 Without this file, no request is ever answered `451`, so the consents overlay never renders.

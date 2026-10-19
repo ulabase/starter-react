@@ -12,10 +12,10 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-17T07:37:51.172Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-19T08:38:08.737Z" }
 verified:
   - by: openwiki/0.7.2
-    at: 2026-10-17T07:37:51.172Z
+    at: 2026-10-19T08:38:08.737Z
 ---
 
 # Service Setup with Ulabase CLI
@@ -71,27 +71,27 @@ flowchart TD
     L -->|No/Other| N["Skip OAuth"]
     M --> O["Add app origin to allowlist"]
     N --> O
-    O --> P{"Consents file?"}
-    P -->|Yes| Q["Execute consents gate steps"]
-    P -->|No| R["Setup complete"]
-    Q --> S["Store user schema"]
-    S --> T["Link schema to users collection"]
-    T --> U["Create consent acceptance permission"]
-    U --> V["Add consent JWT claims"]
-    V --> W["Install guards feature"]
-    W --> X["Create consents gate rule"]
-    X --> R
+    O --> P["Rewrite apiUrl in environment.ts"]
+    P --> Q{"Consents file?"}
+    Q -->|Yes| R["Execute consents gate steps"]
+    Q -->|No| S["Setup complete"]
+    R --> T["Store user schema"]
+    T --> U["Link schema to users collection"]
+    U --> V["Create consent acceptance permission"]
+    V --> W["Add consent JWT claims"]
+    W --> X["Install guards feature"]
+    X --> Y["Create consents gate rule"]
+    Y --> Z["Rewrite apiUrl in environment.ts again"]
+    Z --> S
 ```
 
-Decision tree for ulabase setup showing how file selection determines which configuration steps execute.
+Decision tree for ulabase setup showing how file selection determines which configuration steps execute. The `apiUrl` rewrite runs last in both files: a setup that stopped halfway leaves the "connect your service" screen rather than a sign-up page that fails.
 
 ## Base Setup File: `ulabase.setup.ts`
 
-The base setup file (`ulabase.setup.ts`) imports `environment.ts` to derive server configuration from the app's feature flags. This eliminates configuration drift between frontend and backend. The setup uses `defineSetup` and `step` from `@ulabase/cli` to create idempotent check-then-apply steps.
+The base setup file (`ulabase.setup.ts`) imports `environment.ts` to derive server configuration from the app's feature flags. This eliminates configuration drift between frontend and backend: turning `passwordReset` off in the app and re-running setup turns it off on the service too, because there is no second place to forget. The setup uses `defineSetup` and `step` from `@ulabase/cli` to create idempotent check-then-apply steps.
 
-### Feature Flag Flow
-
-The `features` block in `environment.ts` must match the service's "Sign-up Mgmt → Features" toggles. `ulabase.setup.ts` reads these flags and configures the service accordingly:
+A server feature that is off answers unauthenticated callers with `403`, so the app must not offer a button for it. The `features` block in `environment.ts` must therefore agree with the service's "Sign-up Mgmt → Features" toggles — `ulabase.setup.ts` reads these flags and configures the service so the two lists cannot drift:
 
 ```typescript
 // From environment.ts
@@ -131,9 +131,11 @@ const features = {
 
 4. **Origin Allowlist** — Adds the `APP_URL` (default `http://localhost:5173`) to the service's allowed origins. Additive: never replaces existing origins, only adds missing ones. Installs the `origin-allowlist` feature if not present.
 
+5. **App Points At Service** (`appPointsAtService`, exported) — Always last: rewrites only the `apiUrl` line in `src/environments/environment.ts` to the service URL from `admin.serviceToken(srvId)`. Comments and flags are untouched, and the step is exported so a setup that extends this one can keep it last.
+
 ## Consents Gate Setup: `ulabase.setup.consents.ts`
 
-The consents gate file imports the base setup and appends additional steps for requiring Terms of Service and Privacy Policy acceptance. The gate has two halves: a server-side rule that blocks requests, and a client-side overlay that presents the acceptance form.
+The consents gate file imports the base setup and appends additional steps for requiring Terms of Service and Privacy Policy acceptance. It reuses the accounts steps via `import accounts, { appPointsAtService } from './ulabase.setup.ts'` and spreads `accounts.steps.filter(s => s !== appPointsAtService)` — the accounts steps have one definition, and adding one there reaches both files. The accounts steps come first deliberately: a gate that blocks users the service cannot yet create has nothing to block, and the permission is written against the `users` collection the accounts feature owns. The gate has two halves: a server-side rule that blocks requests with `451`, and a client-side overlay (keyed on `451` in `src/consents-signal.ts`) that presents the acceptance form.
 
 ### Version Constants
 
@@ -162,9 +164,13 @@ These versions appear in both the permission's `mergeRequest` and the guard rule
    - Token paths (`/token/*`)
    - The acceptance itself (`PATCH /users/{userId}` with `consents` field)
 
+The rule's `check` compares the full condition string and status code, not merely the rule's presence, so bumping a version shows up as work outstanding. The apply sets `on_error: 'allow'` so a rule that cannot be evaluated cannot lock everyone out. `/users/me` is deliberately not excluded — blocking it is what makes the gate work with no client probing, since reading the user document is the first thing any app does.
+
 ### Why the Gate Works Without Client Code
 
-The client code for showing the acceptance dialog is always present. When the guard rule doesn't exist, no request returns 451, so the dialog never appears. The absence of a rule is the absence of the gate.
+The client code for showing the acceptance dialog is always present. When the guard rule doesn't exist, no request returns 451, so the dialog never appears. The absence of a rule is the absence of the gate — nothing to switch off in the app: an unasked question is the absence of a rule on the server, not a flag here.
+
+The consents file does not write the Terms or Privacy Policy documents themselves — those live in `public/` and are yours. It only decides which *versions* the service demands.
 
 ## Operational Procedures
 
@@ -176,7 +182,7 @@ When publishing new Terms or Privacy Policy:
 2. Update the version lines in `public/terms.html` and `public/privacy.html`
 3. Re-run setup: `ulabase setup --srv <srvId> --file ulabase.setup.consents.ts`
 
-Existing users see the acceptance form again on their next request. Previous acceptances remain in the `consents` history.
+Existing users see the acceptance form again on their next request. Previous acceptances remain in the `consents` history (the permission's `mergeRequest` uses `_$push` to grow the history instead of overwriting it). The guard rule's `check` compares the condition string itself, so the version bump is detected as outstanding work rather than reported as satisfied.
 
 ### Adding OAuth Providers
 

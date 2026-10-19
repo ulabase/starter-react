@@ -5,7 +5,7 @@ description: Runtime architecture of the Ulabase React starter — component tre
 tags: [architecture, react, auth, routing, ulabase, consents]
 verified:
   - by: openwiki/0.7.2
-    at: 2026-10-13T10:18:51.278Z
+    at: 2026-10-19T08:38:08.737Z
 sources:
   - id: openwiki-source-54631e6ebf1d3b815c4a5eed
     resource: repo://src/App.tsx
