@@ -1,11 +1,8 @@
 ---
 type: Guide
 title: Testing Guidance
-description: Vitest setup, recommended test strategy, test targets by priority, and how to run tests. Includes specific test case guidance for the consents gate and auth flows.
+description: Vitest setup, quiet-validation habits, test targets by priority, and specific test case guidance for the consents gate and auth flows. Defines the app-versus-server testing boundary — what client tests cover versus what setup check/apply already validates.
 tags: [testing, vitest, guidance, consents, auth]
-verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-19T08:38:08.737Z
 sources:
   - id: openwiki-source-5b54a58d1b51cd490b0e7162
     resource: repo://package.json
@@ -37,7 +34,10 @@ sources:
     resource: repo://ulabase.setup.ts
   - id: openwiki-source-5e1b077422a94ae165e88e4e
     resource: repo://vite.config.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-19T08:38:08.737Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-28T14:05:51.205Z" }
+verified:
+  - by: openwiki/0.7.2
+    at: 2026-10-28T14:05:51.205Z
 ---
 
 # Testing Guidance
@@ -114,11 +114,17 @@ Test that routes are correctly gated:
 - Authenticated user visiting `/auth/login` → redirected to `/` (via `PublicGuard`)
 - Feature flag `passwordReset: false` → `/auth/forgot-password` route not registered
 
+### The App-Versus-Server Testing Boundary
+
+App tests cover the behavior the client owns: routing, feature-flag-driven route registration, auth-page flows, and consents overlay behavior. Server-side Guards rule condition, permission predicate and `mergeRequest` semantics, and JWT claim configuration are owned by `ulabase.setup.consents.ts` (with the accounts half in `ulabase.setup.ts`) and their idempotent check/apply steps — not by client tests. Re-verify against both setup files when this boundary is in doubt: each declares every service-side rule and permission as a `check`/`apply` step, so `ulabase setup --dry-run` is the validation for that half, not vitest.
+
+The consents split is explicit in the source: `consents-signal.ts` and `ConsentsGate.tsx` state nothing about consent versions — the server stamps them in the permission's `mergeRequest` and compares them in the Guards rule. Client tests therefore prove overlay and signal behavior; they cannot prove that acceptance is stamped with the versions the rule demands.
+
 ### What to Avoid
 
-- Don't test `@ulabase/kit-react` internals — the kit has its own tests
+- Don't test `@ulabase/kit-react` internals (covered by kit tests)
 - Don't snapshot-test disposable skin CSS — the starter is designed to be reskinned
-- Don't test Ulabase service-side Guards rule logic — covered by `ulabase.setup.consents.ts` and its check/apply idempotency
+- Don't test Ulabase service-side Guards rule or permission logic (covered by service and setup idempotency — see the boundary above)
 
 ## Consents Flow Testing
 
@@ -133,7 +139,7 @@ sequenceDiagram
     participant Auth as useAuth
 
     App->>API: /users/me (session restore)
-    API-->>App: 451 Unauthorized for Legal Reasons
+    API-->>App: 451 Unavailable For Legal Reasons
     App->>Signal: consentsOnError({status: 451})
     Signal->>Signal: setBlocked(true)
     Signal-->>Gate: listener(true)
@@ -209,6 +215,15 @@ Test the overlay UI and its interaction with the auth system:
 7. **Error states**: Mock failures, verify error messages
 8. **Sign-out**: Verify `setBlocked(false)` and `auth.logout()` are called
 
+## Quiet-Validation Habits
+
+For auth and consents changes, prefer the narrowest quiet validation that proves the changed behavior, and preserve complete failure output when it does not. In practice:
+
+- **Prove the changed behavior, not the whole app.** A consents-signal change is proven by `src/consents-signal.test.ts`; a route-flag change by the routing tests. Do not run the full component suite to answer a one-file question.
+- **Keep failure output intact.** Never swallow, truncate, or summarize a failing assertion — the complete output is the debugging artifact. If a test is noisy, fix the test's noise, not the report.
+- **Auth/consents changes are quiet by default.** The overlay and signal are deliberate UX, not enforcement (the rule lives on the server). A test that "proves" enforcement by asserting on 451 payloads or rule text is outside the boundary — assert overlay rendering, checkbox gating, and `acceptConsents()`/`checkSession()` sequencing instead.
+- **Server drift is a dry-run question.** If a change touches version strings, the Guards condition, or the acceptance permission, validate with `ulabase setup --dry-run` against the target service; do not encode service state in client tests.
+
 ## Adding Tests
 
 Create test files alongside source files using the `.test.ts` or `.test.tsx` convention:
@@ -245,4 +260,5 @@ npm test -- --run # Single run
 
 - [Architecture Overview](../architecture/overview.md) — understanding the component tree for test setup
 - [Operations & Runbook](../operations/runbook.md) — build and dev workflow
+- [Service Setup](../operations/service-setup.md) — the check/apply idempotency that owns server-side validation
 - [Auth & Teams](../domain/auth-and-teams.md) — detailed consents flow and feature flag definitions

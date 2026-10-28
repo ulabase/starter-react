@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:41dfd354d3a134668d2815f393174dbdd41e8ce8a215642861ac9cb8a4f1ea8b",
+  "pageVersion": "sha256:d6e2a4368dfd050201327869dea81135cd425dc77ee403d0aaa5e720ba7427ec",
   "claims": [
     {
       "id": "claim_a5b443d1a24d4104a2cbaf3507b03062",
@@ -15,7 +15,7 @@
           "version": "repo-lines-v1:sha256:152607e653da37f5f18e11d56b3e53c87e63a611c2dfc3bc59005995c4e38be8:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY5NTQ3N2VkYWI3MTU2NTFlZjNmZDBhOGE1ZjgzYzYwMTM1YTIwYjNhMmI3N2MxYTc5N2EwZjZjODM1MmFkYjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ2ZjVhODU2NTdiOGU4NTQwZjZmNWYyZWM3YjY2YjY2YWNiNzc3ZmJlNjQyY2E5M2I5N2QyNWU4NjBlZDM4YjgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhmNjI4MGZjMDFmYzc1OWFhZGY4ODgwY2RmM2E4M2Q1YmIxYzZkNmNiYTJkNjdiZWEzOTRlZDUyMDI1ZWEzZWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA1MTM5YmE0ZDJjMmQ3MDhiZGE0MTA5ZmU3OGM2MWI0NjI3ZmExYTgxNTY1NGQxNmQzMTg0YmQxN2U0ZTRmODkifQ"
         },
         {
-          "resource": "repo://ulabase.setup.consents.ts#L285-L320",
+          "resource": "repo://ulabase.setup.consents.ts#L282-L317",
           "version": "repo-lines-v1:sha256:61bb3204eef5b835755b0b6f6ddeb8cd77fc51636fd8e642903f24bd6671900f:eyJzZWxlY3RlZExpbmVDb3VudCI6MzYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIyNmE0MTQ1MmIwMTVkNzk5Y2ExMDkwNTI5YWQwYTI2MTk1MjcwZDFlOTdiMjMwZDY5N2E3NGNjMzEzYzZhNDUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQyZTZmY2RkNGQ3Mjc0ODdlOGI4ZDdhNDM3N2YwNjJjZDFiY2U1OTQ0NGQ2ZDczYWE4OGNhNTg0OGY5NGI0ZTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVmZjA4YjUzZGJiNWUzN2MzNTIxMDllODQzOGQxMmYyNzVmNWYwYTJkZjZiZWVhMWExYjYyNDYyNDI1N2ZiYzIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU1ZTI2Y2Q5MjM2NmY2MGQ4ZWQ5MmQwMjM5ZjA3ZmVmNzRjYWMxNGFhNjlhZGRmOWMyY2MwZDExZWIwMGE0NjMifQ"
         }
       ]
@@ -50,15 +50,19 @@
     },
     {
       "id": "claim_4ae67f02200d41c580d788eaee469e01",
-      "statement": "When the user clicks 'I accept' in the ConsentsGate overlay, the app calls auth.acceptConsents() which PATCHes /users with {\"consents\": []}. The permission's mergeRequest stamps the current TOS_VERSION and PP_VERSION onto latestConsents and pushes to the consents history array server-side — the client states nothing about which versions are being accepted. After the PATCH, if the user is on an /auth path (e.g., login page), the component calls window.location.assign('/') to redirect to the home page. Otherwise, auth.checkSession() fetches a fresh JWT via /token?renew=true then re-reads /users/me, because a JWT is a snapshot and without a fresh one the rule keeps blocking the user for the life of the old token.",
+      "statement": "When the user clicks 'I accept' in the ConsentsGate overlay, the app calls auth.acceptConsents() which PATCHes /users with {\"consents\": []}, then renews the JWT (GET /token?renew=true), re-reads /users/me, and calls setUser(). The permission's mergeRequest stamps TOS_VERSION and PP_VERSION onto latestConsents and pushes to the consents history server-side — the client states nothing about which versions are being accepted. If the user is on an /auth path (e.g., login page), the component calls window.location.assign('/') to redirect home (the login page was blocked by 451 so authentication never completed). Otherwise it calls auth.checkSession() to reload the session with the user and their teams, then setBlocked(false) tears down the overlay. The renewal inside acceptConsents() is not optional: a JWT is a snapshot and the rule keeps blocking for the life of the old token.",
       "evidence": [
+        {
+          "resource": "repo://NOTES.md#L154-L157",
+          "version": "repo-lines-v1:sha256:db54d9285577c62e124e4802ab4da23afe5326d8c945b8efa87c66c1bf9ca632:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODIwNjdjODA0ZDEzNDRlODExZDVmNWRiODdhMjk5ZDcyZjg5MjI0YzFiY2VmYjNjODg5M2JkMTRmZTg2OTc3NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNmYxMjAyMGZhMjY5N2MzYzBkNTc0YTI1NDFiYTE4MWUxZWJmMjY2MmM4MWJjODVlNjVkYzFjNDE5MjZkM2U5YyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDMxY2E3ZjI0MWU3YjBiNzA2ZTM0MWJiMjc4YWIxMDAzYWZkZTkwNGQyYTc0MzQwMmI1NTJiMDQ2MDI5ZGMyZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjAwYmVlMzZkMzVmZmExYTQ1ZjRlNzgxMTBjNzg3NjUwZGQ1YjgyYmM3M2IyNmJiOGFmNWNmNDM1NDcyZWUxNyJ9"
+        },
         {
           "resource": "repo://src/ConsentsGate.tsx#L33-L57",
           "version": "repo-lines-v1:sha256:a7e62637e5844c7562dbfa03907a6629e301c8459e138d6620c286460dea1cb2:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgzNzNiNDlkMmMwMmMwMDlmY2UyODdlODFhNDE4ZGIxZTU2YzgzMDllMmJjODY5MWRiYmI5NDFkMWE0MzlkZDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyYTJjYjI1YTEyMmI0NDIyMWE2MjM0ZWM2NjBhN2I1ZmI3ZjliZGU3YjNiOWUyYjNjNTU5YTBkOTZmYWM3MzkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc2NTQwYTBhZDQwYWMzZDBjZjVmNjU3NTQ5MGY5NTI0Y2FhN2M0MTg0ZmIwZTcxYjk3ZGJlYThhMDc4YmU4MTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNhNmM4OGYyNWQyYjYxNDFiZDg4YTk2NmFkYjZiM2RmNzQxOTRmZGM3M2M5YjQ5MTM5MzliMmE1MmEzZTk5NjgifQ"
         },
         {
-          "resource": "repo://ulabase.setup.consents.ts#L232-L247",
-          "version": "repo-lines-v1:sha256:861286d0a7802d9990f2d00992605a870a9ff1c509d0370a405c086b7f92c246:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3OTUyM2IyMmYzZmRjZWMyMTE1N2QzOTExYmVjN2U3ODYzNjI0MGY1NzNjZDg4YmMxYTYzZTQyZDczZjJkMTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFlNjczYWJkNDU3YTk3ZWVhMTdhNjAwNjJlYjBmYWVhNmJkZjA5NDg2OGNjNmI4ZjhjMGViZGEyZjYxZWQ0MmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE4OGQ2YmFiYWUzMmRmMDU0YTMyN2IxYjIyMWY2N2IzZDdlZmU5YzYwMzVmOGZmN2JmMTZlNzQyZTg3OGQzMGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijc0NDliNTZkYWQ2OTczMWRlYWFhMzc3NDFiYWUzNWM1NWVlMjY5YWI0ZWI4ZTRhZDM1ODQ4YTYwNWFkYTViNjEifQ"
+          "resource": "repo://ulabase.setup.consents.ts#L220-L248",
+          "version": "repo-lines-v1:sha256:d691885900551d601f5fe1163ab4cf3a3794f941d8ea4050d1ed2ae1e06c83e4:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkzNWM2MjE2YjNjYmQ1NDZkM2I2OTFhN2NiMjExNjZjZDA0Yzc5OTlmZGI1MzY5OWUwZGI3ODYwNjc0NDgwNWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2NzdkMmYwMzFlOThiNWU5MTFjNWFkNGZiOWIyMTg2YTkzMjUyMmU4ZjQ2ZWU0MGJhYmZhZTNkYTAwZmMxMjEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc0NDliNTZkYWQ2OTczMWRlYWFhMzc3NDFiYWUzNWM1NWVlMjY5YWI0ZWI4ZTRhZDM1ODQ4YTYwNWFkYTViNjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImMyMTIzNzI5N2Y0ZjQ0MGE2NWVjN2EyN2Y1YTBiYWUyYzMyMTRhN2U4MWIwNzFhMTRlNjZiMTBhYjMxMzljNjkifQ"
         }
       ]
     },
@@ -100,15 +104,15 @@
     },
     {
       "id": "claim_3c380b0d49f44281a76e87deb179b80b",
-      "statement": "The userConsentsSchema defines latestConsents (with tos, pp, and acceptedAt as a BSON date) and consents (the history array) on the user document. The latestConsents object has tos and pp as required fields, but the top-level latestConsents and consents fields themselves are not required because registration does not write them. Two JWT claims — latestConsents/tos and latestConsents/pp — carry the versions in the token so the Guards rule can read them without a database round-trip; if either claim is missing, every authenticated user is blocked permanently.",
+      "statement": "The userConsentsSchema defines latestConsents (tos, pp, acceptedAt as a BSON date keyed _$date) and consents (the history array) on the user document. latestConsents requires tos and pp when present, but the top-level latestConsents and consents fields are optional because registration writes neither — only _id and roles are required. Two JWT claims — latestConsents/tos and latestConsents/pp — carry the versions in the token so the Guards rule can read them without a database round-trip; the claims setup step reads auth's account-properties-claims and adds these two entries via a Set-union (never replacing claims the service already carries), and deliberately excludes the consents history from the token (readable base64 JWT, grows forever). If either claim is missing, every authenticated user is blocked permanently.",
       "evidence": [
         {
-          "resource": "repo://ulabase.setup.consents.ts#L250-L277",
-          "version": "repo-lines-v1:sha256:fc9a7e5b9cc3e06156356a28acc364a7431ddd388972afb184893906c52aa5c3:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFmMGNkYjk3MmE3YmZiN2VkMjQ2ZjlmZjY3MjM4NWU1NWY0OTY4ZmMxMTA0M2RjNWI2ODRkNTFkZmEzMWRiY2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdlY2IzZDQ5YTkyMmJhZWFhMWMyOGZhOGIxMjI3MTQ4MGNjZGFlNGZmZjQ5NmM0ZDQ2YzJmM2E2ZjM0MmRlNzAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY2OWEwN2QzNTU0Mzk1NzExZTkzNmIxYzEwMzc5NDllZjQ3NTZlODRiY2MyMDc2ZjZlMDkwNTU5NzI0ZmQxYTEifQ"
+          "resource": "repo://ulabase.setup.consents.ts#L251-L275",
+          "version": "repo-lines-v1:sha256:4bd3daaf8213666dd87649a2f91d22ecbb0d85c018edc188f2f61381241cf693:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcyMzBhYjg1ZDg0ZDViNzI1N2RhMDQzYmFhMzIxZDQ2ZDYxZTM2MmVlMDA5MWM2NDVlMjExZmNkMDUwMjJiZWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQyZTZmY2RkNGQ3Mjc0ODdlOGI4ZDdhNDM3N2YwNjJjZDFiY2U1OTQ0NGQ2ZDczYWE4OGNhNTg0OGY5NGI0ZTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc0NDliNTZkYWQ2OTczMWRlYWFhMzc3NDFiYWUzNWM1NWVlMjY5YWI0ZWI4ZTRhZDM1ODQ4YTYwNWFkYTViNjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIyMDQ3ZmQzNjk2Zjc1ZTVkNjA4Zjc0Y2M2OGFhNmQ5OGZmZGJlMjUzMWZhMDYxMzNiOGEyMzE5NGJmMjZjOWEifQ"
         },
         {
-          "resource": "repo://ulabase.setup.consents.ts#L83-L116",
-          "version": "repo-lines-v1:sha256:0c1eb0885e21261089443fe9994a47a6dc0e64bef2f2c07e2bf72c5c7f86e5ef:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjljZmQwNDFhYWQzMTYyZDUxMjRkMDU4NDRmYTQ2YjVkYThlY2U4OWU2NzIxMjdkNjMzOTNkNWFjZTllNDA5OGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRkNWNkMmZiNGYzZGY4ODQ1MTUyNTViMzk1MjNmMmY4YjU0NzJiZWVhOWY1NjZmZmNhMjA0ZGI4MDI1NjEwNDEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRhN2Q1N2I1MzgyMWE0N2M0YmJmMTY2ODFmMjA1YTI2Njk4ZTE0ZDE4ZGRkY2ZhMDBhMjIxZGIyZDhhNzhlOGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVlZWNhOWFmY2U1ZjIwMzVkOTdjYjgwNGEwNjI4MmE0YTEyMjM5ZWM1YTI0YWJiNmFlZmVlNzAzZTQ4YjhjODIifQ"
+          "resource": "repo://ulabase.setup.consents.ts#L85-L117",
+          "version": "repo-lines-v1:sha256:d7de05259b55c9c2ddba192979f9b4b262c3d2ed3816c7183aa7b41ef1e88676:eyJzZWxlY3RlZExpbmVDb3VudCI6MzMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJiM2IzMWZjM2FjZDY5Yzc0OGE5NmU5MTc3ZjBkZDU3N2NkMjJjMGU0MTNmYjllNTJlYjUyZDdlY2RjMmRhYTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFhMWQxYTYzMzkwMjI5Yzc5ODM0N2U4M2EwNDA1NDQxYzk0MDAwMzUyODRhZDE2OGMxYmY2Y2RmMWQ3MGEzNzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIwOWNlNWRiN2Q5ZjhhN2FlNjVjYjhhYmI5YTU2ZDQyOTdhZDFjNjE0MWJlZDViMjEyNWQzMzk0ZDUwYWFiOGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNiMDc1OTlkMDQxOTk2M2E1ZDcyZDc4OTFiYzk1YzlmOTEwYWE3MzE0MTRiYmYwOTYwNGZjNTIwOTZjMDBmODcifQ"
         }
       ]
     },
@@ -185,7 +189,7 @@
       "statement": "The consents Guards rule is installed with action 'block', status_code 451 (the status src/consents-signal.ts keys on), and on_error 'allow', so a rule that cannot be evaluated does not lock everyone out. The setup step compares the rule's full condition text against CONDITION rather than merely the rule's presence, so bumping a version shows up as outstanding work, not as satisfied.",
       "evidence": [
         {
-          "resource": "repo://ulabase.setup.consents.ts#L296-L320",
+          "resource": "repo://ulabase.setup.consents.ts#L293-L317",
           "version": "repo-lines-v1:sha256:8e7dff726525e4432725fbe0493ca00e201668a7ae6c3b3802b5f7d25e4195a8:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU4NWM1N2IxZjE3MmJlMzZlNWVhY2I0YzNiMDhjYTFmMDMxYTFkMGIyZDc1NWRkMzkwNzg3ZmNkZmY5ZWFhOGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQyZTZmY2RkNGQ3Mjc0ODdlOGI4ZDdhNDM3N2YwNjJjZDFiY2U1OTQ0NGQ2ZDczYWE4OGNhNTg0OGY5NGI0ZTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjlhMDAzZDlkMGYwMDk2M2ViMTJhY2MyOTkyYWI4YzYxZjdjMjAzMmQzMGU2MDkzMGRkZDg2ZDJmZjc1ZDNiOWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVmNGEzZmFmOWFiNTRmOThiZDAxYmUwNjEzMDkyZWMzZmYyNTA5ZTkxMmFiOGQwNzVhNzdlY2MxZTY5NTA4ZjMifQ"
         }
       ]
@@ -203,6 +207,6 @@
   ],
   "verification": {
     "by": "openwiki/0.7.2",
-    "at": "2026-10-19T08:38:08.737Z"
+    "at": "2026-10-28T14:05:51.205Z"
   }
 }

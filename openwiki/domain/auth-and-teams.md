@@ -3,6 +3,9 @@ type: Domain
 title: Auth & Teams
 description: Detailed documentation of authentication flows (login, signup, OAuth, email verification, password reset), team management, invitation handling, consents gate enforcement, and feature flags in the Ulabase React starter.
 tags: [auth, teams, invitations, oauth, feature-flags, consents, domain]
+verified:
+  - by: openwiki/0.7.2
+    at: 2026-10-28T14:05:51.205Z
 sources:
   - id: openwiki-source-4e7cd7f381c92e8c5d89f5c1
     resource: repo://NOTES.md
@@ -28,10 +31,7 @@ sources:
     resource: repo://src/routes.tsx
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-19T08:38:08.737Z" }
-verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-19T08:38:08.737Z
+generated: { by: "openwiki/0.7.2", at: "2026-10-28T14:05:51.205Z" }
 ---
 
 # Auth & Teams
@@ -220,9 +220,13 @@ Crucially, `/users/me` is **not** excluded. Blocking it is what makes the gate w
 
 The permission on `PATCH /users/{userId}` uses a `mergeRequest` to stamp the versions and timestamp server-side — the client sends `{"consents": []}` and states nothing about which versions are being accepted.
 
-The schema (`userConsentsSchema`) defines `latestConsents` (with `tos`, `pp`, and `acceptedAt`) and `consents` (the history array). The `latestConsents` object has `tos` and `pp` as required fields, but the top-level `latestConsents` and `consents` fields themselves are not required because registration does not write them.
+The schema (`userConsentsSchema`) defines `latestConsents` (with `tos`, `pp`, and `acceptedAt`) and `consents` (the history array) on the user document. The `latestConsents` object requires `tos` and `pp`, but the top-level `latestConsents` and `consents` fields are not required — the document is validated on insert, before any consent exists. Only `_id` and `roles` are required at the top level: an invited user arrives with no password and an empty profile, and the initial team is attached after validation, so requiring anything else would refuse every registration and invitation. `acceptedAt` is a BSON date stored under the escaped key `_$date` so the schema parser does not read the type key as a value (the store reads it back as `$date`, and the setup's `canonical` comparator unescapes both forms before comparing).
 
-Two JWT claims — `latestConsents/tos` and `latestConsents/pp` — carry the versions in the token so the rule can read them without a database round-trip. If either claim is missing, every authenticated user is blocked permanently.
+### Claims in the Token
+
+The guard reads the token, not the database. Two JWT claims — `latestConsents/tos` and `latestConsents/pp` — carry the versions so the rule can compare them without a database round-trip. The claims step in `ulabase.setup.consents.ts` reads `auth`'s `account-properties-claims` configuration and **adds** the two entries via a Set-union with whatever the feature already carries — it never replaces the list, so a service that has claims of its own keeps them. If either claim is missing from the token, every authenticated user is blocked permanently, including the ones who have just accepted.
+
+Only these two claims travel in the token. The `consents` history array is deliberately excluded: a JWT payload is base64 (readable by anyone holding the token), and the history grows at every acceptance with no decision that reads it, so shipping it would leak acceptance records and let the token grow without bound.
 
 The rule is configured with `action: 'block'`, `status_code: 451` (the status `src/consents-signal.ts` keys on), and `on_error: 'allow'` — a rule that cannot be evaluated must not lock everyone out. The setup step that installs it compares the rule's full condition text against `CONDITION`, not merely the rule's presence, so bumping a version shows up as outstanding work rather than as satisfied.
 
@@ -255,8 +259,8 @@ The overlay is user experience, not enforcement — remove it with dev tools and
 
 When the user clicks "I accept", the component calls:
 
-1. **`auth.acceptConsents()`** — PATCHes `/users` with `{"consents": []}`. The permission's `mergeRequest` stamps the current `TOS_VERSION` and `PP_VERSION` onto `latestConsents` and pushes to the `consents` history array. Nothing in the request body states which versions are being accepted — the server decides.
-2. **`auth.checkSession()`** — fetches a fresh JWT (via `/token?renew=true`) then re-reads `/users/me` and calls `setUser()`. The renewal is not optional: a JWT is a snapshot, and without a fresh one the rule keeps blocking the user for the life of the old token.
+1. **`auth.acceptConsents()`** — PATCHes `/users` with `{"consents": []}`, then renews the JWT (`GET /token?renew=true`), re-reads `/users/me`, and calls `setUser()`. The permission's `mergeRequest` stamps the current `TOS_VERSION` and `PP_VERSION` onto `latestConsents` and pushes to the `consents` history array. Nothing in the request body states which versions are being accepted — the server decides. The renewal is not optional: a JWT is a snapshot, and without a fresh one the rule keeps blocking the user for the life of the old token.
+2. **`auth.checkSession()`** — reloads the session so the app starts with a user and their teams rather than a blank shell.
 3. **`setBlocked(false)`** — tears down the overlay so the app renders with the new session.
 
 **Special case:** If the user is on an `/auth` path (e.g., login page), the component calls `window.location.assign('/')` instead of `auth.checkSession()`. This redirects the user to the app's home page after accepting consents, because the login page was blocked by the 451 error and the user never successfully authenticated.
@@ -304,14 +308,16 @@ sequenceDiagram
     Gate->>RAP: auth.acceptConsents()
     RAP->>API: PATCH /users with consents
     API-->>RAP: 200 OK (versions stamped by mergeRequest)
+    RAP->>API: GET /token?renew=true
+    API-->>RAP: fresh JWT with consent claims
+    RAP->>API: GET /users/me
+    API-->>RAP: 200 OK (user profile)
     alt On /auth path (e.g., login page)
         Gate->>Gate: window.location.assign("/")
     else Not on /auth path
         Gate->>RAP: auth.checkSession()
-        RAP->>API: GET /token?renew=true
-        API-->>RAP: fresh JWT with consent claims
         RAP->>API: GET /users/me
-        API-->>RAP: 200 OK (user profile)
+        API-->>RAP: 200 OK (user profile and teams)
     end
     Gate->>Signal: setBlocked(false)
     Signal->>Gate: listener notified

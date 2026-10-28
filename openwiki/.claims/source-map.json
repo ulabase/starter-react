@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:5e4df405ef0cd7ce555ce27499b97697320aea7a3afe3f8195abc5d7cd727313",
+  "pageVersion": "sha256:2a9d5e62515d47c6417549064b18fbceb3499832f28558ef617b50b8cca065a2",
   "claims": [
     {
       "id": "claim_849550fdee20463596e55e9d5c58103c",
@@ -22,23 +22,19 @@
     },
     {
       "id": "claim_f57056aa606545a78db7d0274987474f",
-      "statement": "Service configuration is declaratively defined in two setup files: ulabase.setup.ts (base configuration that imports environment.ts, derives the accounts feature flags from the app's flags, sets app name/frontend URLs, conditionally configures Google OAuth, allowlists the app origin, and exports a final appPointsAtService step that rewrites the apiUrl line) and ulabase.setup.consents.ts (imports those steps and adds the consents gate: a userConsentsSchema, a userCanPatchOwnConsents permission that stamps TOS_VERSION/PP_VERSION server-side, two latestConsents claims, and a consentsGate guards rule answering 451). Both are documented in the Service Setup page.",
+      "statement": "Service configuration is declaratively defined in two setup files: ulabase.setup.ts (base configuration that imports environment.ts and derives the server's registration/verification/password-reset/invitations/oauth flags from the app's feature flags; its steps install the accounts feature with 409 \"already installed\" tolerated, set the branding name, sync the accounts feature config, optionally add Google OAuth credentials, add the app origin to origin-allowlist without replacing existing origins, and end with an exported appPointsAtService step that rewrites only the apiUrl line of environment.ts) and ulabase.setup.consents.ts (reuses those accounts steps and adds the consents gate in six steps: a userConsentsSchema, its attachment to the /users collection via the /users _meta jsonSchema.schemaId, a userCanPatchOwnConsents permission that stamps TOS_VERSION/PP_VERSION and @now server-side, the two latestConsents account-properties-claims, a guards feature install, and a consentsGate rule answering 451 with on_error allow). Both are documented in the Service Setup page.",
       "evidence": [
         {
-          "resource": "repo://ulabase.setup.consents.ts",
-          "version": "repo-file-v1:sha256:d1c8ddf4cc38c98cc5e899942fe43c88846bf59e3df93d446fb506e01238b8b6"
+          "resource": "repo://ulabase.setup.consents.ts#L183-L321",
+          "version": "repo-lines-v1:sha256:619a44c193eecb68e8113d1acfb71201467f521093d28546b07ca2231c2203af:eyJzZWxlY3RlZExpbmVDb3VudCI6MTM5LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJiYmRhYTUxODcwMDViMjQ0YTM4NzJmNGM5Yjk2NmViMTZmNWNhZDEyZjY3N2VhNGU1YTczOTUwOWJjNGM4NmE3IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI1NWUyNmNkOTIzNjZmNjBkOGVkOTJkMDIzOWYwN2ZlZjc0Y2FjMTRhYTY5YWRkZjljMmNjMGQxMWViMDBhNDYzIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiI0YzJjNzYxYzBhMjIyMWFhNzljNzA1OTY2NWQ1ZGMyNzg1MWNkOTNiYWY1ODg3ZDBmM2M2NzAyYjZiZmZhYjFhIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
         },
         {
-          "resource": "repo://ulabase.setup.consents.ts#L183-L324",
-          "version": "repo-lines-v1:sha256:cbd4661e54825ab1d691634244e47e13247bfac439bad720dc71c5a5443ea8da:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQyLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJiYmRhYTUxODcwMDViMjQ0YTM4NzJmNGM5Yjk2NmViMTZmNWNhZDEyZjY3N2VhNGU1YTczOTUwOWJjNGM4NmE3IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI1NWUyNmNkOTIzNjZmNjBkOGVkOTJkMDIzOWYwN2ZlZjc0Y2FjMTRhYTY5YWRkZjljMmNjMGQxMWViMDBhNDYzIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiI0YzJjNzYxYzBhMjIyMWFhNzljNzA1OTY2NWQ1ZGMyNzg1MWNkOTNiYWY1ODg3ZDBmM2M2NzAyYjZiZmZhYjFhIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+          "resource": "repo://ulabase.setup.ts#L111-L231",
+          "version": "repo-lines-v1:sha256:4323fdc6ce1d6db60347e105ceecb8295025128c1420a1f7a5b1b0b2a8650749:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIxLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJiNjIxODg0ZTc0ZDY2NDZlMDlkZTY4YzYyOWNjNmIzZmZmYWZjZTJiMjcxNjAxMzZkOTM4MGViMjJhMjg2ZWI0IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI1NWUyNmNkOTIzNjZmNjBkOGVkOTJkMDIzOWYwN2ZlZjc0Y2FjMTRhYTY5YWRkZjljMmNjMGQxMWViMDBhNDYzIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiIxMzgzYWMxOTk4YWQ4ODI4ODQ1YzcwZWRmZjlkMjVmY2M3ODk1N2Y1NTMwYTc5ODM4ZDUxODRhMWUxNzBmZTQyIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
         },
         {
-          "resource": "repo://ulabase.setup.ts",
-          "version": "repo-file-v1:sha256:419eafb71fed2ac47ce718189ddcc56ce158d43c2b720f30f78d4f3f82f26557"
-        },
-        {
-          "resource": "repo://ulabase.setup.ts#L96-L109",
-          "version": "repo-lines-v1:sha256:104cb5dbb4c88c18592d71b4dba2dd82646bc32b44e9bde01d3ae1c7aba6eae4:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYxOWMwN2VhMmQ1MDJmZDU1M2RlODM1YTgzNTdiNjExODlhMGQ2MTk4YTUzYTFkOWFjYTU4ZjYyODUwYzNjYTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY2ZjViNDBiMTU4NDU3ZDE3ODY0ZjIxNzkwNzg2ZGQ1YTJlY2RiNjRiNjZhNjUxZjc4OGQ0ZTI1Y2QzMzAzZDIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg3MThkNzQyM2JjYmMzMTAxZTcyNjdhNjc0OGRkMDc0NGVkNWFhYmU5ZGY4ZThjNzliMmU4YmYwMzdhYzcwNWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQxOTc5Y2VkOGFiNTVjZTA1Yjg4ZjY3NGQxYmU1YjE5YWQ1YmNhNTE1YTIzMWY0MjgxODJiNmQwZmI0ZDZiMWIifQ"
+          "resource": "repo://ulabase.setup.ts#L95-L109",
+          "version": "repo-lines-v1:sha256:6068c51d34eb6f860df6a392820e554e6cdcc15ea36b5c47ae76b3d990dc3219:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU0ODBhZGU3OGU4MmRkMDY5ZWM5MjIzYWQ1MjJjZDcxZjQ5NDcxNjBlYWZlNWU1ZDZmMzRiNTkzMTBkOWI1ZDkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY2ZjViNDBiMTU4NDU3ZDE3ODY0ZjIxNzkwNzg2ZGQ1YTJlY2RiNjRiNjZhNjUxZjc4OGQ0ZTI1Y2QzMzAzZDIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU1YjdmNTc5MDIwMzA2MzZiZTBjNDdmNzFmYzZiNTU0MGQzNzNhYTViM2MxMjZkNTgxMjU1ZDVjZGYyN2Q4ZDYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQxOTc5Y2VkOGFiNTVjZTA1Yjg4ZjY3NGQxYmU1YjE5YWQ1YmNhNTE1YTIzMWY0MjgxODJiNmQwZmI0ZDZiMWIifQ"
         }
       ]
     },
@@ -98,11 +94,11 @@
     },
     {
       "id": "claim_0b78b84073a44ca295c8f046a7a3e465",
-      "statement": "The openwiki-update workflow refreshes the wiki on a nightly 03:00 UTC schedule, on release tags, and on manual dispatch; scheduled runs exit early when nothing outside openwiki/ has changed, then it runs openwiki --init or --update, opens a pull request limited to openwiki, AGENTS.md and CLAUDE.md, and auto-merges it.",
+      "statement": "The openwiki-update workflow refreshes the wiki on a nightly 07:17 UTC schedule (cron 17 7 * * *), on release tags, and on manual dispatch; scheduled runs exit early when nothing outside openwiki/, AGENTS.md and CLAUDE.md has changed since the last wiki update, then it runs openwiki --init or --update with the model pinned to DeepInfra only, injects .github/openwiki-retry.mjs via NODE_OPTIONS --import to retry 429 responses with backoff, opens a pull request limited to openwiki, AGENTS.md and CLAUDE.md, and auto-merges it.",
       "evidence": [
         {
-          "resource": "repo://.github/workflows/openwiki-update.yml#L1-L105",
-          "version": "repo-lines-v1:sha256:50e64f7f44d5b5d5c6db179b0d1dee682c7b2d1b81d09aff1e33d02ab82b1533:eyJzZWxlY3RlZExpbmVDb3VudCI6MTA1LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIwNjAyNzg3YWY2ZGNjMDgzNGRlMTIxY2JiMWNiOTVmOTQ1OWI3MjFlYWIwMzQ5ZjEwNTAxYjk5NmMxYzc3ZmZmIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiJlZjNkMWIxYjMwMjhmMGE0OTUzNGMwZjE3MmI5MWNlZmEwMWZkNzIzMmZmNjQzNGU1NzVlY2Q1MzllMzBjNjA3IiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+          "resource": "repo://.github/workflows/openwiki-update.yml#L1-L113",
+          "version": "repo-lines-v1:sha256:0443790999013a628c7f8ad0d45007081b6f1fadd07bf5019e66be579b1ad11f:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEzLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIwNjAyNzg3YWY2ZGNjMDgzNGRlMTIxY2JiMWNiOTVmOTQ1OWI3MjFlYWIwMzQ5ZjEwNTAxYjk5NmMxYzc3ZmZmIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiJlZjNkMWIxYjMwMjhmMGE0OTUzNGMwZjE3MmI5MWNlZmEwMWZkNzIzMmZmNjQzNGU1NzVlY2Q1MzllMzBjNjA3IiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
         }
       ]
     },
@@ -133,10 +129,24 @@
           "version": "repo-lines-v1:sha256:fdeab36cfe33f56cebb488158e3e8871f22c8400ff3bdeaa7ee19115b8e418f7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAxLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI5NDY1M2ZhY2ZhNDIyYWExMDhhYzMxYWE1YTAyYTkyMDc3OWEzNjAzYjkyOGViYjcwMDI0YzllY2M1NGFhNjVhIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiJiMDJkMmMwZDZkYzVlNzRkOTJmYTE0YjkxZGJlYTI2NDA5MGJlYjM1ZmRiOTE4OGQ5YjM0MTE4MWRjZTlmNGNlIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJiNTI5NzQ1MDRmMmRiNWU4NzhhMjc5ODYzMmZhYjk1YjVmMDMwODBhZmViZTJmYzI5MTg2NTMwMWVlODA5MmVlIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
         }
       ]
+    },
+    {
+      "id": "claim_3a1257fc36fe4d1e96db7553c7fae1eb",
+      "statement": "The .github/openwiki-retry.mjs preload wraps globalThis.fetch to retry OpenRouter chat/completions requests that answer 429 with delays of 30, 60, 120, 240, and 480 seconds; only replayable string bodies are retried because streams and Request objects are consumed by the first attempt. The openwiki-update workflow injects it into the OpenWiki process via NODE_OPTIONS --import.",
+      "evidence": [
+        {
+          "resource": "repo://.github/openwiki-retry.mjs",
+          "version": "repo-file-v1:sha256:486cca28314636e900c362359d766a6b93f4701b82c741a07fb34c04d8b3079e"
+        },
+        {
+          "resource": "repo://.github/workflows/openwiki-update.yml#L82-L83",
+          "version": "repo-lines-v1:sha256:a4f4b1730415a3c1b45f32b2ac1e905f64024476b0ee7b26a1067f3529c114ba:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTdlYjE0ZDUxNTU4NzBlN2Q0ODI5M2ZiMDM5M2QzYzRhZmE0YjI4MGJmNDYwMmViNjQ0MGYzZWY3MWYzM2QxNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjNkYjQxM2RmZDQzZWJkODgyZjE4MTM5MzMxZGM2ZDhiOTAzYjE0YTY0MjdjMzdhZjdhZTFhZGVlN2M4Mjg1ZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDlkODM2N2IyYzE0MmY5YmExYWM0NmY2YzFhZTFkODFhMGYwZTMxM2NjMDVlYmE2ODU1MTQ2MWQ0YzNmZThlZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjg1M2Y5OTM5Y2FkZTMxOWVhMTVmMjQxNDAxODNiYzRhMmIxNjg4Y2Y1Y2ExZjVmMDRmNTE2ZDY4OWYyYmYxZSJ9"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.2",
-    "at": "2026-10-19T08:38:08.737Z"
+    "at": "2026-10-28T14:05:51.205Z"
   }
 }
