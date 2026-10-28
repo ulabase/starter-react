@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:f46571c291e69e79042f84dc745e6bea912f12c1fe872cc2e006c7dc2b086a9d",
+  "pageVersion": "sha256:60a2ef5b667bc6738c6837a9ec8c597b471b32a271be85cda5fa3f65356cb4f6",
   "claims": [
     {
       "id": "claim_60d379bfef654ae3bb1cc011f1f6a29f",
-      "statement": "Two setup files exist: ulabase.setup.ts configures accounts, feature flags, Google OAuth, origin allowlist, and finally points the app's apiUrl at the service; ulabase.setup.consents.ts imports its steps (deferring appPointsAtService to last) and appends the consents gate documents — user schema (userConsentsSchema), users-collection validation, a scoped consent permission, JWT claims (latestConsents/tos, latestConsents/pp), guards feature install, and a Guards rule answering 451. Versions are single-sourced in TOS_VERSION and PP_VERSION constants. Both are idempotent check-then-apply via the ulabase CLI.",
+      "statement": "Two setup files exist: ulabase.setup.ts configures accounts, branding (app name), feature flags (derived from environment.ts), Google OAuth, origin allowlist, and finally points the app's apiUrl at the service; ulabase.setup.consents.ts imports its steps (deferring appPointsAtService to last) and appends the consents gate documents — user schema (userConsentsSchema), users-collection validation, a scoped consent permission, JWT claims (latestConsents/tos, latestConsents/pp), guards feature install, and a Guards rule answering 451. Versions are single-sourced in TOS_VERSION and PP_VERSION constants. Both are idempotent check-then-apply via the ulabase CLI.",
       "evidence": [
         {
           "resource": "repo://README.md#L38-L62",
           "version": "repo-lines-v1:sha256:3c1809a9dcceb4ade344639b08b0d558c9b1902efbf07a686a82264afae84cec:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVkZTJmNTMyOGVlNmU4MDUwZThhYWZkOGRjODY5YTA2OWNkOTU4NGVkYWFmNTRmZTU4OWQ3M2MzYjdkY2Q3OTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIyZmUyZDk2NjJjOWIyYWUzMzIxOTI0NmNmZDc1YWYyODI0YWUwMjFkMDQ0NTVlZWNlMWI1ODBkY2YxMTg1ZGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQxZjQ2ZDk2NTJhNWU1Y2FlOGM5MTE1MjllZTY3ZTY0NzgzOWU0YTMzNTBlMGViMTE5ZjE5MGMzNjE3MjI1ZWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZlYTQ3NzY0MDYxZTk0MzQwODQ1NDJhOGIzMzY3NWJkZjA0MzRjMGRlYWJmNGYyNjg1YzdiNDM0NGU5OGUzZjAifQ"
         },
         {
-          "resource": "repo://ulabase.setup.consents.ts#L183-L324",
-          "version": "repo-lines-v1:sha256:cbd4661e54825ab1d691634244e47e13247bfac439bad720dc71c5a5443ea8da:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQyLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJiYmRhYTUxODcwMDViMjQ0YTM4NzJmNGM5Yjk2NmViMTZmNWNhZDEyZjY3N2VhNGU1YTczOTUwOWJjNGM4NmE3IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI1NWUyNmNkOTIzNjZmNjBkOGVkOTJkMDIzOWYwN2ZlZjc0Y2FjMTRhYTY5YWRkZjljMmNjMGQxMWViMDBhNDYzIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiI0YzJjNzYxYzBhMjIyMWFhNzljNzA1OTY2NWQ1ZGMyNzg1MWNkOTNiYWY1ODg3ZDBmM2M2NzAyYjZiZmZhYjFhIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+          "resource": "repo://ulabase.setup.consents.ts#L183-L321",
+          "version": "repo-lines-v1:sha256:619a44c193eecb68e8113d1acfb71201467f521093d28546b07ca2231c2203af:eyJzZWxlY3RlZExpbmVDb3VudCI6MTM5LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJiYmRhYTUxODcwMDViMjQ0YTM4NzJmNGM5Yjk2NmViMTZmNWNhZDEyZjY3N2VhNGU1YTczOTUwOWJjNGM4NmE3IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI1NWUyNmNkOTIzNjZmNjBkOGVkOTJkMDIzOWYwN2ZlZjc0Y2FjMTRhYTY5YWRkZjljMmNjMGQxMWViMDBhNDYzIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiI0YzJjNzYxYzBhMjIyMWFhNzljNzA1OTY2NWQ1ZGMyNzg1MWNkOTNiYWY1ODg3ZDBmM2M2NzAyYjZiZmZhYjFhIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
         },
         {
           "resource": "repo://ulabase.setup.consents.ts#L46-L63",
           "version": "repo-lines-v1:sha256:b647d2fc775b56df76967d49e47d8a2e66b94165726389144adf2e8fba73ebd7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU5NTYxYzk3NzRmZmMxMDFiZTYwMzg5ZmE0NDQwMzgzN2NkZmE5OTI0MmQxNDliMzY0ZmU5ODIzMTQ2NmI2ZWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRmZjBjY2Q2OTMyYzE5MWU4Yzc0Yjk2MzQzODk4ZWViZmJjMGFiMTdiNTcxMjJmNDE3ZjIyMDY2ZjZmYTgxYzIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImMyMjQ5YjVjYWJhNWIxOGQwNDJkNjY1ZjcyMDMwODg5ZDgxODc4ODYxOWViZWY2MzNhODMxNGE3MmM4OTliMjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI4ZWVlNWVlMzRjMTZjZDQ0YzdmZDMzODZjZDEwYmI5Njk0MDY5ODFhZGE4OTJmOTQ1YmY2YjI0ODJmYjZjYWIifQ"
         },
         {
-          "resource": "repo://ulabase.setup.ts#L96-L219",
-          "version": "repo-lines-v1:sha256:353a2d4d8bb14e80336e3d18f85c35c65011065ff343355af854fb59a7d62585:eyJzZWxlY3RlZExpbmVDb3VudCI6MTI0LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJmMTljMDdlYTJkNTAyZmQ1NTNkZTgzNWE4MzU3YjYxMTg5YTBkNjE5OGE1M2ExZDlhY2E1OGY2Mjg1MGMzY2E5IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI1NWUyNmNkOTIzNjZmNjBkOGVkOTJkMDIzOWYwN2ZlZjc0Y2FjMTRhYTY5YWRkZjljMmNjMGQxMWViMDBhNDYzIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiI4NzE4ZDc0MjNiY2JjMzEwMWU3MjY3YTY3NDhkZDA3NDRlZDVhYWJlOWRmOGU4Yzc5YjJlOGJmMDM3YWM3MDVhIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+          "resource": "repo://ulabase.setup.ts#L96-L231",
+          "version": "repo-lines-v1:sha256:3c425d8bb26e0ba3dd7610bfaf657358161ed674f3aad6ceb6e75aaedc842302:eyJzZWxlY3RlZExpbmVDb3VudCI6MTM2LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJmMTljMDdlYTJkNTAyZmQ1NTNkZTgzNWE4MzU3YjYxMTg5YTBkNjE5OGE1M2ExZDlhY2E1OGY2Mjg1MGMzY2E5IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI1NWUyNmNkOTIzNjZmNjBkOGVkOTJkMDIzOWYwN2ZlZjc0Y2FjMTRhYTY5YWRkZjljMmNjMGQxMWViMDBhNDYzIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiI4NzE4ZDc0MjNiY2JjMzEwMWU3MjY3YTY3NDhkZDA3NDRlZDVhYWJlOWRmOGU4Yzc5YjJlOGJmMDM3YWM3MDVhIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
         }
       ]
     },
@@ -139,7 +139,7 @@
           "version": "repo-lines-v1:sha256:2fe6d7f1425dc513a75946373d84fa358137d96d8d58223460b046030b97fb78:eyJzZWxlY3RlZExpbmVDb3VudCI6NDIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk3Y2M4YWRkNmY4OGQzZmY4Mzc3MGY0OTY3ZjliYTdhOGJjODk3ZDM0YjUzYWMzN2VmY2E2Y2Y1ZGQzMTQ4ZTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ2ZjVhODU2NTdiOGU4NTQwZjZmNWYyZWM3YjY2YjY2YWNiNzc3ZmJlNjQyY2E5M2I5N2QyNWU4NjBlZDM4YjgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjVlZWNhOWFmY2U1ZjIwMzVkOTdjYjgwNGEwNjI4MmE0YTEyMjM5ZWM1YTI0YWJiNmFlZmVlNzAzZTQ4YjhjODIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA1MTM5YmE0ZDJjMmQ3MDhiZGE0MTA5ZmU3OGM2MWI0NjI3ZmExYTgxNTY1NGQxNmQzMTg0YmQxN2U0ZTRmODkifQ"
         },
         {
-          "resource": "repo://ulabase.setup.consents.ts#L285-L319",
+          "resource": "repo://ulabase.setup.consents.ts#L282-L316",
           "version": "repo-lines-v1:sha256:fa32fc1f5778c932d2fe39b9b8b2fdb11c72ca95270d9eb6873846cbfb61f404:eyJzZWxlY3RlZExpbmVDb3VudCI6MzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIyNmE0MTQ1MmIwMTVkNzk5Y2ExMDkwNTI5YWQwYTI2MTk1MjcwZDFlOTdiMjMwZDY5N2E3NGNjMzEzYzZhNDUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFmMGNkYjk3MmE3YmZiN2VkMjQ2ZjlmZjY3MjM4NWU1NWY0OTY4ZmMxMTA0M2RjNWI2ODRkNTFkZmEzMWRiY2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVmZjA4YjUzZGJiNWUzN2MzNTIxMDllODQzOGQxMmYyNzVmNWYwYTJkZjZiZWVhMWExYjYyNDYyNDI1N2ZiYzIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoyLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjFjMzA4NzRlZTA1MGMyOWU0YWY1OThhZTA4MTVkZDE3ZWI1NzQ0MWEyODNjYTI0ZGIxZjkwNjIxNTQzNGJlYTYifQ"
         }
       ]
@@ -160,19 +160,19 @@
     },
     {
       "id": "claim_7866745a11104e45b2f7ef1298499161",
-      "statement": "OAuth providers can be extended beyond Google by adding entries to the oauthProviders array (e.g., 'github') and running setup with the provider's credentials. The OAuthButtons component supports 'google' | 'github' | (string & {}) types.",
+      "statement": "OAuth providers can be extended beyond Google by adding entries to the oauthProviders array (e.g., 'github'). The OAuthButtons component renders a button for each configured provider with icons for Google and GitHub. However, ulabase.setup.ts provisions OAuth credentials only for Google (via GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET env vars) — there is no equivalent setup step for GitHub credentials.",
       "evidence": [
-        {
-          "resource": "repo://README.md#L5-L5",
-          "version": "repo-lines-v1:sha256:01f4ca849911e3a18dd7dd629e0889acdf4ee1c06b1a4527fa32c6d6e5258d7e:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFmNGNhODQ5OTExZTNhMThkZDdkZDYyOWUwODg5YWNkZjRlZTFjMDZiMWE0NTI3ZmEzMmM2ZDZlNTI1OGQ3ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFmNGNhODQ5OTExZTNhMThkZDdkZDYyOWUwODg5YWNkZjRlZTFjMDZiMWE0NTI3ZmEzMmM2ZDZlNTI1OGQ3ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjIsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGJiYTFlNDFkMTI5MTliOTMwODhiZDFkMmUyZDE0MTNlNzc3OWNkYTlkOGM0YjNjNDA4M2Y3NTM1ZmQ1NmE1OSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWY0NDEwODcxMGI0ZDZmMWYwZjcyZWUyMGRmN2Q5NjU1MDlkMjJkYzczOWJlZDRlNDRiMWUzZjFiZjBjYWE4MSJ9"
-        },
         {
           "resource": "repo://src/environments/environment.ts#L10-L10",
           "version": "repo-lines-v1:sha256:bf2cc6976aa0e591a40c806845ca02f184434c2af82a0e3f1c4ec7d2df6d004d:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmYyY2M2OTc2YWEwZTU5MWE0MGM4MDY4NDVjYTAyZjE4NDQzNGMyYWY4MmEwZTNmMWM0ZWM3ZDJkZjZkMDA0ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYmYyY2M2OTc2YWEwZTU5MWE0MGM4MDY4NDVjYTAyZjE4NDQzNGMyYWY4MmEwZTNmMWM0ZWM3ZDJkZjZkMDA0ZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjY4NGRhMTI4Y2FmNzhmYmUzYTNjZjc2ODI4OGY0N2U0Yjk1ZmE2MGYyODZlNDE4MDBiNWQ5Y2QxNzU5NzQzOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOWZkOGM3MDk0ZmZmMDAzZTAxODRmZjM4NjY0NWM5OWI3N2IyODQ4MzEzYTI3MDZmY2M2YmY0YmI0NTNlMzZhMiJ9"
         },
         {
-          "resource": "repo://src/pages/auth/oauth-buttons/OAuthButtons.tsx#L4-L4",
-          "version": "repo-lines-v1:sha256:be63b7a7b2fb0e982f8a9dde0434ec4db0626f1b2b37920d77f48c8d36f827be:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmU2M2I3YTdiMmZiMGU5ODJmOGE5ZGRlMDQzNGVjNGRiMDYyNmYxYjJiMzc5MjBkNzdmNDhjOGQzNmY4MjdiZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYmU2M2I3YTdiMmZiMGU5ODJmOGE5ZGRlMDQzNGVjNGRiMDYyNmYxYjJiMzc5MjBkNzdmNDhjOGQzNmY4MjdiZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYmY4ZjQ4MGVjMTlkODI5YzczY2VmY2ZmMmQ3ZGU0MmUyMzFlY2NjZTgwMTBhNGY4MTBhYzJiZjIxNzQxNTcxNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNmFhMGY2YzNmMDUyZGQ3NWJkZjRlNzRiZTZhYjY3Yzg5ZmM1ODkxYzJmYjEwNzI0OTgyMjc2MmYzYjYwMDVmOSJ9"
+          "resource": "repo://src/pages/auth/oauth-buttons/OAuthButtons.tsx#L4-L11",
+          "version": "repo-lines-v1:sha256:24eae95f91338828b0e2ed356356dd6da8eb67f03cca1884a5670658c93ce315:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmU2M2I3YTdiMmZiMGU5ODJmOGE5ZGRlMDQzNGVjNGRiMDYyNmYxYjJiMzc5MjBkNzdmNDhjOGQzNmY4MjdiZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzU5YTgxNDY1ZWZlOTRlMDY4MzAyOGI0YzRlNTUxOGJkZDNiYmE5MjEyNjZiYzljYzI4YjAzYTMwN2VlN2E1MiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYmY4ZjQ4MGVjMTlkODI5YzczY2VmY2ZmMmQ3ZGU0MmUyMzFlY2NjZTgwMTBhNGY4MTBhYzJiZjIxNzQxNTcxNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzE0Y2ExMTMxYzg2MjU3OGUwZGY3OTVjNGEyYTY5Y2E3NjdkMzQzYmJmMGViNzRkMjg4YjE4MGM5OWVmMzM3NSJ9"
+        },
+        {
+          "resource": "repo://ulabase.setup.ts#L161-L201",
+          "version": "repo-lines-v1:sha256:be419255b50901ab0833cbee26885222ea4d8ed676f0952a16204288361d101a:eyJzZWxlY3RlZExpbmVDb3VudCI6NDEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZkMDE0M2UyZjYyZWRhYzA3NThiOTBmZTY0ZmU2ZWUzOTJmMWZkMmRkMDA5NzA5N2FlNTZlZWUxODllYTc5NWUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI0MjIzOWIxYmQ4MmI4NWVkNTBjMThhYmU2YjhlOTk3ODc1NWRhYzZmZDgwNDA5MjRjOGE4ODBjNTJmMDY1ZDIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRiMDg2ZDQ2NjNhYmFiZGE5ZjJmZTIzZWU4NjAyM2UxNTQyMmQwOWU2YzI1ZTU3ODBkZDMyZGExNzNlYTI3NjIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJiYWNiZmRjODg5MjgzOTVlZTRiOGY5OTkwYzA3MDU1ZDRkZTYwZjE2ZTE3MDNjODUzMjRhZmM5MGUxZjY1OTIifQ"
         }
       ]
     },
@@ -185,10 +185,42 @@
           "version": "repo-lines-v1:sha256:c4d818b764b83440d6cf418df3ac497f38c0ed430e05b3572d05e0b9959645dc:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2ZmIwOGZkYTFhY2I5NTdiNjExNmJkMzc4MTFhMWZlNDFhMDE2MTFjMDYzMWVkYmY3ODZkNjg4OWEyN2E1NWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
         }
       ]
+    },
+    {
+      "id": "claim_18517ba208bf42b1b85ae95f727e3093",
+      "statement": "Team management: the Teams page (src/pages/teams/Teams.tsx) lists teams and switches the active team via auth.switchTeam() when clicking an inactive team, then navigates to its detail page. The Shell dropdown displays the active team name but does not offer a switcher — switching happens exclusively on the /teams page. The NewTeam page creates teams via auth.createTeam().",
+      "evidence": [
+        {
+          "resource": "repo://src/pages/shell/Shell.tsx#L75-L76",
+          "version": "repo-lines-v1:sha256:8f77cf2c05ba694294c042d54c2aea344086bb76440ae371df6c84622c5d8999:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDY4ZDI0YTBiNGViMDllNTdjYjM4NDNjZWFjOTdjNDA0MGM2MDRmZTU0YWJmMmMzOGQ0NzQ4YmU5ODM0NThmNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODMxZGZjYzUyZjAzODc5Y2QwNGQzZWNiNDE5M2Q3MDE5MDkyN2E2OWJjYzVhYjMyYjY4ZTg1MWM3MjQ2NmI0NyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDA3MzgwNTAyYWQ0YzBmMDEwNWMxMDIzNDE4YTU1OTAyZGYzY2VhNzBkYjcxODFhNGVhYTZhOWU2ZTNjNGRiZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNmE0YTBiMzJjMmQ0MjljNWFiMTBhMzQ0NmRmYTVmYjZmNmVkZGJkYzljMmY0MTlhYjdlMDcyYmIxMDk2YTI0ZSJ9"
+        },
+        {
+          "resource": "repo://src/pages/teams/Teams.tsx#L14-L26",
+          "version": "repo-lines-v1:sha256:83b16441d590acacf5266e0f7a412e1cb5e933aa4791ceeadf035873797d0e4b:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIxMjUyNmNiYTljNzkxNzU4MWZmMGI5NzQxZGI1MmEwODI3Nzc0YzFjMjgyODMwMDAyNTc2NjcxYzZmYzUzZGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdmNDkzMGIwMDU4YTUzNjMzMzY1YmZmNDNjYzg2ZjgzZmJiODdkNzBjMzFhOWRmYThmYWFjMDM3MWMyMDQ1YWYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg2YjI4NmMzNmY1MzdmZTIyYTg0N2Q2YWZmOThkMTUyNDlkMDlhOGQ2ODllOGNiYWQ2MDk0YTY5MmY1ZGZiOWQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVjY2M1Njg2YTMyOTYyNjNjNGI1OTY4NmRkYjQ0NDU5MWMyYmUzY2YzZDRlYWVmNzRmMjcyZjI5MjQ1NDJhN2IifQ"
+        },
+        {
+          "resource": "repo://src/pages/teams/new/NewTeam.tsx#L22-L23",
+          "version": "repo-lines-v1:sha256:a7cbe2b1aafc0d9366425b4b05fec99464d69564e2364749423107f3badcf6b6:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTNlMDg1NTI2NjEwNjE3NDk1YmQ0MDI0ZjYwNTcwYjQ2MGZkYjU2ZjRhN2Q2MGIwZjI3NDVjZDc4ZDhhYmQzNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDE5YTA2MDllMzcyY2M5OGM4OGFmNjk4NDk4MTFmYTYxODQzN2EzYmU0NTVlMmE0NjNkNTJmZjZjNzhmMTYxYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDllMTVmMTNmY2EwYmRkZmE0NWM0MzhjOGNmODg5ZGNjMDc2N2U2MzdlYjY3MzQyYmZhM2VhMzU3MzZlZWIxMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODg5ZWYxY2I2MTFiMjc2NDRiOGNhNThmNDFkNDhlMzczNGZhZGMzYmNiZTA3YmNjMjkzYWQ2ZDAzODFkM2I5MyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_e3c3f8992d2f447ab8e4ccf94b40d70c",
+      "statement": "The invitation acceptance page (src/pages/invitations/accept/Accept.tsx) branches into two flows: a new-user set-password form (calling auth.activate()) and an existing-user log-in-and-accept form (calling auth.login() then auth.acceptInvite()). It loads the invitation with auth.getInvitation() and is not wrapped in a route guard, so it works signed in or out.",
+      "evidence": [
+        {
+          "resource": "repo://src/pages/invitations/accept/Accept.tsx#L163-L163",
+          "version": "repo-lines-v1:sha256:f318bda63515d13371d00d6ed4a4e3d634be564ded2023662b2ed79fd394c7b9:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjMxOGJkYTYzNTE1ZDEzMzcxZDAwZDZlZDRhNGUzZDYzNGJlNTY0ZGVkMjAyMzY2MmIyZWQ3OWZkMzk0YzdiOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjMxOGJkYTYzNTE1ZDEzMzcxZDAwZDZlZDRhNGUzZDYzNGJlNTY0ZGVkMjAyMzY2MmIyZWQ3OWZkMzk0YzdiOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMWRiM2U3Y2QwYzNhNjIzMDQ3NjY4MTYxZDEwNGU5OWQ4NjIwOWNhM2U3NzU0YTI1YjExOWE0OTA3ODc4MDQyNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTE5MDk4NjE0MjcwYWI2OWEwM2MyYjQ3NTUwNGYxMzFkNGQ0ZmI2MmVkNWU4YTA1YWM2OGRiMTE1MGM5ZDI3MiJ9"
+        },
+        {
+          "resource": "repo://src/pages/invitations/accept/Accept.tsx#L29-L75",
+          "version": "repo-lines-v1:sha256:2e00bef49167a7f27512d69c42c944bed2c4c25673071568eaae467311f14923:eyJzZWxlY3RlZExpbmVDb3VudCI6NDcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNiMDk2ODU2ODdjY2I3N2JmZWY3ZDliMDM4YzE0Y2RlZDQzNjBjNzNkMmEwZTE3NzUyNGNhOTljY2FlYzMwYzEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk5YTYyYjVmOGQ1MjhlMGIzYmNjMWIyMzMzMDlkZTE0NDRhZWQ2ZjUxMzBmNTk4YjJlMDM1YWVkMjk2ZTVhYjciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZkMTMxMGEzZWNhMmZmMDljYzU4NWM5OGE2NDI5MTFmZTdlNTU4MmZhMzgwNDJiZjNhZGQzZGQ1MzIzNDU1YzgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJmZTJkYWIxODdiN2ZjNTczODQ0NzMwZTM0NmU5ZmY4NzEzNzhmMTIzZjVhMjE5MGYzMThmY2M2YjNhZThiOTkifQ"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.2",
-    "at": "2026-10-19T08:38:08.737Z"
+    "at": "2026-10-28T14:05:51.205Z"
   }
 }

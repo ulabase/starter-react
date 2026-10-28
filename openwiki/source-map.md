@@ -4,6 +4,8 @@ title: Source Map
 description: File-by-file inventory of the Ulabase React starter, mapping every repository file to its purpose and cross-referencing the wiki pages that explain it.
 tags: [source-map, reference, files]
 sources:
+  - id: openwiki-source-da4c48207f961ff0d7aa1fff
+    resource: repo://.github/openwiki-retry.mjs
   - id: openwiki-source-47f38fcb8c1752310057a5c1
     resource: repo://.github/workflows/no-service-url.yml
   - id: openwiki-source-6d4b4e707b8d60b6ccfa3425
@@ -32,10 +34,10 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-19T08:38:08.737Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-28T14:05:51.205Z" }
 verified:
   - by: openwiki/0.7.2
-    at: 2026-10-19T08:38:08.737Z
+    at: 2026-10-28T14:05:51.205Z
 ---
 
 # Source Map
@@ -156,15 +158,16 @@ Page-level stylesheets live next to their components: `src/pages/shell/Shell.css
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `ulabase.setup.ts` | Base declarative service configuration for `@ulabase/cli`. Every step has a `check` and an `apply` so re-runs are idempotent. It imports `environment.ts` and derives the server's `registration`/`verification`/`password-reset`/`invitations`/`oauth` flags from the app's feature flags, sets `app-name`/`frontend-url`/`frontend-app-url` from `APP_NAME`/`APP_URL`, adds Google OAuth credentials only when the app offers Google, and adds the app origin to `origin-allowlist`. Exports `appPointsAtService`, a final step that rewrites only the `apiUrl` line of `environment.ts`. | [Service Setup](operations/service-setup.md) |
-| `ulabase.setup.consents.ts` | The same setup plus the consents gate. It imports `accounts` from `ulabase.setup.ts` and reuses `accounts.steps` (minus `appPointsAtService`), then adds five steps: store the user schema `userConsentsSchema` (compared canonically so an outdated schema shows as outstanding), attach it to the `/users` collection via `jsonSchema.schemaId`, create the `userCanPatchOwnConsents` permission whose `mergeRequest` stamps `TOS_VERSION`/`PP_VERSION` and `@now` server-side, add the two `latestConsents/*` account claims to the auth config, and install the `guards` feature with the `consentsGate` rule (status `451`, `on_error: allow`). Versions are constants, so publishing new terms means editing two strings and re-running. `appPointsAtService` runs last. | [Service Setup](operations/service-setup.md), [Auth & Teams](domain/auth-and-teams.md) |
+| `ulabase.setup.ts` | Base declarative service configuration for `@ulabase/cli`. Every step has a `check` and an `apply` so re-runs are idempotent. It imports `environment.ts` and derives the server's `registration`/`verification`/`password-reset`/`invitations`/`oauth` flags from the app's feature flags. Steps in order: install the `accounts` feature (a 409 "already installed" is tolerated as success), set the branding name from `APP_NAME`, sync `frontend-url`/`frontend-app-url` and the derived feature flags into the accounts config, add Google OAuth credentials only when the app offers Google (resolved from the environment at apply time), and add the app origin to `origin-allowlist` (added, never replaced, so a service reached from several origins keeps them all). Exports `appPointsAtService`, a final step that rewrites only the `apiUrl` line of `environment.ts`. | [Service Setup](operations/service-setup.md) |
+| `ulabase.setup.consents.ts` | The same setup plus the consents gate. It imports `accounts` from `ulabase.setup.ts` and reuses `accounts.steps` (minus `appPointsAtService`), then adds six steps: store the user schema `userConsentsSchema` (compared canonically so an outdated schema shows as outstanding), attach it to the `/users` collection via the `/users/_meta` `jsonSchema.schemaId`, create the `userCanPatchOwnConsents` permission whose `mergeRequest` stamps `TOS_VERSION`/`PP_VERSION` and `@now` server-side, add the two `latestConsents/*` account claims to the auth config's `account-properties-claims`, install the `guards` feature, and install the `consentsGate` rule (status `451`, `on_error: allow`). Versions are constants, so publishing new terms means editing two strings and re-running. `appPointsAtService` runs last. | [Service Setup](operations/service-setup.md), [Auth & Teams](domain/auth-and-teams.md) |
 
 ## CI/CD
 
 | File | Purpose |
 |------|---------|
 | `.github/workflows/no-service-url.yml` | Runs on pushes and PRs to `main` in `ulabase/starter-react` only. Greps `src/environments/*.ts` for a non-empty `apiUrl` and fails if one is committed, so no real service URL reaches the public starter. |
-| `.github/workflows/openwiki-update.yml` | Refreshes the wiki nightly (03:00 UTC), on release tags, and on manual dispatch. Skips scheduled runs when nothing outside `openwiki/` changed, runs `openwiki code --init`/`--update`, opens a PR touching `openwiki`, `AGENTS.md` and `CLAUDE.md`, then auto-merges it. |
+| `.github/workflows/openwiki-update.yml` | Refreshes the wiki nightly (cron `17 7 * * *`, 07:17 UTC — off the hour because GitHub delayed the earlier `0 3` schedule), on release tags, and on manual dispatch. Scheduled runs exit early when nothing outside `openwiki/`/`AGENTS.md`/`CLAUDE.md` has changed since the last wiki update; release and manual runs always proceed. It runs `openwiki code --init`/`--update` with the model pinned to DeepInfra only (`OPENWIKI_OPENROUTER_PROVIDER_ONLY=deepinfra`), injects `.github/openwiki-retry.mjs` via `NODE_OPTIONS --import` to back off 429s, opens a PR limited to `openwiki`, `AGENTS.md` and `CLAUDE.md`, then auto-merges it. |
+| `.github/openwiki-retry.mjs` | Fetch wrapper preloaded into OpenWiki via `NODE_OPTIONS --import`. Retries OpenRouter `chat/completions` responses that come back `429` (DeepInfra's shared pool answers `429 engine_overloaded` without a `Retry-After`) with delays 30/60/120/240/480 s. Only replayable string bodies are retried; streams and `Request` objects are consumed by the first attempt and pass through untouched. |
 | `AGENTS.md` | Agent instructions for OpenWiki runs: retrieve the wiki just-in-time rather than preloading it, treat source and tests as authoritative, and avoid hand-editing generated pages. |
 | `CLAUDE.md` | One-line pointer that includes `AGENTS.md`, so both agent conventions stay in one place. |
 

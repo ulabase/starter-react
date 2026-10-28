@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:bcfa8282113f7425902fd35c5fe627b32db2c70454ced25c43f0f09ce6106868",
+  "pageVersion": "sha256:98fb605ead17865c2d9d1c21b40d8d0debe2bc9336d880fba48585311088ea15",
   "claims": [
     {
       "id": "claim_6343a6464e04483fa6a2f2d432f73654",
@@ -94,11 +94,11 @@
       "evidence": [
         {
           "resource": "repo://ulabase.setup.consents.ts",
-          "version": "repo-file-v1:sha256:d1c8ddf4cc38c98cc5e899942fe43c88846bf59e3df93d446fb506e01238b8b6"
+          "version": "repo-file-v1:sha256:1b6af40ccc5ae0feb4b6c0c401f53dff396b59fac896cab2c0034bd37b8003a2"
         },
         {
           "resource": "repo://ulabase.setup.ts",
-          "version": "repo-file-v1:sha256:419eafb71fed2ac47ce718189ddcc56ce158d43c2b720f30f78d4f3f82f26557"
+          "version": "repo-file-v1:sha256:dbeeea6100f2a2fd38b0cd9fec33aa378e15f7cef176af50eaabbecb3f8d3ad1"
         }
       ]
     },
@@ -125,10 +125,54 @@
           "version": "repo-file-v1:sha256:821101b78579bb645993fda9cc35b9f1a95483a19ea60166f4c345302e856f88"
         }
       ]
+    },
+    {
+      "id": "claim_e934225e924947acab077fb2933e9d54",
+      "statement": "App tests cover client-owned behavior (routing, feature-flag-driven route registration, auth-page flows, consents overlay behavior), while server-side Guards rule condition, permission predicate and mergeRequest semantics, and JWT claim configuration are owned by ulabase.setup.consents.ts and ulabase.setup.ts via idempotent check/apply steps — `ulabase setup --dry-run`, not vitest, validates that half.",
+      "evidence": [
+        {
+          "resource": "repo://src/ConsentsGate.tsx",
+          "version": "repo-file-v1:sha256:8216a69df1b1aae7e08d4f2c459bf7b643e2d365d7d81ec4a732302b3b9b101a"
+        },
+        {
+          "resource": "repo://src/routes.tsx",
+          "version": "repo-file-v1:sha256:765f40c875f0b7ab120479805b70baa7207e196b2dae708a04e4c37fc20b979a"
+        },
+        {
+          "resource": "repo://ulabase.setup.consents.ts",
+          "version": "repo-file-v1:sha256:1b6af40ccc5ae0feb4b6c0c401f53dff396b59fac896cab2c0034bd37b8003a2"
+        },
+        {
+          "resource": "repo://ulabase.setup.ts",
+          "version": "repo-file-v1:sha256:dbeeea6100f2a2fd38b0cd9fec33aa378e15f7cef176af50eaabbecb3f8d3ad1"
+        }
+      ]
+    },
+    {
+      "id": "claim_1a56c09b83274c25a9334937ba035a77",
+      "statement": "The client consents modules carry no consent-version knowledge: consents-signal.ts and ConsentsGate.tsx never read or send version strings; the server stamps them in the acceptance permission's mergeRequest and compares them in the Guards rule condition, so client tests cannot prove that acceptance is stamped with the versions the rule demands.",
+      "evidence": [
+        {
+          "resource": "repo://src/ConsentsGate.tsx#L33-L57",
+          "version": "repo-lines-v1:sha256:a7e62637e5844c7562dbfa03907a6629e301c8459e138d6620c286460dea1cb2:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgzNzNiNDlkMmMwMmMwMDlmY2UyODdlODFhNDE4ZGIxZTU2YzgzMDllMmJjODY5MWRiYmI5NDFkMWE0MzlkZDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyYTJjYjI1YTEyMmI0NDIyMWE2MjM0ZWM2NjBhN2I1ZmI3ZjliZGU3YjNiOWUyYjNjNTU5YTBkOTZmYWM3MzkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc2NTQwYTBhZDQwYWMzZDBjZjVmNjU3NTQ5MGY5NTI0Y2FhN2M0MTg0ZmIwZTcxYjk3ZGJlYThhMDc4YmU4MTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNhNmM4OGYyNWQyYjYxNDFiZDg4YTk2NmFkYjZiM2RmNzQxOTRmZGM3M2M5YjQ5MTM5MzliMmE1MmEzZTk5NjgifQ"
+        },
+        {
+          "resource": "repo://src/consents-signal.ts",
+          "version": "repo-file-v1:sha256:821101b78579bb645993fda9cc35b9f1a95483a19ea60166f4c345302e856f88"
+        },
+        {
+          "resource": "repo://ulabase.setup.consents.ts#L160-L160",
+          "version": "repo-lines-v1:sha256:debb09e1610a2aee892bd210f264c54af50a4afbdfb70204b696b66aec28691f:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZGViYjA5ZTE2MTBhMmFlZTg5MmJkMjEwZjI2NGM1NGFmNTBhNGFmYmRmYjcwMjA0YjY5NmI2NmFlYzI4NjkxZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZGViYjA5ZTE2MTBhMmFlZTg5MmJkMjEwZjI2NGM1NGFmNTBhNGFmYmRmYjcwMjA0YjY5NmI2NmFlYzI4NjkxZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMGQ0NzAyNWY4NzVkNmFjMzE4NTMzNzA0MWU2YmYxNWRiMWM0MGU4NzllN2I1YTcxN2ZmY2M5YzAyYzkwZTRjNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzVlZjI1MzUzMjg2MTAzZjgwNGMzNjcwYjk2YjRmZjA3MzkxM2NkODJjYzhiZjA3OTZmMDg2NzljZGVjNzMxZCJ9"
+        },
+        {
+          "resource": "repo://ulabase.setup.consents.ts#L233-L248",
+          "version": "repo-lines-v1:sha256:e62c9016a0a7d66ac5836306aad21a68726ec03607573ebfc23076130c4f163e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFlZTNmNjFiYjA3MWY1OGFmZGFiMDY3ZDliMmFkNzNjNmYxOTA0OGNjMTBkZmQ1M2MwOGQ4MWZlYTQxZWU2MjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2NzdkMmYwMzFlOThiNWU5MTFjNWFkNGZiOWIyMTg2YTkzMjUyMmU4ZjQ2ZWU0MGJhYmZhZTNkYTAwZmMxMjEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk4ZDUzM2YwOTg1ZDQ1NzgwODdhOTBkMjcxNzBhMzNjYmYyNzdkNGVhZTc1NGVlYzU5ZGIyOTFlMmU3M2VjNDciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImMyMTIzNzI5N2Y0ZjQ0MGE2NWVjN2EyN2Y1YTBiYWUyYzMyMTRhN2U4MWIwNzFhMTRlNjZiMTBhYjMxMzljNjkifQ"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.2",
-    "at": "2026-10-19T08:38:08.737Z"
+    "at": "2026-10-28T14:05:51.205Z"
   }
 }

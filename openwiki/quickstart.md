@@ -1,8 +1,11 @@
 ---
 type: Guide
-title: Ulabase Starter — React
-description: Quickstart guide for the Ulabase React starter. Covers what the repo provides, how to set it up (basic or with consents gate), and where to find documentation on architecture, domain logic, operations, and testing.
+title: Ulabase Starter — React Quickstart
+description: Quickstart guide for the Ulabase React starter. Covers what the repo provides, how to set it up (basic or with the consents gate), and where to find documentation on architecture, domain logic, operations, and testing.
 tags: [quickstart, react, ulabase, starter]
+verified:
+  - by: openwiki/0.7.2
+    at: 2026-10-28T14:05:51.205Z
 sources:
   - id: openwiki-source-5b54a58d1b51cd490b0e7162
     resource: repo://package.json
@@ -14,34 +17,39 @@ sources:
     resource: repo://src/environments/environment.ts
   - id: openwiki-source-218c8734c88d36610ad967a5
     resource: repo://src/pages/auth/oauth-buttons/OAuthButtons.tsx
+  - id: openwiki-source-25246136842acdbaf0ab42fd
+    resource: repo://src/pages/invitations/accept/Accept.tsx
+  - id: openwiki-source-d246777daf29ea6fdf9f8b53
+    resource: repo://src/pages/shell/Shell.tsx
+  - id: openwiki-source-1fbe522af6db54c1e9016bae
+    resource: repo://src/pages/teams/new/NewTeam.tsx
+  - id: openwiki-source-d5277d8efe8978259c7811b5
+    resource: repo://src/pages/teams/Teams.tsx
   - id: openwiki-source-07aa4341cebe71bfc8fd2890
     resource: repo://src/routes.tsx
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-19T08:38:08.737Z" }
-verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-19T08:38:08.737Z
+generated: { by: "openwiki/0.7.2", at: "2026-10-28T14:05:51.205Z" }
 ---
 
-# Ulabase Starter — React
+# Ulabase Starter — React Quickstart
 
 A React app with sign-up, login, Google and GitHub sign-in, email verification, password reset,
 teams and invitations — working, not sketched. Clone it, point it at a free
 [Ulabase](https://ulabase.com) service, and you have the boring half of an
 application already done.
 
-Works for multi-tenant SaaS (invitations, team switcher) and simpler apps (auth only).
+Works for multi-tenant SaaS (invitations, teams) and simpler apps (auth only).
 There is no server of yours to write, deploy, or pay for.
 
 ## What's Included
 
-- **Signup, login, logout** — email/password and Google OAuth
+- **Signup, login, logout** — email/password and OAuth sign-in (Google is provisioned by setup; the UI also knows GitHub)
 - **Email verification, password reset**
-- **Team invitations** — one page (`/invitations/accept`) branching into a new-user "set password" form (calls `PATCH /auth/activate`) or an existing-user "log in and accept" form
-- **Team switcher** — shown only when the user belongs to more than one team
+- **Team invitations** — one page (`/invitations/accept`) branching into a new-user "set password" form (calls `auth.activate()`) or an existing-user "log in and accept" form
+- **Teams** — list, create, and detail pages (members, invitations, settings); opening a team on `/teams` switches the active team via `auth.switchTeam()`
 - **Consents gate** — optional server-side enforcement: users must accept Terms of Service and Privacy Policy before using the app (status `451` from a Guards rule)
 - **Authenticated shell** with placeholder for your app content
 - **Lazy-loaded routes** with code splitting
@@ -71,27 +79,30 @@ The two setup paths through the Ulabase CLI. Both are idempotent check-then-appl
 
 ```bash
 git clone https://github.com/ulabase/starter-react.git
-cd ulabase-starter-react
+cd starter-react
 npm install
 ```
 
 ### 2. Point to your service
 
-Create a free service at [ulabase.com](https://ulabase.com) and copy its URL
-from the service's *Connect* page. Put it in `src/environments/environment.ts`:
+Create a free service at [ulabase.com](https://ulabase.com). Its id is the six characters at
+the start of its URL — that is the `<srvId>` below.
+
+The app reads its service URL from `src/environments/environment.ts`:
 
 ```ts
 apiUrl: 'https://xxxxxx.ulabase.app',
 ```
 
-> Use the URL of **your service**, not `api.ulabase.com`. That second one is Ulabase's own
-> control panel, and pointing the app at it makes every request fail.
-
-To keep that edit out of `git status`:
+`ulabase setup` writes that line for you (its final step rewrites only the `apiUrl` line).
+If you paste the URL in yourself, keep the local edit out of `git status` with:
 
 ```bash
 git update-index --assume-unchanged src/environments/environment.ts
 ```
+
+> Use the URL of **your service**, not `api.ulabase.com`. That second one is Ulabase's own
+> control panel, and pointing the app at it makes every request fail.
 
 ### 3. Set the service up
 
@@ -113,10 +124,12 @@ missing without touching it.
 
 | Step | Effect |
 |------|--------|
-| Accounts feature installed | Installs the `accounts` plugin if missing |
-| Accounts configured to match the app | Syncs feature flags (`emailRegistration`, `passwordReset`, `teamInvitations`, `oauthLogin`) from `environment.ts`, plus `app-name` and `frontend-url` |
-| Google OAuth credentials | When `oauthLogin` is on and `google` is in `oauthProviders`, ensures `client-id` and `client-secret` are set (reads `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` env vars) |
-| App origin allowed | Installs `origin-allowlist` and adds the app URL |
+| Accounts feature installed | Installs the `accounts` feature if missing (an "already installed" 409 counts as success) |
+| Branding carries the app name | Sets `branding.name` to `APP_NAME` (default `Ulabase Starter`) — shown on the sign-in page and in the service's emails; the rest of the branding config is preserved |
+| Accounts configured to match the app | Derives the server toggles from `environment.ts` (`registration` and `verification` from `emailRegistration`, `password-reset`, `invitations`, `oauth`) and sets `frontend-url` / `frontend-app-url` to `APP_URL` (default `http://localhost:5173`) |
+| Google OAuth credentials | When `oauthLogin` is on and `google` is in `oauthProviders`, ensures `client-id` and `client-secret` are set (read from `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` only when the service does not already hold them) |
+| App origin allowed | Installs `origin-allowlist` and adds the app URL to `allowed-origins` (added, never replaced) |
+| App points at the service | Rewrites only the `apiUrl` line in `src/environments/environment.ts` with the service URL — last on purpose, so a half-finished setup still shows the config screen |
 
 Feature flags in `environment.ts` are the single source of truth — the setup reads them and
 configures the service to match. Re-running after changing flags keeps the two in sync.
@@ -138,16 +151,17 @@ them and re-running the setup re-publishes the rule.
 
 | Step | Effect |
 |------|--------|
-| User schema stored | Adds `userConsentsSchema` allowing `latestConsents` and `consents` fields |
+| User schema stored | Stores `userConsentsSchema`, allowing `latestConsents` and `consents` fields on the user document |
 | Users collection validated | Binds the schema to `/users` via `jsonSchema.schemaId` |
-| Consent permission | Grants `user` role a scoped `PATCH /users/{userId}` for consents only, with a `mergeRequest` that stamps versions server-side |
-| JWT claims | Adds `latestConsents/tos` and `latestConsents/pp` so the Guards rule can read them from the token |
+| Consent permission | Grants `user` role a scoped `PATCH /users/{userId}` for consents only, with a `mergeRequest` that stamps `latestConsents` and pushes onto the `consents` history server-side |
+| JWT claims | Adds `latestConsents/tos` and `latestConsents/pp` to the `auth` feature's `account-properties-claims` (added, not replaced) so the Guards rule can read them from the token |
 | Guards feature installed | Installs the `guards` feature if missing |
 | Guards rule | Blocks authenticated users with `451` when either version does not match — excludes `/auth`, `/token`, and the acceptance PATCH |
 
-Without this file, no request is ever answered `451`, so the consents overlay never renders.
-The app carries the client code either way — an unasked question is the absence of a rule on
-the server, not a flag in the client.
+The rule deliberately does **not** exempt `/users/me`: blocking that read is what makes the gate
+work with no probing on the client's side. Without this file, no request is ever answered `451`,
+so the consents overlay never renders. The app carries the client code either way — an unasked
+question is the absence of a rule on the server, not a flag in the client.
 
 Either way, replace `public/terms.html` and `public/privacy.html` — they are placeholders.
 
@@ -179,18 +193,29 @@ available. These flags must match your service's *Sign-up Mgmt → Features* tog
 
 | Flag | Default | Effect |
 |------|---------|--------|
-| `emailRegistration` | `true` | Enables signup and email verification routes |
+| `emailRegistration` | `true` | Enables the signup route (also enabled by `oauthLogin`) and email verification |
 | `passwordReset` | `true` | Enables forgot/reset password routes |
-| `oauthLogin` | `false` | Enables OAuth login buttons (Google, GitHub) |
+| `oauthLogin` | `false` | Enables OAuth login buttons for the listed providers |
 | `oauthProviders` | `['google']` | Array of OAuth providers to display |
 | `teamInvitations` | `true` | Enables team invitation acceptance route |
 
-**To add GitHub OAuth:** Update `oauthProviders` to include `'github'` and run setup with
-GitHub credentials:
+**Google sign-in, when you want it.** The app starts with email and password, so it runs
+without any Google setup. To add the Google button:
+
+1. In the Google Cloud console, create an OAuth client of type *Web application* with this
+   redirect URI: `https://<srvId>.ulabase.app/auth/oauth/callback/google`.
+2. In `src/environments/environment.ts`, set `oauthLogin: true` (`oauthProviders` already lists `google`).
+3. Run the setup again with the client's credentials. They go to the service, never into the app:
 
 ```bash
-GITHUB_CLIENT_ID=… GITHUB_CLIENT_SECRET=… ulabase setup --srv <srvId>
+GOOGLE_CLIENT_ID=… GOOGLE_CLIENT_SECRET=… ulabase setup --srv <srvId>
 ```
+
+**Other providers (GitHub, …).** The UI renders one button per entry in `oauthProviders`
+(`OAuthButtons` carries Google and GitHub icons and accepts any provider string), but
+`ulabase.setup.ts` provisions **Google** credentials only. Adding `'github'` to
+`oauthProviders` shows the button; GitHub's OAuth client credentials are not read by the setup
+file and must be configured on the service itself.
 
 ## Project Structure
 
@@ -199,11 +224,11 @@ src/
   main.tsx                ← Entrypoint: RhAuthProvider + BrowserRouter
   App.tsx                 ← Fragment token capture + config gate
   routes.tsx              ← Route map with lazy loading and feature-flag gating
-  ConfigPage.tsx          ← Shown when apiUrl is not a valid *.ulabase.app URL
+  ConfigPage.tsx          ← Shown when apiUrl is not a valid Ulabase service URL
   styles.css              ← Design tokens + the DISPOSABLE default skin
   just-signed-up.ts       ← Module-level flag for post-signup welcome
   oauth-url.ts            ← OAuth authorize URL builder
-  consents-signal.ts      ← The 451 flag + the onError handler that raises it
+  consents-signal.ts      ← Module-level 451 flag (get/set/subscribe) + the onError handler that raises it
   ConsentsGate.tsx        ← The blocking overlay, mounted at the app root
   environments/
     environment.ts        ← apiUrl + feature flags
@@ -221,14 +246,14 @@ public/
 
 ## Documentation Map
 
-| Page | What It Covers |
-|------|----------------|
-| [Architecture Overview](architecture/overview.md) | Component tree, auth provider setup, routing strategy, fragment token capture, config gating, ConsentsGate placement |
-| [Source Map](source-map.md) | File-by-file inventory mapping every source file to its purpose, including setup files and consents gate components |
-| [Auth & Teams](domain/auth-and-teams.md) | Authentication flows, team management, invitation handling, feature flags, consents gate server-side enforcement and client-side overlay |
-| [Service Setup](operations/service-setup.md) | Declarative setup workflow, `ulabase.setup.ts` and `ulabase.setup.consents.ts`, feature flag flow, consents gate server configuration, operational procedures |
-| [Operations & Runbook](operations/runbook.md) | Environment config, design system/styling, build/deploy, feature flag management, consents version bumping |
-| [Testing Guidance](testing/guidance.md) | Vitest setup, what to test (including consents gate), how to run |
+| If you want to know… | Go to |
+|----------------------|--------|
+| How the app is wired — bootstrap, auth provider, routing, fragment token capture, config gating, ConsentsGate placement | [Architecture Overview](architecture/overview.md) |
+| What each source file does | [Source Map](source-map.md) |
+| How authentication, teams, invitations, and the consents gate work end to end | [Auth & Teams](domain/auth-and-teams.md) |
+| How `ulabase.setup.ts` and `ulabase.setup.consents.ts` configure the service, and how to re-run them | [Service Setup](operations/service-setup.md) |
+| How to publish new Terms/Privacy versions, diagnose permanently-blocked users, and fix origin or feature-flag drift | [Operations Runbook](operations/runbook.md) |
+| What to test with Vitest — and what the setup files' check/apply already covers | [Testing Guidance](testing/guidance.md) |
 
 ## Key Dependencies
 
@@ -256,7 +281,7 @@ service's *Sign-up Mgmt → Features* toggles. `ulabase setup` reads the flags f
 sets the service to match, so re-running it is usually the fix.
 
 **`401` on a request you wrote yourself.** A plain `fetch` carries no session. Use `auth.api()`,
-which attaches it — see [NOTES.md](https://github.com/ulabase/starter-react/blob/main/NOTES.md#reading-your-own-data).
+which attaches it — see [NOTES.md](../NOTES.md#reading-your-own-data).
 
 **`ulabase` runs something about OpenShift.** A different, retired tool of the same name is first in
 your `PATH`. `type -a ulabase` shows both.
@@ -265,4 +290,4 @@ your `PATH`. `type -a ulabase` shows both.
 
 - **No test files exist** — Vitest is configured but no `.test.ts` or `.spec.ts` files have been written. Source anchor: `package.json` → `"test": "vitest"`. Deferred because the project is in its initial commit phase.
 - **Account page** (`pages/account/Account.tsx`) provides profile and password management — extend as needed.
-- **Additional OAuth providers** — currently only `google` is configured by default; the environment supports `oauthProviders` array for GitHub, etc. See feature flags section above.
+- **Additional OAuth providers** — the UI can show a button for any provider in `oauthProviders`, but setup provisions Google credentials only; other providers need service-side configuration. See the Feature Flags section above.
