@@ -28,16 +28,22 @@ sources:
     resource: repo://src/environments/environment.ts
   - id: openwiki-source-95bfccfd0c712f6e72040e0d
     resource: repo://src/main.tsx
+  - id: openwiki-source-c9161dbd621f22e3073aa0a1
+    resource: repo://src/pages/auth/login/Login.tsx
+  - id: openwiki-source-599eb255d8fa329c9092fdcb
+    resource: repo://src/pages/auth/verify/Verify.tsx
+  - id: openwiki-source-e31f18ccf81f23fb0b5d1a06
+    resource: repo://src/pages/teams/detail/TeamDetail.tsx
   - id: openwiki-source-07aa4341cebe71bfc8fd2890
     resource: repo://src/routes.tsx
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-28T14:05:51.205Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-05T15:35:17.688Z" }
 verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-28T14:05:51.205Z
+  - by: openwiki/0.9.0
+    at: 2026-11-05T15:35:17.688Z
 ---
 
 # Source Map
@@ -112,9 +118,9 @@ Page-level stylesheets live next to their components: `src/pages/shell/Shell.css
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `src/pages/auth/login/Login.tsx` | Email/password login with touched-based validation. Shows `OAuthButtons` when `oauthLogin` is enabled and maps the `error` search param (`invalid_token`) to a message. Navigates to `/` on success; distinguishes 401. | [Auth & Teams](domain/auth-and-teams.md#login) |
+| `src/pages/auth/login/Login.tsx` | Email/password login with touched-based validation. Shows `OAuthButtons` when `oauthLogin` is enabled and maps the `error` search param to messages for `invalid_token` and `token_expired`; `token_expired` points at "Forgot password?" to get a new link that also verifies the email. Navigates to `/` on success; distinguishes 401. | [Auth & Teams](domain/auth-and-teams.md#login) |
 | `src/pages/auth/signup/Signup.tsx` | Registration form (first name, last name, email, password ≥ 8). Derives a team name from the first name and calls `auth.register()`. Shows a "check your email" confirmation and maps 409 to a duplicate-email message. | [Auth & Teams](domain/auth-and-teams.md#signup) |
-| `src/pages/auth/verify/Verify.tsx` | Email verification. Reads `email`, `token`, `error` from the query string, calls `auth.verify()` and redirects to the returned URL; handles missing params and expired links. | [Auth & Teams](domain/auth-and-teams.md#email-verification) |
+| `src/pages/auth/verify/Verify.tsx` | Email verification. Reads `email`, `token`, `error` from the query string, calls `auth.verify()` and redirects to the returned URL; handles missing params and, for an expired or invalid link, points at "Forgot password?" to get a new link that also verifies the account. | [Auth & Teams](domain/auth-and-teams.md#email-verification) |
 | `src/pages/auth/forgot-password/ForgotPassword.tsx` | Requests a reset email via `auth.forgotPassword()`. Always shows the same confirmation, because the API answers 202 regardless of whether the address exists. | [Auth & Teams](domain/auth-and-teams.md#password-reset) |
 | `src/pages/auth/reset-password/ResetPassword.tsx` | Sets a new password from the `email`/`token` query params via `auth.resetPassword()`; reports missing params and 401 expiry. | [Auth & Teams](domain/auth-and-teams.md#password-reset) |
 | `src/pages/auth/oauth-buttons/OAuthButtons.tsx` | Renders one link per configured provider using `oauthUrl()`, with inline Google/GitHub icons and a `Continue with …` label. | [Auth & Teams](domain/auth-and-teams.md#oauth-login) |
@@ -134,7 +140,7 @@ Page-level stylesheets live next to their components: `src/pages/shell/Shell.css
 | `src/pages/teams/Teams.css` | Team list styles. | — |
 | `src/pages/teams/new/NewTeam.tsx` | Create-team form calling `auth.createTeam()`, then navigating to `/teams`. | [Auth & Teams](domain/auth-and-teams.md#team-management) |
 | `src/pages/teams/new/NewTeam.css` | New-team form styles. | — |
-| `src/pages/teams/detail/TeamDetail.tsx` | Full team management: member list with role change/remove (owner only), invite form, pending invitations with a 5-minute resend cooldown (`RESEND_COOLDOWN_MS`), team name/description settings, and delete with confirmation. | [Auth & Teams](domain/auth-and-teams.md) |
+| `src/pages/teams/detail/TeamDetail.tsx` | Full team management: member list with role change/remove (owner only), invite form, pending invitations with a 5-minute resend cooldown (`RESEND_COOLDOWN_MS`) counted down from the invitation's last send, team name/description settings, and delete with confirmation. A refused resend shows the service's reason. | [Auth & Teams](domain/auth-and-teams.md) |
 | `src/pages/teams/detail/TeamDetail.css` | Team detail styles. | — |
 
 ### Account
@@ -168,7 +174,7 @@ Page-level stylesheets live next to their components: `src/pages/shell/Shell.css
 | `.github/workflows/no-service-url.yml` | Runs on pushes and PRs to `main` in `ulabase/starter-react` only. Greps `src/environments/*.ts` for a non-empty `apiUrl` and fails if one is committed, so no real service URL reaches the public starter. |
 | `.github/workflows/openwiki-update.yml` | Refreshes the wiki nightly (cron `17 7 * * *`, 07:17 UTC — off the hour because GitHub delayed the earlier `0 3` schedule), on release tags, and on manual dispatch. Scheduled runs exit early when nothing outside `openwiki/`/`AGENTS.md`/`CLAUDE.md` has changed since the last wiki update; release and manual runs always proceed. It runs `openwiki code --init`/`--update` with the model pinned to DeepInfra only (`OPENWIKI_OPENROUTER_PROVIDER_ONLY=deepinfra`), injects `.github/openwiki-retry.mjs` via `NODE_OPTIONS --import` to back off 429s, opens a PR limited to `openwiki`, `AGENTS.md` and `CLAUDE.md`, then auto-merges it. |
 | `.github/openwiki-retry.mjs` | Fetch wrapper preloaded into OpenWiki via `NODE_OPTIONS --import`. Retries OpenRouter `chat/completions` responses that come back `429` (DeepInfra's shared pool answers `429 engine_overloaded` without a `Retry-After`) with delays 30/60/120/240/480 s. Only replayable string bodies are retried; streams and `Request` objects are consumed by the first attempt and pass through untouched. |
-| `AGENTS.md` | Agent instructions for OpenWiki runs: retrieve the wiki just-in-time rather than preloading it, treat source and tests as authoritative, and avoid hand-editing generated pages. |
+| `AGENTS.md` | Agent instructions for OpenWiki runs: optional just-in-time wiki context (`openwiki_search`/`openwiki_read`, not preloaded at task start), `workspace_required` handling (ask which workspace and retry), `openwiki_list_workspaces`/`openwiki_list_wikis` for discovery, fallback to `openwiki/quickstart.md` when retrieval tools are unavailable, source and tests as authoritative with brief unknowns as verification gaps, the narrowest quiet validation preserving complete failure output, and refreshing generated pages via the repository's documented maintenance process (check its configuration and completed runs; never hand-edit generated pages). |
 | `CLAUDE.md` | One-line pointer that includes `AGENTS.md`, so both agent conventions stay in one place. |
 
 ## Relationship Between Files
