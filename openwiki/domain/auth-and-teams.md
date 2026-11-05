@@ -4,8 +4,8 @@ title: Auth & Teams
 description: Detailed documentation of authentication flows (login, signup, OAuth, email verification, password reset), team management, invitation handling, consents gate enforcement, and feature flags in the Ulabase React starter.
 tags: [auth, teams, invitations, oauth, feature-flags, consents, domain]
 verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-28T14:05:51.205Z
+  - by: openwiki/0.9.0
+    at: 2026-11-05T15:35:17.688Z
 sources:
   - id: openwiki-source-4e7cd7f381c92e8c5d89f5c1
     resource: repo://NOTES.md
@@ -23,6 +23,10 @@ sources:
     resource: repo://src/main.tsx
   - id: openwiki-source-5f5ab9debc6f9b32eab997bb
     resource: repo://src/pages/account/Account.tsx
+  - id: openwiki-source-c9161dbd621f22e3073aa0a1
+    resource: repo://src/pages/auth/login/Login.tsx
+  - id: openwiki-source-599eb255d8fa329c9092fdcb
+    resource: repo://src/pages/auth/verify/Verify.tsx
   - id: openwiki-source-25246136842acdbaf0ab42fd
     resource: repo://src/pages/invitations/accept/Accept.tsx
   - id: openwiki-source-e31f18ccf81f23fb0b5d1a06
@@ -31,7 +35,7 @@ sources:
     resource: repo://src/routes.tsx
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-28T14:05:51.205Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-05T15:35:17.688Z" }
 ---
 
 # Auth & Teams
@@ -55,7 +59,7 @@ The login page renders:
    - Other errors → displays the error message
 4. Links to signup (`/auth/signup`) and forgot password (`/auth/forgot-password`)
 
-The page also checks for an `error` search param on load — if `error=invalid_token`, it shows "This link is invalid or has expired." (used when the kit redirects back after a failed OAuth or token flow).
+The page also checks for an `error` search param on load — `ERROR_MESSAGES` maps both `invalid_token` ("This link is invalid or has expired.") and `token_expired`, whose message directs the user to "Forgot password?" below to get a new link that also verifies the email (used when the kit redirects back after a failed OAuth or token flow).
 
 Loading state disables the submit button. Password visibility toggle is provided.
 
@@ -79,7 +83,7 @@ The [`justSignedUp`](#just-signed-up-flag) flag exists in `App.tsx` for cases wh
 Handles the verification link from the signup confirmation email. Reads `email`, `token`, and `error` from URL search params:
 
 1. **Missing params** (`email` or `token` absent) → shows "Invalid link" with a back-to-login link
-2. **Error param present** → shows "Verification failed — link is invalid or has expired"
+2. **Error param present** → shows "Verification failed — link is invalid or has expired", points to the "Forgot password?" link to get a new link that also verifies the account, and offers a back-to-login link
 3. **Valid params** → calls `auth.verify(email, token)`, which returns a URL, then redirects the browser to it (`window.location.href = url`)
 
 ### Password Reset
@@ -156,7 +160,7 @@ Full team management page, owner-only sections are gated by `team.role === 'owne
 
 - **Members** — lists all team members with name, email, and role. Owners can change member roles (member ↔ owner) and remove members (with confirmation).
 - **Invite a team member** (owner only) — form with email and role selection (member or owner). Calls `auth.invite(email, role)`. 409 → "This person is already a member of your team."
-- **Pending invitations** (owner only) — lists pending invites with role, date, and expired status. "Resend" button with a 5-minute cooldown per invite.
+- **Pending invitations** (owner only) — lists pending invites with role, date, and expired status. The "Resend" button counts down from the invitation's last send (seeded into `resendCooldownsRef` by `withLastSends` from the loaded invitation list; `RESEND_COOLDOWN_MS` is the 5-minute window the service enforces), and `canResend`/`resendCooldownLeft` drive a "Wait …" countdown label. A refused resend surfaces the service's reason (too many for this invitation, or too soon) via `resendError`.
 - **Team settings** (owner only) — form to edit team name and description. Calls `auth.updateTeam()`.
 - **Delete team** (owner only) — guarded by the condition "Only possible while no other members remain." Confirmation dialog, calls `auth.deleteTeam()`, then loads remaining teams and switches to the first one if none are active.
 

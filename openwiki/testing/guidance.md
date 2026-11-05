@@ -24,8 +24,12 @@ sources:
     resource: repo://src/pages/auth/reset-password/ResetPassword.tsx
   - id: openwiki-source-9b67846f4bc6291f7850560e
     resource: repo://src/pages/auth/signup/Signup.tsx
+  - id: openwiki-source-599eb255d8fa329c9092fdcb
+    resource: repo://src/pages/auth/verify/Verify.tsx
   - id: openwiki-source-25246136842acdbaf0ab42fd
     resource: repo://src/pages/invitations/accept/Accept.tsx
+  - id: openwiki-source-e31f18ccf81f23fb0b5d1a06
+    resource: repo://src/pages/teams/detail/TeamDetail.tsx
   - id: openwiki-source-07aa4341cebe71bfc8fd2890
     resource: repo://src/routes.tsx
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
@@ -34,10 +38,10 @@ sources:
     resource: repo://ulabase.setup.ts
   - id: openwiki-source-5e1b077422a94ae165e88e4e
     resource: repo://vite.config.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-28T14:05:51.205Z" }
 verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-28T14:05:51.205Z
+  - by: openwiki/0.9.0
+    at: 2026-11-05T15:35:17.688Z
+generated: { by: "openwiki/0.9.0", at: "2026-11-05T15:35:17.688Z" }
 ---
 
 # Testing Guidance
@@ -82,11 +86,22 @@ Auth pages have the most logic (form validation, error handling, loading states)
 
 | Component | Key Test Cases |
 |-----------|---------------|
-| `Login` | Renders email/password fields; shows validation errors on blur; handles 401 with specific message; calls `auth.login` on submit; shows OAuth buttons when `oauthLogin` is enabled |
+| `Login` | Renders email/password fields; shows validation errors on blur; handles 401 with "Invalid email or password."; calls `auth.login` on submit and navigates to `/`; shows OAuth buttons when `oauthLogin` is enabled; maps the `error` search param through `ERROR_MESSAGES` — `invalid_token` ("This link is invalid or has expired.") and `token_expired`, whose message directs the user to "Forgot password?" to get a new link that also verifies the email |
 | `Signup` | Form validation (first/last name, email, password min 8 chars); calls `auth.register()`; shows "Check your email" confirmation on success; handles 409 duplicate email; shows OAuth buttons when enabled |
+| `Verify` | Missing `email`/`token` params → "Invalid link" screen; `error` param → "Verification failed" screen pointing at "Forgot password?" to get a new link that also verifies the account; otherwise calls `auth.verify(email, token)` and redirects to the returned URL |
 | `Accept` | Missing params → error; new user flow → password form; existing user flow → login + accept; 404 → expired message |
 | `ForgotPassword` | Submits email; shows success message |
 | `ResetPassword` | Validates token from URL; submits new password |
+
+### Component Tests: Team Detail
+
+`src/pages/teams/detail/TeamDetail.tsx` owns the invitation resend UX. Test the cooldown behavior against a frozen clock:
+
+| Behavior | Key Test Cases |
+|----------|---------------|
+| Resend cooldown | When the invitation list is loaded, `withLastSends` seeds `resendCooldownsRef` from each pending invitation's last send; `Resend` is disabled until `RESEND_COOLDOWN_MS` (5 minutes) has elapsed |
+| Countdown label | While the cooldown is active the button reads `Wait …` with the remaining minutes (`resendCooldownLeft`), not `Resend` |
+| Refused resend | When `auth.resendInvite()` fails, the service's reason (too many for this invitation, or too soon) is shown via `resendError`; on success the cooldown restarts from the send time |
 
 ### Component Tests: Consents Gate
 
@@ -240,6 +255,8 @@ src/
         Login.test.tsx
       signup/
         Signup.test.tsx
+      verify/
+        Verify.test.tsx
       forgot-password/
         ForgotPassword.test.tsx
       reset-password/
@@ -247,6 +264,9 @@ src/
     invitations/
       accept/
         Accept.test.tsx
+    teams/
+      detail/
+        TeamDetail.test.tsx
 ```
 
 Run tests:

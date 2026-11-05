@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:98fb605ead17865c2d9d1c21b40d8d0debe2bc9336d880fba48585311088ea15",
+  "pageVersion": "sha256:ce8416c971f7b90893e0084edd2d0670043b563e4d068f7493d4b9cb339630d7",
   "claims": [
     {
       "id": "claim_6343a6464e04483fa6a2f2d432f73654",
@@ -36,7 +36,7 @@
     },
     {
       "id": "claim_2db55e7d382f4ff088b79b83bf635853",
-      "statement": "Auth pages (Login, Signup, Accept, ForgotPassword, ResetPassword) require component tests covering form validation, error handling, loading states, and OAuth button visibility based on feature flags.",
+      "statement": "Auth pages (Login, Signup, Accept, ForgotPassword, ResetPassword) require component tests covering form validation, error handling, loading states, and OAuth button visibility based on feature flags. Login additionally maps the `error` search param through `ERROR_MESSAGES` — `invalid_token` (\"This link is invalid or has expired.\") and `token_expired`, whose message directs the user to \"Forgot password?\" to get a new link that also verifies the email.",
       "evidence": [
         {
           "resource": "repo://src/pages/auth/forgot-password/ForgotPassword.tsx",
@@ -44,7 +44,7 @@
         },
         {
           "resource": "repo://src/pages/auth/login/Login.tsx",
-          "version": "repo-file-v1:sha256:82a8188eee0e129ecaf7e131267c4689038836503e663f27938e72a37a008d76"
+          "version": "repo-file-v1:sha256:b057f54bb47a1e9e6408af65ff6a4a069a6b212bcbe324410587bb31c022c4b9"
         },
         {
           "resource": "repo://src/pages/auth/reset-password/ResetPassword.tsx",
@@ -169,10 +169,30 @@
           "version": "repo-lines-v1:sha256:e62c9016a0a7d66ac5836306aad21a68726ec03607573ebfc23076130c4f163e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFlZTNmNjFiYjA3MWY1OGFmZGFiMDY3ZDliMmFkNzNjNmYxOTA0OGNjMTBkZmQ1M2MwOGQ4MWZlYTQxZWU2MjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2NzdkMmYwMzFlOThiNWU5MTFjNWFkNGZiOWIyMTg2YTkzMjUyMmU4ZjQ2ZWU0MGJhYmZhZTNkYTAwZmMxMjEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk4ZDUzM2YwOTg1ZDQ1NzgwODdhOTBkMjcxNzBhMzNjYmYyNzdkNGVhZTc1NGVlYzU5ZGIyOTFlMmU3M2VjNDciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImMyMTIzNzI5N2Y0ZjQ0MGE2NWVjN2EyN2Y1YTBiYWUyYzMyMTRhN2U4MWIwNzFhMTRlNjZiMTBhYjMxMzljNjkifQ"
         }
       ]
+    },
+    {
+      "id": "claim_b406a0eb9ff64c87bef38f37402132fb",
+      "statement": "Verify page tests should cover: missing `email`/`token` params → \"Invalid link\" screen; `error` param → \"Verification failed\" screen pointing at \"Forgot password?\" to get a new link that also verifies the account; otherwise calling `auth.verify(email, token)` and redirecting to the returned URL.",
+      "evidence": [
+        {
+          "resource": "repo://src/pages/auth/verify/Verify.tsx",
+          "version": "repo-file-v1:sha256:1388995fc18b82e023eb062b47ad395d6ca3eae24b7718290a7ba376f5021f2a"
+        }
+      ]
+    },
+    {
+      "id": "claim_2865ecb0bfb048b9922aaab8ad2b78a9",
+      "statement": "TeamDetail invitation resend tests should verify: cooldown seeded from each pending invitation's last send via `withLastSends`, Resend disabled during the 5-minute `RESEND_COOLDOWN_MS` window, \"Wait …\" countdown label while cooling down (`resendCooldownLeft`), and the service's refusal reason shown on a refused resend via `resendError`.",
+      "evidence": [
+        {
+          "resource": "repo://src/pages/teams/detail/TeamDetail.tsx",
+          "version": "repo-file-v1:sha256:520f498b9424b4c6e345cf5aefd8db09cbf349610aa727170898b58502190477"
+        }
+      ]
     }
   ],
   "verification": {
-    "by": "openwiki/0.7.2",
-    "at": "2026-10-28T14:05:51.205Z"
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-05T15:35:17.688Z"
   }
 }

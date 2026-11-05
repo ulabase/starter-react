@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:2a9d5e62515d47c6417549064b18fbceb3499832f28558ef617b50b8cca065a2",
+  "pageVersion": "sha256:8aa9d2e238b3ac64f28a19e338107a91ccc26a3a3012b733a1dfd855b1b5a2e1",
   "claims": [
     {
       "id": "claim_849550fdee20463596e55e9d5c58103c",
@@ -74,7 +74,7 @@
       "evidence": [
         {
           "resource": "repo://AGENTS.md",
-          "version": "repo-file-v1:sha256:8926524de63a1266e7592d9f1256ec367b67e9fa0583f343808e3e51f19d4990"
+          "version": "repo-file-v1:sha256:3f65427f27766385406120665601b3866f854937467101977cfcd5ab695bd575"
         },
         {
           "resource": "repo://CLAUDE.md",
@@ -143,10 +143,48 @@
           "version": "repo-lines-v1:sha256:a4f4b1730415a3c1b45f32b2ac1e905f64024476b0ee7b26a1067f3529c114ba:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTdlYjE0ZDUxNTU4NzBlN2Q0ODI5M2ZiMDM5M2QzYzRhZmE0YjI4MGJmNDYwMmViNjQ0MGYzZWY3MWYzM2QxNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjNkYjQxM2RmZDQzZWJkODgyZjE4MTM5MzMxZGM2ZDhiOTAzYjE0YTY0MjdjMzdhZjdhZTFhZGVlN2M4Mjg1ZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDlkODM2N2IyYzE0MmY5YmExYWM0NmY2YzFhZTFkODFhMGYwZTMxM2NjMDVlYmE2ODU1MTQ2MWQ0YzNmZThlZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjg1M2Y5OTM5Y2FkZTMxOWVhMTVmMjQxNDAxODNiYzRhMmIxNjg4Y2Y1Y2ExZjVmMDRmNTE2ZDY4OWYyYmYxZSJ9"
         }
       ]
+    },
+    {
+      "id": "claim_97d3f924a4574d3b8220ce6d9510a414",
+      "statement": "The Login page's error search-param map covers both invalid_token and token_expired; the token_expired message directs the user to \"Forgot password?\" to obtain a new link that also verifies their email.",
+      "evidence": [
+        {
+          "resource": "repo://src/pages/auth/login/Login.tsx#L7-L11",
+          "version": "repo-lines-v1:sha256:964298fc56992235caf4213ba7c38ec2391281c8b1d02a8473202db50cc12d66:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTE5OTdkZmI1MDc1M2VmZTFhZmI5OTEyNTM1YjQ1MDU5MGUxNGJlMTJkOGFmZDdhZDQ0Nzc5ZGZjMGM0YjliMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjQxZTk1MDdkZDVlNWFiYTQ0MmQ3N2FiYzVjNDlkYmY3N2QzYzRiY2VmMGMwNjY2N2M1ODU4MWI5NGFjNDMzOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNGQ0Yzc0MjkyMmQ5M2EzMTkxYWE5ZmQyNWYzNjAxYTdiODE4NzQxMmFmMDE2OWM1OTVlMzQ1MjdiNDgyZWVmYSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_e0490b8b66414f13b957f0ecf9dd0fe9",
+      "statement": "When the Verify page receives an expired or invalid verification link (error query param set), it directs the user to \"Forgot password?\" to get a new link that also verifies the account.",
+      "evidence": [
+        {
+          "resource": "repo://src/pages/auth/verify/Verify.tsx#L33-L44",
+          "version": "repo-lines-v1:sha256:42dea2972be0125995d98a112405cd5be50722dc0227d63ea323321fff2aba97:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg0ZTQyMDhjZDZmZmI4YzRhMzU0N2IyZjU0YWRhMTk5NzhjM2YzNjVlNzhmOTUwMmVmNTE0NWNkZDJhYTg1NDMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIyYTFjMDA4MTMwN2FkMDA1MmExOTMzZjMwYTg1MTg1ZGY0ODM4NTJjNTM4ZmU1ZTFlNDY1MGM1NDFlMWY2NGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjYzMzAyZmI5NDExYzU4NGVlMGUwMDA3MDlhNzYzMDYzNTk0M2RmOGExYzM4MjYzMGFkNjI1Mzk4YTAyNGJjOTQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_778eded2caac419ea044613a5f546624",
+      "statement": "The TeamDetail page counts down the Resend button cooldown from the invitation's last send (derived from the invitation's createdAt timestamp via withLastSends), not from a cooldown started at local send time, and a refused resend displays the service's reason in the error alert.",
+      "evidence": [
+        {
+          "resource": "repo://src/pages/teams/detail/TeamDetail.tsx#L134-L148",
+          "version": "repo-lines-v1:sha256:80f7f0229aea87eaf5799a1e688574724fa9fe47b453e2d3f229259fc07e2ba5:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUwZDQwZmNiOWUzZGE0YzE5MGQ2MjM5NjcwYWYwMTY3YjZjNWU2NWMwYjI3NDUwMDM4OWQyMjRiM2QwN2YzOGQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYyZDEyMWNjOTBjYzllOWYxMThmYjhlZDI1OWMxZTg0YTFjOGUzY2ZmYjQzMzcwYTZkY2Y0YzA0NWU0MjdlZDciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE2OWE1NmIzMDk0NjQyZGM2NjViYTM1YTEyNTEzMjRkYTUxNzlmYWE0MzcxM2U1ZmM3NTNhYzlmYTMyZGUwM2QiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBhNTU4NDMwYTVkM2JjOGIzODYwYjk4ZGM2YjgyNDkxNjg4NWEwZTY2MmYxMDFhYTE5N2JmNzJiMjAxYmUxMWQifQ"
+        },
+        {
+          "resource": "repo://src/pages/teams/detail/TeamDetail.tsx#L407-L417",
+          "version": "repo-lines-v1:sha256:11e13e2ebeba980a8182009a3dff6393cfd53857df27a99fdfd91180c8ec88b7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY5ODUzZGJmY2I1ZDljNzcyMDg2YzE4ZjBjNzFjYjg1YzMwYmVlNjlmYTFkNjA1ZmUyYmI0YmY1MDU4Y2MwMjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://src/pages/teams/detail/TeamDetail.tsx#L72-L79",
+          "version": "repo-lines-v1:sha256:cc1f46ff84574a36247670c9206d1841f255abb377fde1f966adba1120b0e0da:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDBlOTRmMTFiM2VhNmE3ZDg1ZTI0ZmRkYWIyMzQ4OGFlODdkYzM3MjM0MGRkN2YzN2FlMzk5ODJmMzk2MDU1NiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNWQ3YjI2NmViMTYyMzkxZjZiOTI0NGEwZTlhODVhNGFlYjBlOGZjNjIwY2JiOTc0ZDI4ZmJhNGQwOGE1MjBmNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjA3ODhkYjNmZjgwNjU2YjhlYTg1ZjZhMDVmMjA3MmRjZjM0YTdhMTg5ZmEzZWFmZGU1YmY1M2Q1NjE5OWJiMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjUyZGQ5YWVlMmVmNWVhZmIyODBjY2RhY2Q5NTJjNTAxZWI3NDY0YThlM2YwMTE0NmJiZjEwNjkyMDNjNzE5ZCJ9"
+        }
+      ]
     }
   ],
   "verification": {
-    "by": "openwiki/0.7.2",
-    "at": "2026-10-28T14:05:51.205Z"
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-05T15:35:17.688Z"
   }
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:d6e2a4368dfd050201327869dea81135cd425dc77ee403d0aaa5e720ba7427ec",
+  "pageVersion": "sha256:44f24deaf8a0f6177f468e81c0b5493463962762e0a3a02d4441d7fdaca265c7",
   "claims": [
     {
       "id": "claim_a5b443d1a24d4104a2cbaf3507b03062",
@@ -176,11 +176,11 @@
     },
     {
       "id": "claim_811caa374f77436c9dfa0919fa3bfa7c",
-      "statement": "The team detail page (/teams/:id, guarded by AuthGuard) provides full team management gated by team.role === 'owner'. Owners can: change member roles (member ↔ owner) via auth.updateMemberRole, remove members with confirmation via auth.removeMember, invite new members with email/role selection via auth.invite (409 → 'This person is already a member of your team.'), resend pending invitations with a 5-minute cooldown, edit team name/description via auth.updateTeam, and delete the team (only possible while no other members remain) via auth.deleteTeam. All data loads on mount via auth.loadTeams(), auth.listTeamMembers(), and auth.listInvitations().",
+      "statement": "The team detail page (/teams/:id, guarded by AuthGuard) provides full team management gated by team.role === 'owner'. Owners can: change member roles (member ↔ owner) via auth.updateMemberRole, remove members with confirmation via auth.removeMember, invite new members with email/role selection via auth.invite (409 → 'This person is already a member of your team.'), resend pending invitations via auth.resendInvite with a Resend button that counts down from the invitation's last send (seeded into resendCooldownsRef by withLastSends from the loaded invitation list; RESEND_COOLDOWN_MS is the 5-minute window the service enforces), where canResend/resendCooldownLeft drive a 'Wait …' countdown label and a refused resend surfaces the service's reason (too many for this invitation, or too soon) via resendError, edit team name/description via auth.updateTeam, and delete the team (only possible while no other members remain) via auth.deleteTeam. All data loads on mount via auth.loadTeams(), auth.listTeamMembers(), and auth.listInvitations().",
       "evidence": [
         {
-          "resource": "repo://src/pages/teams/detail/TeamDetail.tsx#L1-L393",
-          "version": "repo-lines-v1:sha256:e76288e0639dfee9798541f738d13f984136f00301beb1c28379dba11cb11f68:eyJzZWxlY3RlZExpbmVDb3VudCI6MzkzLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIyYzQ4M2NlN2MyNWJjNDYwMjI5MzI4ZmRlMTQ5Y2YzODNmYmFlZmMwMWY2YjUzNTgwMTg2MGZhNTA0MTNkMWQ4IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI0MTJjYTM0NWNjZjc1YmY5YzA4MDZiY2U2OTViZThkZTgwOGI3OTk4NDI1MWE3YTU0ZDIwMmNmNjEwMWRkNDUxIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+          "resource": "repo://src/pages/teams/detail/TeamDetail.tsx#L1-L417",
+          "version": "repo-lines-v1:sha256:520f498b9424b4c6e345cf5aefd8db09cbf349610aa727170898b58502190477:eyJzZWxlY3RlZExpbmVDb3VudCI6NDE3LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIyYzQ4M2NlN2MyNWJjNDYwMjI5MzI4ZmRlMTQ5Y2YzODNmYmFlZmMwMWY2YjUzNTgwMTg2MGZhNTA0MTNkMWQ4IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI0MTJjYTM0NWNjZjc1YmY5YzA4MDZiY2U2OTViZThkZTgwOGI3OTk4NDI1MWE3YTU0ZDIwMmNmNjEwMWRkNDUxIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
         }
       ]
     },
@@ -203,10 +203,30 @@
           "version": "repo-lines-v1:sha256:3655849c559baaae7865c9f50405546d01e7d5ea555e9735aa64487fb4a19656:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU5NDczOWZlMDE0ZjcxNDNjZDYwY2MyMDY0ODE0MzdjNTdmMTVhYTA3OTRmZDdiNTlhYWYwZTU5OGY2NDJhMzIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3ZTU3ODhkNWQ5ZDczZDI0YTgxZGJjMGE1YTc0YmZhODJjOWMzYjNhZjk5ZTUyYWY3OTZlOTBiNDY4YThhM2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFkYjNlN2NkMGMzYTYyMzA0NzY2ODE2MWQxMDRlOTlkODYyMDljYTNlNzc1NGEyNWIxMTlhNDkwNzg3ODA0MjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAxOGViYjkyMGNmZWMwODA5OTNjZWQ4OWJlZWQ4ZTg1NGYzOGZkYTMxY2RiMTMyMjU4YmQ4MjE0ZmQyMjQyZWQifQ"
         }
       ]
+    },
+    {
+      "id": "claim_151a9abb49b54046a8022ce67f8ced27",
+      "statement": "The login page's ERROR_MESSAGES map handles both invalid_token ('This link is invalid or has expired.') and token_expired ('This verification link has expired. Use \"Forgot password?\" below to get a new link: it also verifies your email.'). The initial error state is seeded from the error search param on load, so a redirect back with ?error=token_expired shows the expired-verification message that directs the user to the Forgot password? link below.",
+      "evidence": [
+        {
+          "resource": "repo://src/pages/auth/login/Login.tsx#L8-L25",
+          "version": "repo-lines-v1:sha256:e1a92d7cb5aa1289e0cd6d7ebb2bb2a7f4b1b816ff93cc7d6bd3c0e9be0eb8eb:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjczZTg5ZWVmYzA2MzcwMDdhMDJhZmY2MmE2YjU3ZGI0ZjM3ZjkxZmFkNWIzYzE0YjZkM2ZlMGI0ZmY0ZDVlMTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImExYTZhMTNmMDNmZjNlMmExZjdmYTIwYmExMzA3NTkyMmY2OTZiMDg2MzhlMzgwNDEwMTdhOGIwMmU2M2NmMjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE3YTUwOTYxYjQzZDAxZmI4M2I2ZTYwYmRkMWY3NGViODNkZTU2YmE1YTc2YjE1MGI1YmYwMjk0OGM2NGI4ZTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQxMzUwNmY4NmFlMjQwYTM2ZjQwMDY0YjFhMmFmNDcwZGM4NWQ4ODNiNWIyM2I1Y2Q1MGJjZjkwMTJjYjZmZmYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b9081e2672c2451a9cce89897bc54f60",
+      "statement": "When the error search param is present on /auth/verify, the page shows 'Verification failed' with 'The verification link is invalid or has expired.', points to the 'Forgot password?' link to get a new link that also verifies the account, and offers a back-to-login link.",
+      "evidence": [
+        {
+          "resource": "repo://src/pages/auth/verify/Verify.tsx#L34-L45",
+          "version": "repo-lines-v1:sha256:466312a8f6322abc780bc4359c208658f8b150204f034f9b9be7b1604ef6a184:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYzNWFkNDcwMWNlMjE3ODMxMzJhODk0ZDFjNjc5ODE5MWU5OGYzNjVkNDBmMWEyMGYyMjM3ZDY4ZGY2MTQxYTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3ZTU3ODhkNWQ5ZDczZDI0YTgxZGJjMGE1YTc0YmZhODJjOWMzYjNhZjk5ZTUyYWY3OTZlOTBiNDY4YThhM2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFkYjNlN2NkMGMzYTYyMzA0NzY2ODE2MWQxMDRlOTlkODYyMDljYTNlNzc1NGEyNWIxMTlhNDkwNzg3ODA0MjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI5YWM3N2QyYTk4MmEwOGJiMDRkODY1ZmRmY2UxZDVmNWEyODRhZTMwMzE4YThhZTBiODFiMTg3NzQxNjUyNDAifQ"
+        }
+      ]
     }
   ],
   "verification": {
-    "by": "openwiki/0.7.2",
-    "at": "2026-10-28T14:05:51.205Z"
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-05T15:35:17.688Z"
   }
 }
