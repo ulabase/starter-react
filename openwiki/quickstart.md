@@ -4,9 +4,11 @@ title: Ulabase Starter — React Quickstart
 description: Quickstart guide for the Ulabase React starter. Covers what the repo provides, how to set it up (basic or with the consents gate), and where to find documentation on architecture, domain logic, operations, and testing.
 tags: [quickstart, react, ulabase, starter]
 verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-28T14:05:51.205Z
+  - by: openwiki/0.9.0
+    at: 2026-11-10T15:39:31.005Z
 sources:
+  - id: openwiki-source-5093b074f16e0b77479219b2
+    resource: repo://package-lock.json
   - id: openwiki-source-5b54a58d1b51cd490b0e7162
     resource: repo://package.json
   - id: openwiki-source-23775c3de52f3ab95a13cb8b
@@ -31,7 +33,7 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-28T14:05:51.205Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-10T15:39:31.005Z" }
 ---
 
 # Ulabase Starter — React Quickstart
@@ -259,16 +261,17 @@ public/
 
 | Package | Version | Role |
 |---------|---------|------|
-| `@ulabase/kit-react` | `^0.13.6` | Auth provider (`RhAuthProvider`), guards (`AuthGuard`, `PublicGuard`), `useAuth()` hook, token management |
-| `@ulabase/cli` | `^0.13.6` | `ulabase` CLI for declarative service setup (`ulabase setup --srv <srvId>`) |
+| `@ulabase/kit-react` | `^0.14.0` | Auth provider (`RhAuthProvider`), guards (`AuthGuard`, `PublicGuard`), `useAuth()` hook, token management |
+| `@ulabase/cli` | `^0.14.0` | `ulabase` CLI for declarative service setup (`ulabase setup --srv <srvId>`) |
 | `react` | `^18.3.0` | UI framework |
 | `react-dom` | `^18.3.0` | React renderer for the web |
 | `react-router-dom` | `^6.28.0` | Routing with `useRoutes`, lazy loading, nested routes |
 | `vite` | `^6.0.0` | Build tool and dev server |
 | `vitest` | `^2.0.0` | Test runner |
 
-**Note:** `@ulabase/kit` (framework-agnostic API client) is a dependency of `@ulabase/kit-react`
-and not listed directly in `package.json`.
+**Note:** `@ulabase/kit` (framework-agnostic auth logic and API client) is a transitive
+dependency — pulled in by both `@ulabase/kit-react` and `@ulabase/cli` — and is not listed
+directly in `package.json`.
 
 ## Something not working?
 

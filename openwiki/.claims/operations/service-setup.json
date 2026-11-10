@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:a163e15e50e1f5c512ba28de79c47585d41132b5878f9c79b5119974fdc2a840",
+  "pageVersion": "sha256:80d01989c90eebd4932346949b0a6cb163a4e01ec217fd6a4d90ffc982a4818f",
   "claims": [
     {
       "id": "claim_2d0ef3bdd0444d6a9bb49f8460c9ce39",
@@ -188,7 +188,7 @@
     },
     {
       "id": "claim_add959d4e88a4b77a61de717cb9281a0",
-      "statement": "The ulabase CLI can be installed globally with npm install -g ulabase or as a dev dependency with npm i -D @ulabase/cli.",
+      "statement": "The ulabase CLI can be installed globally with npm install -g ulabase or as a dev dependency with npm i -D @ulabase/cli; the starter pins @ulabase/cli at ^0.14.0 in package.json.",
       "evidence": [
         {
           "resource": "repo://README.md#L39-L39",
@@ -196,7 +196,7 @@
         },
         {
           "resource": "repo://package.json#L21-L21",
-          "version": "repo-lines-v1:sha256:ba5a99638413145f9e546ce9cda06b1fe229d20c63985b23dd6d8d1e626ece53:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmE1YTk5NjM4NDEzMTQ1ZjllNTQ2Y2U5Y2RhMDZiMWZlMjI5ZDIwYzYzOTg1YjIzZGQ2ZDhkMWU2MjZlY2U1MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYmE1YTk5NjM4NDEzMTQ1ZjllNTQ2Y2U5Y2RhMDZiMWZlMjI5ZDIwYzYzOTg1YjIzZGQ2ZDhkMWU2MjZlY2U1MyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTQzNWM3ZGE5NmJmOGNjMWNlMmYyNmViMDJlYWUxNGIwN2JiOTE0MmViNjUzZWNkNTMxMjVkNDAwZjUwNGYyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjg2NzA0MTE5YjA2ODQ1N2Y1MWM4YTBkYmQ0MGJhYWRiZjUxYWY4MzNjZmU1MzMxZjlkMTA1OThjOTg2ZDAwNiJ9"
+          "version": "repo-lines-v1:sha256:a5c186c54908094888052ece13f495160a7f2fea6e448598633142fdc3d1210e:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTVjMTg2YzU0OTA4MDk0ODg4MDUyZWNlMTNmNDk1MTYwYTdmMmZlYTZlNDQ4NTk4NjMzMTQyZmRjM2QxMjEwZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTVjMTg2YzU0OTA4MDk0ODg4MDUyZWNlMTNmNDk1MTYwYTdmMmZlYTZlNDQ4NTk4NjMzMTQyZmRjM2QxMjEwZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTQzNWM3ZGE5NmJmOGNjMWNlMmYyNmViMDJlYWUxNGIwN2JiOTE0MmViNjUzZWNkNTMxMjVkNDAwZjUwNGYyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjg2NzA0MTE5YjA2ODQ1N2Y1MWM4YTBkYmQ0MGJhYWRiZjUxYWY4MzNjZmU1MzMxZjlkMTA1OThjOTg2ZDAwNiJ9"
         }
       ]
     },
@@ -364,7 +364,7 @@
     }
   ],
   "verification": {
-    "by": "openwiki/0.7.2",
-    "at": "2026-10-28T14:05:51.205Z"
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-10T15:39:31.005Z"
   }
 }

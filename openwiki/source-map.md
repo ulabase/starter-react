@@ -40,10 +40,10 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.9.0", at: "2026-11-05T15:35:17.688Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-10T15:39:31.005Z" }
 verified:
   - by: openwiki/0.9.0
-    at: 2026-11-05T15:35:17.688Z
+    at: 2026-11-10T15:39:31.005Z
 ---
 
 # Source Map
@@ -54,7 +54,7 @@ Complete inventory of repository files. Each entry states what the file is for a
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `package.json` | Project metadata, dependencies (`@ulabase/kit-react`, `react`, `react-dom`, `react-router-dom`), dev dependencies (`@ulabase/cli`, `@vitejs/plugin-react`, `typescript`, `vite`, `vitest`), and scripts `dev`, `build` (`tsc -b && vite build`), `preview`, `test`. | [Operations](operations/runbook.md) |
+| `package.json` | Project metadata, scripts (`dev`, `build` (`tsc -b && vite build`), `preview`, `test`), dependencies (`@ulabase/kit-react` at `^0.14.0`, `react`, `react-dom`, `react-router-dom`), and dev dependencies (`@ulabase/cli` at `^0.14.0`, `@vitejs/plugin-react`, `typescript`, `vite`, `vitest`, `@types/react`, `@types/react-dom`). | [Operations](operations/runbook.md) |
 | `package-lock.json` | npm lockfile — do not edit manually. | — |
 | `tsconfig.json` | TypeScript config: ES2020 target, ESNext modules, `moduleResolution: bundler`, `allowImportingTsExtensions`, `jsx: react-jsx`, `noEmit` (Vite compiles), `strict`, `noUnusedLocals`/`noUnusedParameters`. Includes only `src`. | — |
 | `vite.config.ts` | Vite config: minimal — just the `@vitejs/plugin-react` plugin. | [Testing](testing/guidance.md) |
