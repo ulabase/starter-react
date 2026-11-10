@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:8aa9d2e238b3ac64f28a19e338107a91ccc26a3a3012b733a1dfd855b1b5a2e1",
+  "pageVersion": "sha256:d58865e6809955ae1dc27d5abba2a8080d67d180aeff023ea157b16b23d3a6d6",
   "claims": [
     {
       "id": "claim_849550fdee20463596e55e9d5c58103c",
@@ -40,11 +40,11 @@
     },
     {
       "id": "claim_78b1e76501584a8d8a519c6623b1af9f",
-      "statement": "The project depends on @ulabase/kit-react for authentication and multi-tenancy functionality, as declared in package.json.",
+      "statement": "package.json declares the project's npm scripts (`dev`, `build` as `tsc -b && vite build`, `preview`, `test`), runtime dependencies (`@ulabase/kit-react` at `^0.14.0` for authentication and multi-tenancy, plus `react`, `react-dom`, `react-router-dom`), and dev dependencies (`@ulabase/cli` at `^0.14.0` for the declarative service setup, plus `@vitejs/plugin-react`, `typescript`, `vite`, `vitest`, and the React type packages).",
       "evidence": [
         {
-          "resource": "repo://package.json",
-          "version": "repo-file-v1:sha256:c4d818b764b83440d6cf418df3ac497f38c0ed430e05b3572d05e0b9959645dc"
+          "resource": "repo://package.json#L5-L25",
+          "version": "repo-lines-v1:sha256:75a6b31e20633d807d47e47a542803fa1659fb4b9c1254d47db8c911918ea5c5:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM0ODMzZDU5NDljMDNhNDBjYTk1MjQ5MTYxMGE2NjU5NjQ0YjNhYTQ2NjM2MmY3OTkwMjBkYmYxOTgxNTQ3ZGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgzMmIwZjZkZTU4ZTNhNGM3OGY2Y2QxYzgwMjZlOThlMTNhMTJiNzA0ZDI1ZWFhZDZlZGQyMDI2OGFhZDkzMTAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjgyNWE4Y2VjZGY3MDMzNjcxMjRiYmQ1NGY3MTA4ZjQxM2VmMjBkMjcwNzdlOGRkZWZkYWY2NGU0YjMxNzFjYTkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjFiZWQ1NThkMWFhMzhjZjk0NDhhZmE4ZmQ5NGExZjc2NjMxNWRjMTg0YzkxMWEwYWRhNmEzMjEzOTJmYmQyYTYifQ"
         }
       ]
     },
@@ -185,6 +185,6 @@
   ],
   "verification": {
     "by": "openwiki/0.9.0",
-    "at": "2026-11-05T15:35:17.688Z"
+    "at": "2026-11-10T15:39:31.005Z"
   }
 }

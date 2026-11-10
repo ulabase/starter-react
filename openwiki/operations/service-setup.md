@@ -4,8 +4,8 @@ title: Service Setup with Ulabase CLI
 description: How the ulabase CLI and the ulabase.setup.ts / ulabase.setup.consents.ts step lists declaratively configure the Ulabase service — feature-flag derivation from environment.ts, consents-gate server-side documents, and idempotent check/apply re-run semantics.
 tags: [operations, ulabase, setup, cli, consents, feature-flags, configuration]
 verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-28T14:05:51.205Z
+  - by: openwiki/0.9.0
+    at: 2026-11-10T15:39:31.005Z
 sources:
   - id: openwiki-source-5b54a58d1b51cd490b0e7162
     resource: repo://package.json
@@ -17,7 +17,7 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.7.2", at: "2026-10-28T14:05:51.205Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-10T15:39:31.005Z" }
 ---
 
 # Service Setup with Ulabase CLI
@@ -37,7 +37,7 @@ ulabase login                              # paste a token from ulabase.com
 npm i -D @ulabase/cli
 ```
 
-The starter includes `@ulabase/cli` as a dev dependency in `package.json`. The CLI authenticates against Ulabase and stores a token locally; all subsequent commands use this token. The setup files are TypeScript executed directly by the CLI, which is why Node.js 22.18 or later is required to run them.
+The starter includes `@ulabase/cli` as a dev dependency in `package.json` (pinned at `^0.14.0`). The CLI authenticates against Ulabase and stores a token locally; all subsequent commands use this token. The setup files are TypeScript executed directly by the CLI, which is why Node.js 22.18 or later is required to run them.
 
 ## Setup Workflow
 

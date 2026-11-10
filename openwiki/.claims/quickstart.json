@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:60a2ef5b667bc6738c6837a9ec8c597b471b32a271be85cda5fa3f65356cb4f6",
+  "pageVersion": "sha256:a07a21dcd6fec0a357699f97d7cbc192a1b46d11b86e706c3b4360a0d40a2219",
   "claims": [
     {
       "id": "claim_60d379bfef654ae3bb1cc011f1f6a29f",
@@ -100,7 +100,7 @@
       "evidence": [
         {
           "resource": "repo://package.json#L21-L21",
-          "version": "repo-lines-v1:sha256:ba5a99638413145f9e546ce9cda06b1fe229d20c63985b23dd6d8d1e626ece53:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmE1YTk5NjM4NDEzMTQ1ZjllNTQ2Y2U5Y2RhMDZiMWZlMjI5ZDIwYzYzOTg1YjIzZGQ2ZDhkMWU2MjZlY2U1MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYmE1YTk5NjM4NDEzMTQ1ZjllNTQ2Y2U5Y2RhMDZiMWZlMjI5ZDIwYzYzOTg1YjIzZGQ2ZDhkMWU2MjZlY2U1MyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTQzNWM3ZGE5NmJmOGNjMWNlMmYyNmViMDJlYWUxNGIwN2JiOTE0MmViNjUzZWNkNTMxMjVkNDAwZjUwNGYyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjg2NzA0MTE5YjA2ODQ1N2Y1MWM4YTBkYmQ0MGJhYWRiZjUxYWY4MzNjZmU1MzMxZjlkMTA1OThjOTg2ZDAwNiJ9"
+          "version": "repo-lines-v1:sha256:a5c186c54908094888052ece13f495160a7f2fea6e448598633142fdc3d1210e:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTVjMTg2YzU0OTA4MDk0ODg4MDUyZWNlMTNmNDk1MTYwYTdmMmZlYTZlNDQ4NTk4NjMzMTQyZmRjM2QxMjEwZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTVjMTg2YzU0OTA4MDk0ODg4MDUyZWNlMTNmNDk1MTYwYTdmMmZlYTZlNDQ4NTk4NjMzMTQyZmRjM2QxMjEwZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTQzNWM3ZGE5NmJmOGNjMWNlMmYyNmViMDJlYWUxNGIwN2JiOTE0MmViNjUzZWNkNTMxMjVkNDAwZjUwNGYyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjg2NzA0MTE5YjA2ODQ1N2Y1MWM4YTBkYmQ0MGJhYWRiZjUxYWY4MzNjZmU1MzMxZjlkMTA1OThjOTg2ZDAwNiJ9"
         },
         {
           "resource": "repo://ulabase.setup.ts#L1-L8",
@@ -178,11 +178,15 @@
     },
     {
       "id": "claim_d5d58068bb2d45ba89b52f4f7779cd43",
-      "statement": "Key direct dependencies are @ulabase/kit-react (^0.13.6), react (^18.3.0), react-dom (^18.3.0), react-router-dom (^6.28.0). Key devDependencies are vite (^6.0.0), vitest (^2.0.0), and @ulabase/cli (^0.13.6). The framework-agnostic @ulabase/kit is a transitive dependency of @ulabase/kit-react.",
+      "statement": "Key direct dependencies are @ulabase/kit-react (^0.14.0), react (^18.3.0), react-dom (^18.3.0), react-router-dom (^6.28.0). Key devDependencies are vite (^6.0.0), vitest (^2.0.0), and @ulabase/cli (^0.14.0). The framework-agnostic @ulabase/kit is a transitive dependency, pulled in by both @ulabase/kit-react and @ulabase/cli, and is not listed directly in package.json.",
       "evidence": [
         {
+          "resource": "repo://package-lock.json#L1246-L1274",
+          "version": "repo-lines-v1:sha256:e7e7996001afa721a32496777230e6c3c8390a7692cd9f688cd73fdecda21b58:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ5OWQ1NDIxNTVmMTI2Y2RkNDViYjMxNDRhNGI1YmFjOGFlYjUzMWU3YzgyYzRhMzUyOTgxYjc1ZmFmYjZkZDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE0MDlkY2E4MzU4OWE0ODFlOTIxYmNjNjQwZWM4YzFkOGY3MjEyMjE2ZTU5MzFhNTg4YTJlN2Y5NmM4YWYyYTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjU0NDk2NjcwNmU0YjFjNDBlNmE4M2M0OTgyNTU3ZGUyNThiNmQ2ZWJjOWVkZTE1MjcxYzdhNDIwMzYyOTYwOTciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVhYzM0NGJiMmU2ZTk4YTQ1NTViMDk5NjQ5YjgxNzJjODZhMmZlOTYxNjBmZTA2NmJmYzQ5ZGY2OGMyYmFhOTYifQ"
+        },
+        {
           "resource": "repo://package.json#L1-L32",
-          "version": "repo-lines-v1:sha256:c4d818b764b83440d6cf418df3ac497f38c0ed430e05b3572d05e0b9959645dc:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2ZmIwOGZkYTFhY2I5NTdiNjExNmJkMzc4MTFhMWZlNDFhMDE2MTFjMDYzMWVkYmY3ODZkNjg4OWEyN2E1NWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+          "version": "repo-lines-v1:sha256:140419ea3e5ffde17892b9ecf76e3c0afc5fa9fc1db5d668324e7e923bf9db57:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2ZmIwOGZkYTFhY2I5NTdiNjExNmJkMzc4MTFhMWZlNDFhMDE2MTFjMDYzMWVkYmY3ODZkNjg4OWEyN2E1NWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
         }
       ]
     },
@@ -220,7 +224,7 @@
     }
   ],
   "verification": {
-    "by": "openwiki/0.7.2",
-    "at": "2026-10-28T14:05:51.205Z"
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-10T15:39:31.005Z"
   }
 }
