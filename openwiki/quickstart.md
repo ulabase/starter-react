@@ -5,7 +5,7 @@ description: Quickstart guide for the Ulabase React starter. Covers what the rep
 tags: [quickstart, react, ulabase, starter]
 verified:
   - by: openwiki/0.9.0
-    at: 2026-11-10T15:39:31.005Z
+    at: 2026-11-11T15:22:25.445Z
 sources:
   - id: openwiki-source-5093b074f16e0b77479219b2
     resource: repo://package-lock.json
@@ -33,7 +33,7 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.9.0", at: "2026-11-10T15:39:31.005Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-11T15:22:25.445Z" }
 ---
 
 # Ulabase Starter — React Quickstart
@@ -253,25 +253,31 @@ public/
 | How the app is wired — bootstrap, auth provider, routing, fragment token capture, config gating, ConsentsGate placement | [Architecture Overview](architecture/overview.md) |
 | What each source file does | [Source Map](source-map.md) |
 | How authentication, teams, invitations, and the consents gate work end to end | [Auth & Teams](domain/auth-and-teams.md) |
-| How `ulabase.setup.ts` and `ulabase.setup.consents.ts` configure the service, and how to re-run them | [Service Setup](operations/service-setup.md) |
-| How to publish new Terms/Privacy versions, diagnose permanently-blocked users, and fix origin or feature-flag drift | [Operations Runbook](operations/runbook.md) |
+| How `ulabase.setup.ts` and `ulabase.setup.consents.ts` configure the service, and how to re-run them | [Service Setup with Ulabase CLI](operations/service-setup.md) |
+| How to publish new Terms/Privacy versions, diagnose permanently-blocked users, and fix origin or feature-flag drift | [Operations & Runbook](operations/runbook.md) |
 | What to test with Vitest — and what the setup files' check/apply already covers | [Testing Guidance](testing/guidance.md) |
 
 ## Key Dependencies
 
-| Package | Version | Role |
-|---------|---------|------|
-| `@ulabase/kit-react` | `^0.14.0` | Auth provider (`RhAuthProvider`), guards (`AuthGuard`, `PublicGuard`), `useAuth()` hook, token management |
-| `@ulabase/cli` | `^0.14.0` | `ulabase` CLI for declarative service setup (`ulabase setup --srv <srvId>`) |
-| `react` | `^18.3.0` | UI framework |
-| `react-dom` | `^18.3.0` | React renderer for the web |
-| `react-router-dom` | `^6.28.0` | Routing with `useRoutes`, lazy loading, nested routes |
-| `vite` | `^6.0.0` | Build tool and dev server |
-| `vitest` | `^2.0.0` | Test runner |
+Two layers, and they are not the same numbers. `package.json` holds the *declared ranges*;
+`package-lock.json` holds the *locked versions* that `npm install` actually resolves. Read the
+locked column when you care about what runs.
+
+| Package | Kind | Declared (`package.json`) | Locked (`package-lock.json`) | Role |
+|---------|------|---------------------------|------------------------------|------|
+| `@ulabase/kit-react` | dependency | `^0.14.0` | `0.14.1` | Auth provider (`RhAuthProvider`), guards (`AuthGuard`, `PublicGuard`), `useAuth()` hook, token management |
+| `react` | dependency | `^18.3.0` | `18.3.1` | UI framework |
+| `react-dom` | dependency | `^18.3.0` | `18.3.1` | React renderer for the web |
+| `react-router-dom` | dependency | `^6.28.0` | `6.30.4` | Routing with `useRoutes`, lazy loading, nested routes |
+| `@ulabase/cli` | devDependency | `^0.14.0` | `0.14.1` | `ulabase` CLI for declarative service setup (`ulabase setup --srv <srvId>`) |
+| `vite` | devDependency | `^6.0.0` | `6.4.3` | Build tool and dev server |
+| `vitest` | devDependency | `^2.0.0` | `2.1.9` | Test runner |
 
 **Note:** `@ulabase/kit` (framework-agnostic auth logic and API client) is a transitive
-dependency — pulled in by both `@ulabase/kit-react` and `@ulabase/cli` — and is not listed
-directly in `package.json`.
+dependency — pulled in by both `@ulabase/kit-react` and `@ulabase/cli`, each of which pins it at
+exactly `0.14.1` — and is not listed directly in `package.json`. The lockfile resolves a single
+`node_modules/@ulabase/kit` entry at `0.14.1`, so that is the kit version present in
+`node_modules`, whatever the `^0.14.0` ranges suggest.
 
 ## Something not working?
 

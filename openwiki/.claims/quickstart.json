@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:a07a21dcd6fec0a357699f97d7cbc192a1b46d11b86e706c3b4360a0d40a2219",
+  "pageVersion": "sha256:cec7e61fc9409d9a5d9aae730f1f000baee9d03ef4e0db60f3894de2e5400662",
   "claims": [
     {
       "id": "claim_60d379bfef654ae3bb1cc011f1f6a29f",
@@ -178,11 +178,23 @@
     },
     {
       "id": "claim_d5d58068bb2d45ba89b52f4f7779cd43",
-      "statement": "Key direct dependencies are @ulabase/kit-react (^0.14.0), react (^18.3.0), react-dom (^18.3.0), react-router-dom (^6.28.0). Key devDependencies are vite (^6.0.0), vitest (^2.0.0), and @ulabase/cli (^0.14.0). The framework-agnostic @ulabase/kit is a transitive dependency, pulled in by both @ulabase/kit-react and @ulabase/cli, and is not listed directly in package.json.",
+      "statement": "Key direct dependencies and their lock-resolved versions: @ulabase/kit-react is declared ^0.14.0 and locked at 0.14.1, react ^18.3.0 and 18.3.1, react-dom ^18.3.0 and 18.3.1, react-router-dom ^6.28.0 and 6.30.4. Key devDependencies: @ulabase/cli is declared ^0.14.0 and locked at 0.14.1, vite ^6.0.0 and 6.4.3, vitest ^2.0.0 and 2.1.9. The framework-agnostic @ulabase/kit is not listed directly in package.json; it is a transitive dependency pulled in by both @ulabase/kit-react and @ulabase/cli, each of which pins it at exactly 0.14.1, so package-lock.json resolves a single node_modules/@ulabase/kit entry at 0.14.1.",
       "evidence": [
         {
-          "resource": "repo://package-lock.json#L1246-L1274",
-          "version": "repo-lines-v1:sha256:e7e7996001afa721a32496777230e6c3c8390a7692cd9f688cd73fdecda21b58:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ5OWQ1NDIxNTVmMTI2Y2RkNDViYjMxNDRhNGI1YmFjOGFlYjUzMWU3YzgyYzRhMzUyOTgxYjc1ZmFmYjZkZDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE0MDlkY2E4MzU4OWE0ODFlOTIxYmNjNjQwZWM4YzFkOGY3MjEyMjE2ZTU5MzFhNTg4YTJlN2Y5NmM4YWYyYTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjU0NDk2NjcwNmU0YjFjNDBlNmE4M2M0OTgyNTU3ZGUyNThiNmQ2ZWJjOWVkZTE1MjcxYzdhNDIwMzYyOTYwOTciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVhYzM0NGJiMmU2ZTk4YTQ1NTViMDk5NjQ5YjgxNzJjODZhMmZlOTYxNjBmZTA2NmJmYzQ5ZGY2OGMyYmFhOTYifQ"
+          "resource": "repo://package-lock.json#L1246-L1288",
+          "version": "repo-lines-v1:sha256:d2007f6634ef830f14e90fd4202cd4d37074aaee3fb0a0b80056ede7a0f768ce:eyJzZWxlY3RlZExpbmVDb3VudCI6NDMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ5OWQ1NDIxNTVmMTI2Y2RkNDViYjMxNDRhNGI1YmFjOGFlYjUzMWU3YzgyYzRhMzUyOTgxYjc1ZmFmYjZkZDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFmMGNkYjk3MmE3YmZiN2VkMjQ2ZjlmZjY3MjM4NWU1NWY0OTY4ZmMxMTA0M2RjNWI2ODRkNTFkZmEzMWRiY2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjU0NDk2NjcwNmU0YjFjNDBlNmE4M2M0OTgyNTU3ZGUyNThiNmQ2ZWJjOWVkZTE1MjcxYzdhNDIwMzYyOTYwOTciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImMwOWRjMmE5OWUxNDJmZTY4NjE3YzBlZDg1OGZmNjJkYWY3NjIwZTlhOTdmYzM1MzFlNDdkZTEyMGUyNWI0M2MifQ"
+        },
+        {
+          "resource": "repo://package-lock.json#L1855-L1921",
+          "version": "repo-lines-v1:sha256:e9975bd9c8553d26a07e9634c7110c3d53b862cb86b573164478e89a06faffd2:eyJzZWxlY3RlZExpbmVDb3VudCI6NjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVhY2I5MTliZTMzNzY5NTJiNGIyMjZmY2U5ZTgyMTJjNjA2MWQ5ZGQ1NWE5MGI0Y2ZlMjlmMjRiMTM4ODRiYjciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFmMGNkYjk3MmE3YmZiN2VkMjQ2ZjlmZjY3MjM4NWU1NWY0OTY4ZmMxMTA0M2RjNWI2ODRkNTFkZmEzMWRiY2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg0ZTk3MjcwOGEyYWI4M2IzYTgzMzRjY2ZiNWE5MzA0ZTQ1MDliNDdiNTQ2MDNhYTg2MjVjYmUxMDQ5MjZlN2YiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM0MTlkYjJmNTEzNGY4YTA5NWQyZTFmMWM5ZGFiMjkxYjRlNWNhYTFhMmFkOWZhZGI4MWYxOGZjMWQyZTY4NmMifQ"
+        },
+        {
+          "resource": "repo://package-lock.json#L2123-L2161",
+          "version": "repo-lines-v1:sha256:d10c96850370e1b2991a8d34b0e8d12e2b8c2bbc93c7c6206754f3db802ca774:eyJzZWxlY3RlZExpbmVDb3VudCI6MzksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFkMWMwNzgxNGI0M2QyNzM0Y2Q2YzdiZDUxNWRlMDI3Y2M1Mzc0YWRhMjFhMWVjMTRjODFmZTk1ZDUxMjM2ZTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI5NzhlMjUwM2I4Y2YzN2EwNmY3ZDZmMGEzYTZiNmZlMzU2OTFmYmNhYjUwYjg3NzVjYWI2ZmFiYzcxYzU5MmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ3YWQ1NjRkZWZmYTBlNWM4MWNjZTBkZDlmMjVhMWNhNWM2N2UxMDBlNGU4ZGFlNjUzZmY0OWVmYmFmOGNkODkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFkNWJjZWE0MzE3NGY5NTczYjE4NjMyMThlMDlmNDM0ZDllNGQxZjZjYjc3NDM0ZWQwZjk3ZDdmMjY5MTQ1OTEifQ"
+        },
+        {
+          "resource": "repo://package-lock.json#L2711-L2751",
+          "version": "repo-lines-v1:sha256:9e77512d6be59e8a9304d76e2d1f9d76b5fb79ad7d9a54f4338a04df015069e7:eyJzZWxlY3RlZExpbmVDb3VudCI6NDEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZiZmRhMTU4ZmMyNDJhMzE5NzE5Y2JjNTdlMmQ3Zjk1ODk3MTYxZTJlZWFiOGQ2NWQ1NThhNmNjOWFiN2RlZTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE4YzAzYTYwNDMyMGQ5OThhOGEyMTU0NDhjOTBhNzI5NGUyODMwNjE2NWYyNWJlNGU3MjI5MTUwNzY4ZGYxYmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg0NmVkNmFjZjVmNjkxZGFlZGJmMTc2ZDMyZTAyZjhiNTIyNjgxZmYxN2M5ZDY3MDk4MzY1YTMxNzUyNmY1NjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA2ZmZlNmExZDQzZWRlOWM3OGZlYTM5YTI1ZmY0MTExZDUwYzBjNTAxOTBhNDRkMjg5ZWU5NjJhOGNlMDI4MWUifQ"
         },
         {
           "resource": "repo://package.json#L1-L32",
@@ -225,6 +237,6 @@
   ],
   "verification": {
     "by": "openwiki/0.9.0",
-    "at": "2026-11-10T15:39:31.005Z"
+    "at": "2026-11-11T15:22:25.445Z"
   }
 }
