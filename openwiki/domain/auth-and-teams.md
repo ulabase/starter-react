@@ -5,10 +5,14 @@ description: Detailed documentation of authentication flows (login, signup, OAut
 tags: [auth, teams, invitations, oauth, feature-flags, consents, domain]
 verified:
   - by: openwiki/0.9.0
-    at: 2026-11-05T15:35:17.688Z
+    at: 2026-11-11T15:22:25.445Z
 sources:
   - id: openwiki-source-4e7cd7f381c92e8c5d89f5c1
     resource: repo://NOTES.md
+  - id: openwiki-source-5093b074f16e0b77479219b2
+    resource: repo://package-lock.json
+  - id: openwiki-source-5b54a58d1b51cd490b0e7162
+    resource: repo://package.json
   - id: openwiki-source-85dc2a049a0943b56218c045
     resource: repo://public/privacy.html
   - id: openwiki-source-ad504d4d06a9b4cc6851d32b
@@ -35,7 +39,7 @@ sources:
     resource: repo://src/routes.tsx
   - id: openwiki-source-c1d5327fe44e08cda82fcf83
     resource: repo://ulabase.setup.consents.ts
-generated: { by: "openwiki/0.9.0", at: "2026-11-05T15:35:17.688Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-11T15:22:25.445Z" }
 ---
 
 # Auth & Teams
@@ -245,7 +249,7 @@ The setup file [`ulabase.setup.consents.ts`](../../ulabase.setup.consents.ts) cr
 - **`subscribe(listener)`** — registers a callback; returns an unsubscribe function.
 - **`isBlocked()`** — reads the current flag.
 
-Session restoration errors are absorbed by the provider (`checkSession().catch(() => null)`) to keep the app usable when the user is simply signed out. `consentsOnError` is the only hook that sees *why* the session check failed — without it, "blocked by consents" and "not signed in" are indistinguishable.
+Session restoration errors are absorbed by the provider (`checkSession().catch(() => null)`) to keep the app usable when the user is simply signed out. `consentsOnError` is the only hook that sees *why* the session check failed — without it, "blocked by consents" and "not signed in" are indistinguishable. `package-lock.json` resolves `@ulabase/kit` and `@ulabase/kit-react` at 0.14.1 (`package.json` declares `^0.14.0`); the 0.14.1 bump is credited with letting the session check outlast a rate-limit window — kit-side timing this app does not configure.
 
 ### Client-Side Overlay
 
@@ -379,4 +383,6 @@ The [Home page](../source-map.md#home) includes a working "Fetch /demo" button t
 ## See Also
 
 - [Architecture Overview](../architecture/overview.md) — how the auth provider, routing, and consents gate work
-- [Operations & Runbook](../operations/runbook.md) — how to configure feature flags, environment, and styling
+- [Service Setup](../operations/service-setup.md) — setup steps, claims, and how the consents gate is installed
+- [Operations & Runbook](../operations/runbook.md) — feature-flag drift, version drift, and permanently-blocked users
+- [Testing Guidance](../testing/guidance.md) — what to test client-side for auth and the consents gate
