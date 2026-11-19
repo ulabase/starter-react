@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:d58865e6809955ae1dc27d5abba2a8080d67d180aeff023ea157b16b23d3a6d6",
+  "pageVersion": "sha256:1dfeb991dd72c4f85338553aeae98e3d168f18778f74206335eb8abf7c44aa5d",
   "claims": [
     {
       "id": "claim_849550fdee20463596e55e9d5c58103c",
@@ -125,8 +125,8 @@
           "version": "repo-file-v1:sha256:0b2fba9c71fd1b63438cbadf37ac7d0e703467000d83ce4857c4f401ba517d4e"
         },
         {
-          "resource": "repo://src/routes.tsx#L19-L119",
-          "version": "repo-lines-v1:sha256:fdeab36cfe33f56cebb488158e3e8871f22c8400ff3bdeaa7ee19115b8e418f7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAxLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI5NDY1M2ZhY2ZhNDIyYWExMDhhYzMxYWE1YTAyYTkyMDc3OWEzNjAzYjkyOGViYjcwMDI0YzllY2M1NGFhNjVhIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiJiMDJkMmMwZDZkYzVlNzRkOTJmYTE0YjkxZGJlYTI2NDA5MGJlYjM1ZmRiOTE4OGQ5YjM0MTE4MWRjZTlmNGNlIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJiNTI5NzQ1MDRmMmRiNWU4NzhhMjc5ODYzMmZhYjk1YjVmMDMwODBhZmViZTJmYzI5MTg2NTMwMWVlODA5MmVlIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+          "resource": "repo://src/routes.tsx#L19-L120",
+          "version": "repo-lines-v1:sha256:9a0d08fe68c738e1e8e3f87117e60ac8f774d33c811fcdaed1623b7e888972f5:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAyLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI5NDY1M2ZhY2ZhNDIyYWExMDhhYzMxYWE1YTAyYTkyMDc3OWEzNjAzYjkyOGViYjcwMDI0YzllY2M1NGFhNjVhIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiJiMDJkMmMwZDZkYzVlNzRkOTJmYTE0YjkxZGJlYTI2NDA5MGJlYjM1ZmRiOTE4OGQ5YjM0MTE4MWRjZTlmNGNlIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJiNTI5NzQ1MDRmMmRiNWU4NzhhMjc5ODYzMmZhYjk1YjVmMDMwODBhZmViZTJmYzI5MTg2NTMwMWVlODA5MmVlIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
         }
       ]
     },
@@ -181,10 +181,34 @@
           "version": "repo-lines-v1:sha256:cc1f46ff84574a36247670c9206d1841f255abb377fde1f966adba1120b0e0da:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDBlOTRmMTFiM2VhNmE3ZDg1ZTI0ZmRkYWIyMzQ4OGFlODdkYzM3MjM0MGRkN2YzN2FlMzk5ODJmMzk2MDU1NiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNWQ3YjI2NmViMTYyMzkxZjZiOTI0NGEwZTlhODVhNGFlYjBlOGZjNjIwY2JiOTc0ZDI4ZmJhNGQwOGE1MjBmNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjA3ODhkYjNmZjgwNjU2YjhlYTg1ZjZhMDVmMjA3MmRjZjM0YTdhMTg5ZmEzZWFmZGU1YmY1M2Q1NjE5OWJiMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjUyZGQ5YWVlMmVmNWVhZmIyODBjY2RhY2Q5NTJjNTAxZWI3NDY0YThlM2YwMTE0NmJiZjEwNjkyMDNjNzE5ZCJ9"
         }
       ]
+    },
+    {
+      "id": "claim_ccad3e9cc1ad4175b10ac72dc05dd0eb",
+      "statement": "Invitation acceptance is registered in src/routes.tsx as ['auth/activate', 'invitations/accept'] — one path for a new user, one for an existing user — both rendering <Accept /> with no guard so the invitee may be signed out or have no account yet; Accept loads the invitation with auth.getInvitation(email, token) and branches into three flows: missing email/token params show an invalid-link error, a new user sets a password via auth.activate({ email, token, password }), and an existing user (already signed in, or logging in with a password) joins via auth.acceptInvite(token).",
+      "evidence": [
+        {
+          "resource": "repo://src/pages/invitations/accept/Accept.tsx#L25-L78",
+          "version": "repo-lines-v1:sha256:2024d1ca335bfa66e30e607cbf4332b274d1e7512c34462ee499fe38c0edd890:eyJzZWxlY3RlZExpbmVDb3VudCI6NTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRlMzk1YjljM2ExZWUyMTI5ZTc2YmRlZWY3ZDYwNmQyMDkzNDQyZGM3Mjk3NzkxNWVjNDU4OGI3NzI3MzNjOGUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJlNjdkODRiNjNhN2M4N2IwYmM1NDNkY2NjNGI4YTJjNGViZjg3YTdkYzA0MDNjMTE5MWY5YjIyOTkzNWYxMjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImExMjRlMDBlMGM4MjhlYWI5ODEzYTRjYmFiZjdkY2FmYWYxNjIwZWM4OWM1OWQ5YWNlZWVlZmQ2ZTUxYjAxMTciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJkODQ1OGRkNTk2ZTE2MGE1ZDRkMThjY2QzNzYyYjAzNmQyNGNhODEzZDhjODcwODdiYWI3OGI0MjJkMDhlOTUifQ"
+        },
+        {
+          "resource": "repo://src/routes.tsx#L88-L100",
+          "version": "repo-lines-v1:sha256:13f8eb3efc2cab801e3959629bc1626649de6d19bd6f5f2ad6a85099a5120dd9:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNlZjAxMDRhNzk0MTgyMTA5ZTlmNzEzZDVhY2Q5NmE0Njg4ZDdkZTY4NWU1OTMxNjgzODY2ZTVlOWYzYmM5YjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFhMTFlMDg5MDA4OGYzMThmZTMzMGFiOGE2MThlYjRlOTI5NmNhN2RkYzA4NDY0NzFmM2I2ZTVkZjc2MWI4N2MiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI1MjI4YTlkNzY0ZDhhOWIwM2E4MmY0MWJmNGE3ZTE0YWQ2NWU0YjI2M2RmNDU1MWExNzVlYzA2MTFiNTNhODEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVlMzdiZDYwMzI3NDZiYzk0YWE5NDU3NDY4NjJkNGRkMGM2MDZkMDExOTc0N2ZjZTFiYmY1ZDlhOWQ5OTdkYjcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_51c4a263b8f54725b9244e26e1d5bd97",
+      "statement": "The catch-all route { path: '*' } in src/routes.tsx renders <Home />, so unknown URL paths land on the getting-started Home page rather than a not-found view.",
+      "evidence": [
+        {
+          "resource": "repo://src/routes.tsx#L119-L120",
+          "version": "repo-lines-v1:sha256:2ffcc0bff4062b45388b68b066298a98081d3941ca47b022203027373d8bd6e3:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTI2MDQwYmE1OGMyNmUyMGNlMzUxMmExMDdkNTE3N2YwN2M0NGI5M2MyYzU5ODQyM2I0NDUzNGU2OWY4NGVhZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjAyZDJjMGQ2ZGM1ZTc0ZDkyZmExNGI5MWRiZWEyNjQwOTBiZWIzNWZkYjkxODhkOWIzNDExODFkY2U5ZjRjZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiN2Y0MWUzMjliOTA0ODBmNGQ4YmI4NmJjYzEwNmQ3NGIzNDE3Mjg3NzQ0NzM5MzhkOWRkYzAzODkxYWI2NGFkYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.9.0",
-    "at": "2026-11-10T15:39:31.005Z"
+    "at": "2026-11-19T17:44:44.189Z"
   }
 }

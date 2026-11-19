@@ -32,6 +32,8 @@ sources:
     resource: repo://src/pages/auth/login/Login.tsx
   - id: openwiki-source-599eb255d8fa329c9092fdcb
     resource: repo://src/pages/auth/verify/Verify.tsx
+  - id: openwiki-source-25246136842acdbaf0ab42fd
+    resource: repo://src/pages/invitations/accept/Accept.tsx
   - id: openwiki-source-e31f18ccf81f23fb0b5d1a06
     resource: repo://src/pages/teams/detail/TeamDetail.tsx
   - id: openwiki-source-07aa4341cebe71bfc8fd2890
@@ -40,10 +42,10 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.9.0", at: "2026-11-10T15:39:31.005Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-19T17:44:44.189Z" }
 verified:
   - by: openwiki/0.9.0
-    at: 2026-11-10T15:39:31.005Z
+    at: 2026-11-19T17:44:44.189Z
 ---
 
 # Source Map
@@ -73,7 +75,7 @@ Complete inventory of repository files. Each entry states what the file is for a
 | `src/main.tsx` | React root creation. Renders `<StrictMode>` → `<BrowserRouter>` → `<RhAuthProvider config={{ apiBaseUrl: environment.apiUrl, onError: consentsOnError }}>` → `<App />`, and imports `styles.css`. Passing `onError` is what lets a `451` raise the consents flag. | [Architecture](architecture/overview.md) |
 | `src/App.tsx` | Validates `environment.apiUrl` with `isValidApiBaseUrl()`, consumes the fragment token and `?flow=signup` marker on mount, then renders `ConfigPage` when the URL is invalid or the `useRoutes()` tree wrapped in `<ConsentsGate>`. | [Architecture](architecture/overview.md) |
 | `src/ConfigPage.tsx` | Setup wizard shown when `apiUrl` is not a valid `https://` service URL. Three guided steps: create a free service at `ulabase.com`, run `npx ulabase login` and `npx ulabase setup --srv <id>` from this folder, then reload. | [Operations](operations/runbook.md) |
-| `src/routes.tsx` | Route definitions as `RouteObject[]`: lazy-loaded page components inside `SuspenseWrapper`, `PublicGuard`/`AuthGuard` wrappers, and feature-flag conditional inclusion of signup, verify, forgot/reset-password and invitation routes. | [Auth & Teams](domain/auth-and-teams.md) |
+| `src/routes.tsx` | Route definitions as `RouteObject[]`: lazy-loaded page components inside `SuspenseWrapper`, `PublicGuard`/`AuthGuard` wrappers, and feature-flag conditional inclusion of signup, verify, forgot/reset-password and invitation routes. The invitation page is registered as `['auth/activate', 'invitations/accept']` (one path for a new user, one for an existing user), both rendering `<Accept />` with no guard. The catch-all `path: '*'` renders `<Home />`. | [Auth & Teams](domain/auth-and-teams.md) |
 
 ## Environment & Utilities
 
@@ -130,7 +132,7 @@ Page-level stylesheets live next to their components: `src/pages/shell/Shell.css
 
 | File | Purpose | See Also |
 |------|---------|----------|
-| `src/pages/invitations/accept/Accept.tsx` | One page, three flows: missing params → error; new user → set password via `auth.activate()`; existing user → log in and accept. Loads the invitation with `auth.getInvitation()`. Not wrapped in a guard, so it works signed in or out. | [Auth & Teams](domain/auth-and-teams.md#invitations) |
+| `src/pages/invitations/accept/Accept.tsx` | One page, two paths and three flows: served at `/auth/activate` (new user) and `/invitations/accept` (existing user); missing params → error; new user → set password via `auth.activate()`; existing user → log in and accept. Loads the invitation with `auth.getInvitation()`. Not wrapped in a guard, so it works signed in or out. | [Auth & Teams](domain/auth-and-teams.md#invitations) |
 
 ### Teams
 
