@@ -110,9 +110,9 @@ After the OAuth provider authenticates the user, they are redirected back with a
 
 ## Invitations
 
-**Route:** `/invitations/accept` · **Guard:** none (works signed-in or out) · **Shown when:** `teamInvitations` · **File:** `src/pages/invitations/accept/Accept.tsx`
+**Routes:** `/auth/activate` (new user), `/invitations/accept` (existing user) · **Guard:** none (works signed-in or out) · **Shown when:** `teamInvitations` · **File:** `src/pages/invitations/accept/Accept.tsx`
 
-Invitation links arrive via email with `?email=...&token=...` query params. The page handles three cases:
+Invitation links arrive via email with `?email=...&token=...` query params: the service links a new user to `/auth/activate` and an existing user to `/invitations/accept`, and both paths render this page. The page handles three cases:
 
 ### Flow 1: Missing Parameters
 
@@ -344,7 +344,7 @@ features: {
   passwordReset: true,        // Enables forgot-password + reset-password routes
   oauthLogin: false,          // Enables OAuth buttons on login/signup (off until OAuth client is created)
   oauthProviders: ['google'], // Which OAuth providers to show
-  teamInvitations: true,      // Enables /invitations/accept route
+  teamInvitations: true,      // Enables the /auth/activate and /invitations/accept routes
 }
 ```
 

@@ -50,7 +50,7 @@ There is no server of yours to write, deploy, or pay for.
 
 - **Signup, login, logout** — email/password and OAuth sign-in (Google is provisioned by setup; the UI also knows GitHub)
 - **Email verification, password reset**
-- **Team invitations** — one page (`/invitations/accept`) branching into a new-user "set password" form (calls `auth.activate()`) or an existing-user "log in and accept" form
+- **Team invitations** — one page (`/auth/activate` for a new user, `/invitations/accept` for an existing one) branching into a new-user "set password" form (calls `auth.activate()`) or an existing-user "log in and accept" form
 - **Teams** — list, create, and detail pages (members, invitations, settings); opening a team on `/teams` switches the active team via `auth.switchTeam()`
 - **Consents gate** — optional server-side enforcement: users must accept Terms of Service and Privacy Policy before using the app (status `451` from a Guards rule)
 - **Authenticated shell** with placeholder for your app content

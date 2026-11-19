@@ -178,8 +178,8 @@ const { emailRegistration, passwordReset, oauthLogin, teamInvitations } = enviro
 ...(emailRegistration || oauthLogin ? [{ path: 'auth/signup', ... }] : []),
 // Password reset routes only if passwordReset is enabled
 ...(passwordReset ? [{ path: 'auth/forgot-password', ... }, { path: 'auth/reset-password', ... }] : []),
-// Invitation route only if teamInvitations is enabled
-...(teamInvitations ? [{ path: 'invitations/accept', ... }] : []),
+// Invitation page, on both of its paths, only if teamInvitations is enabled
+...(teamInvitations ? ['auth/activate', 'invitations/accept'].map(path => ({ path, ... })) : []),
 ```
 
 A flag that is `false` removes both the route and the corresponding UI (links, buttons) from the app.

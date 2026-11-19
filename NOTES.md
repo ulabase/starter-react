@@ -36,7 +36,7 @@ public/
 | `/auth/signup` | `PublicGuard` | `emailRegistration \|\| oauthLogin` |
 | `/auth/verify` | `PublicGuard` | `emailRegistration` |
 | `/auth/forgot-password`, `/auth/reset-password` | `PublicGuard` | `passwordReset` |
-| `/invitations/accept` | **none** — works signed-in or out | `teamInvitations` |
+| `/auth/activate`, `/invitations/accept` | **none** — works signed-in or out | `teamInvitations` |
 | `/home`, `/teams`, `/teams/new`, `/teams/:id`, `/account` | `AuthGuard` | always |
 
 Feature flags live in `src/environments/environment.ts` and must match your service's
