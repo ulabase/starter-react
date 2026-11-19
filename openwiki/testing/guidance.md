@@ -40,8 +40,8 @@ sources:
     resource: repo://vite.config.ts
 verified:
   - by: openwiki/0.9.0
-    at: 2026-11-05T15:35:17.688Z
-generated: { by: "openwiki/0.9.0", at: "2026-11-05T15:35:17.688Z" }
+    at: 2026-11-19T17:44:44.189Z
+generated: { by: "openwiki/0.9.0", at: "2026-11-19T17:44:44.189Z" }
 ---
 
 # Testing Guidance
@@ -89,7 +89,7 @@ Auth pages have the most logic (form validation, error handling, loading states)
 | `Login` | Renders email/password fields; shows validation errors on blur; handles 401 with "Invalid email or password."; calls `auth.login` on submit and navigates to `/`; shows OAuth buttons when `oauthLogin` is enabled; maps the `error` search param through `ERROR_MESSAGES` — `invalid_token` ("This link is invalid or has expired.") and `token_expired`, whose message directs the user to "Forgot password?" to get a new link that also verifies the email |
 | `Signup` | Form validation (first/last name, email, password min 8 chars); calls `auth.register()`; shows "Check your email" confirmation on success; handles 409 duplicate email; shows OAuth buttons when enabled |
 | `Verify` | Missing `email`/`token` params → "Invalid link" screen; `error` param → "Verification failed" screen pointing at "Forgot password?" to get a new link that also verifies the account; otherwise calls `auth.verify(email, token)` and redirects to the returned URL |
-| `Accept` | Missing params → error; new user flow → password form; existing user flow → login + accept; 404 → expired message |
+| `Accept` | Served at two paths, `/auth/activate` (new user) and `/invitations/accept` (existing user), both unguarded; missing params → error; new user flow → password form; existing user flow → login + accept; 404 → expired message |
 | `ForgotPassword` | Submits email; shows success message |
 | `ResetPassword` | Validates token from URL; submits new password |
 
@@ -123,11 +123,13 @@ Detailed test scenarios for `ConsentsGate`:
 
 ### Integration Tests: Routing
 
-Test that routes are correctly gated:
+Test that routes are gated and registered exactly as `routes.tsx` defines them:
 
-- Unauthenticated user visiting `/home` → redirected to `/auth/login` (via `AuthGuard`)
+- Unauthenticated user visiting `/home` → redirected to `/auth/login` (via `AuthGuard`, which wraps the `/` shell that owns the `home` child)
 - Authenticated user visiting `/auth/login` → redirected to `/` (via `PublicGuard`)
 - Feature flag `passwordReset: false` → `/auth/forgot-password` route not registered
+- Feature flag `teamInvitations` registers two routes, `auth/activate` and `invitations/accept`, both rendering `<Accept />` unguarded (no `PublicGuard` or `AuthGuard`), and turning the flag off removes both
+- Catch-all `'*'` renders `<Home />`
 
 ### The App-Versus-Server Testing Boundary
 

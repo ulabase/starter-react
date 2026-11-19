@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:cec7e61fc9409d9a5d9aae730f1f000baee9d03ef4e0db60f3894de2e5400662",
+  "pageVersion": "sha256:eea7e2bc1cb784b99ccc088a779f8debf519e8a304cf5d32bf01caa5298a20c4",
   "claims": [
     {
       "id": "claim_60d379bfef654ae3bb1cc011f1f6a29f",
@@ -146,15 +146,19 @@
     },
     {
       "id": "claim_011698a4c5d846c691e9ef47c084e706",
-      "statement": "Feature flags in environment.ts control route availability: emailRegistration enables signup and verification, passwordReset enables forgot/reset password, oauthLogin enables OAuth buttons, oauthProviders lists active providers (default ['google']), and teamInvitations enables the invitation acceptance route. These flags must match the service's Sign-up Mgmt → Features toggles.",
+      "statement": "Feature flags in environment.ts control route availability: emailRegistration enables the signup route (along with oauthLogin) and email verification, passwordReset enables the forgot/reset password routes, and teamInvitations registers the invitation acceptance page on both of its routes — /auth/activate for a new user and /invitations/accept for an existing user. oauthLogin enables the OAuth sign-in buttons and oauthProviders lists the providers rendered (default ['google']). These flags must match the service's Sign-up Mgmt → Features toggles.",
       "evidence": [
+        {
+          "resource": "repo://README.md#L99-L101",
+          "version": "repo-lines-v1:sha256:ee42374f0d61da68cf35364466a4ecfafdf406c1d9ecdc6d5d13b89a4c189dac:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjQ0NzVkNzE3ZThmZjQ4MDU4MTgzZGI0MTk1YzBiNTQwNmViZmY3MmUxYjVlOGMxNTIyNDQ3MmM5YThlNzIxNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2RmYWNhNmU5MzgyNTU2ZjIxYTMyOGY4NzJlZDk2ZjAwZjUwNTAzNjJkMzcxY2YyOTcyNzQ0NDMxOWNiNDM4NyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYTc1YjdiMDA3MzE0MzkwYjNhZTA4YTNiM2UwOWZmZGZkZjE2NmM1ODRlODdjODk0MTgzMTI1N2RmNjRmOWQ3YSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjQyMDViMjk4MTM5OWU3YjBjYjFjMTZjMThkZGY0NDk3OTM2NGI2ZDJhZDQzZWJlZjQwYmJkMTNhOTJlMzY1OCJ9"
+        },
         {
           "resource": "repo://src/environments/environment.ts#L1-L13",
           "version": "repo-lines-v1:sha256:0b2fba9c71fd1b63438cbadf37ac7d0e703467000d83ce4857c4f401ba517d4e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEzMjM4ZDEyYjRkZGZlOTg2NmI3N2M0ZTc4ZWU3NWI4Y2QzZjhlZmM2MjZiMTI2ZmY0NzM2OTU1NGZlY2NlOTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFhMWQxYTYzMzkwMjI5Yzc5ODM0N2U4M2EwNDA1NDQxYzk0MDAwMzUyODRhZDE2OGMxYmY2Y2RmMWQ3MGEzNzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
         },
         {
-          "resource": "repo://src/routes.tsx#L19-L100",
-          "version": "repo-lines-v1:sha256:f1e51c974ece52cb3f7622453ddb0d22ba7812a432fb6149c5d28d3018476513:eyJzZWxlY3RlZExpbmVDb3VudCI6ODIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk0NjUzZmFjZmE0MjJhYTEwOGFjMzFhYTVhMDJhOTIwNzc5YTM2MDNiOTI4ZWJiNzAwMjRjOWVjYzU0YWE2NWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIxMTFmMjM5YWM2NWM5ZmVjZDRmNzk3NWQ0ZWUwYzY3N2I1OGE4ZWE2Nzg1MmVhMjVkMjc5MjM5MjUxOGQyZjgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI1Mjk3NDUwNGYyZGI1ZTg3OGEyNzk4NjMyZmFiOTViNWYwMzA4MGFmZWJlMmZjMjkxODY1MzAxZWU4MDkyZWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ0NTMzMjYxZGRhYjIxY2I3YWIwOGNlNzY4NTc3MGRjZGFiMjk2M2U4ZWZkZTUwZmUzYjkwNDY5NTZkMDBjNTcifQ"
+          "resource": "repo://src/routes.tsx#L19-L119",
+          "version": "repo-lines-v1:sha256:69f9eec787e6d4969262e47e04703e8bb7e089bbf0ee2b265f74171150fe7947:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAxLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI5NDY1M2ZhY2ZhNDIyYWExMDhhYzMxYWE1YTAyYTkyMDc3OWEzNjAzYjkyOGViYjcwMDI0YzllY2M1NGFhNjVhIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiJlMjYwNDBiYTU4YzI2ZTIwY2UzNTEyYTEwN2Q1MTc3ZjA3YzQ0YjkzYzJjNTk4NDIzYjQ0NTM0ZTY5Zjg0ZWFlIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJiNTI5NzQ1MDRmMmRiNWU4NzhhMjc5ODYzMmZhYjk1YjVmMDMwODBhZmViZTJmYzI5MTg2NTMwMWVlODA5MmVlIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MSwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJiMDJkMmMwZDZkYzVlNzRkOTJmYTE0YjkxZGJlYTI2NDA5MGJlYjM1ZmRiOTE4OGQ5YjM0MTE4MWRjZTlmNGNlIn0"
         }
       ]
     },
@@ -237,6 +241,6 @@
   ],
   "verification": {
     "by": "openwiki/0.9.0",
-    "at": "2026-11-11T15:22:25.445Z"
+    "at": "2026-11-19T17:44:44.189Z"
   }
 }

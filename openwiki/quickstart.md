@@ -5,7 +5,7 @@ description: Quickstart guide for the Ulabase React starter. Covers what the rep
 tags: [quickstart, react, ulabase, starter]
 verified:
   - by: openwiki/0.9.0
-    at: 2026-11-11T15:22:25.445Z
+    at: 2026-11-19T17:44:44.189Z
 sources:
   - id: openwiki-source-5093b074f16e0b77479219b2
     resource: repo://package-lock.json
@@ -33,7 +33,7 @@ sources:
     resource: repo://ulabase.setup.consents.ts
   - id: openwiki-source-34f568b222540eb11aa44859
     resource: repo://ulabase.setup.ts
-generated: { by: "openwiki/0.9.0", at: "2026-11-11T15:22:25.445Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-19T17:44:44.189Z" }
 ---
 
 # Ulabase Starter — React Quickstart
@@ -199,7 +199,7 @@ available. These flags must match your service's *Sign-up Mgmt → Features* tog
 | `passwordReset` | `true` | Enables forgot/reset password routes |
 | `oauthLogin` | `false` | Enables OAuth login buttons for the listed providers |
 | `oauthProviders` | `['google']` | Array of OAuth providers to display |
-| `teamInvitations` | `true` | Enables team invitation acceptance route |
+| `teamInvitations` | `true` | Registers the team invitation acceptance page on both of its routes: `/auth/activate` (new user) and `/invitations/accept` (existing user) |
 
 **Google sign-in, when you want it.** The app starts with email and password, so it runs
 without any Google setup. To add the Google button:
@@ -239,7 +239,7 @@ src/
     shell/                ← Authenticated frame: header, nav, user menu, theme toggle
     home/                 ← Getting-started showcase with feature flags grid and auth.api() demo — replace with your content
     auth/                 ← login, signup, verify, forgot/reset password, OAuth buttons
-    invitations/accept/   ← One page, three flows (new user, logged-in, missing params)
+    invitations/accept/   ← One page on two routes (/auth/activate, /invitations/accept), three flows (new user, logged-in, missing params)
     teams/                ← list, detail (members/invites/settings), new
     account/              ← Profile + change password
 public/
