@@ -41,8 +41,9 @@ ulabase login                              # paste a token from ulabase.com
 ulabase setup --srv <srvId>
 ```
 
-The last step writes the service URL into `src/environments/environment.ts` (`apiUrl`), so the app talks to it
-when you start it. Commit that file when you publish your app.
+The last step writes the service URL into `.env.development` (`VITE_API_URL`), the file `npm run dev`
+reads, so the app talks to it when you start it. The production build reads `.env.production`: put the
+URL of your production service there. Commit both files when you publish your app.
 
 `<srvId>` is the six-character id of your service — the first label of its URL. Every step is a
 check and an apply, so running it twice writes nothing. `--dry-run` tells you what a service is

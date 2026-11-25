@@ -18,7 +18,7 @@ export function ConfigPage({ apiUrl }: ConfigPageProps) {
         {apiUrl && (
           <div className="config-status">
             <p>
-              <code>apiUrl</code> is set to <code>{apiUrl}</code>, which isn't a
+              <code>VITE_API_URL</code> is set to <code>{apiUrl}</code>, which isn't a
               Ulabase service: it must be an <code>https://</code> address.
             </p>
           </div>
@@ -42,7 +42,7 @@ export function ConfigPage({ apiUrl }: ConfigPageProps) {
               <pre className="config-command">{'npx ulabase login\nnpx ulabase setup --srv <your service id>'}</pre>
               <p>
                 It configures the service for this app and writes its URL into{' '}
-                <code>src/environments/environment.ts</code>.
+                <code>.env.development</code>.
               </p>
             </div>
           </li>

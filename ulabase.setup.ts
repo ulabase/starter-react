@@ -27,7 +27,7 @@
  * `passwordReset` off in the app and re-running the setup turns it off on the
  * service too, because there is no second place to forget.
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { defineSetup, step, fromEnv, isRedacted } from '@ulabase/cli';
 import { isApiError } from '@ulabase/cli';
 import type { AdminClient, FeatureConfig } from '@ulabase/cli';
@@ -80,31 +80,44 @@ const install = async (admin: AdminClient, srvId: string, featureId: string) => 
 };
 
 /**
- * The environment file the app reads its service URL from, next to this setup file whatever the
- * working directory. Read fresh each time: the `environment` import above is the value at start.
+ * The file the app reads its service URL from: `.env.development`, `.env.production`, or whatever
+ * environment the run names, next to this setup file whatever the working directory. Vite loads
+ * the one of the mode it runs in, and `src/environments/environment.ts` reads `VITE_API_URL`.
+ *
+ * An environment is a service: `ulabase setup --srv <id>` writes the development one, and
+ * `ulabase setup --srv <id> --env production` the production one.
  */
-const ENV_FILE = new URL('./src/environments/environment.ts', import.meta.url);
-const API_URL_LINE = /^(\s*apiUrl:\s*)'[^']*'/m;
+const envFile = (env: string) => new URL(`./.env.${env}`, import.meta.url);
+const API_URL_LINE = /^VITE_API_URL=.*$/m;
 
-/** The `apiUrl` the environment file holds now, or null when it has no such line. */
-function apiUrlInFile(): string | null {
-  const m = readFileSync(ENV_FILE, 'utf8').match(/^\s*apiUrl:\s*'([^']*)'/m);
-  return m ? m[1] : null;
+/** The environment of the run. Absent with a CLI older than `--env`: then it is development. */
+const envOf = (ctx: unknown): string => (ctx as { env?: string }).env ?? 'development';
+
+/** The address the environment's file holds now, or null when it has none. */
+function apiUrlInFile(env: string): string | null {
+  const file = envFile(env);
+  if (!existsSync(file)) return null;
+  const m = readFileSync(file, 'utf8').match(/^VITE_API_URL=(.*)$/m);
+  return m ? m[1].trim() : null;
 }
 
 /** Exported so a setup that extends this one can keep it last. */
 export const appPointsAtService = step('the app points at this service', {
   // Last, on purpose: the app is pointed at the service only once everything above it is in
   // place, so a setup that stopped halfway leaves the "connect your service" screen, not a
-  // sign-up page that fails. Only the apiUrl line is rewritten; comments and flags stay.
-  check: async ({ admin, srvId }) => apiUrlInFile() === (await admin.serviceToken(srvId)).url,
-  apply: async ({ admin, srvId }) => {
-    const { url } = await admin.serviceToken(srvId);
-    const text = readFileSync(ENV_FILE, 'utf8');
-    if (!API_URL_LINE.test(text)) {
-      throw new Error(`src/environments/environment.ts has no apiUrl: '...' line to write ${url} into`);
+  // sign-up page that fails. Only the VITE_API_URL line is rewritten; the rest of the file stays.
+  check: async ctx => apiUrlInFile(envOf(ctx)) === (await ctx.admin.serviceToken(ctx.srvId)).url,
+  apply: async ctx => {
+    const env = envOf(ctx);
+    const { url } = await ctx.admin.serviceToken(ctx.srvId);
+    const file = envFile(env);
+    const line = `VITE_API_URL=${url}`;
+    if (!existsSync(file)) {
+      writeFileSync(file, `# The Ulabase service this app uses in ${env}. Written by \`ulabase setup --env ${env}\`.\n${line}\n`);
+      return;
     }
-    writeFileSync(ENV_FILE, text.replace(API_URL_LINE, `$1'${url}'`));
+    const text = readFileSync(file, 'utf8');
+    writeFileSync(file, API_URL_LINE.test(text) ? text.replace(API_URL_LINE, line) : `${text.replace(/\n*$/, '\n')}${line}\n`);
   },
 });
 

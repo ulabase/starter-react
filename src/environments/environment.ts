@@ -1,8 +1,15 @@
+/**
+ * What Vite read from the .env file of the mode it runs in. Undefined outside Vite: the setup file
+ * imports this module in Node, to read the feature flags, and there is no `import.meta.env` there.
+ */
+const viteEnv = import.meta.env as Record<string, string | undefined> | undefined;
+
 export const environment = {
-  // Your free Ulabase service, e.g. 'https://<srvid>.ulabase.app'.
-  // `npx ulabase setup --srv <srvid>` writes it here for you. Empty in the
-  // starter's own repository: empty shows the "configure your service" screen.
-  apiUrl: '',
+  // The address of your Ulabase service, e.g. 'https://<srvid>.ulabase.app'. It comes from
+  // VITE_API_URL, which Vite reads from the file of the mode it runs in: .env.development for
+  // `npm run dev`, .env.production for `npm run build`. `npx ulabase setup --srv <srvid>` writes
+  // the first. Empty shows the "configure your service" screen.
+  apiUrl: viteEnv?.VITE_API_URL ?? '',
   features: {
     emailRegistration: true,
     passwordReset: true,
