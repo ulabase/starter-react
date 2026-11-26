@@ -16,6 +16,23 @@ server of yours to write, deploy or pay for.
 **You need:** [Node.js](https://nodejs.org) 22.18 or later (it runs the TypeScript setup file) and a free Ulabase service.
 Signing up is free.
 
+### The short way
+
+```bash
+npx ulabase login --new-token
+npx ulabase app new --name my-app --starter react
+cd my-app
+npm run dev
+```
+
+`app new` downloads this starter into the folder `my-app` and installs its packages. It asks which
+of your services the app uses, sets that service up and writes its address into the app.
+
+No account or no service yet? `npx ulabase signup` and `npx ulabase srv new` open the pages where
+you create them.
+
+The steps below do the same by hand.
+
 ### 1. Clone it
 
 ```bash
@@ -42,8 +59,9 @@ ulabase setup --srv <srvId>
 ```
 
 The last step writes the service URL into `.env.development` (`VITE_API_URL`), the file `npm run dev`
-reads, so the app talks to it when you start it. The production build reads `.env.production`: put the
-URL of your production service there. Commit both files when you publish your app.
+reads, so the app talks to it when you start it. The production build reads `.env.production`:
+`ulabase setup --srv <prodSrvId> --env production` writes the URL of your production service there.
+Commit both files when you publish your app.
 
 `<srvId>` is the six-character id of your service — the first label of its URL. Every step is a
 check and an apply, so running it twice writes nothing. `--dry-run` tells you what a service is
