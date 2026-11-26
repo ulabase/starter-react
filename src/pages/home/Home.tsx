@@ -129,13 +129,28 @@ export default function Home() {
               <span className="step-title">Point the app at your Ulabase service</span>
               <p className="muted">
                 Done — you're signed in. Configured in{' '}
-                <code>src/environments/environment.ts</code>.
+                <code>.env.development</code>.
               </p>
             </div>
           </li>
 
           <li className="step">
             <span className="step-mark" aria-hidden="true">2</span>
+            <div className="step-body">
+              <span className="step-title">Connect your coding agent to the Ulabase docs</span>
+              <p className="muted">
+                Add the docs MCP server to Claude Code, Cursor or another agent. The agent reads the
+                Ulabase documentation while it makes the changes below. In Claude Code:
+              </p>
+              <pre className="code-block">{`claude mcp add --transport http ulabase-docs https://d0c5a1.ulabase.app/mcp`}</pre>
+              <p className="muted">
+                Any other agent takes the address <code>https://d0c5a1.ulabase.app/mcp</code> as an MCP server over HTTP.
+              </p>
+            </div>
+          </li>
+
+          <li className="step">
+            <span className="step-mark" aria-hidden="true">3</span>
             <div className="step-body">
               <span className="step-title">Make it yours visually</span>
               <p className="muted">
@@ -148,7 +163,7 @@ export default function Home() {
           </li>
 
           <li className="step">
-            <span className="step-mark" aria-hidden="true">3</span>
+            <span className="step-mark" aria-hidden="true">4</span>
             <div className="step-body">
               <span className="step-title">Design your navigation and menu</span>
               <p className="muted">
@@ -159,7 +174,7 @@ export default function Home() {
           </li>
 
           <li className="step">
-            <span className="step-mark" aria-hidden="true">4</span>
+            <span className="step-mark" aria-hidden="true">5</span>
             <div className="step-body">
               <span className="step-title">Replace this page</span>
               <p className="muted">
@@ -169,7 +184,7 @@ export default function Home() {
           </li>
 
           <li className="step">
-            <span className="step-mark" aria-hidden="true">5</span>
+            <span className="step-mark" aria-hidden="true">6</span>
             <div className="step-body">
               <span className="step-title">Build your first feature screen</span>
               <p className="muted">
