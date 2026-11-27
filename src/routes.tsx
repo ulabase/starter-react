@@ -11,6 +11,7 @@ const ResetPassword = lazy(() => import('./pages/auth/reset-password/ResetPasswo
 const Accept = lazy(() => import('./pages/invitations/accept/Accept'));
 const Shell = lazy(() => import('./pages/shell/Shell'));
 const Home = lazy(() => import('./pages/home/Home'));
+const Welcome = lazy(() => import('./pages/welcome/Welcome'));
 const Teams = lazy(() => import('./pages/teams/Teams'));
 const NewTeam = lazy(() => import('./pages/teams/new/NewTeam'));
 const TeamDetail = lazy(() => import('./pages/teams/detail/TeamDetail'));
@@ -98,8 +99,18 @@ export const routes: RouteObject[] = [
         ),
       }))
     : []),
+  // The public first page: what the app is and the service it runs on. A signed-in user who
+  // lands here goes on to /home.
   {
     path: '/',
+    element: (
+      <SuspenseWrapper>
+        <Welcome />
+      </SuspenseWrapper>
+    ),
+  },
+  // The app, inside the signed-in frame. No path of its own: its pages keep theirs.
+  {
     element: (
       <SuspenseWrapper>
         <AuthGuard>
@@ -108,7 +119,6 @@ export const routes: RouteObject[] = [
       </SuspenseWrapper>
     ),
     children: [
-      { index: true, element: <Home /> },
       { path: 'home', element: <Home /> },
       { path: 'teams', element: <Teams /> },
       { path: 'teams/new', element: <NewTeam /> },
@@ -116,5 +126,5 @@ export const routes: RouteObject[] = [
       { path: 'account', element: <Account /> },
     ],
   },
-  { path: '*', element: <Home /> },
+  { path: '*', element: <Welcome /> },
 ];

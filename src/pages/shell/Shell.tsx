@@ -112,7 +112,8 @@ export default function Shell() {
   const logout = async () => {
     closeMenu();
     await auth.logout();
-    navigate('/auth/login');
+    // back to the public first page
+    navigate('/');
   };
 
   return (
