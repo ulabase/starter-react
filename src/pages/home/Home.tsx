@@ -86,7 +86,8 @@ export default function Home() {
         <h1>{firstName ? `Welcome, ${firstName}.` : 'Welcome.'}</h1>
         <p className="hero-pitch">
           Sign-up, login, email verification, password reset, invitations and team
-          management are already built and wired up. Now make it yours.
+          management are already built and wired up. This page is <code>src/pages/home/</code>: put your
+          app's first screen in its place.
         </p>
       </section>
 
@@ -115,85 +116,6 @@ export default function Home() {
           Toggle these in <code>src/environments/environment.ts</code> to match the
           Features settings of your Ulabase service.
         </p>
-      </section>
-
-      <section className="card">
-        <div className="card-header">
-          <h2>Make it yours</h2>
-        </div>
-
-        <ol className="steps">
-          <li className="step step-done">
-            <span className="step-mark" aria-hidden="true">&#10003;</span>
-            <div className="step-body">
-              <span className="step-title">Point the app at your Ulabase service</span>
-              <p className="muted">
-                Done — you're signed in. Configured in{' '}
-                <code>.env.development</code>.
-              </p>
-            </div>
-          </li>
-
-          <li className="step">
-            <span className="step-mark" aria-hidden="true">2</span>
-            <div className="step-body">
-              <span className="step-title">Connect your coding agent to the Ulabase docs</span>
-              <p className="muted">
-                Add the docs MCP server to Claude Code, Cursor or another agent. The agent reads the
-                Ulabase documentation while it makes the changes below. In Claude Code:
-              </p>
-              <pre className="code-block">{`claude mcp add --transport http ulabase-docs https://d0c5a1.ulabase.app/mcp`}</pre>
-              <p className="muted">
-                Any other agent takes the address <code>https://d0c5a1.ulabase.app/mcp</code> as an MCP server over HTTP.
-              </p>
-            </div>
-          </li>
-
-          <li className="step">
-            <span className="step-mark" aria-hidden="true">3</span>
-            <div className="step-body">
-              <span className="step-title">Make it yours visually</span>
-              <p className="muted">
-                Either tweak the default skin — the tokens and skin classes in{' '}
-                <code>src/styles.css</code> — or delete that skin entirely and adopt
-                Material, Tailwind, Spartan or your own, following the swap map in{' '}
-                <code>README.md</code>.
-              </p>
-            </div>
-          </li>
-
-          <li className="step">
-            <span className="step-mark" aria-hidden="true">4</span>
-            <div className="step-body">
-              <span className="step-title">Design your navigation and menu</span>
-              <p className="muted">
-                The app frame lives in <code>src/pages/shell/</code> — the header
-                has a marked slot for your section links.
-              </p>
-            </div>
-          </li>
-
-          <li className="step">
-            <span className="step-mark" aria-hidden="true">5</span>
-            <div className="step-body">
-              <span className="step-title">Replace this page</span>
-              <p className="muted">
-                Swap <code>src/pages/home/</code> for your app's landing content.
-              </p>
-            </div>
-          </li>
-
-          <li className="step">
-            <span className="step-mark" aria-hidden="true">6</span>
-            <div className="step-body">
-              <span className="step-title">Build your first feature screen</span>
-              <p className="muted">
-                Add the component under <code>src/pages/</code> and register its
-                route inside the authenticated shell in <code>src/routes.tsx</code>.
-              </p>
-            </div>
-          </li>
-        </ol>
       </section>
 
       <section className="card">

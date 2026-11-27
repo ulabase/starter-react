@@ -21,7 +21,8 @@ public/
   ui/alert/               ← the one shared feedback component
   pages/
     shell/                ← authenticated frame: header, nav, user menu
-    home/                 ← PLACEHOLDER showcase — replace with your content
+    welcome/              ← PLACEHOLDER public first page — replace it
+    home/                 ← PLACEHOLDER home after sign-in — replace with your content
     auth/                 ← login, signup, verify, forgot/reset password
     invitations/accept/   ← one page, three flows (see below)
     teams/                ← list, detail (members/invites/settings), new
@@ -32,6 +33,7 @@ public/
 
 | Path | Guard | Shown when |
 |---|---|---|
+| `/` | none; signed-in users go to `/home` | always |
 | `/auth/login` | `PublicGuard` | always |
 | `/auth/signup` | `PublicGuard` | `emailRegistration \|\| oauthLogin` |
 | `/auth/verify` | `PublicGuard` | `emailRegistration` |
@@ -60,7 +62,7 @@ Two ways forward. Pick one:
    component reads them, so this re-themes the whole app including dark mode.
 2. Adjust the skin classes in section 3 if you want different shapes.
 3. Replace the shell layout in `pages/shell/`.
-4. Replace `pages/home/` with your own landing content.
+4. Replace `pages/welcome/` and `pages/home/` with your own first pages.
 
 **B. Adopt a UI framework** — Material, shadcn/ui, Tailwind, your own:
 
